@@ -1,5 +1,4 @@
-﻿//#define ASTARDEBUG
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
@@ -7,7 +6,7 @@ using Pathfinding.RVO;
 
 [RequireComponent(typeof(Seeker))]
 [AddComponentMenu("Pathfinding/AI/AIPath (generic)")]
-public class FollowPath:MonoBehaviour {
+public class PathFollower:MonoBehaviour {
 	public float endReachedDistance = 0.2F;
 	public float pickNextWaypointDist = 2;
 	public float slowdownDistance = 0.6F;
