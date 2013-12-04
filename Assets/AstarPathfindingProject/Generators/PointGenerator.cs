@@ -272,10 +272,7 @@ namespace Pathfinding {
 					AddChildren (ref startID,root);
 				}
 			}
-			
-			
-			int count = 0;
-			int count2 = 0;
+
 
 			if (maxDistance >= 0) {
 				//To avoid too many allocations, these lists are reused for each node

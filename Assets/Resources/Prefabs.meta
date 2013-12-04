@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 2b12e3c2c1ba0f747b30c66cd7370643
+=======
+guid: 95d86d6bb0e57f844aab90f16d963494
+>>>>>>> Added Spawning/Building/Upgrading Prototype
 folderAsset: yes
 DefaultImporter:
   userData: 
