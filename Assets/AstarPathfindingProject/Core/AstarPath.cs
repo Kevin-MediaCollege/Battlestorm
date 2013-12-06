@@ -400,7 +400,7 @@ public class AstarPath : MonoBehaviour {
 	 */
 	[System.NonSerialized]
 	public Queue<GraphUpdateObject> graphUpdateQueue;
-	
+
 	/** Stack used for flood-filling the graph. It is saved to minimize memory allocations. */
 	[System.NonSerialized]
 	public Stack<GraphNode> floodStack;

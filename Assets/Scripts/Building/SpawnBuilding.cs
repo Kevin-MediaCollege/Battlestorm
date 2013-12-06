@@ -15,13 +15,17 @@ public class SpawnBuilding : MonoBehaviour {
 		//Instantiate(Resources.Load("Prefabs/Test/LumberMill"),buildingPos.position,Quaternion.identity);
 	}
 	public void createBuilding(int type){
+		Debug.Log(type);
 		if(type == 1){
 			buildingobj = Instantiate(Resources.Load("Prefabs/Test/LumberMill"),buildingPos.position,Quaternion.identity) as GameObject;
 			buildingobj.transform.parent = this.transform;
 		}
-		else{
+		if(type == 2){
 			buildingobj = Instantiate(Resources.Load("Prefabs/Test/Mine"),buildingPos.position,Quaternion.identity) as GameObject;
 			buildingobj.transform.parent = this.transform;
+		}
+		if(type == 3){
+			//Spawn Tower
 		}
 	}
 

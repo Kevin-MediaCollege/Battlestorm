@@ -45,6 +45,11 @@ public class LumberMill : Building {
 	IEnumerator MineTick(){
 		yield return new WaitForSeconds(timePerTick);
 		player.woodAmount += resourcesPerTick;
+		GameObject popuptext = Instantiate(Resources.Load("Prefabs/ResourceText"),transform.position,Quaternion.identity) as GameObject;
+		TextMesh textpop = popuptext.GetComponent<TextMesh>();
+
+		textpop.text = "" + (int)resourcesPerTick;
+		textpop.color = Color.green;
 		StartCoroutine("MineTick");
 	}
 
