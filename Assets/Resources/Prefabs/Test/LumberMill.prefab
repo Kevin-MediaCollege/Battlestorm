@@ -68,6 +68,9 @@ MonoBehaviour:
   art: {fileID: 0}
   woodcostfornextlevel: 0
   stonecostfornextlevel: 0
+  stonesellprice: 0
+  woodsellprice: 0
+  wood: {fileID: 2800000, guid: a116456c6a794bc4bb5c4c0fe727bd9f, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
