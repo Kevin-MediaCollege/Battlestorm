@@ -108,17 +108,17 @@ public class GameGUI : MonoBehaviour {
 	if(chooseemptyplot && !chooselumbermill && !choosemine && !choosetower){
 			if (GUI.Button(new Rect(guiposition.x - 25,Screen.height + -guiposition.y - 100,50,50),"Tower")){
 				if(!doneaction){
-				createBuilding(3);
+				createBuilding(1);
 				}
 			}
 			if (GUI.Button(new Rect(guiposition.x - 100,Screen.height + -guiposition.y + 25,50,50),"Lumber")){
 				if(!doneaction){
-				createBuilding(1);
+				createBuilding(2);
 				}
 			}
 			if (GUI.Button(new Rect(guiposition.x + 50,Screen.height + -guiposition.y + 25,50,50),"Mine")){
 				if(!doneaction){
-				createBuilding(2);
+				createBuilding(3);
 				}
 			}
 		}
