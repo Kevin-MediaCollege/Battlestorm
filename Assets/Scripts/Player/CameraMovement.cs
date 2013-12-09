@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraMovement : MonoBehaviour {
-	float lookSpeed= 2.0f;
-	float moveSpeed= 1.0f;
+public class CameraMovement:MonoBehaviour {
+	private float lookSpeed= 2.0f;
+	private float moveSpeed= 1.0f;
 	
-	float rotationX= 0.0f;
-	float rotationY= 0.0f;
+	private float rotationX= 0.0f;
+	private float rotationY= 0.0f;
 
-	float VInput;
-	float HInput;
+	private float VInput;
+	private float HInput;
+
 	private bool ignoreRotation;
+
 	void  FixedUpdate (){
 		if(ignoreRotation){
 			rotationX += Input.GetAxis("Mouse X")*lookSpeed;

@@ -80,12 +80,12 @@ public class LumberMill:Building {
 		}
 	}
 
-	public void SwitchLevel(Upgrade level) {
+	public override void SwitchLevel(Upgrade level) {
 		if(level > maxLevel)
 			return;
-		
+
 		currentLevel = level;
-		
+
 		switch(level){
 		case Upgrade.one:
 			resourcesPerTick = resourcesPerUpgrade.Upgrade1;

@@ -38,7 +38,7 @@ public class Building:MonoBehaviour {
 		playerData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
 	}
 
-	public void SwitchLevel(Upgrade level) { }
+	public virtual void SwitchLevel(Upgrade level) { }
 
 	protected void UpdateArt(string path) {
 		if(art != null)

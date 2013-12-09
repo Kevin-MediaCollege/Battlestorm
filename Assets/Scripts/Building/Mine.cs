@@ -80,7 +80,7 @@ public class Mine:Building {
 		}
 	}
 	
-	public void SwitchLevel(Upgrade level) {
+	public override void SwitchLevel(Upgrade level) {
 		if(level > maxLevel)
 			return;
 

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MoveTarget:MonoBehaviour {
-	void Update () {
+	void Update() {
 		Vector3 pos = transform.position;
 
 		if(Input.GetKeyDown(KeyCode.S)) {
@@ -16,8 +16,6 @@ public class MoveTarget:MonoBehaviour {
 		} else if(Input.GetKeyDown(KeyCode.D)) {
 			pos.x += 4;
 		}
-
-
 
 		if(pos != transform.position) {
 			transform.position = pos;

@@ -103,8 +103,6 @@ public class GameGUI:MonoBehaviour {
 				CreateBuilding(Building.BuildingType.Mine);
 			}
 		} else if(selectedBuilding != "EmptyPlot" && selectedBuilding != "" && selectedBuilding != null) {
-			Debug.Log(selectedBuilding);
-
 			GUI.BeginGroup(new Rect(guiPosition.x - 100, Screen.height + -guiPosition.y - 150, 200, 150));
 			GUI.Box(new Rect(0, 0, 200, 150), buildingName);
 			GUI.Label(new Rect(5, 0, 200, 20), "" + resourceName + ": ");
@@ -120,8 +118,8 @@ public class GameGUI:MonoBehaviour {
 			return;
 
 		GUI.Label(new Rect(85, 25, 200, 20), "LVL: " + (int)building.currentLevel);
-		
-		if(building.currentLevel <= building.maxLevel) {
+
+		if(building.currentLevel != building.maxLevel) {
 			GUI.DrawTexture(new Rect(0, 50, 20, 20), wood);
 			GUI.DrawTexture(new Rect(0, 70, 20, 20), stone);
 			
@@ -129,10 +127,10 @@ public class GameGUI:MonoBehaviour {
 			GUI.Label(new Rect(25, 72, 30, 20), "-" + building.stoneCostForNextLevel, buyStyle);
 			GUI.Label(new Rect(18, 27, 30, 20), "Cost");
 			
-			if (GUI.Button(new Rect(5, 95, 50, 50), "Upgrade")){
-				if(playerData.woodAmount >= building.woodCostForNextLevel){
-					if(playerData.stoneAmount >= building.stoneCostForNextLevel){
-						building.SwitchLevel(building.currentLevel);
+			if (GUI.Button(new Rect(5, 95, 50, 50), "Upgrade")) {
+				if(playerData.woodAmount >= building.woodCostForNextLevel) {
+					if(playerData.stoneAmount >= building.stoneCostForNextLevel) {
+						building.SwitchLevel(building.currentLevel + 1);
 					}
 				}
 			}
@@ -143,7 +141,7 @@ public class GameGUI:MonoBehaviour {
 		GUI.Label(new Rect(165, 50, 30, 20), "+" + building.woodSellPrice, sellStyle);
 		GUI.Label(new Rect(165, 72, 30, 20), "+" + building.stoneSellPrice, sellStyle);
 		
-		if (GUI.Button(new Rect(145, 95, 50, 50), "Sell")){
+		if (GUI.Button(new Rect(145, 95, 50, 50), "Sell")) {
 			//Selling Logic
 		}
 	}
