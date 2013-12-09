@@ -10,6 +10,10 @@ public class GameGUI:MonoBehaviour {
 	
 	private Vector3 guiPosition;
 	private Transform target;
+
+	public Texture towerButton;
+	public Texture lumberMillButton;
+	public Texture mineButton;
 	
 	public Texture stone;
 	public Texture wood;
@@ -29,8 +33,6 @@ public class GameGUI:MonoBehaviour {
 	}
 	
 	void Update() {
-	//	Debug.Log (target);
-
 		if(target != null)
 			guiPosition = Camera.main.WorldToScreenPoint(target.position);
 
@@ -95,11 +97,13 @@ public class GameGUI:MonoBehaviour {
 	
 	void OnGUI() {
 		if(selectedBuilding == "EmptyPlot") {
-			if(GUI.Button(new Rect(guiPosition.x - 25, Screen.height + -guiPosition.y - 100, 50, 50), Tower.name)) {
+			GUI.backgroundColor = Color.clear;
+
+			if(GUI.Button(new Rect(guiPosition.x - 50, Screen.height + -guiPosition.y - 100, 75, 75), towerButton)) {
 				CreateBuilding(Building.BuildingType.Tower);
-			} else if(GUI.Button(new Rect(guiPosition.x - 100, Screen.height + -guiPosition.y + 25, 50, 50), LumberMill.name)) {
+			} else if(GUI.Button(new Rect(guiPosition.x - 150, Screen.height + -guiPosition.y + 50, 75, 75), LumberMill.name)) {
 				CreateBuilding(Building.BuildingType.WoodWorks);
-			} else if (GUI.Button(new Rect(guiPosition.x + 50, Screen.height + -guiPosition.y + 25, 50, 50), Mine.name)) {
+			} else if (GUI.Button(new Rect(guiPosition.x + 50, Screen.height + -guiPosition.y + 50, 75, 75), Mine.name)) {
 				CreateBuilding(Building.BuildingType.Mine);
 			}
 		} else if(selectedBuilding != "EmptyPlot" && selectedBuilding != "" && selectedBuilding != null) {

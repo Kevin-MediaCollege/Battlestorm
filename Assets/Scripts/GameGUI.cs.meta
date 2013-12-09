@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: c3adcf6668243394a83951f5a835589c
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - towerButton: {fileID: 2800000, guid: 448a454e1cb36294294073343cebe169, type: 3}
+  - lumberMillButton: {instanceID: 0}
+  - mineButton: {instanceID: 0}
+  - stone: {fileID: 2800000, guid: dbbb9fe0c260d614c9dc7987ac6772e9, type: 3}
+  - wood: {fileID: 2800000, guid: a116456c6a794bc4bb5c4c0fe727bd9f, type: 3}
+  - gold: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
