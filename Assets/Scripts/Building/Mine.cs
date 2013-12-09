@@ -37,28 +37,27 @@ public class Mine : Building {
 		Price5 = 600,
 		Price6 = 1000
 	}
-	public int currentlevel = 1;
-	public int timePerTick;
 	public resourcesPerUpgrade resourcesPerTick;
-	public GameObject art;
 	
 	public int woodcostfornextlevel;
 	public int stonecostfornextlevel;
 	public int stonesellprice;
 	public int woodsellprice;
+	public PlayerData player;
 	void Start () {
+		timePerTick = 3;
+		player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
 		woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade2;
 		stonecostfornextlevel= (int)stonecostPerUpgrade.Upgrade2;
-		player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
-		currentlevel = 1;
-		timePerTick = 3;
-		upgradeLevel = 1;
-		enemyInteractable = false;
 		resourcesPerTick = resourcesPerUpgrade.Upgrade1;
-		StartCoroutine("MineTick");
+		enemyInteractable = false;
+		currentlevel = 1;
 		changeArt(currentlevel);
+
 		stonesellprice = (int)stoneSell.Price1;
 		woodsellprice = (int)woodSell.Price1;
+
+		StartCoroutine("MineTick");
 	}
 	
 	IEnumerator MineTick(){
@@ -66,7 +65,6 @@ public class Mine : Building {
 		player.stoneAmount += resourcesPerTick;
 		GameObject popuptext = Instantiate(Resources.Load("Prefabs/StoneResourceText"),transform.position,Quaternion.identity) as GameObject;
 		TextMesh textpop = popuptext.GetComponent<TextMesh>();
-		
 		textpop.text = "" + (int)resourcesPerTick;
 		textpop.color = Color.gray;
 		textpop.transform.parent = this.transform;
@@ -120,6 +118,7 @@ public class Mine : Building {
 	}
 	
 	void changeArt(int upgrade){
+		Debug.Log("" + art + " : " + upgrade);
 		if(art != null){
 			Destroy(art);
 		}

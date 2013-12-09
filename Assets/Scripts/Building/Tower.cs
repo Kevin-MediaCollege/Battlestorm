@@ -42,25 +42,14 @@ public class Tower:Building {
 		Price6 = 1000
 	};
 
-	public int currentlevel = 1;
-
 	public resourcesPerUpgrade resourcesPerTick;
-
 	public int woodCostForNextLevel;
 	public int stoneCostForNextLevel;
 	public int stonesellprice;
 	public int woodsellprice;
-	public int timePerTick;
-
-	public GameObject art;
-
-	public Texture texture;
-
-	private PlayerData player;
-
+	public PlayerData player;
 	void Start() {
 		player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
-
 		woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade2;
 		stoneCostForNextLevel= (int)stoneCostPerUpgrade.Upgrade2;
 
@@ -68,10 +57,6 @@ public class Tower:Building {
 		woodsellprice = (int)woodSell.Price1;
 
 		resourcesPerTick = resourcesPerUpgrade.Upgrade1;
-
-		currentlevel = 1;
-		timePerTick = 3;
-		upgradeLevel = 1;
 
 		changeArt(currentlevel);
 

@@ -38,21 +38,18 @@ public class LumberMill : Building {
 		Price6 = 1000
 	}
 	public resourcesPerUpgrade resourcesPerTick;
-	public GameObject art;
 
 	public int woodcostfornextlevel;
 	public int stonecostfornextlevel;
 	public int stonesellprice;
 	public int woodsellprice;
-	
-	public Texture wood;
+	public PlayerData player;
 	void Start () {
-		woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade2;
-		stonecostfornextlevel= (int)stonecostPerUpgrade.Upgrade2;
-		player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
 		currentlevel = 1;
 		timePerTick = 3;
-		upgradeLevel = 1;
+		player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
+		woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade2;
+		stonecostfornextlevel= (int)stonecostPerUpgrade.Upgrade2;
 		enemyInteractable = false;
 		resourcesPerTick = resourcesPerUpgrade.Upgrade1;
 		StartCoroutine("MineTick");

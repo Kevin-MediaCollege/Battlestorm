@@ -15,11 +15,11 @@ public class Building : MonoBehaviour {
 		five=5
 	};
 
-	public int upgradeLevel;
+	public int upgradeLevel = 1;
 	public BuildingType type;
 	public bool enemyInteractable;
-	public PlayerData player;
-
 	public int currentlevel = 1;
 	public int timePerTick;
+	public GameObject art;
+	
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower : MonoBehaviour {
+public class Towertje : MonoBehaviour {
 	//
 	private GameObject player;
 	// Use this for initialization
@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour {
 	}
 	IEnumerator ShootObject(){
 		yield return new WaitForSeconds(4);
-
+		
 		StartCoroutine("ShootObject");
 	}
 }
