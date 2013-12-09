@@ -1,14 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Towertje.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Textures\Clouds\Material\Shader\NewShader.shader">
     <Files>
-      <File FileName="Assets\Scripts\GameGUI.cs" Line="152" Column="1" />
-      <File FileName="Assets\Scripts\Building\Building.cs" Line="38" Column="90" />
-      <File FileName="Assets\Scripts\Building\LumberMill.cs" Line="51" Column="3" />
-      <File FileName="Assets\Scripts\Building\Mine.cs" Line="51" Column="16" />
-      <File FileName="Assets\Scripts\Building\Tower.cs" Line="41" Column="16" />
-      <File FileName="Assets\Scripts\Building\SpawnBuilding.cs" Line="15" Column="77" />
-      <File FileName="Assets\Scripts\Towertje.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameGUI.cs" Line="53" Column="44" />
+      <File FileName="Assets\Scripts\Building\Building.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\LumberMill.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\Mine.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\Tower.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\SpawnBuilding.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Util\ResourceText.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\CameraMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PathFollower.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Textures\Clouds\Material\Shader\NewShader.shader" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
