@@ -1,143 +1,139 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LumberMill : Building {
-	public enum resourcesPerUpgrade{
+public class LumberMill:Building {
+	public enum resourcesPerUpgrade {
 		Upgrade1 = 10,
 		Upgrade2 = 15,
 		Upgrade3 = 25,
 		Upgrade4 = 40,
 		Upgrade5 = 60
 	};
-	private enum woodcostPerUpgrade{
-		Upgrade2 = 250,
-		Upgrade3 = 600,
-		Upgrade4 = 1200,
-		Upgrade5 = 3000
-	};
-	private enum stonecostPerUpgrade{
-		Upgrade2 = 0,
-		Upgrade3 = 0,
-		Upgrade4 = 200,
-		Upgrade5 = 3000
-	};
-	public enum stoneSell{
+
+	public enum stoneSell {
 		Price1 = 0,
 		Price2 = 0,
 		Price3 = 10,
 		Price4 = 10,
 		Price5 = 210,
 		Price6 = 500
-	}
-	public enum woodSell{
+	};
+
+	public enum woodSell {
 		Price1 = 10,
 		Price2 = 50,
 		Price3 = 150,
 		Price4 = 300,
 		Price5 = 600,
 		Price6 = 1000
-	}
+	};
+
+	private enum woodCostPerUpgrade {
+		Upgrade2 = 250,
+		Upgrade3 = 600,
+		Upgrade4 = 1200,
+		Upgrade5 = 3000
+	};
+	
+	private enum stoneCostPerUpgrade {
+		Upgrade2 = 0,
+		Upgrade3 = 0,
+		Upgrade4 = 200,
+		Upgrade5 = 3000
+	};
+
+	public static string name = "Lumber";
+	public static string path = "Prefabs/Test/LumberMill/Mill";
+	
 	public resourcesPerUpgrade resourcesPerTick;
 
-	public int woodcostfornextlevel;
-	public int stonecostfornextlevel;
-	public int stonesellprice;
-	public int woodsellprice;
-	public PlayerData player;
-	void Start () {
-		currentlevel = 1;
+	void Start() {
+		base.Start();
+
 		timePerTick = 3;
-		player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
-		woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade2;
-		stonecostfornextlevel= (int)stonecostPerUpgrade.Upgrade2;
-		enemyInteractable = false;
+		
+		woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade2;
+		stoneCostForNextLevel= (int)stoneCostPerUpgrade.Upgrade2;
 		resourcesPerTick = resourcesPerUpgrade.Upgrade1;
-		StartCoroutine("MineTick");
-		changeArt(currentlevel);
-		stonesellprice = (int)stoneSell.Price1;
-		woodsellprice = (int)woodSell.Price1;
+		woodSellPrice = (int)woodSell.Price1;
+		stoneSellPrice = (int)stoneSell.Price1;
+		
+		interactable = false;
+		currentLevel = Upgrade.one;
+		
+		UpdateArt(path);
+		StartCoroutine("tick");
 	}
 	
-	IEnumerator MineTick(){
-		yield return new WaitForSeconds(timePerTick);
-		player.woodAmount += resourcesPerTick;
-		GameObject popuptext = Instantiate(Resources.Load("Prefabs/WoodResourceText"),transform.position,Quaternion.identity) as GameObject;
-		TextMesh textpop = popuptext.GetComponent<TextMesh>();
-		textpop.text = "" + (int)resourcesPerTick;
-		textpop.color = new Color(0.6f,0.2f,0);
-		textpop.transform.parent = this.transform;
-		StartCoroutine("MineTick");
+	IEnumerator tick() {
+		while(true) {
+			yield return new WaitForSeconds(timePerTick);
+			
+			GameObject popupText = Instantiate(Resources.Load("Prefabs/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
+			TextMesh textPopup = popupText.GetComponent<TextMesh>();
+			
+			playerData.woodAmount += resourcesPerTick;
+			
+			textPopup.text = "" + (int)resourcesPerTick;
+			textPopup.color = new Color(0.6f,0.2f,0);
+			textPopup.transform.parent = this.transform;
+		}
 	}
 
-	public void SwitchLevel(int upgradelevel){
-		currentlevel++;
-		switch(currentlevel){
-		case 1:
+	public void SwitchLevel(Upgrade level) {
+		if(level > maxLevel)
+			return;
+		
+		currentLevel = level;
+		
+		switch(level){
+		case Upgrade.one:
 			resourcesPerTick = resourcesPerUpgrade.Upgrade1;
-			changeArt(1);
-			woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade2;
-			stonecostfornextlevel = (int)stonecostPerUpgrade.Upgrade2;
-			stonesellprice = (int)stoneSell.Price2;
-			woodsellprice = (int)woodSell.Price2;
+			
+			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade2;
+			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade2;
+			woodSellPrice = (int)woodSell.Price1;
+			stoneSellPrice = (int)stoneSell.Price1;
+			
 			break;
-		case 2:
+		case Upgrade.two:
 			resourcesPerTick = resourcesPerUpgrade.Upgrade2;
-			changeArt(2);
-			woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade3;
-			stonecostfornextlevel = (int)stonecostPerUpgrade.Upgrade3;
-			stonesellprice = (int)stoneSell.Price3;
-			woodsellprice = (int)woodSell.Price3;
+			
+			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade3;
+			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade3;
+			woodSellPrice = (int)woodSell.Price2;
+			stoneSellPrice = (int)stoneSell.Price2;
+			
 			break;
-		case 3:
+		case Upgrade.three:
 			resourcesPerTick = resourcesPerUpgrade.Upgrade3;
-			changeArt(3);
-			woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade4;
-			stonecostfornextlevel = (int)stonecostPerUpgrade.Upgrade4;
-			stonesellprice = (int)stoneSell.Price4;
-			woodsellprice = (int)woodSell.Price4;
+			
+			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade4;
+			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade4;
+			woodSellPrice = (int)woodSell.Price3;
+			stoneSellPrice = (int)stoneSell.Price3;
+			
 			break;
-		case 4:
+		case Upgrade.four:
 			resourcesPerTick = resourcesPerUpgrade.Upgrade4;
-			changeArt(4);
-			woodcostfornextlevel = (int)woodcostPerUpgrade.Upgrade5;
-			stonecostfornextlevel = (int)stonecostPerUpgrade.Upgrade5;
-			stonesellprice = (int)stoneSell.Price5;
-			woodsellprice = (int)woodSell.Price5;
+			
+			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade5;
+			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade5;
+			woodSellPrice = (int)woodSell.Price4;
+			stoneSellPrice = (int)stoneSell.Price4;
+			
 			break;
-		case 5:
+		case Upgrade.five:
 			resourcesPerTick = resourcesPerUpgrade.Upgrade5;
-			changeArt(5);
-			woodcostfornextlevel = 999999999;
-			stonecostfornextlevel = 999999999;
-			stonesellprice = (int)stoneSell.Price6;
-			woodsellprice = (int)woodSell.Price6;
+			
+			woodCostForNextLevel = int.MaxValue;
+			stoneCostForNextLevel = int.MaxValue;
+			woodSellPrice = (int)woodSell.Price5;
+			stoneSellPrice = (int)stoneSell.Price5;
+			
 			break;
 		}
-	}
-
-	void changeArt(int upgrade){
-		if(art != null){
-			Destroy(art);
-		}
-		switch(upgrade){
-		case 1:
-			Debug.Log(upgrade);
-
-			art = Instantiate(Resources.Load("Prefabs/Test/LumberMill/Mill"),transform.position,Quaternion.identity) as GameObject;
-			break;
-		case 2:
-			art = Instantiate(Resources.Load("Prefabs/Test/LumberMill/Mill2"),transform.position,Quaternion.identity) as GameObject;
-			break;
-		case 3:
-			art = Instantiate(Resources.Load("Prefabs/Test/LumberMill/Mill3"),transform.position,Quaternion.identity) as GameObject;
-			break;
-		case 4:
-			art = Instantiate(Resources.Load("Prefabs/Test/LumberMill/Mill4"),transform.position,Quaternion.identity) as GameObject;
-			break;
-		case 5:
-			art = Instantiate(Resources.Load("Prefabs/Test/LumberMill/Mill5"),transform.position,Quaternion.identity) as GameObject;
-			break;
-		}
-		art.transform.parent = this.transform;
+		
+		UpdateArt(path);
 	}
 }

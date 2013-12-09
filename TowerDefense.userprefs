@@ -2,11 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Building\LumberMill.cs">
     <Files>
-      <File FileName="Assets\Scripts\Building\Building.cs" Line="24" Column="24" />
-      <File FileName="Assets\Scripts\Building\LumberMill.cs" Line="61" Column="135" />
-      <File FileName="Assets\Scripts\Building\Mine.cs" Line="122" Column="5" />
-      <File FileName="Assets\Scripts\Towertje.cs" Line="13" Column="27" />
-      <File FileName="Assets\Scripts\Building\Tower.cs" Line="60" Column="3" />
+      <File FileName="Assets\Scripts\GameGUI.cs" Line="111" Column="73" />
+      <File FileName="Assets\Scripts\Building\Building.cs" Line="5" Column="26" />
+      <File FileName="Assets\Scripts\Building\LumberMill.cs" Line="43" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

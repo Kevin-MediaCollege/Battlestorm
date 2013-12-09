@@ -1472,7 +1472,7 @@ GameObject:
   - 4: {fileID: 400172}
   - 33: {fileID: 3300172}
   m_Layer: 0
-  m_Name: Mill
+  m_Name: Mill1
   m_TagString: LumberMill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
