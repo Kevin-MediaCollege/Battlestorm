@@ -18,4 +18,8 @@ public class Building : MonoBehaviour {
 	public int upgradeLevel;
 	public BuildingType type;
 	public bool enemyInteractable;
+	public PlayerData player;
+
+	public int currentlevel = 1;
+	public int timePerTick;
 }

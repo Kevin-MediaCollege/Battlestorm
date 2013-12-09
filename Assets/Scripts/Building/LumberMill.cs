@@ -37,9 +37,6 @@ public class LumberMill : Building {
 		Price5 = 600,
 		Price6 = 1000
 	}
-	private PlayerData player;
-	public int currentlevel = 1;
-	public int timePerTick;
 	public resourcesPerUpgrade resourcesPerTick;
 	public GameObject art;
 
