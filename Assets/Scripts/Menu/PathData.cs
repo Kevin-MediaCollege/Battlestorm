@@ -3,13 +3,16 @@ using System.Collections;
 
 public class PathData : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	private Vector3 pointA;
+	private Vector3 pointB;
+
+	private Quaternion rotation;
+
+	private
+
+	void Start(Vector3 a,Vector3 b,Quaternion rot){
+		pointA = a;
+		pointB = b;
+		rotation = rot;
 	}
 }
