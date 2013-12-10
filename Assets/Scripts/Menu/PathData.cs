@@ -3,16 +3,12 @@ using System.Collections;
 
 public class PathData : MonoBehaviour {
 
-	private Vector3 pointA;
-	private Vector3 pointB;
+	public GameObject pointA;
+	public GameObject pointB;
+	public Quaternion rotation;
+	public float duration;
 
-	private Quaternion rotation;
+	void Start(){
 
-//	private
-
-	/*void Start(Vector3 a,Vector3 b,Quaternion rot){
-		pointA = a;
-		pointB = b;
-		rotation = rot;
-	}*/
+	}
 }
