@@ -103,7 +103,7 @@ public class GameGUI:MonoBehaviour {
 			if(GUI.Button(new Rect(guiPosition.x - 25, Screen.height + -guiPosition.y - 100, 50, 50), towerButton)) {
 				CreateBuilding(Building.BuildingType.Tower);
 			} else if(GUI.Button(new Rect(guiPosition.x - 100, Screen.height + -guiPosition.y + 25, 50, 50), LumberMill.name)) {
-				CreateBuilding(Building.BuildingType.WoodWorks);
+				CreateBuilding(Building.BuildingType.LumberMill);
 			} else if (GUI.Button(new Rect(guiPosition.x + 50, Screen.height + -guiPosition.y + 25, 50, 50), Mine.name)) {
 				CreateBuilding(Building.BuildingType.Mine);
 			}

@@ -35,10 +35,11 @@ public class Tower:Building {
 	};
 
 	public static string name = "Tower";
-	public static string path = "Prefabs/Test/Tower/Tower";
 	
 	void Start () {
 		base.Start();
+
+		path += "Tower/Tower";
 
 		woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade2;
 		stoneCostForNextLevel= (int)stoneCostPerUpgrade.Upgrade2;
@@ -48,7 +49,7 @@ public class Tower:Building {
 		interactable = false;
 		currentLevel = Upgrade.one;
 		
-		UpdateArt(path);
+		UpdateArt();
 	}
 	
 	public void SwitchLevel(Upgrade level) {
@@ -95,6 +96,6 @@ public class Tower:Building {
 			break;
 		}
 		
-		UpdateArt(path);
+		UpdateArt();
 	}
 }

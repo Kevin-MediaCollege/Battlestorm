@@ -12,13 +12,13 @@ public class BuildingManager:MonoBehaviour {
 	public void CreateBuilding(Building.BuildingType type) {
 		switch(type) {
 		case Building.BuildingType.Tower:
-			building = Instantiate(Resources.Load("Prefabs/Test/Tower"), buildingPos.position, Quaternion.identity) as GameObject;
+			building = Instantiate(Resources.Load("Prefabs/Buildings/Tower"), buildingPos.position, Quaternion.identity) as GameObject;
 			break;
-		case Building.BuildingType.WoodWorks:
-			building = Instantiate(Resources.Load("Prefabs/Test/LumberMill"), buildingPos.position, Quaternion.identity) as GameObject;
+		case Building.BuildingType.LumberMill:
+			building = Instantiate(Resources.Load("Prefabs/Buildings/LumberMill"), buildingPos.position, Quaternion.identity) as GameObject;
 			break;
 		case Building.BuildingType.Mine:
-			building = Instantiate(Resources.Load("Prefabs/Test/Mine"), buildingPos.position, Quaternion.identity) as GameObject;
+			building = Instantiate(Resources.Load("Prefabs/Buildings/Mine"), buildingPos.position, Quaternion.identity) as GameObject;
 			break;
 		}
 

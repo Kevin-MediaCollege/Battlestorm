@@ -4,7 +4,7 @@ using System.Collections;
 public class Building:MonoBehaviour {
 	public enum BuildingType {
 		Tower = 1,
-		WoodWorks = 2,
+		LumberMill = 2,
 		Mine = 3
 	};
 
@@ -16,6 +16,8 @@ public class Building:MonoBehaviour {
 		four = 4,
 		five = 5
 	};
+
+	public string path = "Prefabs/Buildings/";
 
 	public PlayerData playerData;
 	public BuildingType type;
@@ -40,7 +42,7 @@ public class Building:MonoBehaviour {
 
 	public virtual void SwitchLevel(Upgrade level) { }
 
-	protected void UpdateArt(string path) {
+	protected void UpdateArt() {
 		if(art != null)
 			Destroy(art);
 		

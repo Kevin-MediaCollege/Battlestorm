@@ -8,11 +8,11 @@ public class PathData : MonoBehaviour {
 
 	private Quaternion rotation;
 
-	private
+//	private
 
-	void Start(Vector3 a,Vector3 b,Quaternion rot){
+	/*void Start(Vector3 a,Vector3 b,Quaternion rot){
 		pointA = a;
 		pointB = b;
 		rotation = rot;
-	}
+	}*/
 }

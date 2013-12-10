@@ -42,13 +42,14 @@ public class LumberMill:Building {
 		Upgrade5 = 3000
 	};
 
-	public static string name = "Lumber";
-	public static string path = "Prefabs/Test/LumberMill/Mill";
+	public static string name = "Lumber Mill";
 	
 	public resourcesPerUpgrade resourcesPerTick;
 
 	void Start() {
 		base.Start();
+
+		path += "LumberMill/LumberMill";
 
 		timePerTick = 3;
 		
@@ -61,7 +62,7 @@ public class LumberMill:Building {
 		interactable = false;
 		currentLevel = Upgrade.one;
 		
-		UpdateArt(path);
+		UpdateArt();
 		StartCoroutine("tick");
 	}
 	
@@ -69,13 +70,13 @@ public class LumberMill:Building {
 		while(true) {
 			yield return new WaitForSeconds(timePerTick);
 			
-			GameObject popupText = Instantiate(Resources.Load("Prefabs/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
+			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
 			
 			playerData.woodAmount += resourcesPerTick;
 			
 			textPopup.text = "" + (int)resourcesPerTick;
-			textPopup.color = new Color(0.6f,0.2f,0);
+			textPopup.color = new Color(0.6f, 0.2f, 0);
 			textPopup.transform.parent = this.transform;
 		}
 	}
@@ -134,6 +135,6 @@ public class LumberMill:Building {
 			break;
 		}
 		
-		UpdateArt(path);
+		UpdateArt();
 	}
 }

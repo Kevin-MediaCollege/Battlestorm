@@ -43,12 +43,13 @@ public class Mine:Building {
 	};
 
 	public static string name = "Mine";
-	public static string path = "Prefabs/Test/Mine/Mine";
 
 	public resourcesPerUpgrade resourcesPerTick;
 
 	void Start () {
 		base.Start();
+
+		path += "Mine/Mine";
 
 		timePerTick = 3;
 
@@ -61,7 +62,7 @@ public class Mine:Building {
 		interactable = false;
 		currentLevel = Upgrade.one;
 
-		UpdateArt(path);
+		UpdateArt();
 		StartCoroutine("tick");
 	}
 	
@@ -69,7 +70,7 @@ public class Mine:Building {
 		while(true) {
 			yield return new WaitForSeconds(timePerTick);
 
-			GameObject popupText = Instantiate(Resources.Load("Prefabs/StoneResourceText"), transform.position, Quaternion.identity) as GameObject;
+			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
 
 			playerData.stoneAmount += resourcesPerTick;
@@ -134,6 +135,6 @@ public class Mine:Building {
 			break;
 		}
 
-		UpdateArt(path);
+		UpdateArt();
 	}
 }
