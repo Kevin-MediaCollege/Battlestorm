@@ -1083,6 +1083,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3adcf6668243394a83951f5a835589c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerButton: {fileID: 2800000, guid: de378a40841e626459f6dcddbb0521f0, type: 3}
+  stoneButton: {fileID: 0}
+  woodButton: {fileID: 0}
   stone: {fileID: 2800000, guid: dbbb9fe0c260d614c9dc7987ac6772e9, type: 3}
   wood: {fileID: 2800000, guid: a116456c6a794bc4bb5c4c0fe727bd9f, type: 3}
   gold: {fileID: 0}
