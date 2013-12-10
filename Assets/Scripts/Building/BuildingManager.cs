@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnBuilding:MonoBehaviour {
+public class BuildingManager:MonoBehaviour {
 	private GameObject building;
 	private Transform buildingPos;
 
@@ -21,5 +21,11 @@ public class SpawnBuilding:MonoBehaviour {
 			building = Instantiate(Resources.Load("Prefabs/Test/Mine"), buildingPos.position, Quaternion.identity) as GameObject;
 			break;
 		}
+
+		building.transform.parent = this.transform;
+	}
+
+	public void DestroyBuilding(Building building) {
+		Destroy(building.gameObject);
 	}
 }

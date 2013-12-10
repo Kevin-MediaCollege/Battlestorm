@@ -4,16 +4,12 @@ using System.Collections;
 public class GameGUI:MonoBehaviour {
 	private Building building;
 	private PlayerData playerData;
-	private SpawnBuilding spawnBuilding;
+	private BuildingManager manager;
 	
 	private bool pressed;
 	
 	private Vector3 guiPosition;
 	private Transform target;
-
-	public Texture towerButton;
-	public Texture lumberMillButton;
-	public Texture mineButton;
 	
 	public Texture stone;
 	public Texture wood;
@@ -57,7 +53,8 @@ public class GameGUI:MonoBehaviour {
 					switch(hit.transform.gameObject.tag) {
 					case "EmptyPlot":
 						target = hit.transform;
-						spawnBuilding = target.gameObject.GetComponent<SpawnBuilding>();
+						manager = target.gameObject.GetComponent<BuildingManager>();
+
 						break;
 					case "LumberMill":
 						target = hit.transform;
@@ -84,7 +81,7 @@ public class GameGUI:MonoBehaviour {
 	
 	void selectBuilding(Transform target) {
 		pressed = true;
-		
+
 		guiPosition = Camera.main.WorldToScreenPoint(target.position);
 		selectedBuilding = target.gameObject.tag;
 		
@@ -97,13 +94,11 @@ public class GameGUI:MonoBehaviour {
 	
 	void OnGUI() {
 		if(selectedBuilding == "EmptyPlot") {
-			GUI.backgroundColor = Color.clear;
-
-			if(GUI.Button(new Rect(guiPosition.x - 50, Screen.height + -guiPosition.y - 100, 75, 75), towerButton)) {
+			if(GUI.Button(new Rect(guiPosition.x - 25, Screen.height + -guiPosition.y - 100, 50, 50), Tower.name)) {
 				CreateBuilding(Building.BuildingType.Tower);
-			} else if(GUI.Button(new Rect(guiPosition.x - 150, Screen.height + -guiPosition.y + 50, 75, 75), LumberMill.name)) {
+			} else if(GUI.Button(new Rect(guiPosition.x - 100, Screen.height + -guiPosition.y + 25, 50, 50), LumberMill.name)) {
 				CreateBuilding(Building.BuildingType.WoodWorks);
-			} else if (GUI.Button(new Rect(guiPosition.x + 50, Screen.height + -guiPosition.y + 50, 75, 75), Mine.name)) {
+			} else if (GUI.Button(new Rect(guiPosition.x + 50, Screen.height + -guiPosition.y + 25, 50, 50), Mine.name)) {
 				CreateBuilding(Building.BuildingType.Mine);
 			}
 		} else if(selectedBuilding != "EmptyPlot" && selectedBuilding != "" && selectedBuilding != null) {
@@ -131,7 +126,7 @@ public class GameGUI:MonoBehaviour {
 			GUI.Label(new Rect(25, 72, 30, 20), "-" + building.stoneCostForNextLevel, buyStyle);
 			GUI.Label(new Rect(18, 27, 30, 20), "Cost");
 			
-			if (GUI.Button(new Rect(5, 95, 50, 50), "Upgrade")) {
+			if(GUI.Button(new Rect(5, 95, 50, 50), "Upgrade")) {
 				if(playerData.woodAmount >= building.woodCostForNextLevel) {
 					if(playerData.stoneAmount >= building.stoneCostForNextLevel) {
 						building.SwitchLevel(building.currentLevel + 1);
@@ -145,22 +140,35 @@ public class GameGUI:MonoBehaviour {
 		GUI.Label(new Rect(165, 50, 30, 20), "+" + building.woodSellPrice, sellStyle);
 		GUI.Label(new Rect(165, 72, 30, 20), "+" + building.stoneSellPrice, sellStyle);
 		
-		if (GUI.Button(new Rect(145, 95, 50, 50), "Sell")) {
-			//Selling Logic
+		if(GUI.Button(new Rect(145, 95, 50, 50), "Sell")) {
+			DestroySelectedBuilding();
 		}
 	}
 	
 	void CreateBuilding(Building.BuildingType type) {
-		spawnBuilding.CreateBuilding(type);
-		spawnBuilding.tag = "Untagged";
+		manager.CreateBuilding(type);
+		manager.tag = "Untagged";
 		
-		selectedBuilding = "";
+		Deselect();
+	}
+
+	void DestroySelectedBuilding() {
+		manager = building.transform.parent.GetComponent<BuildingManager>();
+
+		playerData.stoneAmount += building.stoneSellPrice;
+		playerData.woodAmount += building.woodSellPrice;
+
+		manager.DestroyBuilding(building);
+		manager.tag = "EmptyPlot";
+
+		Deselect();
 	}
 
 	void Deselect() {
 		selectedBuilding = "";
+
 		target = null;
+		manager = null;
 		building = null;
-		spawnBuilding = null;
 	}
 }

@@ -2,34 +2,33 @@
 using System.Collections;
 
 public class CameraMovement:MonoBehaviour {
-	private float lookSpeed= 2.0f;
-	private float moveSpeed= 1.0f;
+	public float sensitivity = 2.0f;
+	public float speed = 1.0f;
 	
-	private float rotationX= 0.0f;
-	private float rotationY= 0.0f;
+	private float rotationX = 0.0f;
+	private float rotationY = 0.0f;
 
 	private float VInput;
 	private float HInput;
 
-	private bool ignoreRotation;
+	private bool canRotate;
 
-	void  FixedUpdate (){
-		if(ignoreRotation){
-			rotationX += Input.GetAxis("Mouse X")*lookSpeed;
-			rotationY += Input.GetAxis("Mouse Y")*lookSpeed;
-			rotationY = Mathf.Clamp (rotationY, -90, 90);
+	void Update() {
+		if(canRotate) {
+			rotationX += Input.GetAxis("Mouse X") * sensitivity;
+			rotationY += Input.GetAxis("Mouse Y") * sensitivity;
+			rotationY = Mathf.Clamp(rotationY, -90, 90);
+
 			transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
 			transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
 		}
-		transform.position += transform.forward*moveSpeed*Input.GetAxis("Vertical");
-		transform.position += transform.right*moveSpeed*Input.GetAxis("Horizontal");
-		if (Input.GetKey(KeyCode.LeftShift)){
-			Screen.lockCursor = false;
-			ignoreRotation = false;
-		}
-		else{
-			Screen.lockCursor = true;
-			ignoreRotation = true;
+
+		transform.position += transform.forward * speed * Input.GetAxis("Vertical");
+		transform.position += transform.right * speed * Input.GetAxis("Horizontal");
+
+		if(Input.GetMouseButtonDown(1)) {
+			Screen.lockCursor = !Screen.lockCursor;
+			canRotate = !canRotate;
 		}
 	}
 }
