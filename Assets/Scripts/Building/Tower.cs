@@ -36,11 +36,12 @@ public class Tower:Building {
 
 	public static string name = "Tower";
 
+	public float damage;
 	public float maxRange;
 
 	private GameObject target;
 	
-	void Start () {
+	void Start() {
 		base.Start();
 
 		path += "Tower/Tower";
@@ -54,12 +55,11 @@ public class Tower:Building {
 		currentLevel = Upgrade.one;
 		
 		UpdateArt();
+		StartCoroutine("tick");
 	}
 
 	IEnumerator tick() {
 		while(true) {
-			Debug.Log ("tick");
-
 			yield return new WaitForSeconds(timePerTick);
 			
 			if(target == null || Vector3.Distance(transform.position, target.transform.position) > maxRange)
@@ -92,7 +92,10 @@ public class Tower:Building {
 	}
 
 	void Fire() {
-		Debug.Log(target);
+		GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), transform.position, Quaternion.identity) as GameObject;
+		//projectile.GetComponent<Projectile>().Target = target.transform;
+
+		target.gameObject.GetComponent<Enemy>().Damage(damage);
 	}
 	
 	public void SwitchLevel(Upgrade level) {
