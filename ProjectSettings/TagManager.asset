@@ -8,6 +8,8 @@ TagManager:
   - EmptyPlot
   - Mine
   - LumberMill
+  - Tower
+  - Enemy
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

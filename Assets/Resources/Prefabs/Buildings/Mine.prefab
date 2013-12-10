@@ -59,15 +59,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0543efbccfae59743b599aa5bbcc8b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLevel: 0
-  type: 0
-  enemyInteractable: 0
-  currentlevel: 0
-  timePerTick: 0
-  resourcesPerTick: 0
+  path: Prefabs/Buildings/
+  playerData: {fileID: 0}
+  type: 3
   art: {fileID: 0}
-  woodcostfornextlevel: 0
-  stonecostfornextlevel: 0
+  interactable: 0
+  currentLevel: 0
+  maxLevel: 5
+  woodCostForNextLevel: 0
+  stoneCostForNextLevel: 0
+  woodSellPrice: 0
+  stoneSellPrice: 0
+  timePerTick: 3
+  resourcesPerTick: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

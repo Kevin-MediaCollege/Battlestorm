@@ -7,12 +7,12 @@ using Pathfinding.RVO;
 [RequireComponent(typeof(Seeker))]
 [AddComponentMenu("Pathfinding/AI/AIPath (generic)")]
 public class PathFollower:MonoBehaviour {
-	public float endReachedDistance = 0.2F;
-	public float pickNextWaypointDist = 2;
-	public float slowdownDistance = 0.6F;
-	public float turningSpeed = 5;
-	public float forwardLook = 1;
-	public float speed = 3;
+	public float endReachedDistance = 0.1f;
+	public float pickNextWaypointDist = 1;
+	public float slowdownDistance = 0.7f;
+	public float turningSpeed = 4;
+	public float forwardLook = 0.8f;
+	public float speed = 5;
 	
 	public bool closestOnPathCheck = true;
 	public bool canSearch = true;

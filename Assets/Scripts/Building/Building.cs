@@ -16,25 +16,28 @@ public class Building:MonoBehaviour {
 		four = 4,
 		five = 5
 	};
+	
+	public Upgrade maxLevel;
+	public bool interactable;
+	public int timePerTick;
 
-	public string path = "Prefabs/Buildings/";
+	protected Upgrade currentLevel = Upgrade.zero;
+	protected PlayerData playerData;
+	protected GameObject art;
 
-	public PlayerData playerData;
-	public BuildingType type;
-	public GameObject art;
+	protected string path = "Prefabs/Buildings/";
 
-	public bool interactable = false;
+	protected int woodCostForNextLevel = 0;
+	protected int stoneCostForNextLevel = 0;
+	protected int woodSellPrice = 0;
+	protected int stoneSellPrice = 0;
 
-	public Upgrade currentLevel = Upgrade.zero;
-	public Upgrade maxLevel = Upgrade.five;
-
-	public int woodCostForNextLevel = 0;
-	public int stoneCostForNextLevel = 0;
-
-	public int woodSellPrice = 0;
-	public int stoneSellPrice = 0;
-
-	public int timePerTick = 0;
+	public string Path { get { return path; } }
+	public int WoodCostForNextLevel { get { return woodCostForNextLevel; } }
+	public int StoneCostForNextLevel { get { return stoneCostForNextLevel; } }
+	public int WoodSellPrice { get { return woodSellPrice; } }
+	public int StoneSellPrice { get { return stoneSellPrice; } }
+	public Upgrade CurrentLevel { get { return currentLevel; } }
 
 	protected void Start() {
 		playerData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();

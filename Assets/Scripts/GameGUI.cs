@@ -122,20 +122,20 @@ public class GameGUI:MonoBehaviour {
 		if(building == null)
 			return;
 
-		GUI.Label(new Rect(85, 25, 200, 20), "LVL: " + (int)building.currentLevel);
+		GUI.Label(new Rect(85, 25, 200, 20), "LVL: " + (int)building.CurrentLevel);
 
-		if(building.currentLevel != building.maxLevel) {
+		if(building.CurrentLevel != building.maxLevel) {
 			GUI.DrawTexture(new Rect(0, 50, 20, 20), wood);
 			GUI.DrawTexture(new Rect(0, 70, 20, 20), stone);
 			
-			GUI.Label(new Rect(25, 50, 30, 20), "-" + building.woodCostForNextLevel, buyStyle);
-			GUI.Label(new Rect(25, 72, 30, 20), "-" + building.stoneCostForNextLevel, buyStyle);
+			GUI.Label(new Rect(25, 50, 30, 20), "-" + building.WoodCostForNextLevel, buyStyle);
+			GUI.Label(new Rect(25, 72, 30, 20), "-" + building.StoneCostForNextLevel, buyStyle);
 			GUI.Label(new Rect(18, 27, 30, 20), "Cost");
 			
 			if(GUI.Button(new Rect(5, 95, 50, 50), "Upgrade")) {
-				if(playerData.woodAmount >= building.woodCostForNextLevel) {
-					if(playerData.stoneAmount >= building.stoneCostForNextLevel) {
-						building.SwitchLevel(building.currentLevel + 1);
+				if(playerData.woodAmount >= building.WoodCostForNextLevel) {
+					if(playerData.stoneAmount >= building.StoneCostForNextLevel) {
+						building.SwitchLevel(building.CurrentLevel + 1);
 					}
 				}
 			}
@@ -143,8 +143,8 @@ public class GameGUI:MonoBehaviour {
 		
 		GUI.DrawTexture(new Rect(140, 50, 20, 20), wood);
 		GUI.DrawTexture(new Rect(140, 70, 20, 20), stone);
-		GUI.Label(new Rect(165, 50, 30, 20), "+" + building.woodSellPrice, sellStyle);
-		GUI.Label(new Rect(165, 72, 30, 20), "+" + building.stoneSellPrice, sellStyle);
+		GUI.Label(new Rect(165, 50, 30, 20), "+" + building.WoodSellPrice, sellStyle);
+		GUI.Label(new Rect(165, 72, 30, 20), "+" + building.StoneSellPrice, sellStyle);
 		
 		if(GUI.Button(new Rect(145, 95, 50, 50), "Sell")) {
 			DestroySelectedBuilding();
@@ -161,8 +161,8 @@ public class GameGUI:MonoBehaviour {
 	void DestroySelectedBuilding() {
 		manager = building.transform.parent.GetComponent<BuildingManager>();
 
-		playerData.stoneAmount += building.stoneSellPrice;
-		playerData.woodAmount += building.woodSellPrice;
+		playerData.stoneAmount += building.StoneSellPrice;
+		playerData.woodAmount += building.WoodSellPrice;
 
 		manager.DestroyBuilding(building);
 		manager.tag = "EmptyPlot";

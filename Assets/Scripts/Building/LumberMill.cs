@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class LumberMill:Building {
-	public enum resourcesPerUpgrade {
+	public enum ResourcesPerUpgrade {
 		Upgrade1 = 10,
 		Upgrade2 = 15,
 		Upgrade3 = 25,
@@ -10,7 +10,7 @@ public class LumberMill:Building {
 		Upgrade5 = 60
 	};
 
-	public enum stoneSell {
+	public enum StoneSell {
 		Price1 = 0,
 		Price2 = 0,
 		Price3 = 10,
@@ -19,7 +19,7 @@ public class LumberMill:Building {
 		Price6 = 500
 	};
 
-	public enum woodSell {
+	public enum WoodSell {
 		Price1 = 10,
 		Price2 = 50,
 		Price3 = 150,
@@ -28,14 +28,14 @@ public class LumberMill:Building {
 		Price6 = 1000
 	};
 
-	private enum woodCostPerUpgrade {
+	private enum WoodCostPerUpgrade {
 		Upgrade2 = 250,
 		Upgrade3 = 600,
 		Upgrade4 = 1200,
 		Upgrade5 = 3000
 	};
 	
-	private enum stoneCostPerUpgrade {
+	private enum StoneCostPerUpgrade {
 		Upgrade2 = 0,
 		Upgrade3 = 0,
 		Upgrade4 = 200,
@@ -44,20 +44,20 @@ public class LumberMill:Building {
 
 	public static string name = "Lumber Mill";
 	
-	public resourcesPerUpgrade resourcesPerTick;
+	private ResourcesPerUpgrade resourcesPerTick;
+
+	public ResourcesPerUpgrade ResourcesPerTick { get { return resourcesPerTick; } }
 
 	void Start() {
 		base.Start();
 
 		path += "LumberMill/LumberMill";
-
-		timePerTick = 3;
 		
-		woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade2;
-		stoneCostForNextLevel= (int)stoneCostPerUpgrade.Upgrade2;
-		resourcesPerTick = resourcesPerUpgrade.Upgrade1;
-		woodSellPrice = (int)woodSell.Price1;
-		stoneSellPrice = (int)stoneSell.Price1;
+		woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade2;
+		stoneCostForNextLevel= (int)StoneCostPerUpgrade.Upgrade2;
+		resourcesPerTick = ResourcesPerUpgrade.Upgrade1;
+		woodSellPrice = (int)WoodSell.Price1;
+		stoneSellPrice = (int)StoneSell.Price1;
 		
 		interactable = false;
 		currentLevel = Upgrade.one;
@@ -89,48 +89,48 @@ public class LumberMill:Building {
 
 		switch(level){
 		case Upgrade.one:
-			resourcesPerTick = resourcesPerUpgrade.Upgrade1;
+			resourcesPerTick = ResourcesPerUpgrade.Upgrade1;
 			
-			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade2;
-			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade2;
-			woodSellPrice = (int)woodSell.Price1;
-			stoneSellPrice = (int)stoneSell.Price1;
+			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade2;
+			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade2;
+			woodSellPrice = (int)WoodSell.Price1;
+			stoneSellPrice = (int)StoneSell.Price1;
 			
 			break;
 		case Upgrade.two:
-			resourcesPerTick = resourcesPerUpgrade.Upgrade2;
+			resourcesPerTick = ResourcesPerUpgrade.Upgrade2;
 			
-			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade3;
-			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade3;
-			woodSellPrice = (int)woodSell.Price2;
-			stoneSellPrice = (int)stoneSell.Price2;
+			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade3;
+			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade3;
+			woodSellPrice = (int)WoodSell.Price2;
+			stoneSellPrice = (int)StoneSell.Price2;
 			
 			break;
 		case Upgrade.three:
-			resourcesPerTick = resourcesPerUpgrade.Upgrade3;
+			resourcesPerTick = ResourcesPerUpgrade.Upgrade3;
 			
-			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade4;
-			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade4;
-			woodSellPrice = (int)woodSell.Price3;
-			stoneSellPrice = (int)stoneSell.Price3;
+			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade4;
+			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade4;
+			woodSellPrice = (int)WoodSell.Price3;
+			stoneSellPrice = (int)StoneSell.Price3;
 			
 			break;
 		case Upgrade.four:
-			resourcesPerTick = resourcesPerUpgrade.Upgrade4;
+			resourcesPerTick = ResourcesPerUpgrade.Upgrade4;
 			
-			woodCostForNextLevel = (int)woodCostPerUpgrade.Upgrade5;
-			stoneCostForNextLevel = (int)stoneCostPerUpgrade.Upgrade5;
-			woodSellPrice = (int)woodSell.Price4;
-			stoneSellPrice = (int)stoneSell.Price4;
+			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade5;
+			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade5;
+			woodSellPrice = (int)WoodSell.Price4;
+			stoneSellPrice = (int)StoneSell.Price4;
 			
 			break;
 		case Upgrade.five:
-			resourcesPerTick = resourcesPerUpgrade.Upgrade5;
+			resourcesPerTick = ResourcesPerUpgrade.Upgrade5;
 			
 			woodCostForNextLevel = int.MaxValue;
 			stoneCostForNextLevel = int.MaxValue;
-			woodSellPrice = (int)woodSell.Price5;
-			stoneSellPrice = (int)stoneSell.Price5;
+			woodSellPrice = (int)WoodSell.Price5;
+			stoneSellPrice = (int)StoneSell.Price5;
 			
 			break;
 		}
