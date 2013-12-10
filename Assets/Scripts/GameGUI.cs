@@ -10,6 +10,10 @@ public class GameGUI:MonoBehaviour {
 	
 	private Vector3 guiPosition;
 	private Transform target;
+
+	public Texture towerButton;
+	public Texture stoneButton;
+	public Texture woodButton;
 	
 	public Texture stone;
 	public Texture wood;
@@ -94,7 +98,9 @@ public class GameGUI:MonoBehaviour {
 	
 	void OnGUI() {
 		if(selectedBuilding == "EmptyPlot") {
-			if(GUI.Button(new Rect(guiPosition.x - 25, Screen.height + -guiPosition.y - 100, 50, 50), Tower.name)) {
+			GUI.backgroundColor = Color.clear;
+
+			if(GUI.Button(new Rect(guiPosition.x - 25, Screen.height + -guiPosition.y - 100, 50, 50), towerButton)) {
 				CreateBuilding(Building.BuildingType.Tower);
 			} else if(GUI.Button(new Rect(guiPosition.x - 100, Screen.height + -guiPosition.y + 25, 50, 50), LumberMill.name)) {
 				CreateBuilding(Building.BuildingType.WoodWorks);
