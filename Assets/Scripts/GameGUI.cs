@@ -25,7 +25,9 @@ public class GameGUI:MonoBehaviour {
 	
 	public GUIStyle sellStyle;
 	public GUIStyle buyStyle;
-	
+
+	public GameObject selectionParticle = null;
+
 	void Start(){
 		playerData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
 
@@ -59,18 +61,24 @@ public class GameGUI:MonoBehaviour {
 						target = hit.transform;
 						manager = target.gameObject.GetComponent<BuildingManager>();
 
+						createSelectionParticle();
+
 						break;
 					case "LumberMill":
 						target = hit.transform;
 						building = target.gameObject.GetComponent<LumberMill>();
-						
+
+						createSelectionParticle();
+
 						resourceName = "Wood";
 						buildingName = "Lumber Mill";
 						break;
 					case "Mine":
 						target = hit.transform;
 						building = target.gameObject.GetComponent<Mine>();
-						
+
+						createSelectionParticle();
+
 						resourceName = "Stone";
 						buildingName = "Mine";
 						break;
@@ -82,7 +90,9 @@ public class GameGUI:MonoBehaviour {
 			}
 		}
 	}
-	
+	void createSelectionParticle(){
+		selectionParticle = Instantiate(Resources.Load("Particles/SelectionParticle"),target.position,Quaternion.identity)as GameObject;
+	}
 	void selectBuilding(Transform target) {
 		pressed = true;
 
@@ -172,7 +182,12 @@ public class GameGUI:MonoBehaviour {
 
 	void Deselect() {
 		selectedBuilding = "";
-
+		if(selectionParticle != null){
+			SelectionParticle sParticle = selectionParticle.GetComponentInChildren<SelectionParticle>();
+			sParticle.lightobj.intensity = 0;
+			sParticle.particleobj.Stop();
+		
+		}
 		target = null;
 		manager = null;
 		building = null;

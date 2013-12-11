@@ -17,6 +17,7 @@ public class Building:MonoBehaviour {
 		five = 5
 	};
 	
+
 	public Upgrade maxLevel;
 	public bool interactable;
 	public int timePerTick;
@@ -42,7 +43,6 @@ public class Building:MonoBehaviour {
 	protected void Start() {
 		playerData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
 	}
-
 	public virtual void SwitchLevel(Upgrade level) { }
 
 	protected void UpdateArt() {

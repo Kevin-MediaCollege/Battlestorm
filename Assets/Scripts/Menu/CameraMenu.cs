@@ -28,7 +28,7 @@ public class CameraMenu : MonoBehaviour {
 	void GetData(){
 		Debug.Log("DA");
 		pathnum++;
-		if(pathnum == 4){
+		if(pathnum == 5){
 			pathnum = 0;
 		}
 
