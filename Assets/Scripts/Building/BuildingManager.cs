@@ -5,6 +5,7 @@ public class BuildingManager:MonoBehaviour {
 	private GameObject building;
 	private Vector3 position;
 
+	public bool isUnlocked;
 	void Start() {
 		position = transform.FindChild("BuildingPosition").position;
 	}

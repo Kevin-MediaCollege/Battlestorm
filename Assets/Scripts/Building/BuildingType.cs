@@ -6,7 +6,8 @@ public enum EBuildingType {
 	Empty = 0,
 	Tower = 1,
 	LumberMill = 2,
-	Mine = 3
+	Mine = 3,
+	Bridge = 4
 }
 
 public class BuildingType:MonoBehaviour {

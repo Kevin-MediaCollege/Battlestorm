@@ -19,6 +19,7 @@ public class BuildingGUI:MonoBehaviour {
 	private Vector3 position;
 
 	private BuildingManager buildingManager;
+	private Bridge bridgeManager;
 	private EBuildingType selectedBuilding;
 	private Building building;
 
@@ -38,6 +39,9 @@ public class BuildingGUI:MonoBehaviour {
 			RaycastHit hit;
 			
 			if(Physics.Raycast(ray, out hit, 100)) {
+				if(hit.transform.gameObject.name == "Bridge"){
+
+				}
 				if(selectedBuilding == EBuildingType.None) {
 					switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
 					case EBuildingType.Tower:
@@ -56,9 +60,15 @@ public class BuildingGUI:MonoBehaviour {
 
 						break;
 					case EBuildingType.Empty:
-						buildingManager = hit.transform.gameObject.GetComponent<BuildingManager>();
-						SelectBuilding(hit.transform, EBuildingType.Empty);
 
+						buildingManager = hit.transform.gameObject.GetComponent<BuildingManager>();
+						if(buildingManager.isUnlocked){
+						SelectBuilding(hit.transform, EBuildingType.Empty);
+						}
+						break;
+					case EBuildingType.Bridge:
+						bridgeManager = hit.transform.parent.gameObject.GetComponent<Bridge>();
+						SelectBuilding(hit.transform, EBuildingType.Bridge);
 						break;
 					}
 				}
@@ -77,7 +87,16 @@ public class BuildingGUI:MonoBehaviour {
 			} else if(GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), mineButton)) {
 				CreateBuilding(EBuildingType.Mine);
 			}
-		} else if(selectedBuilding != EBuildingType.None && selectedBuilding != EBuildingType.None) {
+		}	else if(selectedBuilding == EBuildingType.Bridge){
+			GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
+			GUI.Box(new Rect(0, 0, 200, 150), "");
+			if(GUI.Button(new Rect(50, 95, 100, 50), "Build Bridge")) {
+				bridgeManager.BuildBridge();
+				DeselectBuilding();
+			}
+			GUI.EndGroup();
+
+		}	else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
 			GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
 			GUI.Box(new Rect(0, 0, 200, 150), building.name);
 			GUI.Label(new Rect(5, 0, 200, 20), "" + building.name + ": ");
@@ -138,6 +157,7 @@ public class BuildingGUI:MonoBehaviour {
 
 		selectedBuilding = EBuildingType.None;
 		buildingManager = null;
+		bridgeManager = null;
 		building = null;
 		target = null;
 	}

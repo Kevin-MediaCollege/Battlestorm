@@ -23,7 +23,7 @@ public class Building:MonoBehaviour {
 
 	public Upgrade currentLevel;
 	public Upgrade maxLevel;
-
+	
 	protected GameObject art;
 	
 	public virtual void SwitchLevel(Upgrade newLevel) { }
