@@ -2055,9 +2055,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3adcf6668243394a83951f5a835589c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerButton: {fileID: 2800000, guid: de378a40841e626459f6dcddbb0521f0, type: 3}
-  stoneButton: {fileID: 0}
-  woodButton: {fileID: 0}
+  lumberMillButton: {fileID: 2800000, guid: b5b3ecd27d66f8943b75929920e1baa8, type: 3}
+  towerButton: {fileID: 2800000, guid: 8380cf4a8ff49b047b12621218349711, type: 3}
+  mineButton: {fileID: 2800000, guid: 62a3709a6267d1c4ba0d084d1da67264, type: 3}
   stone: {fileID: 2800000, guid: dbbb9fe0c260d614c9dc7987ac6772e9, type: 3}
   wood: {fileID: 2800000, guid: a116456c6a794bc4bb5c4c0fe727bd9f, type: 3}
   gold: {fileID: 0}
@@ -2179,6 +2179,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  selectionParticle: {fileID: 0}
 --- !u!114 &958339534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3399,6 +3400,18 @@ Prefab:
       propertyPath: end
       value: 
       objectReference: {fileID: 888662282}
+    - target: {fileID: 11400000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: lumberMillButton
+      value: 
+      objectReference: {fileID: 2800000, guid: b5b3ecd27d66f8943b75929920e1baa8, type: 3}
+    - target: {fileID: 11400000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: towerButton
+      value: 
+      objectReference: {fileID: 2800000, guid: 8380cf4a8ff49b047b12621218349711, type: 3}
+    - target: {fileID: 11400000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: mineButton
+      value: 
+      objectReference: {fileID: 2800000, guid: 62a3709a6267d1c4ba0d084d1da67264, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
   m_RootGameObject: {fileID: 958339527}
