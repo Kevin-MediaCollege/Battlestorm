@@ -21,3 +21,87 @@ Loading C:\Users\Kevin\Documents\GitHub\TowerDefense\DAS_Data\Managed\JsonFx.Jso
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+<<<<<<< HEAD
+=======
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 60 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 60 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 60 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 28 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 136 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 44 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 28 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 60 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1615)
+
+A script behaviour has a different serialization layout when loading. (Read 24 bytes but expected 60 bytes)
+Did you #ifdef UNITY_EDITOR a section of your serialized properties in any of your scripts?
+ 
+(Filename:  Line: 1169)
+
+>>>>>>> 44c49ea09eac84679dc8eacff0ee5ce9eb015f8f

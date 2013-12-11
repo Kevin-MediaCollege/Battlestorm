@@ -144,7 +144,7 @@ public class PathFollower:MonoBehaviour {
 		}
 		
 		Vector3 dir = CalculateVelocity(GetFeetPosition());
-		RotateTowards (targetDirection);
+		RotateTowards(targetDirection);
 		
 		transform.Translate(dir * Time.deltaTime, Space.World);
 	}
@@ -194,8 +194,7 @@ public class PathFollower:MonoBehaviour {
 		Vector3 dir = vPath[currentWaypointIndex] - vPath[currentWaypointIndex-1];
 		Vector3 targetPosition = CalculateTargetPoint (currentPosition,vPath[currentWaypointIndex-1] , vPath[currentWaypointIndex]);		
 		
-		dir = targetPosition-currentPosition;
-		dir.y = 0;
+		dir = targetPosition - currentPosition;
 		float targetDist = dir.magnitude;
 		
 		float slowdown = Mathf.Clamp01 (targetDist / slowdownDistance);
