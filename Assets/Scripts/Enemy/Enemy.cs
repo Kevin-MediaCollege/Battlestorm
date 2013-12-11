@@ -17,8 +17,6 @@ public class Enemy:MonoBehaviour {
 	public void Damage(float amt) {
 		hitpoints -= amt;
 
-		Debug.Log(hitpoints);
-
 		if(hitpoints <= 0) {
 			Kill();
 		}
