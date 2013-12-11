@@ -27,7 +27,6 @@ GameObject:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
-  - 65: {fileID: 6500002}
   m_Layer: 0
   m_Name: Sphere001
   m_TagString: Untagged
@@ -62,7 +61,6 @@ GameObject:
   - 4: {fileID: 400006}
   - 33: {fileID: 3300006}
   - 23: {fileID: 2300006}
-  - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: Box001
   m_TagString: Untagged
@@ -85,7 +83,7 @@ GameObject:
   - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,8 +139,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.9666748, y: 15.7162323, z: 28.5664444}
-  m_LocalScale: {x: 16.5, y: 16.5, z: 16.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 400006}
   - {fileID: 400004}
@@ -161,7 +159,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 01180388ed477c944ab29ef35bd707c8, type: 2}
+  - {fileID: 2100000, guid: beb4592bf2d0bfa4b85c4a2c16f3ab14, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -182,7 +180,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 01180388ed477c944ab29ef35bd707c8, type: 2}
+  - {fileID: 2100000, guid: beb4592bf2d0bfa4b85c4a2c16f3ab14, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -203,7 +201,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 01180388ed477c944ab29ef35bd707c8, type: 2}
+  - {fileID: 2100000, guid: beb4592bf2d0bfa4b85c4a2c16f3ab14, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -224,7 +222,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 01180388ed477c944ab29ef35bd707c8, type: 2}
+  - {fileID: 2100000, guid: beb4592bf2d0bfa4b85c4a2c16f3ab14, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -261,30 +259,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_Mesh: {fileID: 4300002, guid: 27acf87cabdb30543a7182d00d154f85, type: 3}
---- !u!65 &6500000
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100006}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .309634537, y: .125028118, z: .170000002}
-  m_Center: {x: -.0256627798, y: -.00238620047, z: .0399999991}
---- !u!65 &6500002
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .21907483, y: .218704194, z: .199323103}
-  m_Center: {x: 0, y: .000371087343, z: .000338394224}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2
@@ -311,17 +285,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawGizmos: 1
-  detailedGizmos: 1
+  detailedGizmos: 0
   saveGetNearestHints: 1
   startEndModifier:
-    priority: 1
+    priority: 2
     addPoints: 0
-    exactStartPoint: 1
-    exactEndPoint: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
     useRaycasting: 0
     mask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 4294967295
     useGraphRaycasting: 0
   traversableTags:
     tagsChange: -1
@@ -338,13 +312,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 2
+  priority: 1
   smoothType: 0
-  subdivisions: 0
-  iterations: 12
+  subdivisions: 2
+  iterations: 2
   strength: .5
   uniformLength: 1
-  maxSegmentLength: .274395704
+  maxSegmentLength: 2
   bezierTangentLength: .400000006
   offset: .200000003
   factor: .100000001
