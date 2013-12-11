@@ -9,8 +9,8 @@ public class BuildingManager:MonoBehaviour {
 		position = transform.FindChild("BuildingPosition").position;
 	}
 
-	public void CreateBuilding(Building.Type type) {
-		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), transform.position, Quaternion.identity) as GameObject;
+	public void CreateBuilding(EBuildingType type) {
+		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), position, Quaternion.identity) as GameObject;
 		building.transform.parent = this.transform;
 	}
 

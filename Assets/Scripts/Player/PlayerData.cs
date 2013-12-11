@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerData:MonoBehaviour {
-	public int woodAmount;
-	public int stoneAmount;
-	public int goldAmount;
+	public static int woodAmount;
+	public static int stoneAmount;
+	public static int goldAmount;
 }

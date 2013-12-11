@@ -8,12 +8,6 @@ public class Enemy:MonoBehaviour {
 
 	public bool canStun;
 
-	private PlayerData playerData;
-
-	void Start() {
-		playerData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
-	}
-
 	public void Damage(float amt) {
 		hitpoints -= amt;
 
@@ -23,7 +17,7 @@ public class Enemy:MonoBehaviour {
 	}
 
 	public void Kill() {
-		playerData.goldAmount += goldReward;
+		PlayerData.goldAmount += goldReward;
 
 		Destroy(gameObject);
 	}

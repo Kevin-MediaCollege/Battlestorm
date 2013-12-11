@@ -2,13 +2,6 @@
 using System.Collections;
 
 public class Building:MonoBehaviour {
-	public enum Type {
-		Empty = 0,
-		Tower = 1,
-		LumberMill = 2,
-		Mine = 3
-	};
-
 	public enum Upgrade {
 		Level1 = 1,
 		Level2 = 2,
@@ -31,18 +24,8 @@ public class Building:MonoBehaviour {
 	public Upgrade currentLevel;
 	public Upgrade maxLevel;
 
-	protected PlayerData playerData;
 	protected GameObject art;
-
-	protected void Start() {
-		playerData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
-
-		currentLevel = Upgrade.Level1;
-
-		UpdateArt();
-		StartCoroutine("Tick");
-	}
-
+	
 	public virtual void SwitchLevel(Upgrade newLevel) { }
 
 	protected virtual IEnumerator Tick() { return null; }
