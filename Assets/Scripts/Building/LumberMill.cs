@@ -45,7 +45,7 @@ public class LumberMill:Building {
 	private ResourcesPerTick resourcesPerTick;
 
 	void Start() {
-		base.Start();
+		currentLevel = Upgrade.Level1;
 
 		stoneCost = (int)StoneCost.Level2;
 		stoneSell = (int)StoneSell.Level1;
@@ -54,6 +54,9 @@ public class LumberMill:Building {
 		woodSell = (int)WoodSell.Level1;
 
 		resourcesPerTick = ResourcesPerTick.Level1;
+
+		UpdateArt();
+		StartCoroutine("Tick");
 	}
 	
 	protected override IEnumerator Tick() {
@@ -63,7 +66,7 @@ public class LumberMill:Building {
 			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
 			
-			playerData.woodAmount += resourcesPerTick;
+			PlayerData.woodAmount += resourcesPerTick;
 			
 			textPopup.text = "" + (int)resourcesPerTick;
 			textPopup.color = new Color(0.6f, 0.2f, 0);

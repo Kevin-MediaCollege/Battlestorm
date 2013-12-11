@@ -45,7 +45,7 @@ public class Mine:Building {
 	private ResourcesPerTick resourcesPerTick;
 
 	void Start () {
-		base.Start();
+		currentLevel = Upgrade.Level1;
 
 		stoneCost = (int)StoneCost.Level2;
 		stoneSell = (int)StoneSell.Level1;
@@ -54,6 +54,9 @@ public class Mine:Building {
 		woodSell = (int)WoodSell.Level1;
 		
 		resourcesPerTick = ResourcesPerTick.Level1;
+
+		UpdateArt();
+		StartCoroutine("Tick");
 	}
 	
 	protected override IEnumerator Tick() {
@@ -63,7 +66,7 @@ public class Mine:Building {
 			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
 
-			playerData.stoneAmount += resourcesPerTick;
+			PlayerData.stoneAmount += resourcesPerTick;
 
 			textPopup.text = "" + (int)resourcesPerTick;
 			textPopup.color = Color.gray;

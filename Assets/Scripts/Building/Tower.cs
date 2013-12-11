@@ -40,7 +40,7 @@ public class Tower:Building {
 	private GameObject target;
 	
 	void Start() {
-		base.Start();
+		currentLevel = Upgrade.Level1;
 
 		stoneCost = (int)StoneCost.Level2;
 		stoneSell = (int)StoneSell.Level1;
@@ -49,6 +49,7 @@ public class Tower:Building {
 		woodSell = (int)WoodSell.Level1;
 
 		UpdateArt();
+		StartCoroutine("Tick");
 	}
 
 	protected override IEnumerator Tick() {
@@ -91,7 +92,7 @@ public class Tower:Building {
 		target.gameObject.GetComponent<Enemy>().Damage(damage);
 	}
 	
-	public void SwitchLevel(Upgrade newLevel) {
+	public override void SwitchLevel(Upgrade newLevel) {
 		if(newLevel > maxLevel)
 			return;
 		
