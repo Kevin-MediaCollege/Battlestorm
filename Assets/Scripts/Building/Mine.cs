@@ -2,73 +2,63 @@
 using System.Collections;
 
 public class Mine:Building {
-	public enum ResourcesPerUpgrade {
-		Upgrade1 = 10,
-		Upgrade2 = 15,
-		Upgrade3 = 25,
-		Upgrade4 = 40,
-		Upgrade5 = 60
+	public enum ResourcesPerTick {
+		Level1 = 10,
+		Level2 = 15,
+		Level3 = 25,
+		Level4 = 40,
+		Level5 = 60
 	};
-
+	
+	public enum StoneCost {
+		Level1 = 0,
+		Level2 = 250,
+		Level3 = 600,
+		Level4 = 1200,
+		Level5 = 3000
+	};
+	
 	public enum StoneSell {
-		Price1 = 0,
-		Price2 = 0,
-		Price3 = 10,
-		Price4 = 10,
-		Price5 = 210,
-		Price6 = 500
+		Level1 = 0,
+		Level2 = 10,
+		Level3 = 10,
+		Level4 = 210,
+		Level5 = 500
 	};
-
+	
+	private enum WoodCost {
+		Level1 = 0,
+		Level2 = 150,
+		Level3 = 300,
+		Level4 = 500,
+		Level5 = 3000
+	};
+	
 	public enum WoodSell {
-		Price1 = 10,
-		Price2 = 50,
-		Price3 = 150,
-		Price4 = 300,
-		Price5 = 600,
-		Price6 = 1000
+		Level1 = 0,
+		Level2 = 10,
+		Level3 = 10,
+		Level4 = 210,
+		Level5 = 500
 	};
 
-	private enum WoodCostPerUpgrade {
-		Upgrade2 = 0,
-		Upgrade3 = 300,
-		Upgrade4 = 500,
-		Upgrade5 = 3000
-	};
-	
-	private enum StoneCostPerUpgrade {
-		Upgrade2 = 250,
-		Upgrade3 = 600,
-		Upgrade4 = 1200,
-		Upgrade5 = 3000
-	};
-
-	public static string name = "Mine";
-
-	private ResourcesPerUpgrade resourcesPerTick;
-	
-	public ResourcesPerUpgrade ResourcesPerTick { get { return resourcesPerTick; } }
+	private ResourcesPerTick resourcesPerTick;
 
 	void Start () {
 		base.Start();
 
-		path += "Mine/Mine";
-
-		woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade2;
-		stoneCostForNextLevel= (int)StoneCostPerUpgrade.Upgrade2;
-		resourcesPerTick = ResourcesPerUpgrade.Upgrade1;
-		woodSellPrice = (int)WoodSell.Price1;
-		stoneSellPrice = (int)StoneSell.Price1;
-
-		interactable = false;
-		currentLevel = Upgrade.one;
-
-		UpdateArt();
-		StartCoroutine("tick");
+		stoneCost = (int)StoneCost.Level2;
+		stoneSell = (int)StoneSell.Level1;
+		
+		woodCost = (int)WoodCost.Level2;
+		woodSell = (int)WoodSell.Level1;
+		
+		resourcesPerTick = ResourcesPerTick.Level1;
 	}
 	
-	IEnumerator tick() {
+	protected override IEnumerator Tick() {
 		while(true) {
-			yield return new WaitForSeconds(timePerTick);
+			yield return new WaitForSeconds(tickDelay);
 
 			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
@@ -81,60 +71,20 @@ public class Mine:Building {
 		}
 	}
 	
-	public override void SwitchLevel(Upgrade level) {
-		if(level > maxLevel)
+	public override void SwitchLevel(Upgrade newLevel) {
+		if(newLevel > maxLevel)
 			return;
-
-		currentLevel = level;
-
-		switch(level){
-		case Upgrade.one:
-			resourcesPerTick = ResourcesPerUpgrade.Upgrade1;
-
-			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade2;
-			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade2;
-			woodSellPrice = (int)WoodSell.Price1;
-			stoneSellPrice = (int)StoneSell.Price1;
-
-			break;
-		case Upgrade.two:
-			resourcesPerTick = ResourcesPerUpgrade.Upgrade2;
-			
-			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade3;
-			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade3;
-			woodSellPrice = (int)WoodSell.Price2;
-			stoneSellPrice = (int)StoneSell.Price2;
-			
-			break;
-		case Upgrade.three:
-			resourcesPerTick = ResourcesPerUpgrade.Upgrade3;
-			
-			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade4;
-			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade4;
-			woodSellPrice = (int)WoodSell.Price3;
-			stoneSellPrice = (int)StoneSell.Price3;
-			
-			break;
-		case Upgrade.four:
-			resourcesPerTick = ResourcesPerUpgrade.Upgrade4;
-			
-			woodCostForNextLevel = (int)WoodCostPerUpgrade.Upgrade5;
-			stoneCostForNextLevel = (int)StoneCostPerUpgrade.Upgrade5;
-			woodSellPrice = (int)WoodSell.Price4;
-			stoneSellPrice = (int)StoneSell.Price4;
-			
-			break;
-		case Upgrade.five:
-			resourcesPerTick = ResourcesPerUpgrade.Upgrade5;
-			
-			woodCostForNextLevel = int.MaxValue;
-			stoneCostForNextLevel = int.MaxValue;
-			woodSellPrice = (int)WoodSell.Price5;
-			stoneSellPrice = (int)StoneSell.Price5;
-			
-			break;
-		}
-
+		
+		currentLevel = newLevel;
+		
+		stoneCost++;
+		stoneSell++;
+		
+		woodCost++;
+		woodSell++;
+		
+		resourcesPerTick++;
+		
 		UpdateArt();
 	}
 }

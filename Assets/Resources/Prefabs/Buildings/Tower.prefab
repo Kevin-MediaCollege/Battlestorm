@@ -59,9 +59,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2140e89a9e21ef04db322e4d66484e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabPath: Prefabs/Buildings/Tower/Tower
+  interactable: 1
+  tickDelay: 0
+  stoneCost: 0
+  stoneSell: 0
+  woodCost: 0
+  woodSell: 0
+  currentLevel: 0
   maxLevel: 5
-  interactable: 0
-  timePerTick: 3
   damage: 5
   maxRange: 10
 --- !u!1001 &100100000

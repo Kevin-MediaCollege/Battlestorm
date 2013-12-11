@@ -2,54 +2,56 @@
 using System.Collections;
 
 public class Building:MonoBehaviour {
-	public enum BuildingType {
+	public enum Type {
+		Empty = 0,
 		Tower = 1,
 		LumberMill = 2,
 		Mine = 3
 	};
 
 	public enum Upgrade {
-		zero = 0,
-		one = 1,
-		two = 2,
-		three = 3,
-		four = 4,
-		five = 5
+		Level1 = 1,
+		Level2 = 2,
+		Level3 = 3,
+		Level4 = 4,
+		Level5 = 5
 	};
+
+	public string prefabPath = "Prefabs/Buildings/";
 	
-
-	public Upgrade maxLevel;
 	public bool interactable;
-	public int timePerTick;
+	public int tickDelay;
 
-	protected Upgrade currentLevel = Upgrade.zero;
+	public int stoneCost;
+	public int stoneSell;
+
+	public int woodCost;
+	public int woodSell;
+
+	public Upgrade currentLevel;
+	public Upgrade maxLevel;
+
 	protected PlayerData playerData;
 	protected GameObject art;
 
-	protected string path = "Prefabs/Buildings/";
-
-	protected int woodCostForNextLevel = 0;
-	protected int stoneCostForNextLevel = 0;
-	protected int woodSellPrice = 0;
-	protected int stoneSellPrice = 0;
-
-	public string Path { get { return path; } }
-	public int WoodCostForNextLevel { get { return woodCostForNextLevel; } }
-	public int StoneCostForNextLevel { get { return stoneCostForNextLevel; } }
-	public int WoodSellPrice { get { return woodSellPrice; } }
-	public int StoneSellPrice { get { return stoneSellPrice; } }
-	public Upgrade CurrentLevel { get { return currentLevel; } }
-
 	protected void Start() {
 		playerData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerData>();
+
+		currentLevel = Upgrade.Level1;
+
+		UpdateArt();
+		StartCoroutine("Tick");
 	}
-	public virtual void SwitchLevel(Upgrade level) { }
+
+	public virtual void SwitchLevel(Upgrade newLevel) { }
+
+	protected virtual IEnumerator Tick() { return null; }
 
 	protected void UpdateArt() {
 		if(art != null)
 			Destroy(art);
-		
-		art = Instantiate(Resources.Load(path + (int)currentLevel), transform.position, Quaternion.identity) as GameObject;
+		Debug.Log(prefabPath + (int)currentLevel);
+		art = Instantiate(Resources.Load(prefabPath + (int)currentLevel), transform.position, Quaternion.identity) as GameObject;
 		art.transform.parent = this.transform;
 	}
 }
