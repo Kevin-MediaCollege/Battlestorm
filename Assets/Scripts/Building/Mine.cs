@@ -66,7 +66,7 @@ public class Mine:Building {
 			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
 
-			PlayerData.stoneAmount += resourcesPerTick;
+			PlayerData.Instance.stoneAmount += resourcesPerTick;
 
 			textPopup.text = "" + (int)resourcesPerTick;
 			textPopup.color = Color.gray;

@@ -90,9 +90,7 @@ public class PathFollower:MonoBehaviour {
 		seeker.StartPath(GetFeetPosition(), targetPosition);
 	}
 	
-	public virtual void OnTargetReached() {
-
-	}
+	public virtual void OnTargetReached() { }
 
 	public virtual void OnPathComplete(Path _p) {
 		ABPath p = _p as ABPath;

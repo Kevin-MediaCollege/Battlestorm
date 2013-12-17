@@ -52,15 +52,20 @@ public class Tower:Building {
 		top = transform.FindChild("Art").transform.FindChild("Pivot");
 		StartCoroutine("Tick");
 	}
-	void FixedUpdate(){
-		if(target == null){
-			SearchForNewTarget();
-		}
-		if(target != null){
-		top.transform.LookAt(target.transform.position);
-		}
 
+	void Update() {
+		if(target != null)
+			Debug.DrawLine(transform.position, target.transform.position);
 	}
+
+	void FixedUpdate(){
+		if(target == null)
+			SearchForNewTarget();
+
+		if(target != null)
+			top.transform.LookAt(target.transform.position);
+	}
+
 	protected override IEnumerator Tick() {
 		while(true) {
 			yield return new WaitForSeconds(tickDelay);
@@ -101,9 +106,8 @@ public class Tower:Building {
 	void Fire() {
 		//GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), transform.position, Quaternion.identity) as GameObject;
 		//projectile.GetComponent<Projectile>().Target = target.transform;
-		if(target != null){
-		target.gameObject.GetComponent<Enemy>().Damage(damage);
-		}
+		if(target != null)
+			target.gameObject.GetComponent<Enemy>().Damage(damage);
 	}
 	
 	public override void SwitchLevel(Upgrade newLevel) {

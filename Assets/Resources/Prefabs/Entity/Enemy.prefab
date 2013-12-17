@@ -79,7 +79,6 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Enemy
@@ -322,7 +321,7 @@ MonoBehaviour:
   bezierTangentLength: .400000006
   offset: .200000003
   factor: .100000001
---- !u!114 &11400004
+--- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -330,7 +329,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9795f0ff814a364d846395e1bcc1a90, type: 3}
+  m_Script: {fileID: 11500000, guid: 19516e8d6d9be7a4fbd1dcd223ddc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   endReachedDistance: .100000001
@@ -343,17 +342,6 @@ MonoBehaviour:
   canSearch: 1
   canMove: 1
   target: {fileID: 0}
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19516e8d6d9be7a4fbd1dcd223ddc9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   hitpoints: 10
   goldReward: 50
   canStun: 0

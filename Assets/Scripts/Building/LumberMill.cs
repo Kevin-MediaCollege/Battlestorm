@@ -66,7 +66,7 @@ public class LumberMill:Building {
 			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
 			
-			PlayerData.woodAmount += resourcesPerTick;
+			PlayerData.Instance.woodAmount += resourcesPerTick;
 			
 			textPopup.text = "" + (int)resourcesPerTick;
 			textPopup.color = new Color(0.6f, 0.2f, 0);

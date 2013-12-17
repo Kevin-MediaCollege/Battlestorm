@@ -119,8 +119,8 @@ public class BuildingGUI:MonoBehaviour {
 			GUI.Label(new Rect(18, 27, 30, 20), "Cost");
 			
 			if(GUI.Button(new Rect(5, 95, 50, 50), "Upgrade")) {
-				if(PlayerData.woodAmount >= building.woodCost) {
-					if(PlayerData.stoneAmount >= building.stoneCost) {
+				if(PlayerData.Instance.woodAmount >= building.woodCost) {
+					if(PlayerData.Instance.stoneAmount >= building.stoneCost) {
 						building.SwitchLevel(building.currentLevel + 1);
 					}
 				}
@@ -171,8 +171,8 @@ public class BuildingGUI:MonoBehaviour {
 	void DestroyBuilding() {
 		buildingManager = building.transform.parent.GetComponent<BuildingManager>();
 		
-		PlayerData.stoneAmount += building.stoneSell;
-		PlayerData.woodAmount += building.woodSell;
+		PlayerData.Instance.stoneAmount += building.stoneSell;
+		PlayerData.Instance.woodAmount += building.woodSell;
 		
 		buildingManager.DestroyBuilding(building);
 		
