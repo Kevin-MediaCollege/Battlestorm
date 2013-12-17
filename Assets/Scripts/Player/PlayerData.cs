@@ -2,7 +2,30 @@
 using System.Collections;
 
 public class PlayerData:MonoBehaviour {
-	public static int woodAmount;
-	public static int stoneAmount;
-	public static int goldAmount;
+	private static PlayerData instance = null;
+
+	public static PlayerData Instance {
+		get {
+			if(instance == null) {
+				instance = FindObjectOfType(typeof(PlayerData)) as PlayerData;
+			}
+
+			if(instance == null) {
+				GameObject go = new GameObject("PlayerData");
+				instance = go.AddComponent(typeof(PlayerData)) as PlayerData;
+			}
+
+			return instance;
+		}
+	}
+
+	void OnApplicationQuit() {
+		instance = null;
+	}
+
+	public int woodAmount;
+	public int stoneAmount;
+	public int goldAmount;
+
+	public int health;
 }

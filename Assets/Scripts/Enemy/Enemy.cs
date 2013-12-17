@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy:MonoBehaviour {	
+public class Enemy:PathFollower {	
 	public float hitpoints;
 
 	public int goldReward;
@@ -17,8 +17,16 @@ public class Enemy:MonoBehaviour {
 	}
 
 	public void Kill() {
-		PlayerData.goldAmount += goldReward;
+		PlayerData.Instance.goldAmount += goldReward;
 
 		Destroy(gameObject);
+	}
+
+	public override void OnTargetReached() {
+		Destroy(gameObject);
+
+		if(PlayerData.Instance.health-- <= 1) {
+			Application.LoadLevel(Application.loadedLevel);
+		}
 	}
 }
