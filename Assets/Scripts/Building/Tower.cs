@@ -38,7 +38,7 @@ public class Tower:Building {
 	public float maxRange;
 
 	private GameObject target;
-	
+	public Transform top;
 	void Start() {
 		currentLevel = Upgrade.Level1;
 
@@ -49,47 +49,61 @@ public class Tower:Building {
 		woodSell = (int)WoodSell.Level1;
 
 		UpdateArt();
+		top = transform.FindChild("Art").transform.FindChild("Pivot");
 		StartCoroutine("Tick");
 	}
+	void FixedUpdate(){
+		if(target == null){
+			SearchForNewTarget();
+		}
+		if(target != null){
+		top.transform.LookAt(target.transform.position);
+		}
 
+	}
 	protected override IEnumerator Tick() {
 		while(true) {
 			yield return new WaitForSeconds(tickDelay);
 			
-			if(target == null || Vector3.Distance(transform.position, target.transform.position) > maxRange)
-				SearchForNewTarget();
 
-			if(target != null)
+			
+			if(target != null) {
+				if(Vector3.Distance(transform.position, target.transform.position) > maxRange)
+					SearchForNewTarget();
+				
 				Fire();
+			}
 		}
 	}
 
 	void SearchForNewTarget() {
 		GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy");
 		GameObject closest = null;
-		float closestDistance = 0;
-
+		float distance = 0;
+		
 		foreach(GameObject go in targets) {
-			if(closest == null) {
-				closest = go;
-				closestDistance = Vector3.Distance(transform.position, go.transform.position);
+			if(Vector3.Distance(go.transform.position, transform.position) <= maxRange) {
+				if(closest == null) {
+					closest = go;
+					distance = Vector3.Distance(go.transform.position, transform.position);
+				}
+				
+				if(Vector3.Distance(go.transform.position, transform.position) < distance) {
+					closest = go;
+					distance = Vector3.Distance(go.transform.position, transform.position);
+				}
 			}
-
-			if(closest != go)
-				continue;
-
-			if(Vector3.Distance(go.transform.position, closest.transform.position) < closestDistance)
-				closest = go;
 		}
-
+		
 		target = closest;
 	}
 
 	void Fire() {
-		GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), transform.position, Quaternion.identity) as GameObject;
+		//GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), transform.position, Quaternion.identity) as GameObject;
 		//projectile.GetComponent<Projectile>().Target = target.transform;
-
+		if(target != null){
 		target.gameObject.GetComponent<Enemy>().Damage(damage);
+		}
 	}
 	
 	public override void SwitchLevel(Upgrade newLevel) {

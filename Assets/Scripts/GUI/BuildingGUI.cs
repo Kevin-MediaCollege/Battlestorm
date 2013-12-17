@@ -98,7 +98,7 @@ public class BuildingGUI:MonoBehaviour {
 
 		}	else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
 			GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
-			GUI.Box(new Rect(0, 0, 200, 150), building.name);
+			GUI.Box(new Rect(0, 0, 300, 200), building.name);
 			GUI.Label(new Rect(5, 0, 200, 20), "" + building.name + ": ");
 			GUI.Box(new Rect(140, 30, 60, 120), "");
 			

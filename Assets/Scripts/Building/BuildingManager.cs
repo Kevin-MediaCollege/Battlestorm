@@ -13,6 +13,9 @@ public class BuildingManager:MonoBehaviour {
 	public void CreateBuilding(EBuildingType type) {
 		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), position, Quaternion.identity) as GameObject;
 		building.transform.parent = this.transform;
+		if(type == EBuildingType.Tower){
+			building.transform.name = "Tower";
+		}
 	}
 
 	public void DestroyBuilding(Building building) {

@@ -36,5 +36,6 @@ public class Building:MonoBehaviour {
 
 		art = Instantiate(Resources.Load(prefabPath + (int)currentLevel), transform.position, Quaternion.identity) as GameObject;
 		art.transform.parent = this.transform;
+		art.transform.name = "Art";
 	}
 }
