@@ -55,8 +55,8 @@ public class MenuGUI : MonoBehaviour {
 	}
 	void OnGUI(){
 		GUI.depth = -100000;
-		float rx = Screen.width / 1024.0f;
-		float ry = Screen.height / 768.0f;
+		float rx = Screen.width / GameManager.nativeWidth;
+		float ry = Screen.height / GameManager.nativeHeight;
 		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
 
 

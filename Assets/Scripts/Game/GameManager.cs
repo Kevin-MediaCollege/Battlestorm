@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+	public static float nativeWidth = 1920.0f;
+	public static float nativeHeight = 1080.0f;
+
 	private EnemyManager eManager;
 	
 	private int currentWave = 0;
