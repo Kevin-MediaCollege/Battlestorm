@@ -39,9 +39,6 @@ public class BuildingGUI:MonoBehaviour {
 			RaycastHit hit;
 			
 			if(Physics.Raycast(ray, out hit, 100)) {
-				if(hit.transform.gameObject.name == "Bridge"){
-
-				}
 				if(selectedBuilding == EBuildingType.None) {
 					switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
 					case EBuildingType.Tower:

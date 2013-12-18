@@ -62,6 +62,7 @@ public class MenuGUI : MonoBehaviour {
 
 		if(GUI.Button(new Rect(30, 455, 190 + (minorOffset / 2), 90 + minorOffset),new GUIContent("Play","Play"),buttonStyle)) {
 			playSound(1);
+			Application.LoadLevel("GameMap");
 		}
 		if(GUI.Button(new Rect(15, 555, 300 + (minorOffset / 2), 90+ minorOffset),new GUIContent("Options","Options"),buttonStyle)) {
 			playSound(1);
