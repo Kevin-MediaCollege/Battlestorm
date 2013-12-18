@@ -77,6 +77,8 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	void OnGUI() {
+		if(target != null){
+		if(target.renderer.isVisible){
 		if(selectedBuilding == EBuildingType.Empty) {
 			GUI.backgroundColor = Color.clear;
 			
@@ -106,7 +108,8 @@ public class BuildingGUI:MonoBehaviour {
 			GUI.EndGroup();
 		}
 	}
-	
+	}
+	}
 	void OpenPanel() {
 		GUI.Label(new Rect(85, 25, 200, 20), "LVL: " + (int)building.currentLevel);
 		

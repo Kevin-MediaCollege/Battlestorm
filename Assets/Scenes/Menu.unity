@@ -2783,8 +2783,9 @@ GameObject:
   - 124: {fileID: 1165301925}
   - 81: {fileID: 1165301924}
   - 114: {fileID: 1165301929}
-  - 82: {fileID: 1165301931}
   - 114: {fileID: 1165301930}
+  - 114: {fileID: 1165301932}
+  - 82: {fileID: 1165301931}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2898,11 +2899,11 @@ AudioSource:
   m_GameObject: {fileID: 1165301923}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 09240f398371ce34abc9f861fd3009b0, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -2948,6 +2949,79 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1165301932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1165301923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db65a16906f9c748ad99f2e6de8a59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 4eee431b17b6db44b8257e13ca5d6f38, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 2800000, guid: 4eee431b17b6db44b8257e13ca5d6f38, type: 3}
+      m_TextColor: {r: .419607848, g: .419607848, b: .419607848, a: 1}
+    m_Active:
+      m_Background: {fileID: 2800000, guid: 4eee431b17b6db44b8257e13ca5d6f38, type: 3}
+      m_TextColor: {r: .176470593, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 2800000, guid: 4eee431b17b6db44b8257e13ca5d6f38, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_FontSize: 90
+    m_FontStyle: 0
+    m_Alignment: 7
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 50
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 0
+    m_StretchHeight: 0
+  minorOffset: 0
+  buttonHover: {fileID: 8300000, guid: ba8831af078415e4d99c23a064c26cef, type: 3}
+  buttonClick: {fileID: 8300000, guid: 4d1de9e56f21e174ab0b9b85d6e12363, type: 3}
 --- !u!1 &1170917162
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,6 +6380,7 @@ GameObject:
   - 33: {fileID: 2095505456}
   - 23: {fileID: 2095505455}
   - 95: {fileID: 2095505454}
+  - 82: {fileID: 2095505458}
   m_Layer: 0
   m_Name: Island
   m_TagString: Untagged
@@ -6369,6 +6444,64 @@ Transform:
   m_LocalScale: {x: 10.5, y: 10.5, z: 10.5}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!82 &2095505458
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095505453}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 09240f398371ce34abc9f861fd3009b0, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &2109178063
 GameObject:
   m_ObjectHideFlags: 0

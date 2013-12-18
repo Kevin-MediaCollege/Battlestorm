@@ -25,7 +25,7 @@ public class CameraMovement:MonoBehaviour {
 
 		transform.position += transform.forward * speed * Input.GetAxis("Vertical");
 		transform.position += transform.right * speed * Input.GetAxis("Horizontal");
-		transform.position += transform.up * speed * Input.GetAxis("Move Vertical");
+		transform.position += transform.up * (speed / 4) * Input.GetAxis("Move Vertical");
 		if(Input.GetMouseButtonDown(1)) {
 			Screen.lockCursor = !Screen.lockCursor;
 			canRotate = !canRotate;

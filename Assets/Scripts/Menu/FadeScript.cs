@@ -18,6 +18,7 @@ public class FadeScript : MonoBehaviour
 	
 	void OnGUI ()
 	{
+		GUI.depth = -2;
 		if(fadingOut){
 			fadeSpeed = 0.8f;
 		}else{
