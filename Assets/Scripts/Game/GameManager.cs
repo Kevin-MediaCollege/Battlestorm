@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 	void OnGUI(){
-		//Test GUI
+		/*Test GUI
 		if(GUI.Button(new Rect(0,0,50,50),"Next Wave")){
 			Debug.Log(eManager.enemyList.Count);
 			if(eManager.enemyList.Count == 0 && enemiesToSpawn == 0){
@@ -71,6 +71,6 @@ public class GameManager : MonoBehaviour {
 				Nextwave();
 			}
 		}
-		GUI.Box(new Rect(50,0,50,50),waveTimer);
+		GUI.Box(new Rect(50,0,50,50),waveTimer);*/
 	}
 }
