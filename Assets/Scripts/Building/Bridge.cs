@@ -14,7 +14,7 @@ public class Bridge : MonoBehaviour {
 	public void BuildBridge(){
 		for(int i = 0; i < bridgeParts; i++){
 			Vector3 spawnpos = spawnposition.transform.position + (spawnposition.transform.forward * 0.5f);
-			GameObject part = Instantiate(Resources.Load("Prefabs/Buildings/BridgePart"),spawnpos,transform.rotation) as GameObject;
+			GameObject part = Instantiate(Resources.Load("Prefabs/Buildings/Bridge/BridgePart"),spawnpos,transform.rotation) as GameObject;
 			part.transform.parent = spawnposition.transform;
 			part.transform.rotation = spawnposition.transform.rotation;
 			part.name = "BridgePart";
