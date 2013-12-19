@@ -4,6 +4,10 @@ using System.Collections;
 public class IslandData : MonoBehaviour {
 	public BuildingManager[] plots;
 	public bool isUnlocked;
+
+	public bool canHaveMine;
+	public bool canHaveLumberMill;
+	public bool canHaveTower;
 	// Use this for initialization
 	void Start () {
 		for(int i = 0; i < plots.Length; i++){

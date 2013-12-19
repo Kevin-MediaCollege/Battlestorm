@@ -8,6 +8,7 @@ public class BuildingGUI:MonoBehaviour {
 	public Texture stone;
 	public Texture wood;
 	public Texture gold;
+	public Texture noIcon;
 
 	public float delay;
 
@@ -23,11 +24,28 @@ public class BuildingGUI:MonoBehaviour {
 	private EBuildingType selectedBuilding;
 	private Building building;
 
+	private IslandData iData;
+
+	public GUIStyle noButtonStyle;
+	public GUIStyle TowerButtonStyle;
+	public GUIStyle LumberMillButtonStyle;
+	public GUIStyle MineButtonStyle;
+
+	private Tooltip Tooltipmanager;
+	private string currentTooltip;
 	void Start() {
+		Tooltipmanager = GetComponent<Tooltip>();
 		DeselectBuilding();
 	}
 
 	void Update() {
+		Debug.Log(currentTooltip);
+		if(currentTooltip != null && currentTooltip != ""){
+			Tooltipmanager.drawTooltip(currentTooltip,true);
+		}
+		else{
+			Tooltipmanager.unloadGUI();
+		}
 		if(target != null)
 			position = Camera.main.WorldToScreenPoint(target.position);
 
@@ -40,6 +58,7 @@ public class BuildingGUI:MonoBehaviour {
 			
 			if(Physics.Raycast(ray, out hit, 100)) {
 				if(selectedBuilding == EBuildingType.None) {
+					iData = hit.transform.parent.GetComponent<IslandData>();
 					switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
 					case EBuildingType.Tower:
 						building = hit.transform.gameObject.GetComponent<Tower>();
@@ -75,38 +94,54 @@ public class BuildingGUI:MonoBehaviour {
 
 	void OnGUI() {
 		if(target != null){
-		if(target.renderer.isVisible){
-		if(selectedBuilding == EBuildingType.Empty) {
-			GUI.backgroundColor = Color.clear;
+			if(target.renderer.isVisible){
+				if(selectedBuilding == EBuildingType.Empty) {
+						if(iData.canHaveTower){
+						if(GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75),new GUIContent("","Tower"),TowerButtonStyle)) {
+								CreateBuilding(EBuildingType.Tower);
+							}
+						}
+						else{
+						if(GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75),new GUIContent("","NoBuilding"),noButtonStyle)) {}
+						}
+						if(iData.canHaveLumberMill){
+						if(GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75),new GUIContent("","LumberMill"),LumberMillButtonStyle))  {
+							CreateBuilding(EBuildingType.LumberMill);
+							}
+						}
+						else{
+						if(GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75),new GUIContent("","NoBuilding"),noButtonStyle)) {}
+						}
+						if(iData.canHaveMine){
+						if(GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75),new GUIContent("","Mine"),MineButtonStyle)) {
+								CreateBuilding(EBuildingType.Mine);
+							}
+						}
+						else{
+						if(GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75),new GUIContent("","NoBuilding"),noButtonStyle)) {}
+						}
+					}else if(selectedBuilding == EBuildingType.Bridge){
+						GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
+						GUI.Box(new Rect(0, 0, 200, 150), "");
+						if(GUI.Button(new Rect(50, 95, 100, 50), "Build Bridge")) {
+							bridgeManager.BuildBridge();
+							DeselectBuilding();
+						}
+						GUI.EndGroup();
+						}	else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
+						GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
+						GUI.Box(new Rect(0, 0, 300, 200), building.name);
+						GUI.Label(new Rect(5, 0, 200, 20), "" + building.name + ": ");
+						GUI.Box(new Rect(140, 30, 60, 120), "");
 			
-			if(GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75), towerButton)) {
-				CreateBuilding(EBuildingType.Tower);
-			} else if(GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75), lumberMillButton)) {
-				CreateBuilding(EBuildingType.LumberMill);
-			} else if(GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), mineButton)) {
-				CreateBuilding(EBuildingType.Mine);
-			}
-		}	else if(selectedBuilding == EBuildingType.Bridge){
-			GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
-			GUI.Box(new Rect(0, 0, 200, 150), "");
-			if(GUI.Button(new Rect(50, 95, 100, 50), "Build Bridge")) {
-				bridgeManager.BuildBridge();
-				DeselectBuilding();
-			}
-			GUI.EndGroup();
-
-		}	else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
-			GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
-			GUI.Box(new Rect(0, 0, 300, 200), building.name);
-			GUI.Label(new Rect(5, 0, 200, 20), "" + building.name + ": ");
-			GUI.Box(new Rect(140, 30, 60, 120), "");
-			
-			OpenPanel();
-			GUI.EndGroup();
+						OpenPanel();
+						GUI.EndGroup();
+						}
+					}
+				}
+		currentTooltip = GUI.tooltip;
 		}
-	}
-	}
-	}
+
 	void OpenPanel() {
 		GUI.Label(new Rect(85, 25, 200, 20), "LVL: " + (int)building.currentLevel);
 		
