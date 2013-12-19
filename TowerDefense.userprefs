@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 <<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Tooltip.cs">
@@ -11,9 +12,13 @@
       <File FileName="Assets\Scripts\GUI\Tooltip.cs" Line="1" Column="1" />
 =======
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\GameManager.cs">
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\InterfaceGUI.cs">
+>>>>>>> druk het naar het limiet
     <Files>
       <File FileName="Assets\Scripts\GUI\InterfaceGUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\InterfaceGUI.cs" Line="13" Column="44" />
+      <File FileName="Assets\Scripts\GUI\InterfaceGUI.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game\GameManager.cs" Line="74" Column="45" />
       <File FileName="Assets\Scripts\GUI\BuildingGUI.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\MenuGUI.cs" Line="1" Column="1" />

@@ -10,6 +10,6 @@ public class InterfaceGUI:MonoBehaviour {
 
 		GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(rX, rY, 1));
 
-		GUI.DrawTexture(new Rect(Screen.width / 2, 0, texture.width, texture.height), texture);
+		GUI.DrawTexture(new Rect((Screen.width / 2) - (texture.width / 2), 0, texture.width, texture.height), texture);
 	}
 }
