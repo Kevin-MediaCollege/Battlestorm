@@ -1,12 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\BuildingGUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\InterfaceGUI.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI\BuildingGUI.cs" Line="86" Column="13" />
-      <File FileName="Assets\Scripts\GUI\InterfaceGUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\BuildingGUI.cs" Line="22" Column="42" />
+      <File FileName="Assets\Scripts\GUI\InterfaceGUI.cs" Line="18" Column="40" />
       <File FileName="Assets\Scripts\Game\GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GUI\BuildingGUI.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\MenuGUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\Bridge.cs" Line="13" Column="2" />
+      <File FileName="Assets\Scripts\Building\Building.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
