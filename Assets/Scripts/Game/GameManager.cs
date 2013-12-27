@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
 	private EnemyManager eManager;
 	
-	private int currentWave = 0;
+	public static int currentWave = 0;
 	//TODO use xml or something to load the wave amounts
 	private int[] wavelength = {3,5,7,10,12,24,30};
 	
