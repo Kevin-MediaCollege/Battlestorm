@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	public static float nativeWidth = 1920.0f;
-	public static float nativeHeight = 1080.0f;
+	public static float nativeWidth = 1024.0f;
+	public static float nativeHeight = 786.0f;
 
 	private EnemyManager eManager;
 	
@@ -17,8 +17,11 @@ public class GameManager : MonoBehaviour {
 	private int waveTime = 35;
 	private string waveTimer;
 	private bool timerStarted = false;
+
+	private MusicFlow bgm;
 	// Use this for initialization
 	void Start () {
+		bgm = GetComponent<MusicFlow>();
 		eManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemyManager>();
 	}
 	
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour {
 		if(allSpawned && eManager.enemyList.Count == 0 && !timerStarted){
 			timerStarted = true;
 			StartCoroutine("spawnTimer");
+			bgm.wavestarted = false;
 		}
 	}
 	void Nextwave(){
@@ -34,6 +38,7 @@ public class GameManager : MonoBehaviour {
 		allSpawned = false;
 		timerStarted = false;
 		enemiesToSpawn = wavelength[currentWave];
+		bgm.wavestarted = true;
 		StartCoroutine("spawnEnemies");
 	}
 	IEnumerator spawnTimer(){
@@ -62,7 +67,6 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 	void OnGUI(){
-		/*Test GUI
 		if(GUI.Button(new Rect(0,0,50,50),"Next Wave")){
 			Debug.Log(eManager.enemyList.Count);
 			if(eManager.enemyList.Count == 0 && enemiesToSpawn == 0){
@@ -71,6 +75,6 @@ public class GameManager : MonoBehaviour {
 				Nextwave();
 			}
 		}
-		GUI.Box(new Rect(50,0,50,50),waveTimer);*/
+		GUI.Box(new Rect(50,0,50,50),waveTimer);
 	}
 }

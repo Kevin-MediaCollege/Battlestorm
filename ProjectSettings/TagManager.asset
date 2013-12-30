@@ -10,6 +10,8 @@ TagManager:
   - LumberMill
   - Tower
   - Enemy
+  - CameraCollider
+  - PathNode
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

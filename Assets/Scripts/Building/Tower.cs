@@ -39,6 +39,9 @@ public class Tower:Building {
 
 	private GameObject target;
 	public Transform top;
+
+	public AudioClip shotSound;
+	private Vector3 arrowPosition;
 	void Start() {
 		currentLevel = Upgrade.Level1;
 
@@ -50,6 +53,7 @@ public class Tower:Building {
 
 		UpdateArt();
 		top = transform.FindChild("Art").transform.FindChild("Pivot");
+		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
 		StartCoroutine("Tick");
 	}
 
@@ -104,8 +108,11 @@ public class Tower:Building {
 	}
 
 	void Fire() {
-		//GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), transform.position, Quaternion.identity) as GameObject;
-		//projectile.GetComponent<Projectile>().Target = target.transform;
+		if(target != null){
+		GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
+		projectile.GetComponent<Projectile>().target = target.transform;
+			audio.PlayOneShot(shotSound);
+		}
 		if(target != null)
 			target.gameObject.GetComponent<Enemy>().Damage(damage);
 	}

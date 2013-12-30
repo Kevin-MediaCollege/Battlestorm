@@ -140,7 +140,9 @@ public class PathFollower:MonoBehaviour {
 		if(!canMove) { 
 			return;
 		}
-		
+		if(currentWaypointIndex != null && path != null){
+			transform.position = Vector3.Lerp(transform.position,path.vectorPath[currentWaypointIndex],(Time.deltaTime / speed));
+		}
 		Vector3 dir = CalculateVelocity(GetFeetPosition());
 		RotateTowards(targetDirection);
 		
