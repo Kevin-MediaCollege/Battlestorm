@@ -47,7 +47,7 @@ public class PathFollower:MonoBehaviour {
 		tr = transform;
 	}
 
-	protected virtual void Start () {
+	public virtual void Start () {
 		startHasRun = true;
 		OnEnable();
 	}

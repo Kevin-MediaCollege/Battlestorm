@@ -6,6 +6,7 @@ public class Bridge : MonoBehaviour {
 	public GameObject spawnposition;
 
 	public bool beenMade;
+	public int buildCost;
 	public IslandData[] adjacentIslands;
 	// Use this for initialization
 	void Start () {

@@ -63,7 +63,7 @@ public class Tower:Building {
 	}
 
 	void FixedUpdate(){
-		if(target == null)
+		if(target == null || target.GetComponent<Enemy>().isdead)
 			SearchForNewTarget();
 
 		if(target != null)
@@ -108,13 +108,14 @@ public class Tower:Building {
 	}
 
 	void Fire() {
-		if(target != null){
+		if(target != null || !target.GetComponent<Enemy>().isdead){
 		GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
-		projectile.GetComponent<Projectile>().target = target.transform;
+			Projectile proj = projectile.GetComponent<Projectile>();
+			proj.target = target.transform;
+			proj.damage = damage;
+			proj.targetScript = target.gameObject.GetComponent<Enemy>();
 			audio.PlayOneShot(shotSound);
 		}
-		if(target != null)
-			target.gameObject.GetComponent<Enemy>().Damage(damage);
 	}
 	
 	public override void SwitchLevel(Upgrade newLevel) {

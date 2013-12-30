@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabPath: Prefabs/Buildings/Tower/Tower
   interactable: 0
-  tickDelay: 3
+  tickDelay: 2
   stoneCost: 0
   stoneSell: 0
   woodCost: 0

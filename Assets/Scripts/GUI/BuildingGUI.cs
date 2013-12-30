@@ -65,7 +65,6 @@ public class BuildingGUI:MonoBehaviour {
 			if(Physics.Raycast(ray, out hit, 100)) {
 				if(hit.collider.tag != "CameraCollider"){
 				if(selectedBuilding == EBuildingType.None) {
-					iData = hit.transform.GetComponent<IslandReference>().iData;
 					switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
 					case EBuildingType.Tower:
 						building = hit.transform.gameObject.GetComponent<Tower>();
@@ -83,13 +82,14 @@ public class BuildingGUI:MonoBehaviour {
 
 						break;
 					case EBuildingType.Empty:
-
+						iData = hit.transform.GetComponent<IslandReference>().iData;
 						buildingManager = hit.transform.gameObject.GetComponent<BuildingManager>();
 						if(buildingManager.isUnlocked){
 						SelectBuilding(hit.transform, EBuildingType.Empty);
 						}
 						break;
 					case EBuildingType.Bridge:
+						iData = hit.transform.GetComponent<IslandReference>().iData;
 						bridgeManager = hit.transform.parent.gameObject.GetComponent<Bridge>();
 						SelectBuilding(hit.transform, EBuildingType.Bridge);
 						break;
@@ -154,10 +154,13 @@ public class BuildingGUI:MonoBehaviour {
 						}
 						}else if(selectedBuilding == EBuildingType.Bridge){
 						GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
-						GUI.Box(new Rect(0, 0, 200, 150), "");
+						GUI.Box(new Rect(0, 0, 200, 150),"" +  bridgeManager.buildCost);
 						if(GUI.Button(new Rect(50, 95, 100, 50), "Build Bridge")) {
-							bridgeManager.BuildBridge();
-							DeselectBuilding();
+							if(pData.goldAmount >= bridgeManager.buildCost){
+								pData.goldAmount -= bridgeManager.buildCost;
+								bridgeManager.BuildBridge();
+								DeselectBuilding();
+							}
 						}
 						GUI.EndGroup();
 						}	else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
