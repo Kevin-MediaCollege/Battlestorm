@@ -5,7 +5,7 @@ public class Enemy:PathFollower {
 	public float hitpoints;
 
 	public int goldReward;
-	public bool isdead;
+	public bool isdead = false;
 	public bool canStun;
 
 	public Color colorStart;
@@ -23,21 +23,16 @@ public class Enemy:PathFollower {
 	}
 
 	public void Kill() {
-
-		Instantiate(Resources.Load("Particles/EnemyExplosion"),transform.position,transform.rotation);
-		PlayerData.Instance.goldAmount += goldReward;
-		rigidbody.isKinematic = false;
-		rigidbody.useGravity = true;
-		rigidbody.AddForce(Vector3.down * 2);
-		Transform[] child = GetComponentsInChildren<Transform>();
-		for(int i = 0; i < child.Length; i++){
-			child[i].gameObject.layer = 9;
+		if(!isdead){
+			Instantiate(Resources.Load("Particles/EnemyExplosion"),transform.position,transform.rotation);
+			PlayerData.Instance.goldAmount += goldReward;
+			rigidbody.isKinematic = false;
+			rigidbody.useGravity = true;
+			rigidbody.AddForce(Vector3.down * 2);
+			gameObject.tag = "Untagged";
+			isdead = true;
+			OnDisable();
 		}
-		gameObject.layer = 9;
-		gameObject.tag = "Untagged";
-		isdead = true;
-		OnDisable();
-		//Destroy(gameObject);
 	}
 	void LateUpdate(){
 	if(isdead){

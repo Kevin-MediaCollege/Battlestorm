@@ -84,14 +84,16 @@ public class BuildingGUI:MonoBehaviour {
 					case EBuildingType.Empty:
 						iData = hit.transform.GetComponent<IslandReference>().iData;
 						buildingManager = hit.transform.gameObject.GetComponent<BuildingManager>();
-						if(buildingManager.isUnlocked){
+						if(iData.isUnlocked){
 						SelectBuilding(hit.transform, EBuildingType.Empty);
 						}
 						break;
 					case EBuildingType.Bridge:
 						iData = hit.transform.GetComponent<IslandReference>().iData;
 						bridgeManager = hit.transform.parent.gameObject.GetComponent<Bridge>();
-						SelectBuilding(hit.transform, EBuildingType.Bridge);
+						if(iData.isUnlocked && !bridgeManager.beenMade){
+							SelectBuilding(hit.transform, EBuildingType.Bridge);
+						}
 						break;
 					}
 				}
