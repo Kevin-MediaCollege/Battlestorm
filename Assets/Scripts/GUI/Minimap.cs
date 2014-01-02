@@ -11,9 +11,9 @@ public class Minimap : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		gameObject.camera.pixelRect =new Rect(0,0,Screen.width / mapsize.x,Screen.height / mapsize.y);
-	if(Input.GetKey(KeyCode.Tab)){
+	if(Input.GetAxisRaw("MinimapKey") != 0){
 			openmap = true;
 		}
 		else{

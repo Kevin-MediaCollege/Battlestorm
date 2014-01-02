@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	public static float nativeWidth = 1024.0f;
-	public static float nativeHeight = 786.0f;
+	public static float nativeWidth = 1228.0f;
+	public static float nativeHeight = 720.0f;
 
 	private EnemyManager eManager;
 	
