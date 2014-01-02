@@ -7538,7 +7538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1815e3b5dc01f0646b8aba17cccc16e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 958339527}
+  pointtarget: {fileID: 958339527}
 --- !u!23 &1431705539
 Renderer:
   m_ObjectHideFlags: 0
