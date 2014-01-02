@@ -10,7 +10,6 @@ public class Tooltip : MonoBehaviour {
 	public GUIStyle tooltipStyle;
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -43,6 +42,7 @@ public class Tooltip : MonoBehaviour {
 
 	void OnGUI(){
 		if(drawgui){
+		GUI.depth = -1000;
 		GUI.Label(new Rect(mousePos.x + 8,mousePos.y - 75,200,100),tooltipText,tooltipStyle);
 		}
 	}

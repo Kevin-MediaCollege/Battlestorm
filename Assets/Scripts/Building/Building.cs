@@ -31,10 +31,13 @@ public class Building:MonoBehaviour {
 	protected virtual IEnumerator Tick() { return null; }
 
 	protected void UpdateArt() {
+		//Destroys previous art and place's the new art.
 		if(art != null)
 			Destroy(art);
 
 		art = Instantiate(Resources.Load(prefabPath + (int)currentLevel), transform.position, Quaternion.identity) as GameObject;
+
+		//Keeping the Heirachy clean
 		art.transform.parent = this.transform;
 		art.transform.name = "Art";
 	}

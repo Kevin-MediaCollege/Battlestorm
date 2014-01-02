@@ -44,13 +44,13 @@ public class BuildingGUI:MonoBehaviour {
 	public int BuildingCost = 50;
 
 	void Start() {
-
 		Tooltipmanager = GetComponent<Tooltip>();
 		DeselectBuilding();
 	}
 
 	void Update() {
-		Debug.Log(currentTooltip);
+		//If you want to check what the tooltip is
+		//Debug.Log(currentTooltip);
 		if(currentTooltip != null && currentTooltip != ""){
 			Tooltipmanager.drawTooltip(currentTooltip,true);
 		}

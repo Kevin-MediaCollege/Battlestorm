@@ -10,12 +10,13 @@ public class Projectile : MonoBehaviour {
 	public Enemy targetScript;
 	// Use this for initialization
 	void Start () {
-		Debug.Log("I Exist");
+	//	this.transform.parent = GameObject.FindGameObjectWithTag("ProjectileObject").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(target != null){
+			Debug.Log(target.position);
 		//Quaternion.LookRotation(target.position);
 		transform.LookAt(target.transform.position);
 			transform.Translate(Vector3.forward);
@@ -30,7 +31,6 @@ public class Projectile : MonoBehaviour {
 		Instantiate(Resources.Load("Particles/Arrowhit"),transform.position,transform.rotation);
 	}
 	void OnTriggerStay(Collider coll){
-		Debug.Log("i Collided");
 		targetScript.Damage(damage);
 		Destroy(gameObject);
 	}

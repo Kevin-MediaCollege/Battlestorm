@@ -2,9 +2,13 @@
 using System.Collections;
 
 public class QuickDestroy : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		Destroy(gameObject,4);
+	void Start(){
+		this.transform.parent = GameObject.FindGameObjectWithTag("ParticleObject").transform;
+	}
+	// Used for Particle's
+	void Update () {
+		if(particleSystem.isStopped){
+		Destroy(gameObject);
+		}
 	}
 }
