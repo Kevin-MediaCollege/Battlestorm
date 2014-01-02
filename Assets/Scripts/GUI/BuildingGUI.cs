@@ -5,15 +5,13 @@ public class BuildingGUI:MonoBehaviour {
 	public Texture towerButton;
 	public Texture lumberMillButton;
 	public Texture mineButton;
-	public Texture stone;
-	public Texture wood;
 	public Texture gold;
 	public Texture noIcon;
 
-	public float delay;
+	public Texture buildingGUI;
 
-	public GUIStyle styleSell;
-	public GUIStyle styleBuy;
+	public float delay;
+	
 
 	private GameObject selectionParticle;
 	private Transform target;
@@ -23,9 +21,16 @@ public class BuildingGUI:MonoBehaviour {
 	private Bridge bridgeManager;
 	private EBuildingType selectedBuilding;
 	private Building building;
-
+	private Tooltip Tooltipmanager;
 	private IslandData iData;
 	public PlayerData pData;
+
+
+	//Styles
+	public GUIStyle styleSell;
+	public GUIStyle styleBuy;
+	public GUIStyle styleSellButton;
+	public GUIStyle styleUpgradeButton;
 
 	public GUIStyle noButtonStyle;
 	public GUIStyle TowerButtonStyle;
@@ -34,12 +39,12 @@ public class BuildingGUI:MonoBehaviour {
 	public GUIStyle NoMoneyTowerButtonStyle;
 	public GUIStyle NoMoneyLumberMillButtonStyle;
 	public GUIStyle NoMoneyMineButtonStyle;
-
-	private Tooltip Tooltipmanager;
+	
 	private string currentTooltip;
-
 	public int BuildingCost = 50;
+
 	void Start() {
+
 		Tooltipmanager = GetComponent<Tooltip>();
 		DeselectBuilding();
 	}
@@ -166,10 +171,11 @@ public class BuildingGUI:MonoBehaviour {
 						}
 						GUI.EndGroup();
 						}	else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
-						GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
-						GUI.Box(new Rect(0, 0, 300, 200), building.name);
-						GUI.Label(new Rect(5, 0, 200, 20), "" + building.name + ": ");
-						GUI.Box(new Rect(140, 30, 60, 120), "");
+						GUI.BeginGroup(new Rect(position.x - 200, Screen.height + -position.y - 150, 400, 250));
+						GUI.DrawTexture(new Rect(0, 0, 400, 250), buildingGUI);
+						//GUI.Box(new Rect(0, 0, 300, 200), building.name);
+						//GUI.Label(new Rect(5, 0, 200, 20), "" + building.name + ": ");
+						//GUI.Box(new Rect(140, 30, 60, 120), "");
 			
 						OpenPanel();
 						GUI.EndGroup();
@@ -180,17 +186,12 @@ public class BuildingGUI:MonoBehaviour {
 		}
 
 	void OpenPanel() {
-		GUI.Label(new Rect(85, 25, 200, 20), "LVL: " + (int)building.currentLevel);
-		
 		if(building.currentLevel != building.maxLevel) {
-			GUI.DrawTexture(new Rect(0, 50, 20, 20), wood);
-			GUI.DrawTexture(new Rect(0, 70, 20, 20), stone);
 			
-			GUI.Label(new Rect(25, 50, 30, 20), "-" + building.woodCost, styleBuy);
-			GUI.Label(new Rect(25, 72, 30, 20), "-" + building.stoneCost, styleBuy);
-			GUI.Label(new Rect(18, 27, 30, 20), "Cost");
+			GUI.Label(new Rect(60, 63, 30, 20), "" + "9999", styleBuy);
+			GUI.Label(new Rect(60, 103, 30, 20), "" + "9999", styleBuy);
 			
-			if(GUI.Button(new Rect(5, 95, 50, 50), "Upgrade")) {
+			if(GUI.Button(new Rect(32, 170, 75, 50), "",styleUpgradeButton)) {
 				if(PlayerData.Instance.woodAmount >= building.woodCost) {
 					if(PlayerData.Instance.stoneAmount >= building.stoneCost) {
 						building.SwitchLevel(building.currentLevel + 1);
@@ -198,13 +199,11 @@ public class BuildingGUI:MonoBehaviour {
 				}
 			}
 		}
+
+		GUI.Label(new Rect(325, 63, 30, 20), "" + "9999", styleSell);
+		GUI.Label(new Rect(325, 103, 30, 20), "" + "9999", styleSell);
 		
-		GUI.DrawTexture(new Rect(140, 50, 20, 20), wood);
-		GUI.DrawTexture(new Rect(140, 70, 20, 20), stone);
-		GUI.Label(new Rect(165, 50, 30, 20), "+" + building.woodSell, styleSell);
-		GUI.Label(new Rect(165, 72, 30, 20), "+" + building.stoneSell, styleSell);
-		
-		if(GUI.Button(new Rect(145, 95, 50, 50), "Sell")) {
+		if(GUI.Button(new Rect(292, 170, 75, 50),"",styleSellButton)) {
 			DestroyBuilding();
 		}
 	}
