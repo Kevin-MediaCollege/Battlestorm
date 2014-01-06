@@ -4,7 +4,12 @@ using System.Collections;
 public class Dasher : Enemy {	
 	public float maxhealth;
 	public float currentSpeed;
-	// Update is called once per frame
+	public virtual void Start () {
+		maxhealth = hitpoints;
+		currentSpeed = speed;
+		startHasRun = true;
+		OnEnable();
+	}
 	void FixedUpdate () {
 		if(hitpoints !=  maxhealth){
 			speed = (currentSpeed * 5);

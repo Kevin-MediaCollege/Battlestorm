@@ -8,10 +8,9 @@ public class GameManager : MonoBehaviour {
 	private EnemyManager eManager;
 	
 	public static int currentWave = 0;
-	//TODO use xml or something to load the wave amounts
-	private int[] wavelength = {3,5,7,10,12,24,30};
 	
 	private int enemiesToSpawn;
+	private int currentEnemy;
 	private bool allSpawned;
 	
 	private int waveTime = 35;
@@ -19,6 +18,9 @@ public class GameManager : MonoBehaviour {
 	private bool timerStarted = false;
 
 	private MusicFlow bgm;
+
+	public WaveData wData;
+	
 	// Use this for initialization
 	void Start () {
 		bgm = GetComponent<MusicFlow>();
@@ -34,10 +36,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 	void Nextwave(){
+		currentEnemy = 0;
 		currentWave++;
 		allSpawned = false;
 		timerStarted = false;
-		enemiesToSpawn = wavelength[currentWave];
+		enemiesToSpawn = wData.waveArray[currentWave].enemies.Length - 1;
 		bgm.wavestarted = true;
 		StartCoroutine("spawnEnemies");
 	}
@@ -56,8 +59,11 @@ public class GameManager : MonoBehaviour {
 	IEnumerator spawnEnemies(){
 		yield return new WaitForSeconds(1.8f);
 		if(enemiesToSpawn != 0){
+			currentEnemy++;
 			waveTimer = "";
-			eManager.spawnEnemy();
+			Debug.Log("" + (currentWave - 1) + " : " + (currentEnemy - 1));
+			WaveData.EnemyData eData = wData.waveArray[currentWave - 1].enemies[currentEnemy - 1];
+			eManager.spawnEnemy("" + eData.name.ToString(),eData.health,eData.speed,(int)eData.spawn);
 			enemiesToSpawn--;
 			StartCoroutine("spawnEnemies");
 		}

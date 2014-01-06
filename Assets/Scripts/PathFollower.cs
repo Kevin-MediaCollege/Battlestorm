@@ -35,7 +35,7 @@ public class PathFollower:MonoBehaviour {
 	protected Transform tr;
 	protected Path path;
 
-	private bool startHasRun = false;
+	public bool startHasRun = false;
 
 	public bool TargetReached {
 		get { return targetReached;	}
