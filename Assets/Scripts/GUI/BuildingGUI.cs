@@ -60,10 +60,10 @@ public class BuildingGUI:MonoBehaviour {
 		if(target != null)
 			position = Camera.main.WorldToScreenPoint(target.position);
 
-		if(Input.GetMouseButton(1))
+		if(Input.GetMouseButton(1) || Input.GetAxisRaw("ControllerB") != 0)
 			DeselectBuilding();
 
-		if(Input.GetMouseButtonDown(0)) {
+		if(Input.GetMouseButtonDown(0) || Input.GetAxisRaw("ControllerA") != 0) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			
