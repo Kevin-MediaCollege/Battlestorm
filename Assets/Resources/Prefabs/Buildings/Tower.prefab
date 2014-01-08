@@ -8,12 +8,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 33: {fileID: 3300000}
   - 114: {fileID: 11400000}
   - 65: {fileID: 6500000}
-  - 23: {fileID: 2300000}
   - 114: {fileID: 11400002}
   - 82: {fileID: 8200000}
+  - 23: {fileID: 2300000}
+  - 33: {fileID: 3300000}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Mine
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
 --- !u!23 &2300000
 Renderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -55,7 +55,7 @@ Renderer:
   m_SortingLayerID: 0
 --- !u!33 &3300000
 MeshFilter:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -167,7 +167,6 @@ MonoBehaviour:
   damage: 2
   maxRange: 20
   towerType: 1
-  top: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 1b2727f0e62e2094eb64cf2631c24674, type: 3}
 --- !u!1001 &100100000
 Prefab:

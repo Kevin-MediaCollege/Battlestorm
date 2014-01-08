@@ -6,6 +6,7 @@ public class GameManager:MonoBehaviour {
 	public static float nativeHeight = 720.0f;
 
 	public static int currentWave = 0;
+	public static string waveTimer;
 
 	public WaveData waveData;
 	
@@ -18,8 +19,6 @@ public class GameManager:MonoBehaviour {
 
 	private MusicFlow musicFlow;
 	private EnemyManager eManager;
-
-	private string waveTimer;
 
 	void Start() {
 		musicFlow = GetComponent<MusicFlow>();
@@ -40,7 +39,7 @@ public class GameManager:MonoBehaviour {
 		allSpawned = false;
 		timerStarted = false;
 
-		enemiesToSpawn = waveData.waveArray[currentWave].enemies.Length - 1;
+		enemiesToSpawn = waveData.waveArray[currentWave - 1].enemies.Length - 1;
 		musicFlow.waveStarted = true;
 		StartCoroutine("spawnEnemies");
 	}

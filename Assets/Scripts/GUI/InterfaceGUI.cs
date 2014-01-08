@@ -18,6 +18,8 @@ public class InterfaceGUI:MonoBehaviour {
 			GUI.Label(new Rect(90, 13, 0, 0), PlayerData.Instance.goldAmount.ToString(), style);
 			
 			GUI.Label(new Rect(500, 35, 0, 0), GameManager.currentWave.ToString(), styleLarge);
+
+			GUI.Label (new Rect (620, 13, 0, 0), "Next wave in: " + GameManager.waveTimer, style);
 		GUI.EndGroup();
 	}
 }

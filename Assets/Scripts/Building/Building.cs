@@ -36,7 +36,7 @@ public class Building:MonoBehaviour {
 	protected void UpdateArt() {
 		if(art != null)
 			Destroy(art);
-
+		print (prefabPath + (int)currentLevel);
 		art = Instantiate(Resources.Load(prefabPath + (int)currentLevel), transform.position, Quaternion.identity) as GameObject;
 
 		art.transform.parent = this.transform;
