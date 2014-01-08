@@ -5,9 +5,9 @@ public class MinimapObject:MonoBehaviour {
 	public GameObject pointTarget;
 	
 	void Update() {
-		Debug.Log (pointTarget.transform.position);
-		Vector3 position = new Vector3(pointTarget.transform.position.x, 50, pointTarget.transform.position.z);
+		Vector3 position = pointTarget.transform.position;
 
+		position.y = 50;
 		transform.position = position;
 	}
 }

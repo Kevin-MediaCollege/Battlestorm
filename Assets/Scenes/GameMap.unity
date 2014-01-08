@@ -9521,10 +9521,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wait: {fileID: 8300000, guid: 81e782c3ff438f7449318d1b561fa8f4, type: 3}
-  wave: {fileID: 8300000, guid: bba694f0a95ee4e479e523fa9353218f, type: 3}
+  wave: {fileID: 8300000, guid: 615ce09e55f19d141a09a36a31f235cc, type: 3}
   waitSource: {fileID: 1332718195}
   waveSource: {fileID: 861151316}
-  wavestarted: 0
+  waveStarted: 0
 --- !u!114 &958339541
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class GameManager:MonoBehaviour {
 		if(allSpawned && eManager.enemyList.Count == 0 && !timerStarted) {
 			timerStarted = true;
 			StartCoroutine("spawnTimer");
-			musicFlow.wavestarted = false;
+			musicFlow.waveStarted = false;
 		}
 	}
 
@@ -41,7 +41,7 @@ public class GameManager:MonoBehaviour {
 		timerStarted = false;
 
 		enemiesToSpawn = waveData.waveArray[currentWave].enemies.Length - 1;
-		musicFlow.wavestarted = true;
+		musicFlow.waveStarted = true;
 		StartCoroutine("spawnEnemies");
 	}
 
