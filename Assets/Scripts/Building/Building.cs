@@ -13,12 +13,15 @@ public class Building:MonoBehaviour {
 	public string prefabPath = "Prefabs/Buildings/";
 	
 	public bool interactable;
+
 	public int tickDelay;
 
+	public int goldCost;
 	public int stoneCost;
-	public int stoneSell;
-
 	public int woodCost;
+
+	public int goldSell;
+	public int stoneSell;
 	public int woodSell;
 
 	public Upgrade currentLevel;
@@ -31,13 +34,11 @@ public class Building:MonoBehaviour {
 	protected virtual IEnumerator Tick() { return null; }
 
 	protected void UpdateArt() {
-		//Destroys previous art and place's the new art.
 		if(art != null)
 			Destroy(art);
 
 		art = Instantiate(Resources.Load(prefabPath + (int)currentLevel), transform.position, Quaternion.identity) as GameObject;
 
-		//Keeping the Heirachy clean
 		art.transform.parent = this.transform;
 		art.transform.name = "Art";
 	}

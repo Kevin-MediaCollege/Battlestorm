@@ -7,8 +7,6 @@ public class InterfaceGUI:MonoBehaviour {
 	public GUIStyle styleLarge;
 
 	void OnGUI() {
-
-
 		float rX = Screen.width / GameManager.nativeWidth;
 		float rY = Screen.height / GameManager.nativeHeight;
 

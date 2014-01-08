@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 82: {fileID: 8200000}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: TowerIce
   m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   maxLevel: 5
   damage: 2
   maxRange: 20
-  towerType: 1
+  towerType: 2
   top: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 1b2727f0e62e2094eb64cf2631c24674, type: 3}
 --- !u!1001 &100100000

@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dasher : Enemy {	
-	public float maxhealth;
+public class Dasher:Enemy {	
 	public float currentSpeed;
-	public virtual void Start () {
-		maxhealth = hitpoints;
+
+	public override void Start() {
+		base.Start();
+
+		maxHitpoints = hitpoints;
 		currentSpeed = speed;
-		startHasRun = true;
-		OnEnable();
 	}
-	void FixedUpdate () {
-		if(hitpoints !=  maxhealth){
+
+	void FixedUpdate() {
+		if(hitpoints !=  maxHitpoints){
 			speed = (currentSpeed * 5);
 		}
 	}

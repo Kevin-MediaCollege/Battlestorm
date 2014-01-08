@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 	public Transform target;
-	private Vector3 speed = new Vector3(3,0,0);
 	public AudioClip hitSound;
 
 	public float damage;

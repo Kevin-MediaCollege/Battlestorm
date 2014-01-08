@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower:Building {	
+public class Tower:Building {
+	public enum TowerType {
+		Normal = 1,
+		Ice = 2
+	};
+
+	private enum GoldCost {
+		Level1 = 50,
+		Level2 = 100,
+		Level3 = 250,
+		Level4 = 500,
+		Level5 = 1000
+	};
+
 	public enum StoneCost {
 		Level1 = 0,
 		Level2 = 250,
 		Level3 = 600,
 		Level4 = 1200,
 		Level5 = 3000
-	};
-	
-	public enum StoneSell {
-		Level1 = 0,
-		Level2 = 10,
-		Level3 = 10,
-		Level4 = 210,
-		Level5 = 500
 	};
 	
 	private enum WoodCost {
@@ -25,8 +30,24 @@ public class Tower:Building {
 		Level4 = 500,
 		Level5 = 3000
 	};
+
+	private enum GoldSell {
+		Level1 = 50,
+		Level2 = 100,
+		Level3 = 250,
+		Level4 = 500,
+		Level5 = 1000
+	};
+
+	private enum StoneSell {
+		Level1 = 0,
+		Level2 = 10,
+		Level3 = 10,
+		Level4 = 210,
+		Level5 = 500
+	};
 	
-	public enum WoodSell {
+	private enum WoodSell {
 		Level1 = 0,
 		Level2 = 10,
 		Level3 = 10,
@@ -36,18 +57,21 @@ public class Tower:Building {
 
 	public float damage;
 	public float maxRange;
+	public TowerType towerType; 
 
 	private GameObject target;
-	public Transform top;
+	private Transform top;
 
 	public AudioClip shotSound;
 	private Vector3 arrowPosition;
+
 	void Start() {
 		currentLevel = Upgrade.Level1;
 
 		stoneCost = (int)StoneCost.Level2;
 		stoneSell = (int)StoneSell.Level1;
-		
+
+		goldSell = (int)GoldSell.Level1;
 		woodCost = (int)WoodCost.Level2;
 		woodSell = (int)WoodSell.Level1;
 
@@ -63,7 +87,7 @@ public class Tower:Building {
 	}
 
 	void FixedUpdate(){
-		if(target == null || target.GetComponent<Enemy>().isdead)
+		if(target == null || target.GetComponent<Enemy>().isDead)
 			SearchForNewTarget();
 
 		if(target != null)
@@ -73,9 +97,7 @@ public class Tower:Building {
 	protected override IEnumerator Tick() {
 		while(true) {
 			yield return new WaitForSeconds(tickDelay);
-			
 
-			
 			if(target != null) {
 				if(Vector3.Distance(transform.position, target.transform.position) > maxRange)
 					SearchForNewTarget();
@@ -108,13 +130,18 @@ public class Tower:Building {
 	}
 
 	void Fire() {
-		if(target != null || !target.GetComponent<Enemy>().isdead){
-		GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
+		if(target != null || !target.GetComponent<Enemy>().isDead) {
+			GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
 			Projectile proj = projectile.GetComponent<Projectile>();
+
 			proj.target = target.transform;
 			proj.damage = damage;
 			proj.targetScript = target.gameObject.GetComponent<Enemy>();
+
 			audio.PlayOneShot(shotSound);
+
+			if(towerType == TowerType.Ice)
+				target.GetComponent<Enemy>().Slowdown();
 		}
 	}
 	

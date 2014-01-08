@@ -1,17 +1,32 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\BuildingGUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\MinimapObject.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI\InterfaceGUI.cs" Line="22" Column="30" />
-      <File FileName="Assets\Scripts\Building\Tower.cs" Line="111" Column="1" />
-      <File FileName="Assets\Scripts\Game\GameManager.cs" Line="66" Column="50" />
-      <File FileName="Assets\Scripts\Enemy\EnemyManager.cs" Line="36" Column="10" />
-      <File FileName="Assets\Scripts\Game\WaveData.cs" Line="20" Column="20" />
-      <File FileName="Assets\Scripts\Enemy\Enemy.cs" Line="4" Column="27" />
-      <File FileName="Assets\Scripts\Enemy\Dasher.cs" Line="9" Column="24" />
-      <File FileName="Assets\Scripts\PathFollower.cs" Line="263" Column="2" />
-      <File FileName="Assets\Scripts\GUI\BuildingGUI.cs" Line="55" Column="52" />
-      <File FileName="Assets\Scripts\Player\CameraMovement.cs" Line="41" Column="27" />
+      <File FileName="Assets\Scripts\Building\Bridge.cs" Line="17" Column="31" />
+      <File FileName="Assets\Scripts\Building\Building.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\Normal.cs" Line="1" Column="1" />
+      <File FileName="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
+      <File FileName="Assets\AstarPathfindingProject\Core\AstarData.cs" Line="1" Column="1" />
+      <File FileName="Assets\AstarPathfindingProject\Core\AstarPath.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\Bridge.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\BuildingManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\BuildingType.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\LumberMill.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Building\Mine.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Effects\SelectionParticle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\Dasher.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PathFollower.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\WaveData.cs" Line="20" Column="10" />
+      <File FileName="Assets\Scripts\GUI\BuildingGUI.cs" Line="163" Column="17" />
+      <File FileName="Assets\Scripts\Building\Tower.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\GameManager.cs" Line="43" Column="1" />
+      <File FileName="Assets\Scripts\Game\IslandData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\EnemyManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\InterfaceGUI.cs" Line="24" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Minimap.cs" Line="14" Column="33" />
+      <File FileName="Assets\Scripts\GUI\MinimapObject.cs" Line="8" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

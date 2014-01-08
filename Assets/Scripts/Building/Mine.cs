@@ -9,21 +9,21 @@ public class Mine:Building {
 		Level4 = 40,
 		Level5 = 60
 	};
+
+	private enum GoldCost {
+		Level1 = 0,
+		Level2 = 100,
+		Level3 = 250,
+		Level4 = 500,
+		Level5 = 1000
+	};
 	
-	public enum StoneCost {
+	private enum StoneCost {
 		Level1 = 0,
 		Level2 = 250,
 		Level3 = 600,
 		Level4 = 1200,
 		Level5 = 3000
-	};
-	
-	public enum StoneSell {
-		Level1 = 0,
-		Level2 = 10,
-		Level3 = 10,
-		Level4 = 210,
-		Level5 = 500
 	};
 	
 	private enum WoodCost {
@@ -33,8 +33,24 @@ public class Mine:Building {
 		Level4 = 500,
 		Level5 = 3000
 	};
+
+	private enum GoldSell {
+		Level1 = 50,
+		Level2 = 100,
+		Level3 = 250,
+		Level4 = 500,
+		Level5 = 1000
+	};
+
+	private enum StoneSell {
+		Level1 = 0,
+		Level2 = 10,
+		Level3 = 10,
+		Level4 = 210,
+		Level5 = 500
+	};
 	
-	public enum WoodSell {
+	private enum WoodSell {
 		Level1 = 0,
 		Level2 = 10,
 		Level3 = 10,
@@ -45,15 +61,16 @@ public class Mine:Building {
 	private ResourcesPerTick resourcesPerTick;
 
 	void Start () {
+		resourcesPerTick = ResourcesPerTick.Level1;
 		currentLevel = Upgrade.Level1;
 
+		goldCost = (int)GoldCost.Level2;
 		stoneCost = (int)StoneCost.Level2;
-		stoneSell = (int)StoneSell.Level1;
-		
 		woodCost = (int)WoodCost.Level2;
+
+		goldSell = (int)GoldSell.Level1;
+		stoneSell = (int)StoneSell.Level1;
 		woodSell = (int)WoodSell.Level1;
-		
-		resourcesPerTick = ResourcesPerTick.Level1;
 
 		UpdateArt();
 		StartCoroutine("Tick");
