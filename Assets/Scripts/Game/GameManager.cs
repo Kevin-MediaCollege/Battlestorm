@@ -12,10 +12,14 @@ public class GameManager:MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		if(WaveManager.spawningEnemies) {
+		if(WaveData.Instance.spawningEnemies) {
 			musicFlow.Wave();
 		} else {
 			musicFlow.Wait();
 		}
+	}
+
+	public static void WinGame() {
+		Debug.Log("You win!");
 	}
 }

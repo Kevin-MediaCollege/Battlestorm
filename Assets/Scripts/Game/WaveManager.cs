@@ -2,10 +2,6 @@
 using System.Collections;
 
 public class WaveManager:MonoBehaviour {
-	public static int currentWave = 0;
-	public static int waveTimer = 0;
-	public static bool spawningEnemies = false;
-
 	public int waveDelay;
 	
 	private WaveData waveData;
@@ -14,6 +10,8 @@ public class WaveManager:MonoBehaviour {
 	private int enemiesToSpawn;
 	private int currentEnemy;
 
+	private bool finalWave;
+
 	void Start() {
 		waveData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<WaveData>();
 		enemyManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemyManager>();
@@ -21,37 +19,52 @@ public class WaveManager:MonoBehaviour {
 		StartCoroutine("SpawnTimer");
 	}
 
+	void Update() {
+		if(finalWave) {
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+			if(enemies.Length == 0)
+				GameManager.WinGame();
+		}
+	}
+
 	void OnGUI() {
 		if(GUI.Button(new Rect(0, 0, 50, 50), "Next Wave")){
-			if(!spawningEnemies) {
+			if(!waveData.spawningEnemies) {
 				StopCoroutine("SpawnTimer");
 				StartNextWave();
 			}
 		}
 		
-		GUI.Box(new Rect(50, 0, 50, 50), waveTimer.ToString());
+		GUI.Box(new Rect(50, 0, 50, 50), waveData.waveTimer.ToString());
 	}
 
 	void StartNextWave() {
 		currentEnemy = 0;
-		currentWave++;
+		waveData.currentWave++;
 
-		enemiesToSpawn = waveData.waveArray[currentWave - 1].enemies.Length - 1;
-		spawningEnemies = true;
+		if(waveData.currentWave > waveData.waveArray.Length) {
+			finalWave = true;
+			return;
+		}
+
+		enemiesToSpawn = waveData.waveArray[waveData.currentWave - 1].enemies.Length - 1;
+		waveData.spawningEnemies = true;
 		
 		StartCoroutine("SpawnEnemies");
 	}
 
 	IEnumerator SpawnTimer() {
-		waveTimer = waveDelay;
+		waveData.waveTimer = waveDelay;
 
 		while(true) {
-			if(waveTimer > 0) {
+			if(waveData.waveTimer > 0) {
 				yield return new WaitForSeconds(1);
 				
-				waveTimer--;
+				waveData.waveTimer--;
 			} else {
 				StartNextWave();
+				break;
 			}
 		}
 	}
@@ -64,10 +77,10 @@ public class WaveManager:MonoBehaviour {
 				currentEnemy++;
 				enemiesToSpawn--;
 
-				WaveData.EnemyData eData = waveData.waveArray[currentWave - 1].enemies[currentEnemy - 1];
+				WaveData.EnemyData eData = waveData.waveArray[waveData.currentWave - 1].enemies[currentEnemy - 1];
 				enemyManager.SpawnEnemy(eData.name.ToString(), eData.health, eData.speed, (int)eData.spawn);
 			} else {
-				spawningEnemies = false;
+				waveData.spawningEnemies = false;
 				StartCoroutine("SpawnTimer");
 				break;
 			}

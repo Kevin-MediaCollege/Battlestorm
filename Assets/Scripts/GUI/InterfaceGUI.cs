@@ -30,10 +30,10 @@ public class InterfaceGUI:MonoBehaviour {
 			if(GUI.Button(new Rect(0, 90, 50, 50), ""))
 				speedup = !speedup;
 			
-			GUI.Label(new Rect(500, 35, 0, 0), WaveManager.currentWave.ToString(), styleLarge);
+			GUI.Label(new Rect(500, 35, 0, 0), WaveData.Instance.currentWave.ToString(), styleLarge);
 			
-			if(!WaveManager.spawningEnemies) {
-				GUI.Label (new Rect (620, 13, 0, 0), "Next wave in: " + WaveManager.waveTimer, style);
+			if(!WaveData.Instance.spawningEnemies) {
+				GUI.Label (new Rect (620, 13, 0, 0), "Next wave in: " + WaveData.Instance.waveTimer, style);
 			} else {
 				GUI.Label (new Rect (620, 13, 0, 0), "Spawning enemies!", style);
 			}

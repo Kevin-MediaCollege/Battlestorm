@@ -3,6 +3,12 @@ using System.Collections;
 
 public class PlayerData:MonoBehaviour {
 	private static PlayerData instance = null;
+	
+	public int woodAmount;
+	public int stoneAmount;
+	public int goldAmount;
+	
+	public int health;
 
 	public static PlayerData Instance {
 		get {
@@ -22,10 +28,4 @@ public class PlayerData:MonoBehaviour {
 	void OnApplicationQuit() {
 		instance = null;
 	}
-
-	public int woodAmount;
-	public int stoneAmount;
-	public int goldAmount;
-
-	public int health;
 }
