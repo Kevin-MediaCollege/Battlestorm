@@ -16,8 +16,6 @@ public class InterfaceGUI:MonoBehaviour {
 		}
 	}
 	void OnGUI() {
-
-
 		float rX = Screen.width / GameManager.nativeWidth;
 		float rY = Screen.height / GameManager.nativeHeight;
 
@@ -36,6 +34,8 @@ public class InterfaceGUI:MonoBehaviour {
 				}
 			}
 			GUI.Label(new Rect(500, 35, 0, 0), GameManager.currentWave.ToString(), styleLarge);
+
+			GUI.Label (new Rect (620, 13, 0, 0), "Next wave in: " + GameManager.waveTimer, style);
 		GUI.EndGroup();
 	}
 }

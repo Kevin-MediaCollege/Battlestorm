@@ -47,7 +47,7 @@ public class PathFollower:MonoBehaviour {
 		tr = transform;
 	}
 
-	public virtual void Start () {
+	public virtual void Start() {
 		startHasRun = true;
 		OnEnable();
 	}
@@ -137,12 +137,12 @@ public class PathFollower:MonoBehaviour {
 	}
 	
 	public virtual void Update() {
-		if(!canMove) { 
+		if(!canMove)
 			return;
-		}
-		if(currentWaypointIndex != null && path != null){
+
+		if(currentWaypointIndex != 0 && path != null)
 			transform.position = Vector3.Lerp(transform.position,path.vectorPath[currentWaypointIndex],(Time.deltaTime / speed));
-		}
+
 		Vector3 dir = CalculateVelocity(GetFeetPosition());
 		RotateTowards(targetDirection);
 		
