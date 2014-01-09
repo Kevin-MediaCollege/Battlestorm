@@ -8379,13 +8379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aeb2e899b4ae774fbb296703a6a0526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bridgeParts: 4
-  spawnposition: {fileID: 373906848}
-  beenMade: 0
-  buildCost: 25
-=======
->>>>>>> idk
   adjacentIslands:
   - {fileID: 1550227537}
   - {fileID: 1661706424}
@@ -9528,331 +9521,255 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveArray:
   - enemies:
-<<<<<<< HEAD
-    - name: 0
-      spawn: 1
+    - spawn: 1
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 0
+    - spawn: 0
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 3
-  - enemies:
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 3
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 3
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 3
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 3
-    - name: 0
-      spawn: 1
-      speed: 3
-      health: 3
-    - name: 0
-      spawn: 1
+    - spawn: 2
+      name: 0
       speed: 3
       health: 3
   - enemies:
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
+    - spawn: 1
+      name: 0
       speed: 3
       health: 3
-    - name: 0
-      spawn: 2
+    - spawn: 1
+      name: 0
       speed: 3
       health: 3
   - enemies:
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 3
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 3
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 3
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 3
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 3
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 3
+  - enemies:
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
   - enemies:
-    - name: 0
-      spawn: 1
+    - spawn: 1
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 1
+    - spawn: 1
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 1
+    - spawn: 1
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 6
-  - enemies:
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 2
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 0
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 0
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 0
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 0
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 1
-      speed: 3
-      health: 6
-    - name: 0
-      spawn: 1
+    - spawn: 2
+      name: 0
       speed: 3
       health: 6
   - enemies:
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 6
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 6
+  - enemies:
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 0
+    - spawn: 0
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 0
+    - spawn: 0
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 2
+    - spawn: 2
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 0
+    - spawn: 0
+      name: 0
       speed: 3
       health: 9
-    - name: 0
-      spawn: 0
+    - spawn: 0
+      name: 0
       speed: 3
       health: 9
   - enemies: []
   - enemies: []
   - enemies: []
-=======
-    - spawn: 1
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 0
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 0
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 1
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 0
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 1
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 1
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 0
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 0
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 1
-      name: 0
-      speed: 3
-      health: 3
-  - enemies:
-    - spawn: 1
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 3
-    - spawn: 0
-      name: 0
-      speed: 3
-      health: 3
->>>>>>> idk
 --- !u!1 &973376752
 GameObject:
   m_ObjectHideFlags: 0

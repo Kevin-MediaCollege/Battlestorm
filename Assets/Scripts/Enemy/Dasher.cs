@@ -13,9 +13,10 @@ public class Dasher:Enemy {
 		StartCoroutine("quickwait");
 	}
 	
-	IEnumerator quickwait(){
+	IEnumerator quickWait(){
 		yield return new WaitForSeconds(0.05f);
-		maxhealth = hitpoints;
+
+		maxHitpoints = hitpoints;
 		currentSpeed = speed;
 	}
 
