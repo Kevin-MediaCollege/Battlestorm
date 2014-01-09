@@ -8,20 +8,20 @@ public class MusicFlow:MonoBehaviour {
 	public AudioSource waitSource;
 	public AudioSource waveSource;
 
-	public bool waveStarted;
-	
 	void Start () {
 		waitSource = transform.FindChild("WaitSource").GetComponent<AudioSource>();
 		waveSource = transform.FindChild("WaveSource").GetComponent<AudioSource>();
 	}
 
-	void FixedUpdate() {
-		if(waveStarted) {
-			waitSource.volume -= 0.006f;
-			waveSource.volume += 0.006f;
-		} else {
-			waitSource.volume += 0.006f;
-			waveSource.volume -= 0.006f;
-		}
+	public void Wait() {
+		Debug.Log ("Wait");
+		waitSource.volume += 0.006f;
+		waveSource.volume -= 0.006f;
+	}
+
+	public void Wave() {
+		Debug.Log ("Wave");
+		waitSource.volume -= 0.006f;
+		waveSource.volume += 0.006f;
 	}
 }
