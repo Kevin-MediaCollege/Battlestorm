@@ -77,16 +77,54 @@ public class Mine:Building {
 	public override void SwitchLevel(Upgrade newLevel) {
 		if(newLevel > maxLevel)
 			return;
-		
+		switch(newLevel){
+		case Upgrade.Level1:
+			stoneCost = (int)StoneCost.Level2;
+			stoneSell = (int)StoneSell.Level1;
+			
+			woodCost = (int)WoodCost.Level2;
+			woodSell = (int)WoodSell.Level1;
+			
+			resourcesPerTick = ResourcesPerTick.Level1;
+			break;
+		case Upgrade.Level2:
+			stoneCost = (int)StoneCost.Level3;
+			stoneSell = (int)StoneSell.Level2;
+			
+			woodCost = (int)WoodCost.Level3;
+			woodSell = (int)WoodSell.Level2;
+			
+			resourcesPerTick = ResourcesPerTick.Level2;
+			break;
+		case Upgrade.Level3:
+			stoneCost = (int)StoneCost.Level4;
+			stoneSell = (int)StoneSell.Level3;
+			
+			woodCost = (int)WoodCost.Level4;
+			woodSell = (int)WoodSell.Level3;
+			
+			resourcesPerTick = ResourcesPerTick.Level3;
+			break;
+		case Upgrade.Level4:
+			stoneCost = (int)StoneCost.Level4;
+			stoneSell = (int)StoneSell.Level5;
+			
+			woodCost = (int)WoodCost.Level5;
+			woodSell = (int)WoodSell.Level4;
+			
+			resourcesPerTick = ResourcesPerTick.Level4;
+			break;
+		case Upgrade.Level5:
+			stoneCost = (int)StoneCost.Level5;
+			stoneSell = (int)StoneSell.Level5;
+			
+			woodCost = (int)WoodCost.Level5;
+			woodSell = (int)WoodSell.Level5;
+			
+			resourcesPerTick = ResourcesPerTick.Level5;
+			break;
+		}
 		currentLevel = newLevel;
-		
-		stoneCost++;
-		stoneSell++;
-		
-		woodCost++;
-		woodSell++;
-		
-		resourcesPerTick++;
 		
 		UpdateArt();
 	}

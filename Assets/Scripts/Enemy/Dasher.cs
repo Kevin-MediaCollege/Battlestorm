@@ -9,6 +9,13 @@ public class Dasher : Enemy {
 		currentSpeed = speed;
 		startHasRun = true;
 		OnEnable();
+		StartCoroutine("quickwait");
+	}
+	IEnumerator quickwait(){
+		yield return new WaitForSeconds(0.05f);
+		maxhealth = hitpoints;
+		currentSpeed = speed;
+
 	}
 	void FixedUpdate () {
 		if(hitpoints !=  maxhealth){

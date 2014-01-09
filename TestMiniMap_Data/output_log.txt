@@ -17,19 +17,23 @@ Platform assembly: C:\Users\Kevin\Documents\GitHub\TowerDefense\TestMiniMap_Data
 Loading C:\Users\Kevin\Documents\GitHub\TowerDefense\TestMiniMap_Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
 Platform assembly: C:\Users\Kevin\Documents\GitHub\TowerDefense\TestMiniMap_Data\Managed\JsonFx.Json.dll (this message is harmless)
 Loading C:\Users\Kevin\Documents\GitHub\TowerDefense\TestMiniMap_Data\Managed\JsonFx.Json.dll into Unity Child Domain
-- Completed reload, in  0.137 seconds
+- Completed reload, in  0.241 seconds
 <RI> Initializing input.
 <RI> Input initialized.
-desktop: 1920x1080 60Hz; virtual: 2944x1080 at 0,0
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 Platform assembly: C:\Users\Kevin\Documents\GitHub\TowerDefense\TestMiniMap_Data\Managed\System.dll (this message is harmless)
 DA
  
 (Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
 
+DA
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
 Platform assembly: C:\Users\Kevin\Documents\GitHub\TowerDefense\TestMiniMap_Data\Managed\System.Core.dll (this message is harmless)
-UnloadTime: 3.175911 ms
+UnloadTime: 2.020436 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 71 unused Assets to reduce memory usage. Loaded Objects now: 897.
-Total: 2.848006 ms (FindLiveObjects: 0.084647 ms CreateObjectMapping: 0.027530 ms MarkObjects: 1.016587 ms  DeleteObjects: 0.907696 ms)
+Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 1218.
+Total: 4.791603 ms (FindLiveObjects: 0.148337 ms CreateObjectMapping: 0.043967 ms MarkObjects: 1.150954 ms  DeleteObjects: 1.630484 ms)
 

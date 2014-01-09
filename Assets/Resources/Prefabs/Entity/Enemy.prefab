@@ -1457,8 +1457,9 @@ MonoBehaviour:
   canSearch: 1
   canMove: 1
   target: {fileID: 0}
+  startHasRun: 0
   hitpoints: 5
-  goldReward: 5
+  goldReward: 7
   isdead: 0
   canStun: 0
   colorStart: {r: 1, g: 1, b: 1, a: 1}
