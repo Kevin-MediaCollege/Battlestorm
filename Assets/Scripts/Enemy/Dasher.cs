@@ -10,7 +10,7 @@ public class Dasher:Enemy {
 		maxHitpoints = hitpoints;
 		currentSpeed = speed;
 		
-		StartCoroutine("quickwait");
+		StartCoroutine("quickWait");
 	}
 	
 	IEnumerator quickWait(){
