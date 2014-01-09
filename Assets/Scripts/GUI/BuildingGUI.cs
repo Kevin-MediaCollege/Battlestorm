@@ -42,7 +42,6 @@ public class BuildingGUI:MonoBehaviour {
 	
 	private string currentTooltip;
 	public int BuildingCost = 50;
-
 	void Start() {
 		Tooltipmanager = GetComponent<Tooltip>();
 		DeselectBuilding();
@@ -130,10 +129,10 @@ public class BuildingGUI:MonoBehaviour {
 
 						//Lumber Mill
 						if(iData.canHaveLumberMill){
-							if(pData.goldAmount >= BuildingCost){
+							if(pData.goldAmount >= BuildingCost / 2){
 								if(GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75),new GUIContent("","LumberMill"),LumberMillButtonStyle))  {
 									CreateBuilding(EBuildingType.LumberMill);
-									pData.goldAmount -= BuildingCost;
+									pData.goldAmount -= BuildingCost / 2;
 								}
 							}
 							else{
@@ -146,10 +145,10 @@ public class BuildingGUI:MonoBehaviour {
 
 						//Mine
 						if(iData.canHaveMine){
-							if(pData.goldAmount >= BuildingCost){
+							if(pData.goldAmount >= BuildingCost / 2){
 								if(GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75),new GUIContent("","Mine"),MineButtonStyle)) {
 									CreateBuilding(EBuildingType.Mine);
-									pData.goldAmount -= BuildingCost;
+									pData.goldAmount -= BuildingCost / 2;
 								}
 							}
 							else{
@@ -188,20 +187,22 @@ public class BuildingGUI:MonoBehaviour {
 	void OpenPanel() {
 		if(building.currentLevel != building.maxLevel) {
 			
-			GUI.Label(new Rect(60, 63, 30, 20), "" + "9999", styleBuy);
-			GUI.Label(new Rect(60, 103, 30, 20), "" + "9999", styleBuy);
+			GUI.Label(new Rect(60, 63, 30, 20), "" + building.woodCost, styleBuy);
+			GUI.Label(new Rect(60, 103, 30, 20), "" + building.stoneCost, styleBuy);
 			
 			if(GUI.Button(new Rect(32, 170, 75, 50), "",styleUpgradeButton)) {
 				if(PlayerData.Instance.woodAmount >= building.woodCost) {
 					if(PlayerData.Instance.stoneAmount >= building.stoneCost) {
+						PlayerData.Instance.stoneAmount -= building.stoneCost;
+						PlayerData.Instance.woodAmount -= building.woodCost;
 						building.SwitchLevel(building.currentLevel + 1);
 					}
 				}
 			}
 		}
 
-		GUI.Label(new Rect(325, 63, 30, 20), "" + "9999", styleSell);
-		GUI.Label(new Rect(325, 103, 30, 20), "" + "9999", styleSell);
+		GUI.Label(new Rect(325, 63, 30, 20),"" + building.woodSell, styleSell);
+		GUI.Label(new Rect(325, 103, 30, 20),"" + building.stoneSell, styleSell);
 		
 		if(GUI.Button(new Rect(292, 170, 75, 50),"",styleSellButton)) {
 			DestroyBuilding();

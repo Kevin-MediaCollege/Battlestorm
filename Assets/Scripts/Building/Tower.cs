@@ -66,7 +66,7 @@ public class Tower:Building {
 		if(target == null || target.GetComponent<Enemy>().isdead)
 			SearchForNewTarget();
 
-		if(target != null)
+		if(target != null && top != null)
 			top.transform.LookAt(target.transform.position);
 	}
 
@@ -108,28 +108,71 @@ public class Tower:Building {
 	}
 
 	void Fire() {
-		if(target != null || !target.GetComponent<Enemy>().isdead){
-		GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
-			Projectile proj = projectile.GetComponent<Projectile>();
-			proj.target = target.transform;
-			proj.damage = damage;
-			proj.targetScript = target.gameObject.GetComponent<Enemy>();
-			audio.PlayOneShot(shotSound);
+		if(target != null){
+			if(!target.GetComponent<Enemy>().isdead){
+				GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
+				Projectile proj = projectile.GetComponent<Projectile>();
+				proj.target = target.transform;
+				proj.damage = damage;
+				proj.targetScript = target.gameObject.GetComponent<Enemy>();
+				audio.PlayOneShot(shotSound);
+			}
 		}
 	}
-	
+
 	public override void SwitchLevel(Upgrade newLevel) {
 		if(newLevel > maxLevel)
 			return;
-		
+		switch(newLevel){
+		case Upgrade.Level1:
+			stoneCost = (int)StoneCost.Level2;
+			stoneSell = (int)StoneSell.Level1;
+			
+			woodCost = (int)WoodCost.Level2;
+			woodSell = (int)WoodSell.Level1;
+
+			break;
+		case Upgrade.Level2:
+			stoneCost = (int)StoneCost.Level3;
+			stoneSell = (int)StoneSell.Level2;
+			
+			woodCost = (int)WoodCost.Level3;
+			woodSell = (int)WoodSell.Level2;
+
+			break;
+		case Upgrade.Level3:
+			stoneCost = (int)StoneCost.Level4;
+			stoneSell = (int)StoneSell.Level3;
+			
+			woodCost = (int)WoodCost.Level4;
+			woodSell = (int)WoodSell.Level3;
+
+			break;
+		case Upgrade.Level4:
+			stoneCost = (int)StoneCost.Level4;
+			stoneSell = (int)StoneSell.Level5;
+			
+			woodCost = (int)WoodCost.Level5;
+			woodSell = (int)WoodSell.Level4;
+
+			break;
+		case Upgrade.Level5:
+			stoneCost = (int)StoneCost.Level5;
+			stoneSell = (int)StoneSell.Level5;
+			
+			woodCost = (int)WoodCost.Level5;
+			woodSell = (int)WoodSell.Level5;
+
+			break;
+		}
 		currentLevel = newLevel;
 		
-		stoneCost++;
-		stoneSell++;
-		
-		woodCost++;
-		woodSell++;
-		
 		UpdateArt();
+		StartCoroutine("getPivot");
+	}
+	IEnumerator getPivot(){
+		yield return new WaitForSeconds(0.05f);
+		top = transform.FindChild("Art").transform.FindChild("Pivot");
+		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
 	}
 }

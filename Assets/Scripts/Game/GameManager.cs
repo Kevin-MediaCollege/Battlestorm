@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 		currentWave++;
 		allSpawned = false;
 		timerStarted = false;
-		enemiesToSpawn = wData.waveArray[currentWave].enemies.Length - 1;
+		enemiesToSpawn = wData.waveArray[currentWave - 1].enemies.Length;
 		bgm.wavestarted = true;
 		StartCoroutine("spawnEnemies");
 	}
