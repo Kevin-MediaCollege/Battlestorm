@@ -35,7 +35,7 @@ public class InterfaceGUI:MonoBehaviour {
 			if(!WaveManager.spawningEnemies) {
 				GUI.Label (new Rect (620, 13, 0, 0), "Next wave in: " + WaveManager.waveTimer, style);
 			} else {
-				GUI.Label (new Rect (620, 13, 0, 0), "Wave in progress!", style);
+				GUI.Label (new Rect (620, 13, 0, 0), "Spawning enemies!", style);
 			}
 		GUI.EndGroup();
 	}

@@ -14,13 +14,11 @@ public class MusicFlow:MonoBehaviour {
 	}
 
 	public void Wait() {
-		Debug.Log ("Wait");
 		waitSource.volume += 0.006f;
 		waveSource.volume -= 0.006f;
 	}
 
 	public void Wave() {
-		Debug.Log ("Wave");
 		waitSource.volume -= 0.006f;
 		waveSource.volume += 0.006f;
 	}
