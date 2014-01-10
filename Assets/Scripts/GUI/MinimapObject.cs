@@ -2,10 +2,14 @@
 using System.Collections;
 
 public class MinimapObject:MonoBehaviour {
-	public GameObject pointTarget;
+	private GameObject playerPosition;
+
+	void Start() {
+		playerPosition = GameObject.FindGameObjectWithTag("MainCamera");
+	}
 	
 	void Update() {
-		Vector3 position = pointTarget.transform.position;
+		Vector3 position = playerPosition.transform.position;
 
 		position.y = 50;
 		transform.position = position;

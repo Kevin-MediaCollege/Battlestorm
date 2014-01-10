@@ -6,7 +6,6 @@ public class BuildingGUI:MonoBehaviour {
 	public Texture lumberMillButton;
 	public Texture mineButton;
 	public Texture gold;
-	public Texture noIcon;
 	public Texture buildingGUI;
 
 	public PlayerData pData;
@@ -106,66 +105,64 @@ public class BuildingGUI:MonoBehaviour {
 
 	void OnGUI() {
 		if(target != null) {
-			if(target.renderer.isVisible) {
-				if(selectedBuilding == EBuildingType.Empty) {
-					if(iData.canHaveTower) {
-						if(pData.goldAmount >= BuildingCost) {
-							if(GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75), new GUIContent("", "Tower"), TowerButtonStyle)) {
-								CreateBuilding(EBuildingType.Tower);
-								pData.goldAmount -= BuildingCost;
-							}
-						} else {
-							GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75), new GUIContent("", "Tower"), NoMoneyTowerButtonStyle);
+			if(selectedBuilding == EBuildingType.Empty) {
+				if(iData.canHaveTower) {
+					if(pData.goldAmount >= BuildingCost) {
+						if(GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75), new GUIContent("", "Tower"), TowerButtonStyle)) {
+							CreateBuilding(EBuildingType.Tower);
+							pData.goldAmount -= BuildingCost;
 						}
 					} else {
-						GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75), new GUIContent("", "NoBuilding"), noButtonStyle);
+						GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75), new GUIContent("", "Tower"), NoMoneyTowerButtonStyle);
 					}
-
-					if(iData.canHaveLumberMill) {
-						if(pData.goldAmount >= BuildingCost){
-							if(GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "LumberMill"), LumberMillButtonStyle)) {
-								CreateBuilding(EBuildingType.LumberMill);
-								pData.goldAmount -= BuildingCost;
-							}
-						} else {
-							GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75),new GUIContent("", "LumberMill"), NoMoneyLumberMillButtonStyle);
-						}
-					} else {
-						GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "NoBuilding"), noButtonStyle);
-					}
-
-					if(iData.canHaveMine) {
-						if(pData.goldAmount >= BuildingCost) {
-							if(GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "Mine"), MineButtonStyle)) {
-								CreateBuilding(EBuildingType.Mine);
-								pData.goldAmount -= BuildingCost;
-							}
-						} else {
-							GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "Mine"), NoMoneyMineButtonStyle);
-						}
-					} else {
-						GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "NoBuilding"), noButtonStyle);
-					}
-				} else if(selectedBuilding == EBuildingType.Bridge) {
-					GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
-						GUI.Box(new Rect(0, 0, 200, 150),"" +  bridgeManager.buildCost);
-
-						if(GUI.Button(new Rect(50, 95, 100, 50), "Build Bridge")) {
-							if(pData.goldAmount >= bridgeManager.buildCost) {
-								pData.goldAmount -= bridgeManager.buildCost;
-								bridgeManager.Build();
-								DeselectBuilding();
-							}
-						}
-
-					GUI.EndGroup();
-				} else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
-					GUI.BeginGroup(new Rect(position.x - 200, Screen.height + -position.y - 150, 400, 250));
-						GUI.DrawTexture(new Rect(0, 0, 400, 250), buildingGUI);
-			
-						OpenPanel();
-					GUI.EndGroup();
+				} else {
+					GUI.Button(new Rect(position.x - 25, Screen.height + -position.y - 100, 75, 75), new GUIContent("", "NoBuilding"), noButtonStyle);
 				}
+
+				if(iData.canHaveLumberMill) {
+					if(pData.goldAmount >= BuildingCost){
+						if(GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "LumberMill"), LumberMillButtonStyle)) {
+							CreateBuilding(EBuildingType.LumberMill);
+							pData.goldAmount -= BuildingCost;
+						}
+					} else {
+						GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75),new GUIContent("", "LumberMill"), NoMoneyLumberMillButtonStyle);
+					}
+				} else {
+					GUI.Button(new Rect(position.x - 100, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "NoBuilding"), noButtonStyle);
+				}
+
+				if(iData.canHaveMine) {
+					if(pData.goldAmount >= BuildingCost) {
+						if(GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "Mine"), MineButtonStyle)) {
+							CreateBuilding(EBuildingType.Mine);
+							pData.goldAmount -= BuildingCost;
+						}
+					} else {
+						GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "Mine"), NoMoneyMineButtonStyle);
+					}
+				} else {
+					GUI.Button(new Rect(position.x + 50, Screen.height + -position.y + 25, 75, 75), new GUIContent("", "NoBuilding"), noButtonStyle);
+				}
+			} else if(selectedBuilding == EBuildingType.Bridge) {
+				GUI.BeginGroup(new Rect(position.x - 100, Screen.height + -position.y - 150, 200, 150));
+					GUI.Box(new Rect(0, 0, 200, 150),"" +  bridgeManager.buildCost);
+
+					if(GUI.Button(new Rect(50, 95, 100, 50), "Build Bridge")) {
+						if(pData.goldAmount >= bridgeManager.buildCost) {
+							pData.goldAmount -= bridgeManager.buildCost;
+							bridgeManager.Build();
+							DeselectBuilding();
+						}
+					}
+
+				GUI.EndGroup();
+			} else if(selectedBuilding != EBuildingType.Empty && selectedBuilding != EBuildingType.None) {
+				GUI.BeginGroup(new Rect(position.x - 200, Screen.height + -position.y - 150, 400, 250));
+					GUI.DrawTexture(new Rect(0, 0, 400, 250), buildingGUI);
+		
+					OpenPanel();
+				GUI.EndGroup();
 			}
 		}
 		

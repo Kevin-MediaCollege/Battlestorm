@@ -29,7 +29,7 @@ public class EnemyManager:MonoBehaviour {
 			break;
 		}
 
-		enemy = Instantiate(Resources.Load("Prefabs/Entity/" + name), spawnPosition.position, Quaternion.identity) as GameObject;
+		enemy = Instantiate(Resources.Load("Prefabs/Enemies/" + name), spawnPosition.position, Quaternion.identity) as GameObject;
 		Enemy en = enemy.GetComponent<Enemy>();
 
 		en.hitpoints = health;

@@ -3,10 +3,13 @@ using System.Collections;
 
 public class InterfaceGUI:MonoBehaviour {
 	public Texture texture;
+
 	public GUIStyle style;
 	public GUIStyle styleLarge;
 
-	public bool speedup = false;
+	public GUIStyle styleMenu;
+
+	private bool speedup = false;
 
 	void FixedUpdate() {
 		if(speedup) {
@@ -33,10 +36,13 @@ public class InterfaceGUI:MonoBehaviour {
 			GUI.Label(new Rect(500, 35, 0, 0), WaveData.Instance.currentWave.ToString(), styleLarge);
 			
 			if(!WaveData.Instance.spawningEnemies) {
-				GUI.Label (new Rect (620, 13, 0, 0), "Next wave in: " + WaveData.Instance.waveTimer, style);
+				GUI.Label(new Rect(620, 13, 0, 0), "Next wave in: " + WaveData.Instance.waveTimer, style);
 			} else {
-				GUI.Label (new Rect (620, 13, 0, 0), "Spawning enemies!", style);
+				GUI.Label(new Rect(620, 13, 0, 0), "Spawning enemies!", style);
 			}
+
+			if(GUI.Button(new Rect(875, 18, 45, 19), "", styleMenu))
+				Application.LoadLevel(0);
 		GUI.EndGroup();
 	}
 }
