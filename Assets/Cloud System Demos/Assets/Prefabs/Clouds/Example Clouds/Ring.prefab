@@ -176,6 +176,36 @@ MonoBehaviour:
     scale: {x: 88.7257004, y: 59.1211128, z: 77.6244354}
     particleGroupIndex: 0
     shadingGroupIndex: 0
+  - particleCount: 100
+    position: {x: -21.6360779, y: 10.3614044, z: -79.137619}
+    rotation: {x: 28.3055725, y: 0, z: 0}
+    scale: {x: 125.160164, y: 64.5621948, z: 63.3553047}
+    particleGroupIndex: 0
+    shadingGroupIndex: 0
+  - particleCount: 100
+    position: {x: -21.6360779, y: 10.3614044, z: -79.137619}
+    rotation: {x: 28.3055725, y: 0, z: 0}
+    scale: {x: 125.160164, y: 64.5621948, z: 63.3553047}
+    particleGroupIndex: 0
+    shadingGroupIndex: 0
+  - particleCount: 100
+    position: {x: -21.6360779, y: 10.3614044, z: -79.137619}
+    rotation: {x: 28.3055725, y: 0, z: 0}
+    scale: {x: 125.160164, y: 64.5621948, z: 63.3553047}
+    particleGroupIndex: 0
+    shadingGroupIndex: 0
+  - particleCount: 100
+    position: {x: -21.6360779, y: 10.3614044, z: -79.137619}
+    rotation: {x: 28.3055725, y: 0, z: 0}
+    scale: {x: 125.160164, y: 64.5621948, z: 63.3553047}
+    particleGroupIndex: 0
+    shadingGroupIndex: 0
+  - particleCount: 100
+    position: {x: -21.6360779, y: 10.3614044, z: -79.137619}
+    rotation: {x: 28.3055725, y: 0, z: 0}
+    scale: {x: 125.160164, y: 64.5621948, z: 63.3553047}
+    particleGroupIndex: 0
+    shadingGroupIndex: 0
   particleGroups:
   - name: Particle Group
     shapeColor: {r: 1, g: .921568632, b: .0156862754, a: 1}
