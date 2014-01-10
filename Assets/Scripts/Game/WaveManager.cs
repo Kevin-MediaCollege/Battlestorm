@@ -73,7 +73,7 @@ public class WaveManager:MonoBehaviour {
 		while(true) {
 			yield return new WaitForSeconds(1.8f);
 			
-			if(enemiesToSpawn > 0) {
+			if(enemiesToSpawn >= 0) {
 				currentEnemy++;
 				enemiesToSpawn--;
 

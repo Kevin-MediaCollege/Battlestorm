@@ -1,47 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class EnemyManager:MonoBehaviour {
-	public Transform[] spawnpositions;
 
-	public Transform spawnposition;
-	public Transform parent;
-	public Transform start;
+public class EnemyManager:MonoBehaviour {
+	public Transform[] spawnPositions;
+
 	public Transform end;
 
-	public GameObject[] enemies;
+	private Transform spawnPosition;
+	private Transform parent;
 
 	private GameObject enemy;
-	
-	public float spawnDelay;
-
-	public List<GameObject> enemyList;
 
 	void Start() {
-		enemyList = new List<GameObject>();
-	}
-
-	void FixedUpdate(){
-		for(int i = 0; i < enemyList.Count; i++) {
-			if(enemyList[i].gameObject == null)
-				enemyList.RemoveAt(i);
-		}
+		parent = GameObject.Find("Enemies").GetComponent<Transform>();
 	}
 
 	public void SpawnEnemy(string name, float health, float speed, int spawn) {
 		switch(spawn){
 		case 0:
-			spawnposition = spawnpositions[0];
+			spawnPosition = spawnPositions[0];
 			break;
 		case 1:
-			spawnposition = spawnpositions[1];
+			spawnPosition = spawnPositions[1];
 			break;
 		case 2:
-			spawnposition = spawnpositions[2];
+			spawnPosition = spawnPositions[2];
 			break;
 		}
 
-		enemy = Instantiate(Resources.Load("Prefabs/Entity/" + name), spawnposition.position, Quaternion.identity) as GameObject;
+		enemy = Instantiate(Resources.Load("Prefabs/Entity/" + name), spawnPosition.position, Quaternion.identity) as GameObject;
 		Enemy en = enemy.GetComponent<Enemy>();
 
 		en.hitpoints = health;
@@ -49,7 +37,5 @@ public class EnemyManager:MonoBehaviour {
 
 		enemy.GetComponent<PathFollower>().target = end;
 		enemy.transform.parent = parent;
-
-		enemyList.Add(enemy.transform.gameObject);
 	}
 }

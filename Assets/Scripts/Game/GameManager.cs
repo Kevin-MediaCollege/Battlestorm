@@ -12,7 +12,7 @@ public class GameManager:MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		if(WaveData.Instance.spawningEnemies) {
+		if(GameObject.FindGameObjectWithTag("Enemy")) {
 			musicFlow.Wave();
 		} else {
 			musicFlow.Wait();

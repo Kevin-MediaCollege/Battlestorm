@@ -10432,17 +10432,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2a303ca0c2f564491d2c1772d2f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnpositions:
+  spawnPositions:
   - {fileID: 152458210}
   - {fileID: 597922446}
   - {fileID: 1775144985}
-  spawnposition: {fileID: 0}
-  parent: {fileID: 97812367}
-  start: {fileID: 1775144985}
   end: {fileID: 888662282}
-  enemies: []
-  spawnDelay: 3
-  enemyList: []
 --- !u!114 &958339537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10889,7 +10883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72ae1db7fc1c324fa27002b4de78a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveDelay: 5
+  waveDelay: 35
 --- !u!1 &973376752
 GameObject:
   m_ObjectHideFlags: 0
@@ -17276,6 +17270,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400006, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: spawnPositions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
       propertyPath: m_LocalPosition.x
       value: 23.6458645
@@ -17330,8 +17328,20 @@ Prefab:
       objectReference: {fileID: 888662282}
     - target: {fileID: 11400000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
       propertyPath: waveDelay
-      value: 5
+      value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: spawnPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 152458210}
+    - target: {fileID: 11400006, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: spawnPositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 597922446}
+    - target: {fileID: 11400006, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: spawnPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 1775144985}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
   m_RootGameObject: {fileID: 958339527}
