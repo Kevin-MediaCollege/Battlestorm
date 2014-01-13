@@ -59,7 +59,7 @@ public class BuildingGUI:MonoBehaviour {
 			RaycastHit hit;
 
 			if(Physics.Raycast(ray, out hit, 100) && selectedBuilding == EBuildingType.None) {
-				if(hit.transform.gameObject.name == "platform" || hit.transform.gameObject.name == "Bridge") {
+				if(!hit.transform.gameObject.CompareTag("Enemy")) {
 					switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
 					case EBuildingType.Empty:
 						SelectEmpty(hit);
