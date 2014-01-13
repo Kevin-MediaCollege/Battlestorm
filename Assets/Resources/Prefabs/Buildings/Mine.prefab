@@ -11,6 +11,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Mine
@@ -53,16 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPath: Prefabs/Buildings/Mine/Mine
+  stats: {fileID: 0}
   interactable: 0
   tickDelay: 3
-  goldCost: 0
-  stoneCost: 0
-  woodCost: 0
-  goldSell: 0
-  stoneSell: 0
-  woodSell: 0
   currentLevel: 1
-  maxLevel: 5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,6 +70,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef908bcf4b8393a409aa1c1cf9f62687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels: 5
+  resourcesPerTick:
+  - 10
+  - 15
+  - 25
+  - 40
+  - 60
+  goldCostPerLevel:
+  - 0
+  - 100
+  - 250
+  - 500
+  - 1000
+  stoneCostPerLevel:
+  - 0
+  - 250
+  - 600
+  - 1200
+  - 3000
+  woodCostPerLevel:
+  - 0
+  - 150
+  - 300
+  - 500
+  - 3000
+  goldSellPerLevel:
+  - 50
+  - 100
+  - 250
+  - 500
+  - 1000
+  stoneSellPerLevel:
+  - 0
+  - 10
+  - 10
+  - 210
+  - 500
+  woodSellPerLevel:
+  - 0
+  - 10
+  - 10
+  - 210
+  - 500
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

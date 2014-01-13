@@ -5,7 +5,7 @@ TagManager:
   tags:
   - 
   - 
-  - EmptyPlot
+  - Plot
   - Mine
   - LumberMill
   - Tower
@@ -16,6 +16,8 @@ TagManager:
   - EnemyCollider
   - ParticleObject
   - ProjectileObject
+  - 
+  - EmptyPlot
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

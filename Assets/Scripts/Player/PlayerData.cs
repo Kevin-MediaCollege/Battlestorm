@@ -4,9 +4,9 @@ using System.Collections;
 public class PlayerData:MonoBehaviour {
 	private static PlayerData instance = null;
 	
-	public int woodAmount;
-	public int stoneAmount;
-	public int goldAmount;
+	public float woodAmount;
+	public float stoneAmount;
+	public float goldAmount;
 	
 	public int health;
 

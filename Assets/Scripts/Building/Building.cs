@@ -2,34 +2,30 @@
 using System.Collections;
 
 public class Building:MonoBehaviour {
-	public enum Upgrade {
-		Level1 = 1,
-		Level2 = 2,
-		Level3 = 3,
-		Level4 = 4,
-		Level5 = 5
-	};
-
 	public string prefabPath = "Prefabs/Buildings/";
-	
+
+	[HideInInspector]
+	public BuildingStats stats;
+
 	public bool interactable;
 
 	public int tickDelay;
+	public int currentLevel;
 
-	public int goldCost;
-	public int stoneCost;
-	public int woodCost;
-
-	public int goldSell;
-	public int stoneSell;
-	public int woodSell;
-
-	public Upgrade currentLevel;
-	public Upgrade maxLevel;
-	
 	protected GameObject art;
+
+	protected void Start() {
+		stats = GetComponent<BuildingStats>();
+	}
 	
-	public virtual void SwitchLevel(Upgrade newLevel) { }
+	public void SwitchLevel(int newLevel) {
+		if(newLevel > stats.levels)
+			return;
+		
+		currentLevel = newLevel;
+		
+		UpdateArt();
+	}
 
 	protected virtual IEnumerator Tick() { return null; }
 
