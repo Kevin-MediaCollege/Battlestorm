@@ -27,7 +27,6 @@ public class CameraMovement:MonoBehaviour {
 
 		rotationX += Input.GetAxis("ControllerTurn") * sensitivity;
 		rotationY += Input.GetAxis("ControllerTurnY") * sensitivity;
-
 		transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
 		transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
 		transform.position += transform.forward * speed * Input.GetAxis("Vertical");

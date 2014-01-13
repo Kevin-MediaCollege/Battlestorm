@@ -18,7 +18,7 @@ public class Building:MonoBehaviour {
 		stats = GetComponent<BuildingStats>();
 	}
 	
-	public void SwitchLevel(int newLevel) {
+	public virtual void SwitchLevel(int newLevel) {
 		if(newLevel > stats.levels)
 			return;
 		

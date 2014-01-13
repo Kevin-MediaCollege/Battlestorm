@@ -99,4 +99,13 @@ public class Tower:Building {
 		top = transform.FindChild("Art").transform.FindChild("Pivot");
 		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
 	}
+
+	public override void SwitchLevel(int newLevel) {
+		if(newLevel > stats.levels)
+			return;
+		
+		currentLevel = newLevel;
+		
+		UpdateArt();
+	}
 }

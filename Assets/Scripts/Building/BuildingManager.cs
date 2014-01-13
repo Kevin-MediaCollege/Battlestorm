@@ -4,6 +4,7 @@ using System.Collections;
 public class BuildingManager:MonoBehaviour {
 	public GameObject platform;
 
+	[HideInInspector]
 	public bool isUnlocked;
 
 	private GameObject building;

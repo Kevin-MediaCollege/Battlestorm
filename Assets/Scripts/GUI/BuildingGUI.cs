@@ -3,17 +3,23 @@ using System.Collections;
 
 public class BuildingGUI:MonoBehaviour {
 	public Texture2D buttonTower;
-	public Texture buttonMine;
-	public Texture buttonLumberMill;
+	public Texture2D buttonTowerNoMoney;
+	public Texture2D buttonMine;
+	public Texture2D buttonMineNoMoney;
+	public Texture2D buttonLumberMill;
+	public Texture2D buttonLumberMillNoMoney;
+	public Texture2D buttonBridge;
+	public Texture2D buttonBridgeNoMoney;
 
 	public Texture backgroundTexture;
 
 	public float showDelay;
-
-	public GUIStyle styleBuy;
+	
+	public GUIStyle styleText;
 	public GUIStyle styleSell;
+	public GUIStyle styleUpgrade;
 
-	public GUIStyle style;
+	public GUIStyle styleNormal;
 	public GUIStyle styleNoMoney;
 	public GUIStyle styleNoBuilding;
 
@@ -42,9 +48,8 @@ public class BuildingGUI:MonoBehaviour {
 		if(Input.GetMouseButtonDown(0)) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			style.normal.background = buttonTower;
-			if(Physics.Raycast(ray, out hit, 100) && selectedBuilding == EBuildingType.None) {
 
+			if(Physics.Raycast(ray, out hit, 100) && selectedBuilding == EBuildingType.None) {
 				switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
 				case EBuildingType.Empty:
 					SelectEmpty(hit);
@@ -85,9 +90,12 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	private void DrawTowerButton(bool canHaveTower) {
+		styleNormal.normal.background = buttonTower;
+		styleNoMoney.normal.background = buttonTowerNoMoney;
+
 		if(canHaveTower) {
 			if(PlayerData.Instance.goldAmount >= cost) {
-				if(GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), style)) {
+				if(GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), styleNormal)) {
 					Create(EBuildingType.Tower);
 					PlayerData.Instance.goldAmount -= cost;
 				}
@@ -100,14 +108,17 @@ public class BuildingGUI:MonoBehaviour {
 	}
 	
 	private void DrawMineButton(bool canHaveMine) {
+		styleNormal.normal.background = buttonMine;
+		styleNoMoney.normal.background = buttonMineNoMoney;
+
 		if(canHaveMine) {
 			if(PlayerData.Instance.goldAmount >=  cost) {
-				if(GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), style)) {
+				if(GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), styleNormal)) {
 					Create(EBuildingType.Mine);
 					PlayerData.Instance.goldAmount -= cost;
 				}
 			} else {
-				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Tower"), styleNoMoney);
+				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), styleNoMoney);
 			}
 		} else {
 			GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NoBuilding"), styleNoBuilding);
@@ -115,14 +126,17 @@ public class BuildingGUI:MonoBehaviour {
 	}
 	
 	private void DrawLumberMillButton(bool canHaveLumberMill) {
+		styleNormal.normal.background = buttonLumberMill;
+		styleNoMoney.normal.background = buttonLumberMillNoMoney;
+
 		if(canHaveLumberMill) {
 			if(PlayerData.Instance.goldAmount >= cost) {
-				if(GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), style)) {
-					Create(EBuildingType.Mine);
+				if(GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), styleNormal)) {
+					Create(EBuildingType.LumberMill);
 					PlayerData.Instance.goldAmount -= cost;
 				}
 			} else {
-				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Tower"), styleNoMoney);
+				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), styleNoMoney);
 			}
 		} else {
 			GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NoBuilding"), styleNoBuilding);
@@ -130,15 +144,49 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	private void DrawUpgradeGUI() {
-		if(GUI.Button(new Rect(292, 170, 75, 50), ""))
+		GUI.BeginGroup(new Rect(targetPosition.x - 200, Screen.height + -targetPosition.y - 150, 400, 250));
+		GUI.DrawTexture(new Rect(0, 0, 400, 250), backgroundTexture);
+
+		if(building.currentLevel != building.stats.levels) {
+			styleText.normal.textColor = Color.red;
+
+			GUI.Label(new Rect(60, 63, 30, 20), "" + building.stats.woodCostPerLevel[building.currentLevel - 1], styleText);
+			GUI.Label(new Rect(60, 103, 30, 20), "" + building.stats.stoneCostPerLevel[building.currentLevel - 1], styleText);
+
+			if(GUI.Button(new Rect(28, 195, 80.83f, 26.66f), "", styleUpgrade)) {
+				if(PlayerData.Instance.woodAmount >= building.stats.woodCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.stoneAmount >= building.stats.stoneCostPerLevel[building.currentLevel]) {
+					PlayerData.Instance.stoneAmount -= building.stats.stoneCostPerLevel[building.currentLevel - 1];
+					PlayerData.Instance.woodAmount -= building.stats.woodCostPerLevel[building.currentLevel - 1];
+					building.SwitchLevel(building.currentLevel + 1);
+				}
+			}
+		}
+
+		styleText.normal.textColor = Color.green;
+
+		GUI.Label(new Rect(325, 63, 30, 20),"" + building.stats.woodSellPerLevel[building.currentLevel - 1], styleText);
+		GUI.Label(new Rect(325, 103, 30, 20),"" + building.stats.stoneSellPerLevel[building.currentLevel - 1], styleText);
+		
+		if(GUI.Button(new Rect(291, 195, 80.83f, 26.66f), "", styleSell))
 			DestroyBuilding();
 
-		if(GUI.Button(new Rect(292, 300, 75, 50), ""))
-			building.SwitchLevel(building.currentLevel + 1);
+		GUI.EndGroup();
 	}
 
 	private void DrawBridgeGUI() {
+		styleText.normal.textColor = Color.black;
 
+		GUI.BeginGroup(new Rect(targetPosition.x - 37.5f, Screen.height + -targetPosition.y - 25, 75, 130));
+			GUI.Label(new Rect(26, 0, 37.5f, 20), bridgeManager.buildCost.ToString(), styleText);
+
+			if(GUI.Button(new Rect(0, 25, 75, 75), buttonBridge, new GUIStyle())) {
+				if(PlayerData.Instance.goldAmount >= bridgeManager.buildCost) {
+					PlayerData.Instance.goldAmount -= bridgeManager.buildCost;
+					bridgeManager.Build();
+					Deselect();
+				}
+			}
+		GUI.EndGroup();
 	}
 
 	private void SelectEmpty(RaycastHit hit) {
@@ -166,7 +214,7 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	private void SelectBridge(RaycastHit hit) {
-		islandData = hit.transform.parent.GetComponent<IslandReference>().iData;
+		islandData = hit.transform.GetComponent<IslandReference>().iData;
 		bridgeManager = hit.transform.parent.gameObject.GetComponent<Bridge>();
 		
 		if(islandData.isUnlocked && !bridgeManager.isMade)

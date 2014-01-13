@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels: 3
+  buyPrice: 50
   resourcesPerTick:
   - 50
   - 100
@@ -154,11 +155,11 @@ MonoBehaviour:
   - 100
   - 250
   stoneCostPerLevel:
-  - 0
+  - 100
   - 250
   - 600
   woodCostPerLevel:
-  - 0
+  - 100
   - 150
   - 300
   goldSellPerLevel:
@@ -166,13 +167,13 @@ MonoBehaviour:
   - 100
   - 250
   stoneSellPerLevel:
-  - 0
-  - 10
-  - 10
+  - 25
+  - 35
+  - 45
   woodSellPerLevel:
-  - 0
-  - 10
-  - 10
+  - 25
+  - 35
+  - 45
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

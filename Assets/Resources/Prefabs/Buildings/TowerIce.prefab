@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels: 3
+  buyPrice: 50
   resourcesPerTick:
   - 50
   - 100

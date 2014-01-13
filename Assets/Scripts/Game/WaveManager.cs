@@ -35,8 +35,6 @@ public class WaveManager:MonoBehaviour {
 				StartNextWave();
 			}
 		}
-		
-		GUI.Box(new Rect(50, 0, 50, 50), waveData.waveTimer.ToString());
 	}
 
 	void StartNextWave() {
