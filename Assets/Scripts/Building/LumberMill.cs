@@ -13,12 +13,15 @@ public class LumberMill:Building {
 		while(true) {
 			yield return new WaitForSeconds(tickDelay);
 			
-			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
+			Vector3 position = transform.position;
+			position.y += 2;
+			
+			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();
 
 			PlayerData.Instance.woodAmount += stats.resourcesPerTick[currentLevel - 1];
 			
-			textPopup.text = "" + stats.resourcesPerTick[currentLevel];
+			textPopup.text = stats.resourcesPerTick[currentLevel].ToString();
 			textPopup.color = new Color(0.6f, 0.2f, 0);
 			textPopup.transform.parent = this.transform;
 		}

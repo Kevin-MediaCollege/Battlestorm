@@ -9657,7 +9657,12 @@ MonoBehaviour:
   spawnposition: {fileID: 373906848}
   isMade: 0
   bridgeParts: 6
-  buildCost: 50
+  goldCostFirst: 0
+  stoneCostFirst: 0
+  woodCostFirst: 0
+  goldCostOther: 0
+  stoneCostOther: 0
+  woodCostOther: 0
 --- !u!1001 &949871855
 Prefab:
   m_ObjectHideFlags: 0
@@ -9897,7 +9902,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
@@ -9956,7 +9961,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
@@ -10217,8 +10222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda73aae8e428c24a8781b304bee2e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodAmount: 0
-  stoneAmount: 0
+  woodAmount: 50
+  stoneAmount: 50
   goldAmount: 100
   health: 10
 --- !u!114 &958339535
@@ -10276,6 +10281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8055e0434781f845aba0a5a256f6fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldTexture: {fileID: 2800000, guid: 526723cd4e9f8ae41be8db4e5e7062a7, type: 3}
+  stoneTexture: {fileID: 2800000, guid: dbbb9fe0c260d614c9dc7987ac6772e9, type: 3}
+  woodTexture: {fileID: 2800000, guid: a116456c6a794bc4bb5c4c0fe727bd9f, type: 3}
   tooltipStyle:
     m_Name: 
     m_Normal:
@@ -10322,7 +10330,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
@@ -10331,6 +10339,65 @@ MonoBehaviour:
     m_TextClipping: 0
     m_ImagePosition: 0
     m_ContentOffset: {x: 9, y: 4}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  tooltipTextStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: .800000012, g: .772549033, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 1
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 9, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
@@ -10394,7 +10461,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_Alignment: 0
@@ -10453,7 +10520,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 75
     m_FontStyle: 0
     m_Alignment: 4
@@ -12054,7 +12121,12 @@ MonoBehaviour:
   spawnposition: {fileID: 198886266}
   isMade: 0
   bridgeParts: 4
-  buildCost: 50
+  goldCostFirst: 0
+  stoneCostFirst: 0
+  woodCostFirst: 0
+  goldCostOther: 0
+  stoneCostOther: 0
+  woodCostOther: 0
 --- !u!1 &1105155806
 GameObject:
   m_ObjectHideFlags: 0

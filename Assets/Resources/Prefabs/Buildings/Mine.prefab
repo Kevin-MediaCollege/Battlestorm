@@ -82,49 +82,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels: 5
-  buyPrice: 50
   resourcesPerTick:
+  - 5
+  - 7
   - 10
+  - 15
+  - 20
+  goldCostPerLevel:
+  - 50
   - 15
   - 25
   - 40
-  - 60
-  goldCostPerLevel:
-  - 0
-  - 100
-  - 250
-  - 500
-  - 1000
+  - 70
   stoneCostPerLevel:
-  - 0
-  - 250
-  - 600
-  - 1200
-  - 3000
-  woodCostPerLevel:
-  - 0
-  - 150
-  - 300
-  - 500
-  - 3000
-  goldSellPerLevel:
+  - 10
+  - 10
+  - 30
   - 50
   - 100
-  - 250
-  - 500
-  - 1000
+  woodCostPerLevel:
+  - 10
+  - 30
+  - 40
+  - 50
+  - 100
+  goldSellPerLevel:
+  - 25
+  - 7
+  - 12
+  - 20
+  - 35
   stoneSellPerLevel:
-  - 0
-  - 10
-  - 10
-  - 210
-  - 500
+  - 5
+  - 5
+  - 15
+  - 25
+  - 50
   woodSellPerLevel:
-  - 0
-  - 10
-  - 10
-  - 210
-  - 500
+  - 5
+  - 15
+  - 20
+  - 25
+  - 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -144,36 +144,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef908bcf4b8393a409aa1c1cf9f62687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: 3
-  buyPrice: 50
-  resourcesPerTick:
-  - 50
-  - 100
-  - 250
+  levels: 4
+  goldBuyPrice: 50
+  stoneBuyPrice: 10
+  woodBuyPrice: 10
+  resourcesPerTick: []
   goldCostPerLevel:
-  - 50
-  - 100
-  - 250
+  - 15
+  - 25
+  - 40
+  - 70
   stoneCostPerLevel:
-  - 100
-  - 250
-  - 600
+  - 10
+  - 20
+  - 30
+  - 50
   woodCostPerLevel:
-  - 100
-  - 150
-  - 300
-  goldSellPerLevel:
+  - 30
+  - 40
   - 50
   - 100
-  - 250
+  goldSellPerLevel:
+  - 7
+  - 12
+  - 20
+  - 35
   stoneSellPerLevel:
+  - 5
+  - 10
+  - 15
   - 25
-  - 35
-  - 45
   woodSellPerLevel:
+  - 15
+  - 20
   - 25
-  - 35
-  - 45
+  - 50
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

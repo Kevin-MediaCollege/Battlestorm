@@ -67,8 +67,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: .147809401, y: 0, z: 0, w: .989015877}
-  m_LocalPosition: {x: 23.6458645, y: 16.7521782, z: 39.7605972}
+  m_LocalRotation: {x: .160434425, y: .709462464, z: -.0332191885, w: .685434401}
+  m_LocalPosition: {x: -13.1111107, y: 16.1262722, z: 32.4115982}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda73aae8e428c24a8781b304bee2e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodAmount: 0
-  stoneAmount: 0
+  woodAmount: 50
+  stoneAmount: 50
   goldAmount: 100
   health: 10
 --- !u!114 &11400004
@@ -329,6 +329,8 @@ MonoBehaviour:
   buttonLumberMill: {fileID: 2800000, guid: b5b3ecd27d66f8943b75929920e1baa8, type: 3}
   buttonLumberMillNoMoney: {fileID: 2800000, guid: cbdb3313708659f4f92db23780b81491,
     type: 3}
+  buttonBridge: {fileID: 2800000, guid: b98003d44d277b241b50dfea0ee51339, type: 3}
+  buttonBridgeNoMoney: {fileID: 2800000, guid: 6a0e0054ab2ac614f977e5e32a2b8af3, type: 3}
   backgroundTexture: {fileID: 2800000, guid: 3de0b355b7550ba4385737ef24bc8827, type: 3}
   showDelay: .200000003
   styleText:
@@ -377,7 +379,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
@@ -436,7 +438,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
@@ -707,11 +709,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8055e0434781f845aba0a5a256f6fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePos: {x: 0, y: 0}
+  goldTexture: {fileID: 2800000, guid: 526723cd4e9f8ae41be8db4e5e7062a7, type: 3}
+  stoneTexture: {fileID: 2800000, guid: dbbb9fe0c260d614c9dc7987ac6772e9, type: 3}
+  woodTexture: {fileID: 2800000, guid: a116456c6a794bc4bb5c4c0fe727bd9f, type: 3}
   tooltipStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 016b4cd6f1e1df446a217c127efeff05, type: 3}
+      m_Background: {fileID: 2800000, guid: 3116aefb756d1254f820e2f963cc5bdd, type: 3}
       m_TextColor: {r: .801470578, g: .772058845, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -754,15 +758,74 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 1
     m_RichText: 1
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
+    m_ContentOffset: {x: 9, y: 9}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  tooltipTextStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: .800000012, g: .772549033, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 1
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 9, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
@@ -825,7 +888,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_Alignment: 0
@@ -884,7 +947,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_Font: {fileID: 12800000, guid: 646c20edae8103942b7be0b6704c49f6, type: 3}
     m_FontSize: 75
     m_FontStyle: 0
     m_Alignment: 4

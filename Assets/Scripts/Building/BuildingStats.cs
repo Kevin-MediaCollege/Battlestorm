@@ -3,8 +3,7 @@ using System.Collections;
 
 public class BuildingStats:MonoBehaviour {
 	public int levels;
-	public int buyPrice;
-
+	
 	public float[] resourcesPerTick;
 
 	public float[] goldCostPerLevel;

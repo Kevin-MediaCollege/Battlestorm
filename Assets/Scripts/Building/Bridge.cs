@@ -2,14 +2,24 @@
 using System.Collections;
 
 public class Bridge:MonoBehaviour {
-	public IslandData[] adjacentIslands;
+	private static bool first = false;
 
+	public IslandData[] adjacentIslands;
+	
 	public GameObject spawnposition;
 
+	[HideInInspector]
 	public bool isMade;
 
 	public int bridgeParts;
-	public int buildCost;
+	
+	public int goldCostFirst;
+	public int stoneCostFirst;
+	public int woodCostFirst;
+	
+	public int goldCostOther;
+	public int stoneCostOther;
+	public int woodCostOther;
 
 	public void Build() {
 		for(int i = 0; i < bridgeParts; i++) {
@@ -22,7 +32,13 @@ public class Bridge:MonoBehaviour {
 			part.name = "BridgePart";
 			part.transform.parent = spawnposition.transform;
 		}
-
+		
+		PlayerData.Instance.goldAmount -= first ? goldCostFirst : goldCostOther;
+		PlayerData.Instance.stoneAmount -= first ? stoneCostFirst : stoneCostOther;
+		PlayerData.Instance.woodAmount -= first ? woodCostFirst : woodCostOther;
+		
+		first = false;
+		
 		isMade = true;
 		Unlock();
 	}
@@ -31,5 +47,17 @@ public class Bridge:MonoBehaviour {
 		for(int i = 0; i < adjacentIslands.Length; i++) {
 			adjacentIslands[i].unlockIsland(true);
 		}
+	}
+	
+	public int GoldCost() {
+		return first ? goldCostFirst : goldCostOther;
+	}
+	
+	public int StoneCost() {
+		return first ? stoneCostFirst : stoneCostOther;
+	}
+	
+	public int WoodCost() {
+		return first ? woodCostFirst : woodCostOther;
 	}
 }
