@@ -75,11 +75,14 @@ public class Tower:Building {
 		
 		target = closest;
 	}
+
 	public override void SwitchLevel(int newLevel) {
 		base.SwitchLevel(newLevel);
+
 		damage *= 2;
 		tickDelay /= 2;
 	}
+
 	void Fire() {
 		if(target != null) {
 			if(!target.GetComponent<Enemy>().isDead) {
@@ -102,14 +105,5 @@ public class Tower:Building {
 		yield return new WaitForSeconds(0.05f);
 		top = transform.FindChild("Art").transform.FindChild("Pivot");
 		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
-	}
-
-	public override void SwitchLevel(int newLevel) {
-		if(newLevel > stats.levels)
-			return;
-		
-		currentLevel = newLevel;
-		
-		UpdateArt();
 	}
 }
