@@ -2,46 +2,49 @@
 using System.Collections;
 
 public class Tooltip:MonoBehaviour {
-	public Vector2 mousePos;
-
 	public GUIStyle tooltipStyle;
 
-	private string tooltipType;
-	private string tooltipText;
-	private bool drawgui;
+	private Vector2 mousePos;
+	
+	private string text;
+
+	private bool drawGUI;
 	
 	void Update() {
 		mousePos = new Vector2(Input.mousePosition.x,(Screen.height - Input.mousePosition.y));
 	}
 
-	public void drawTooltip(string text, bool state){
-		tooltipType = text;
-		drawgui = state;
-
-		switch(tooltipType) {
+	public void drawTooltip(string type, bool state){
+		switch(type) {
 		case "Tower":
-			tooltipText = "Builds a new Tower";
+			text = TooltipTexts.Instance.build_tower;
 			break;
 		case "Mine":
-			tooltipText = "Builds a new Mine";
+			text = TooltipTexts.Instance.build_mine;
 			break;
 		case "LumberMill":
-			tooltipText = "Builds a new LumberMill";
+			text = TooltipTexts.Instance.build_lumbermill;
 			break;
-		case "NoBuilding":
-			tooltipText = "You can't build this building here";
+		case "Bridge":
+			text = TooltipTexts.Instance.build_bridge;
+			break;
+		case "NotAvailable":
+			text = TooltipTexts.Instance.build_not_available;
 			break;
 		}
+
+		drawGUI = state;
 	}
 	public void unloadGUI() {
-		drawgui = false;
-		tooltipType = "";
+		text = "";
+
+		drawGUI = false;
 	}
 
 	void OnGUI() {
-		if(drawgui) {
+		if(drawGUI) {
 			GUI.depth = -1000;
-			GUI.Label(new Rect(mousePos.x + 8, mousePos.y - 75, 200, 100), tooltipText, tooltipStyle);
+			GUI.Label(new Rect(mousePos.x + 8, mousePos.y - 75, 200, 100), text, tooltipStyle);
 		}
 	}
 }

@@ -6920,6 +6920,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 25119267}
   m_GameObject: {fileID: 683140677}
   m_Mesh: {fileID: 4300002, guid: c87c80efd50547441b54d2164be96008, type: 3}
+--- !u!1 &696912234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 696912235}
+  m_Layer: 0
+  m_Name: Clouds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &696912235
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 696912234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44.1966209, y: -9.69085693, z: -4.94510269}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1505358402}
+  - {fileID: 1566367756}
+  m_Father: {fileID: 0}
 --- !u!1 &698677541
 GameObject:
   m_ObjectHideFlags: 0
@@ -10248,11 +10276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8055e0434781f845aba0a5a256f6fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePos: {x: 0, y: 0}
   tooltipStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 016b4cd6f1e1df446a217c127efeff05, type: 3}
+      m_Background: {fileID: 2800000, guid: 3116aefb756d1254f820e2f963cc5bdd, type: 3}
       m_TextColor: {r: .801470578, g: .772058845, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
@@ -10296,14 +10323,14 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
-    m_FontSize: 25
+    m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 1
     m_RichText: 1
     m_TextClipping: 0
     m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
+    m_ContentOffset: {x: 9, y: 4}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
@@ -16162,14 +16189,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1505358401}
   m_LocalRotation: {x: 0, y: -.906307876, z: 0, w: .422618151}
-  m_LocalPosition: {x: 7.21700382, y: 0, z: -24.83461}
+  m_LocalPosition: {x: -36.9796181, y: 9.69085693, z: -19.8895073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 165625350}
   - {fileID: 1576088785}
   - {fileID: 148838944}
   - {fileID: 793080111}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 696912235}
 --- !u!114 &1505358403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17014,7 +17041,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1566367754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -44.1966209, y: 9.69085693, z: 4.94510269}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1062027206}
@@ -17022,7 +17049,7 @@ Transform:
   - {fileID: 578346078}
   - {fileID: 2032196313}
   - {fileID: 1378348811}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 696912235}
 --- !u!1 &1576088784
 GameObject:
   m_ObjectHideFlags: 0
@@ -18549,6 +18576,22 @@ Prefab:
       propertyPath: buttonBridgeNoMoney
       value: 
       objectReference: {fileID: 2800000, guid: 6a0e0054ab2ac614f977e5e32a2b8af3, type: 3}
+    - target: {fileID: 11400012, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: tooltipStyle.m_Normal.m_Background
+      value: 
+      objectReference: {fileID: 2800000, guid: 3116aefb756d1254f820e2f963cc5bdd, type: 3}
+    - target: {fileID: 11400012, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: tooltipStyle.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400012, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: tooltipStyle.m_ContentOffset.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400012, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
+      propertyPath: tooltipStyle.m_ContentOffset.y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c0578b4171ce0e4384fbca483f91470, type: 2}
   m_RootGameObject: {fileID: 958339527}
