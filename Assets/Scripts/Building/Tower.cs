@@ -75,7 +75,11 @@ public class Tower:Building {
 		
 		target = closest;
 	}
-
+	public override void SwitchLevel(int newLevel) {
+		base.SwitchLevel(newLevel);
+		damage *= 2;
+		tickDelay /= 2;
+	}
 	void Fire() {
 		if(target != null) {
 			if(!target.GetComponent<Enemy>().isDead) {
