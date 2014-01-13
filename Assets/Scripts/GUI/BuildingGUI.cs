@@ -28,17 +28,26 @@ public class BuildingGUI:MonoBehaviour {
 
 	private BuildingManager buildingManager;
 	private EBuildingType selectedBuilding;
+	private Tooltip tooltipManager;
 	private IslandData islandData;
 	private Bridge bridgeManager;
 	private Building building;
 
+	private string tooltip;
 	private int cost = 50;
 
 	void Start() {
+		tooltipManager = GetComponent<Tooltip>();
 		Deselect();
 	}
 
 	void Update() {
+		if(tooltip != null && tooltip != ""){
+			tooltipManager.drawTooltip(tooltip, true);
+		} else {
+			tooltipManager.unloadGUI();
+		}
+
 		if(target != null)
 			targetPosition = Camera.main.WorldToScreenPoint(target.position);
 		
@@ -50,22 +59,24 @@ public class BuildingGUI:MonoBehaviour {
 			RaycastHit hit;
 
 			if(Physics.Raycast(ray, out hit, 100) && selectedBuilding == EBuildingType.None) {
-				switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
-				case EBuildingType.Empty:
-					SelectEmpty(hit);
-					break;
-				case EBuildingType.Tower:
-					SelectTower(hit);
-					break;
-				case EBuildingType.Mine:
-					SelectMine(hit);
-					break;
-				case EBuildingType.LumberMill:
-					SelectLumberMill(hit);
-					break;
-				case EBuildingType.Bridge:
-					SelectBridge(hit);
-					break;
+				if(hit.transform.gameObject.name == "platform" || hit.transform.gameObject.name == "Bridge") {
+					switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
+					case EBuildingType.Empty:
+						SelectEmpty(hit);
+						break;
+					case EBuildingType.Tower:
+						SelectTower(hit);
+						break;
+					case EBuildingType.Mine:
+						SelectMine(hit);
+						break;
+					case EBuildingType.LumberMill:
+						SelectLumberMill(hit);
+						break;
+					case EBuildingType.Bridge:
+						SelectBridge(hit);
+						break;
+					}
 				}
 			}
 		}
@@ -83,6 +94,8 @@ public class BuildingGUI:MonoBehaviour {
 				DrawUpgradeGUI();
 			}
 		}
+
+		tooltip = GUI.tooltip;
 	}
 
 	IEnumerator ShowDelay() {
@@ -179,12 +192,14 @@ public class BuildingGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(targetPosition.x - 37.5f, Screen.height + -targetPosition.y - 25, 75, 130));
 			GUI.Label(new Rect(26, 0, 37.5f, 20), bridgeManager.buildCost.ToString(), styleText);
 
-			if(GUI.Button(new Rect(0, 25, 75, 75), buttonBridge, new GUIStyle())) {
-				if(PlayerData.Instance.goldAmount >= bridgeManager.buildCost) {
+			if (PlayerData.Instance.goldAmount >= bridgeManager.buildCost) {
+				if(GUI.Button(new Rect(0, 25, 75, 75), buttonBridge, new GUIStyle())) {
 					PlayerData.Instance.goldAmount -= bridgeManager.buildCost;
 					bridgeManager.Build();
 					Deselect();
 				}
+			} else {
+				GUI.Button(new Rect(0, 25, 75, 75), buttonBridgeNoMoney, new GUIStyle());
 			}
 		GUI.EndGroup();
 	}
