@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 2
-  speed: .349999994
+  speed: .25
   minX: -50
   maxX: 180
   minY: -60

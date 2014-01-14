@@ -35,12 +35,20 @@ public class BuildingGUI:MonoBehaviour {
 
 	private string tooltip;
 
+	private bool draw;
+
 	void Start() {
 		tooltipManager = GetComponent<Tooltip>();
 		Deselect();
 	}
 
 	void Update() {
+		if(target != null && !target.renderer.isVisible) {
+			draw = false;
+		} else {
+			draw = true;
+		}
+
 		if(tooltip != null && tooltip != ""){
 			tooltipManager.drawTooltip(tooltip, true);
 		} else {
@@ -82,12 +90,7 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	void OnGUI() {
-		float rX = Screen.width / GameManager.nativeWidth;
-		float rY = Screen.height / GameManager.nativeHeight;
-		
-		GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(rX, rY, 1));
-
-		if(target != null) {
+		if(target != null && draw) {
 			if(selectedBuilding == EBuildingType.Empty) {
 				DrawTowerButton(islandData.canHaveTower);
 				DrawMineButton(islandData.canHaveMine);
