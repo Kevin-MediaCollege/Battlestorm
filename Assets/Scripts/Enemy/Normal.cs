@@ -6,6 +6,5 @@ public class Normal:Enemy {
 		base.Start();
 
 		maxHitpoints = hitpoints;
-		startHasRun = true;
 	}
 }

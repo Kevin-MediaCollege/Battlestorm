@@ -1435,7 +1435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1815e3b5dc01f0646b8aba17cccc16e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointtarget: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1460,13 +1459,16 @@ MonoBehaviour:
   startHasRun: 0
   maxHitpoints: 0
   hitpoints: 5
+  slowDownDelay: 3
+  burnTime: 5
+  burnDamage: 1
   goldReward: 7
-  isdead: 0
   canStun: 0
   colorStart: {r: 1, g: 1, b: 1, a: 1}
   colorEnd: {r: 1, g: 1, b: 1, a: 1}
   child: []
   alphaShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  isDead: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

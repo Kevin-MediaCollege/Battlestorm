@@ -4,7 +4,8 @@ using System.Collections;
 public class Tower:Building {
 	public enum TowerType {
 		Normal = 1,
-		Ice = 2
+		Ice = 2,
+		Fire = 3
 	};
 
 	public TowerType towerType;
@@ -96,7 +97,10 @@ public class Tower:Building {
 				audio.PlayOneShot (shotSound);
 
 				if(towerType == TowerType.Ice)
-						target.GetComponent<Enemy>().Slowdown();
+					target.GetComponent<Enemy>().Slowdown();
+
+				if(towerType == TowerType.Fire)
+					target.GetComponent<Enemy>().Burn();
 			}
 		}
 	}

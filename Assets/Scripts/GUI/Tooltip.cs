@@ -71,25 +71,21 @@ public class Tooltip:MonoBehaviour {
 			if(!isBridge) {
 				GUI.DrawTexture(new Rect(mousePos.x + 120, mousePos.y - 30, 24, 24), goldTexture); 
 				GUI.Label(new Rect(mousePos.x + 139, mousePos.y - 30, 200, 100), stats.goldCostPerLevel[0].ToString(), tooltipTextStyle);
-				
+
 				GUI.DrawTexture(new Rect(mousePos.x + 14, mousePos.y - 6, 24, 24), stoneTexture); 
 				GUI.Label(new Rect(mousePos.x + 33, mousePos.y - 6, 200, 100), stats.stoneCostPerLevel[0].ToString(), tooltipTextStyle);
-				
+
 				GUI.DrawTexture(new Rect(mousePos.x + 120, mousePos.y - 6, 24, 24), woodTexture); 
 				GUI.Label(new Rect(mousePos.x + 139, mousePos.y - 6, 200, 100), stats.woodCostPerLevel[0].ToString(), tooltipTextStyle);
-			} else {
-				/*Bridge bridgeManager = (Instantiate(Resources.Load("Prefabs/Buildings/Bridge/BridgePart")) as GameObject).GetComponent<Bridge>();
-				
+			} else {				
 				GUI.DrawTexture(new Rect(mousePos.x + 120, mousePos.y - 30, 24, 24), goldTexture); 
-				GUI.Label(new Rect(mousePos.x + 139, mousePos.y - 30, 200, 100), bridgeManager.GoldCost().ToString(), tooltipTextStyle);
+				GUI.Label(new Rect(mousePos.x + 139, mousePos.y - 30, 200, 100), BridgeManager.Instance.GoldCost().ToString(), tooltipTextStyle);
 				
 				GUI.DrawTexture(new Rect(mousePos.x + 14, mousePos.y - 6, 24, 24), stoneTexture); 
-				GUI.Label(new Rect(mousePos.x + 33, mousePos.y - 6, 200, 100), bridgeManager.StoneCost().ToString(), tooltipTextStyle);
+				GUI.Label(new Rect(mousePos.x + 33, mousePos.y - 6, 200, 100), BridgeManager.Instance.StoneCost().ToString(), tooltipTextStyle);
 				
 				GUI.DrawTexture(new Rect(mousePos.x + 120, mousePos.y - 6, 24, 24), woodTexture); 
-				GUI.Label(new Rect(mousePos.x + 139, mousePos.y - 6, 200, 100), bridgeManager.WoodCost().ToString(), tooltipTextStyle);
-				
-				Destroy(bridgeManager.gameObject);*/
+				GUI.Label(new Rect(mousePos.x + 139, mousePos.y - 6, 200, 100), BridgeManager.Instance.WoodCost().ToString(), tooltipTextStyle);
 			}
 		}
 	}

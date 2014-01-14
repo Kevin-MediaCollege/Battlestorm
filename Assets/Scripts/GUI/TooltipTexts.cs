@@ -8,7 +8,7 @@ public class TooltipTexts:MonoBehaviour {
 	public string build_mine = "Builds a new Mine";
 	public string build_lumbermill = "Builds a new Lumber\nMill";
 	public string build_bridge = "Builds a new bridge";
-	public string build_not_available = "You can't build this building here";
+	public string build_not_available = "Insufficient resources";
 
 	public static TooltipTexts Instance {
 		get {

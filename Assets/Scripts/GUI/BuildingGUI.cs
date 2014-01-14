@@ -242,11 +242,7 @@ public class BuildingGUI:MonoBehaviour {
 		GUIStyle bridgeStyle = new GUIStyle();
 
 		GUI.BeginGroup(new Rect(targetPosition.x - 37.5f, Screen.height + -targetPosition.y - 70, 75, 140));
-			GUI.Label(new Rect(24, 0, 37.5f, 20), bridgeManager.GoldCost().ToString(), styleText);
-			GUI.Label(new Rect(24, 20, 37.5f, 20), bridgeManager.StoneCost().ToString(), styleText);
-			GUI.Label(new Rect(24, 40, 37.5f, 20), bridgeManager.WoodCost().ToString(), styleText);
-
-			if(PlayerData.Instance.goldAmount >= bridgeManager.GoldCost() && PlayerData.Instance.stoneAmount >= bridgeManager.StoneCost() && PlayerData.Instance.woodAmount >= bridgeManager.WoodCost()) {
+			if(PlayerData.Instance.goldAmount >= BridgeManager.Instance.GoldCost() && PlayerData.Instance.stoneAmount >= BridgeManager.Instance.StoneCost() && PlayerData.Instance.woodAmount >= BridgeManager.Instance.WoodCost()) {
 				bridgeStyle.normal.background = buttonBridge;
 				if(GUI.Button(new Rect(0, 65, 75, 75), new GUIContent("", "Bridge"), bridgeStyle)) {
 					bridgeManager.Build();
