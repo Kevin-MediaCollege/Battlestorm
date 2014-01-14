@@ -96,7 +96,7 @@ public class Tower:Building {
 				audio.PlayOneShot (shotSound);
 
 				if(towerType == TowerType.Ice)
-						target.GetComponent<Enemy>().Slowdown();
+					target.GetComponent<Enemy>().Slowdown();
 			}
 		}
 	}

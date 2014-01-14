@@ -9655,14 +9655,8 @@ MonoBehaviour:
   - {fileID: 1550227537}
   - {fileID: 1661706424}
   spawnposition: {fileID: 373906848}
-  isMade: 0
   bridgeParts: 6
-  goldCostFirst: 0
-  stoneCostFirst: 0
-  woodCostFirst: 0
-  goldCostOther: 0
-  stoneCostOther: 0
-  woodCostOther: 0
+  isMade: 0
 --- !u!1001 &949871855
 Prefab:
   m_ObjectHideFlags: 0
@@ -9759,6 +9753,7 @@ GameObject:
   - 114: {fileID: 958339539}
   - 114: {fileID: 958339540}
   - 114: {fileID: 958339541}
+  - 114: {fileID: 958339543}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10823,6 +10818,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveDelay: 35
+--- !u!114 &958339543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958339527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc606bb1dbdfe62448892cabb13bd7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  first: 1
+  goldCostFirst: 50
+  stoneCostFirst: 10
+  woodCostFirst: 10
+  goldCostOther: 100
+  stoneCostOther: 50
+  woodCostOther: 50
 --- !u!1 &973376752
 GameObject:
   m_ObjectHideFlags: 0
@@ -12119,14 +12132,8 @@ MonoBehaviour:
   - {fileID: 1550227537}
   - {fileID: 1661706424}
   spawnposition: {fileID: 198886266}
-  isMade: 0
   bridgeParts: 4
-  goldCostFirst: 0
-  stoneCostFirst: 0
-  woodCostFirst: 0
-  goldCostOther: 0
-  stoneCostOther: 0
-  woodCostOther: 0
+  isMade: 0
 --- !u!1 &1105155806
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class Mine:Building {
 
 			PlayerData.Instance.stoneAmount += stats.resourcesPerTick[currentLevel - 1];
 
-			textPopup.text = stats.resourcesPerTick[currentLevel].ToString();
+			textPopup.text = stats.resourcesPerTick[currentLevel - 1].ToString();
 			textPopup.color = Color.gray;
 			textPopup.transform.parent = this.transform;
 		}
