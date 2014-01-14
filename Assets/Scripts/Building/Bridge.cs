@@ -9,6 +9,11 @@ public class Bridge:MonoBehaviour {
 	public int bridgeParts;
 
 	public bool isMade;
+
+	void Start() {
+		if(isMade)
+			Build();
+	}
 	
 	public void Build() {
 		for(int i = 0; i < bridgeParts; i++) {

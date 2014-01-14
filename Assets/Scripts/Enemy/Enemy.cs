@@ -5,9 +5,11 @@ public class Enemy:PathFollower {
 	public float maxHitpoints;
 	public float hitpoints;
 
-	public int goldReward;
+	public float slowDownDelay;
+	public float burnTime;
+	public int burnDamage;
 
-	public bool isDead = false;
+	public int goldReward;
 	public bool canStun;
 
 	public Color colorStart;
@@ -16,6 +18,12 @@ public class Enemy:PathFollower {
 	public Renderer[] child;
 
 	public Shader alphaShader;
+
+	private bool isSlowDown;
+	private bool isOnFire;
+
+	[HideInInspector]
+	public bool isDead = false;
 
 	void LateUpdate(){
 		if(isDead) {
@@ -62,14 +70,40 @@ public class Enemy:PathFollower {
 	}
 
 	public void Slowdown() {
-		speed /= 2;
+		if(isOnFire) {
+			isOnFire = false;
+			StopCoroutine("BurnDelay");
+		}
+
+		isSlowDown = true;
 
 		StartCoroutine("SlowDownDelay");
 	}
 
+	public void Burn() {
+		if(isSlowDown) {
+			isSlowDown = false;
+			StopCoroutine("SlowDownDelay");
+		}
+
+		isOnFire = true;
+
+		StartCoroutine("BurnDelay");
+	}
+
 	IEnumerator SlowDownDelay() {
-		yield return new WaitForSeconds(3);
+		speed /= 2;
+
+		yield return new WaitForSeconds(slowDownDelay);
 		
 		speed *= 2;
+	}
+
+	IEnumerator BurnDelay() {
+		for(int i = 0; i < burnTime; i++) {
+			yield return new WaitForSeconds(1);
+
+			hitpoints -= burnDamage;
+		}
 	}
 }
