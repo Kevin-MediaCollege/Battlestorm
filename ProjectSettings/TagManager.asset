@@ -3,21 +3,12 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - 
-  - 
   - Plot
+  - Tower
   - Mine
   - LumberMill
-  - Tower
+  - Bridge
   - Enemy
-  - CameraCollider
-  - PathNode
-  - 
-  - EnemyCollider
-  - ParticleObject
-  - ProjectileObject
-  - 
-  - EmptyPlot
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

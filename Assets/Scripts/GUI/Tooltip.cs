@@ -50,6 +50,10 @@ public class Tooltip:MonoBehaviour {
 		case "NotAvailable":
 			text = TooltipTexts.Instance.build_not_available;
 			break;
+		case "NotAvailableBridge":
+			text = TooltipTexts.Instance.build_not_available;
+			isBridge = true;
+			break;
 		}
 
 		drawGUI = state;
