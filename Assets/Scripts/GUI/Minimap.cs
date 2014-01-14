@@ -13,7 +13,7 @@ public class Minimap:MonoBehaviour {
 	void FixedUpdate() {
 		gameObject.camera.pixelRect = new Rect (0, 0, Screen.width / mapSize.x, Screen.height / mapSize.y);
 
-		if(Input.GetAxisRaw("MinimapKey") != 0) {
+		if(Input.GetAxisRaw("Minimap") != 0) {
 			openMap = true;
 		} else {
 			openMap = false;

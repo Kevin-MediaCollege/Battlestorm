@@ -3,14 +3,18 @@ using System.Collections;
 
 public class WaveManager:MonoBehaviour {
 	public int waveDelay;
-	
-	private WaveData waveData;
+	public int longWaveDelay;
+
+	[HideInInspector]
+	public WaveData waveData;
+
 	private EnemyManager enemyManager;
 
 	private int enemiesToSpawn;
 	private int currentEnemy;
 
 	private bool finalWave;
+	private bool pauseDelayStarted;
 
 	void Start() {
 		waveData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<WaveData>();
@@ -20,6 +24,11 @@ public class WaveManager:MonoBehaviour {
 	}
 
 	void Update() {
+		if(!pauseDelayStarted && (waveData.currentWave % 5) == 0) {
+			waveData.waveTimer = longWaveDelay;
+			pauseDelayStarted = true;
+		}
+
 		if(finalWave) {
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -27,13 +36,11 @@ public class WaveManager:MonoBehaviour {
 				GameManager.WinGame();
 		}
 	}
-
-	void OnGUI() {
-		if(GUI.Button(new Rect(0, 0, 50, 50), "Next Wave")){
-			if(!waveData.spawningEnemies) {
-				StopCoroutine("SpawnTimer");
-				StartNextWave();
-			}
+	
+	public void StartNextWaveButton() {
+		if(!waveData.spawningEnemies) {
+			StopCoroutine("SpawnTimer");
+			StartNextWave();
 		}
 	}
 
@@ -61,6 +68,7 @@ public class WaveManager:MonoBehaviour {
 				
 				waveData.waveTimer--;
 			} else {
+				pauseDelayStarted = false;
 				StartNextWave();
 				break;
 			}

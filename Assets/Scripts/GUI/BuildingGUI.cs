@@ -58,7 +58,7 @@ public class BuildingGUI:MonoBehaviour {
 			RaycastHit hit;
 
 			if(Physics.Raycast(ray, out hit, 100) && selectedBuilding == EBuildingType.None) {
-				if(!hit.transform.gameObject.CompareTag("Enemy")) {
+				if(!hit.transform.gameObject.CompareTag("Enemy") && !hit.transform.gameObject.CompareTag("Untagged")) {
 					switch(hit.transform.gameObject.GetComponent<BuildingType>().type) {
 					case EBuildingType.Empty:
 						SelectEmpty(hit);
@@ -82,6 +82,11 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	void OnGUI() {
+		float rX = Screen.width / GameManager.nativeWidth;
+		float rY = Screen.height / GameManager.nativeHeight;
+		
+		GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(rX, rY, 1));
+
 		if(target != null) {
 			if(selectedBuilding == EBuildingType.Empty) {
 				DrawTowerButton(islandData.canHaveTower);
