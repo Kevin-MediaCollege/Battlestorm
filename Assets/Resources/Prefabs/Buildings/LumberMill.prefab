@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 23: {fileID: 2300000}
   m_Layer: 0
-  m_Name: LumberMill
+  m_Name: Lumber Mill
   m_TagString: LumberMill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9cd0828202f5e8479f9861afb4ec13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPath: Prefabs/Buildings/LumberMill/LumberMill
+  prefabPath: Prefabs/Buildings/Lumber Mill/Lumber Mill
   stats: {fileID: 0}
   interactable: 0
   tickDelay: 3

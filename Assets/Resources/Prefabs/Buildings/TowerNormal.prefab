@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 23: {fileID: 2300000}
   m_Layer: 0
-  m_Name: Tower Fire
+  m_Name: Tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 83.0465622, y: 25.6985283, z: 21.1370239}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -146,12 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2140e89a9e21ef04db322e4d66484e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPath: Prefabs/Buildings/Tower Fire/Tower Fire
+  prefabPath: Prefabs/Buildings/Tower Normal/Tower Normal
   stats: {fileID: 0}
   interactable: 0
   tickDelay: 0
   currentLevel: 1
-  towerType: 3
+  towerType: 1
   shotSound: {fileID: 8300000, guid: 1b2727f0e62e2094eb64cf2631c24674, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -164,35 +164,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef908bcf4b8393a409aa1c1cf9f62687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: 5
+  levels: 4
   sellRate: .5
   resourcesPerTick: []
   goldCostPerLevel:
+  - 50
+  - 75
   - 150
   - 300
-  - 600
-  - 1200
-  - 2400
   stoneCostPerLevel:
-  - 250
-  - 500
-  - 1000
-  - 2000
-  - 4000
-  woodCostPerLevel:
+  - 40
+  - 75
   - 150
   - 300
-  - 600
-  - 1200
-  - 2400
-  rangePerLevel: 14000000140000001e0000001e00000028000000
-  damagePerLevel: 020000000400000006000000080000000a000000
+  woodCostPerLevel:
+  - 50
+  - 100
+  - 200
+  - 400
+  rangePerLevel: 14000000140000001e00000028000000
+  damagePerLevel: 02000000040000000600000008000000
   speedPerLevel:
-  - 4
-  - 4
-  - 3
   - 3
   - 2
+  - 1
+  - .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

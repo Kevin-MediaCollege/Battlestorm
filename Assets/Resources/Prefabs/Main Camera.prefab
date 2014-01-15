@@ -350,6 +350,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTower: {fileID: 2800000, guid: 8380cf4a8ff49b047b12621218349711, type: 3}
   buttonTowerNoMoney: {fileID: 2800000, guid: 97c737c1bb562744eba3cabe1d1bd6a0, type: 3}
+  buttonTowerIce: {fileID: 2800000, guid: 6e2460ac8b8ce4d4798975b242165374, type: 3}
+  buttonTowerIceNoMoney: {fileID: 2800000, guid: 4589e099c2d1f9f4b851c0c7e5fc0b66,
+    type: 3}
+  buttonTowerFire: {fileID: 2800000, guid: f84b80710f8138040ba112ed10867237, type: 3}
+  buttonTowerFireNoMoney: {fileID: 2800000, guid: f6fea30547ea8b447b8c490ddf4cbcc7,
+    type: 3}
   buttonMine: {fileID: 2800000, guid: 62a3709a6267d1c4ba0d084d1da67264, type: 3}
   buttonMineNoMoney: {fileID: 2800000, guid: 38d6c5749cff1e747b73387848a7a2fa, type: 3}
   buttonLumberMill: {fileID: 2800000, guid: b5b3ecd27d66f8943b75929920e1baa8, type: 3}
@@ -357,6 +363,7 @@ MonoBehaviour:
     type: 3}
   buttonBridge: {fileID: 2800000, guid: b98003d44d277b241b50dfea0ee51339, type: 3}
   buttonBridgeNoMoney: {fileID: 2800000, guid: 6a0e0054ab2ac614f977e5e32a2b8af3, type: 3}
+  buttonNotAvailable: {fileID: 2800000, guid: b211719456fe5a64ca608390fef5af36, type: 3}
   backgroundTexture: {fileID: 2800000, guid: 3de0b355b7550ba4385737ef24bc8827, type: 3}
   showDelay: .200000003
   styleText:
@@ -536,125 +543,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  styleNormal:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
-  styleNoMoney:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
-  styleNoBuilding:
+  buttonStyle:
     m_Name: 
     m_Normal:
       m_Background: {fileID: 0}
@@ -1197,23 +1086,23 @@ MonoBehaviour:
   waveArray:
   - enemies:
     - spawn: 1
-      name: 0
+      name: 1
       speed: 3
       health: 3
     - spawn: 0
-      name: 0
+      name: 1
       speed: 3
       health: 3
     - spawn: 2
-      name: 0
+      name: 1
       speed: 3
       health: 3
     - spawn: 2
-      name: 0
+      name: 1
       speed: 3
       health: 3
     - spawn: 2
-      name: 0
+      name: 1
       speed: 3
       health: 3
   - enemies:

@@ -21,7 +21,7 @@ public class BuildingManager:MonoBehaviour {
 		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), position.transform.position, position.transform.rotation) as GameObject;
 		building.transform.parent = this.transform;
 
-		if(type == EBuildingType.Tower)
+		if(type == EBuildingType.TowerNormal || type == EBuildingType.TowerIce || type == EBuildingType.TowerFire)
 			building.transform.name = "Tower";
 	}
 

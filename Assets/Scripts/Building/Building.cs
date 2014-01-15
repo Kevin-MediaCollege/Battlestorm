@@ -33,7 +33,7 @@ public class Building:MonoBehaviour {
 		if(art != null)
 			Destroy(art);
 
-		art = Instantiate(Resources.Load(prefabPath + (int)currentLevel), transform.position, transform.rotation) as GameObject;
+		art = Instantiate(Resources.Load(prefabPath + " " + (int)currentLevel), transform.position, transform.rotation) as GameObject;
 
 		art.transform.parent = this.transform;
 		art.transform.name = "Art";

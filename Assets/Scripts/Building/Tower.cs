@@ -21,8 +21,11 @@ public class Tower:Building {
 
 		UpdateArt();
 
-		top = transform.FindChild("Art").transform.FindChild("Pivot");
-		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
+		if(towerType == TowerType.Normal) {
+			top = transform.FindChild("Art").transform.FindChild("Pivot");
+			arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
+		}
+
 		StartCoroutine("Tick");
 	}
 
@@ -77,20 +80,20 @@ public class Tower:Building {
 	void Fire() {
 		if(target != null) {
 			if(!target.GetComponent<Enemy>().isDead) {
-				GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
-				Projectile proj = projectile.GetComponent<Projectile>();
+				if(towerType == TowerType.Normal) {
+					GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
+					Projectile proj = projectile.GetComponent<Projectile>();
 
-				proj.target = target.transform;
-				proj.damage = stats.damagePerLevel[currentLevel - 1];
-				proj.targetScript = target.gameObject.GetComponent<Enemy>();
+					proj.target = target.transform;
+					proj.damage = stats.damagePerLevel[currentLevel - 1];
+					proj.targetScript = target.gameObject.GetComponent<Enemy>();
 
-				audio.PlayOneShot (shotSound);
-
-				if(towerType == TowerType.Ice)
+					audio.PlayOneShot(shotSound);
+				} else if(towerType == TowerType.Ice) {
 					target.GetComponent<Enemy>().Slowdown();
-
-				if(towerType == TowerType.Fire)
+				} else if(towerType == TowerType.Fire) {
 					target.GetComponent<Enemy>().Burn();
+				}
 			}
 		}
 	}

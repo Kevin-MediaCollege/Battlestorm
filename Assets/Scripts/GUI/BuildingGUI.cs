@@ -40,6 +40,7 @@ public class BuildingGUI:MonoBehaviour {
 	private string tooltip;
 
 	private bool draw;
+	private bool subMenu;
 
 	void Start() {
 		tooltipManager = GetComponent<Tooltip>();
@@ -75,8 +76,14 @@ public class BuildingGUI:MonoBehaviour {
 					case EBuildingType.Empty:
 						SelectEmpty(hit);
 						break;
-					case EBuildingType.Tower:
-						SelectTower(hit);
+					case EBuildingType.TowerNormal:
+						SelectTower(hit, hit.transform.gameObject.GetComponent<BuildingType>().type);
+						break;
+					case EBuildingType.TowerIce:
+						SelectTower(hit, hit.transform.gameObject.GetComponent<BuildingType>().type);
+						break;
+					case EBuildingType.TowerFire:
+						SelectTower(hit, hit.transform.gameObject.GetComponent<BuildingType>().type);
 						break;
 					case EBuildingType.Mine:
 						SelectMine(hit);
@@ -115,30 +122,88 @@ public class BuildingGUI:MonoBehaviour {
 
 	private void DrawTowerButton(bool canHaveTower) {
 		if(canHaveTower) {
-			BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/Tower")) as GameObject).GetComponent<BuildingStats>();
-			
-			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
-				buttonStyle.normal.background = buttonLumberMill;
+			buttonStyle.normal.background = buttonTower;
 
-				if(GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), buttonStyle)) {
-					Create(EBuildingType.Tower);
-					
-					PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
-					PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
-					PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
-				}
-			} else {
-				buttonStyle.normal.background = buttonLumberMillNoMoney;
-
-				GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), buttonStyle);
+			if(GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "TowerMenu"), buttonStyle)) {
+				subMenu = !subMenu;
 			}
-			
-			Destroy(stats.gameObject);
+
+			if(subMenu) {
+				DrawTowerNormalSubButton();
+				DrawTowerIceSubButton();
+				DrawTowerFireSubButton();
+			}
 		} else {
 			buttonStyle.normal.background = buttonNotAvailable;
 
-			GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
+			GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "NotAvailableIsland"), buttonStyle);
 		}
+	}
+
+	private void DrawTowerNormalSubButton() {
+		BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/TowerNormal")) as GameObject).GetComponent<BuildingStats>();
+		
+		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
+			buttonStyle.normal.background = buttonTower;
+			
+			if(GUI.Button(new Rect(targetPosition.x - 6.25f, Screen.height + -targetPosition.y - 150, 37.5f, 37.5f), new GUIContent("", "TowerNormal"), buttonStyle)) {
+				Create(EBuildingType.TowerNormal);
+				
+				PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
+				PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
+				PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
+			}
+		} else {
+			buttonStyle.normal.background = buttonTowerNoMoney;
+			
+			GUI.Button(new Rect(targetPosition.x - 6.25f, Screen.height + -targetPosition.y - 150, 37.5f, 37.5f), new GUIContent("", "NotAvailable"), buttonStyle);
+		}
+		
+		Destroy(stats.gameObject);
+	}
+
+	private void DrawTowerIceSubButton() {
+		BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/TowerIce")) as GameObject).GetComponent<BuildingStats>();
+		
+		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
+			buttonStyle.normal.background = buttonTowerIce;
+			
+			if(GUI.Button(new Rect(targetPosition.x + 37.5f, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "TowerIce"), buttonStyle)) {
+				Create(EBuildingType.TowerIce);
+				
+				PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
+				PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
+				PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
+			}
+		} else {
+			buttonStyle.normal.background = buttonTowerIceNoMoney;
+			
+			GUI.Button(new Rect(targetPosition.x + 37.5f, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "NotAvailable"), buttonStyle);
+		}
+		
+		Destroy(stats.gameObject);
+	}
+
+	private void DrawTowerFireSubButton() {
+		BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/TowerFire")) as GameObject).GetComponent<BuildingStats>();
+		
+		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
+			buttonStyle.normal.background = buttonTowerFire;
+			
+			if(GUI.Button(new Rect(targetPosition.x - 50, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "TowerFire"), buttonStyle)) {
+				Create(EBuildingType.TowerFire);
+				
+				PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
+				PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
+				PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
+			}
+		} else {
+			buttonStyle.normal.background = buttonTowerFireNoMoney;
+			
+			GUI.Button(new Rect(targetPosition.x - 50, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "NotAvailable"), buttonStyle);
+		}
+		
+		Destroy(stats.gameObject);
 	}
 	
 	private void DrawMineButton(bool canHaveMine) {
@@ -147,7 +212,7 @@ public class BuildingGUI:MonoBehaviour {
 			stats.gameObject.renderer.enabled = false;
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
-				buttonStyle.normal.background = buttonLumberMill;
+				buttonStyle.normal.background = buttonMine;
 
 				if(GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), buttonStyle)) {
 					Create(EBuildingType.Mine);
@@ -157,16 +222,16 @@ public class BuildingGUI:MonoBehaviour {
 					PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
 				}
 			} else {
-				buttonStyle.normal.background = buttonLumberMillNoMoney;
+				buttonStyle.normal.background = buttonMineNoMoney;
 
-				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), buttonStyle);
+				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
 			}
 			
 			Destroy(stats.gameObject);
 		} else {
 			buttonStyle.normal.background = buttonNotAvailable;
 
-			GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
+			GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailableIsland"), buttonStyle);
 		}
 	}
 	
@@ -174,7 +239,6 @@ public class BuildingGUI:MonoBehaviour {
 		if(canHaveLumberMill) {
 			BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/LumberMill")) as GameObject).GetComponent<BuildingStats>();
 			stats.gameObject.renderer.enabled = false;
-			Debug.Log (stats.gameObject);
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 				buttonStyle.normal.background = buttonLumberMill;
@@ -189,14 +253,14 @@ public class BuildingGUI:MonoBehaviour {
 			} else {
 				buttonStyle.normal.background = buttonLumberMillNoMoney;
 
-				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), buttonStyle);
+				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
 			}
 			
 			Destroy(stats.gameObject);
 		} else {
 			buttonStyle.normal.background = buttonNotAvailable;
 
-			GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
+			GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailableIsland"), buttonStyle);
 		}
 	}
 
@@ -231,7 +295,7 @@ public class BuildingGUI:MonoBehaviour {
 		styleText.normal.textColor = Color.white;
 		styleText.alignment = TextAnchor.UpperCenter;
 
-		if(building.GetComponent<BuildingType>().type.ToString() == "Tower") {
+		if(building.GetComponent<BuildingType>().type.ToString() == "TowerNormal" || building.GetComponent<BuildingType>().type.ToString() == "TowerIce" || building.GetComponent<BuildingType>().type.ToString() == "TowerFire") {
 			Tower tower = building.GetComponent<Tower>();
 			
 			GUI.Label(new Rect(200, 0, 1, 20), tower.towerType.ToString() + " " + building.GetComponent<BuildingType>().type.ToString(), styleText);
@@ -287,10 +351,10 @@ public class BuildingGUI:MonoBehaviour {
 			Select(hit.transform, EBuildingType.Empty);
 	}
 
-	private void SelectTower(RaycastHit hit) {
+	private void SelectTower(RaycastHit hit, EBuildingType type) {
 		building = hit.transform.gameObject.GetComponent<Tower>();
 
-		Select(hit.transform, EBuildingType.Tower);
+		Select(hit.transform, type);
 	}
 
 	private void SelectMine(RaycastHit hit) {
@@ -323,13 +387,14 @@ public class BuildingGUI:MonoBehaviour {
 	private void Deselect() {
 		selectedBuilding = EBuildingType.None;
 
+		subMenu = false;
 		building = null;
 		target = null;
 	}
 
 	private void Create(EBuildingType type) {
 		buildingManager.CreateBuilding(type);
-		
+
 		Deselect();
 	}
 
