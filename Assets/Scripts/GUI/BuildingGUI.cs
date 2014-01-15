@@ -4,12 +4,18 @@ using System.Collections;
 public class BuildingGUI:MonoBehaviour {
 	public Texture2D buttonTower;
 	public Texture2D buttonTowerNoMoney;
+	public Texture2D buttonTowerIce;
+	public Texture2D buttonTowerIceNoMoney;
+	public Texture2D buttonTowerFire;
+	public Texture2D buttonTowerFireNoMoney;
 	public Texture2D buttonMine;
 	public Texture2D buttonMineNoMoney;
 	public Texture2D buttonLumberMill;
 	public Texture2D buttonLumberMillNoMoney;
 	public Texture2D buttonBridge;
 	public Texture2D buttonBridgeNoMoney;
+
+	public Texture2D buttonNotAvailable;
 
 	public Texture backgroundTexture;
 
@@ -19,9 +25,7 @@ public class BuildingGUI:MonoBehaviour {
 	public GUIStyle styleSell;
 	public GUIStyle styleUpgrade;
 
-	public GUIStyle styleNormal;
-	public GUIStyle styleNoMoney;
-	public GUIStyle styleNoBuilding;
+	public GUIStyle buttonStyle;
 
 	private Transform target;
 	private Vector3 targetPosition;
@@ -110,14 +114,13 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	private void DrawTowerButton(bool canHaveTower) {
-		styleNormal.normal.background = buttonTower;
-		styleNoMoney.normal.background = buttonTowerNoMoney;
-
 		if(canHaveTower) {
 			BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/Tower")) as GameObject).GetComponent<BuildingStats>();
 			
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
-				if(GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), styleNormal)) {
+				buttonStyle.normal.background = buttonLumberMill;
+
+				if(GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), buttonStyle)) {
 					Create(EBuildingType.Tower);
 					
 					PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
@@ -125,24 +128,28 @@ public class BuildingGUI:MonoBehaviour {
 					PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
 				}
 			} else {
-				GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), styleNoMoney);
+				buttonStyle.normal.background = buttonLumberMillNoMoney;
+
+				GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "Tower"), buttonStyle);
 			}
 			
 			Destroy(stats.gameObject);
 		} else {
-			GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "NotAvailable"), styleNoBuilding);
+			buttonStyle.normal.background = buttonNotAvailable;
+
+			GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
 		}
 	}
 	
 	private void DrawMineButton(bool canHaveMine) {
-		styleNormal.normal.background = buttonMine;
-		styleNoMoney.normal.background = buttonMineNoMoney;
-
 		if(canHaveMine) {
 			BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/Mine")) as GameObject).GetComponent<BuildingStats>();
+			stats.gameObject.renderer.enabled = false;
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
-				if(GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), styleNormal)) {
+				buttonStyle.normal.background = buttonLumberMill;
+
+				if(GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), buttonStyle)) {
 					Create(EBuildingType.Mine);
 					
 					PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
@@ -150,24 +157,29 @@ public class BuildingGUI:MonoBehaviour {
 					PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
 				}
 			} else {
-				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), styleNoMoney);
+				buttonStyle.normal.background = buttonLumberMillNoMoney;
+
+				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), buttonStyle);
 			}
 			
 			Destroy(stats.gameObject);
 		} else {
-			GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), styleNoBuilding);
+			buttonStyle.normal.background = buttonNotAvailable;
+
+			GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
 		}
 	}
 	
 	private void DrawLumberMillButton(bool canHaveLumberMill) {
-		styleNormal.normal.background = buttonLumberMill;
-		styleNoMoney.normal.background = buttonLumberMillNoMoney;
-
 		if(canHaveLumberMill) {
 			BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/LumberMill")) as GameObject).GetComponent<BuildingStats>();
+			stats.gameObject.renderer.enabled = false;
+			Debug.Log (stats.gameObject);
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
-				if(GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), styleNormal)) {
+				buttonStyle.normal.background = buttonLumberMill;
+
+				if(GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), buttonStyle)) {
 					Create(EBuildingType.LumberMill);
 					
 					PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
@@ -175,12 +187,16 @@ public class BuildingGUI:MonoBehaviour {
 					PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
 				}
 			} else {
-				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), styleNoMoney);
+				buttonStyle.normal.background = buttonLumberMillNoMoney;
+
+				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), buttonStyle);
 			}
 			
 			Destroy(stats.gameObject);
 		} else {
-			GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), styleNoBuilding);
+			buttonStyle.normal.background = buttonNotAvailable;
+
+			GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
 		}
 	}
 
