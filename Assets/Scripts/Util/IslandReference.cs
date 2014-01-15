@@ -2,6 +2,6 @@
 using System.Collections;
 
 public class IslandReference:MonoBehaviour {
-	[HideInInspector]
+	//[HideInInspector]
 	public IslandData iData;
 }
