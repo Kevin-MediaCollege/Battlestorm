@@ -38,8 +38,14 @@ public class Tower:Building {
 		if(target == null || target.GetComponent<Enemy>().isDead)
 			SearchForNewTarget();
 
-		if(target != null && top != null)
-			top.transform.LookAt(target.transform.position);
+		if(target != null && top != null){
+			Vector3 lookPos = target.transform.position - top.transform.position;
+		Quaternion rotation = Quaternion.LookRotation(lookPos);
+			rotation.x = 0;
+			rotation.z = 0;
+		top.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 50);
+		}
+			//top.transform.LookAt(target.transform.position);
 	}
 
 	protected override IEnumerator Tick() {

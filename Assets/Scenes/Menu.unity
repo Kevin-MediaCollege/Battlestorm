@@ -618,6 +618,7 @@ GameObject:
   - 4: {fileID: 206878430}
   - 33: {fileID: 206878432}
   - 23: {fileID: 206878431}
+  - 64: {fileID: 206878433}
   m_Layer: 0
   m_Name: land_017
   m_TagString: Untagged
@@ -665,6 +666,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 875806333}
   m_GameObject: {fileID: 206878429}
+  m_Mesh: {fileID: 4300006, guid: c4b1786e75108cb478460acccd436095, type: 3}
+--- !u!64 &206878433
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400004, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 206878429}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300006, guid: c4b1786e75108cb478460acccd436095, type: 3}
 --- !u!1 &246756501
 GameObject:
@@ -1303,6 +1318,7 @@ GameObject:
   - 4: {fileID: 505553804}
   - 33: {fileID: 505553807}
   - 23: {fileID: 505553806}
+  - 64: {fileID: 505553805}
   m_Layer: 0
   m_Name: Box257
   m_TagString: Untagged
@@ -1321,6 +1337,20 @@ Transform:
   m_LocalScale: {x: 1.64629519, y: 1.64629519, z: 3.18114805}
   m_Children: []
   m_Father: {fileID: 1997881228}
+--- !u!64 &505553805
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400000, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 505553803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 1
+  m_Mesh: {fileID: 4300004, guid: c4b1786e75108cb478460acccd436095, type: 3}
 --- !u!23 &505553806
 Renderer:
   m_ObjectHideFlags: 0
@@ -1425,6 +1455,70 @@ MeshFilter:
   m_PrefabInternal: {fileID: 606361480}
   m_GameObject: {fileID: 531290463}
   m_Mesh: {fileID: 4300000, guid: 2760e3cec94136640a8b4be099b26098, type: 3}
+--- !u!1 &549544072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100012, guid: 56e35f93b434bad4889d730d8e57ea5b, type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 549544073}
+  - 114: {fileID: 549544075}
+  - 23: {fileID: 549544074}
+  m_Layer: 0
+  m_Name: Healthbar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &549544073
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400012, guid: 56e35f93b434bad4889d730d8e57ea5b, type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 549544072}
+  m_LocalRotation: {x: .612372518, y: -.353553355, z: -.353553295, w: .612372518}
+  m_LocalPosition: {x: .264434844, y: 1.04284143, z: 3.05806994}
+  m_LocalScale: {x: .142857149, y: .142857105, z: .142857134}
+  m_Children: []
+  m_Father: {fileID: 1997881228}
+--- !u!23 &549544074
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300010, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 549544072}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!114 &549544075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 549544072}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f348d96ec5ea0bf44be20800d31d2b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2800000, guid: eefc1096b77c35a4688a2e053707f480, type: 3}
+  bar: {fileID: 2800000, guid: 694bc31c3d4031f4cb7b1fe2616c858a, type: 3}
 --- !u!1001 &584531012
 Prefab:
   m_ObjectHideFlags: 0
@@ -2853,7 +2947,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  minorOffset: -3
+  minorOffset: 5
   buttonHover: {fileID: 8300000, guid: ba8831af078415e4d99c23a064c26cef, type: 3}
   buttonClick: {fileID: 8300000, guid: 4d1de9e56f21e174ab0b9b85d6e12363, type: 3}
   optionCamera: {fileID: 280898986}
@@ -2907,7 +3001,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
-    m_FontSize: 40
+    m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -3037,6 +3131,183 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  sliderStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 86d596c4d0eb58d429101f24b70c3080, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 20
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  thumbStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: ff6a8bbc9d68e7e41b2d40d29e0c32ed, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: -20
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  inputStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: b329abd2ed9bfe340be889970752c6c0, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_Alignment: 3
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
   optionIndex: 1
   resolutions:
   - {x: 800, y: 600}
@@ -3045,6 +3316,8 @@ MonoBehaviour:
   - {x: 1920, y: 1080}
   currentresolution: {x: 1920, y: 1080}
   selectedresolutions: 3
+  ingameLight: {fileID: 0}
+  keyCodeNum: 0
 --- !u!1 &1266155500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,6 +3720,7 @@ GameObject:
   - 4: {fileID: 1471365823}
   - 33: {fileID: 1471365822}
   - 23: {fileID: 1471365821}
+  - 64: {fileID: 1471365824}
   m_Layer: 0
   m_Name: land_018
   m_TagString: Untagged
@@ -3495,6 +3769,20 @@ Transform:
   m_LocalScale: {x: 3.38123465, y: 3.15692544, z: 2.42350483}
   m_Children: []
   m_Father: {fileID: 1997881228}
+--- !u!64 &1471365824
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400008, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 1471365820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 1
+  m_Mesh: {fileID: 4300002, guid: c4b1786e75108cb478460acccd436095, type: 3}
 --- !u!1001 &1471736305
 Prefab:
   m_ObjectHideFlags: 0
@@ -3557,6 +3845,7 @@ GameObject:
   - 4: {fileID: 1487610213}
   - 33: {fileID: 1487610215}
   - 23: {fileID: 1487610214}
+  - 64: {fileID: 1487610216}
   m_Layer: 0
   m_Name: land_015
   m_TagString: Untagged
@@ -3604,6 +3893,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 875806333}
   m_GameObject: {fileID: 1487610212}
+  m_Mesh: {fileID: 4300008, guid: c4b1786e75108cb478460acccd436095, type: 3}
+--- !u!64 &1487610216
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400002, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 1487610212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300008, guid: c4b1786e75108cb478460acccd436095, type: 3}
 --- !u!1 &1515455703
 GameObject:
@@ -4792,6 +5095,7 @@ GameObject:
   - 4: {fileID: 1996095738}
   - 33: {fileID: 1996095740}
   - 23: {fileID: 1996095739}
+  - 64: {fileID: 1996095741}
   m_Layer: 0
   m_Name: land_013
   m_TagString: Untagged
@@ -4840,6 +5144,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 875806333}
   m_GameObject: {fileID: 1996095737}
   m_Mesh: {fileID: 4300000, guid: c4b1786e75108cb478460acccd436095, type: 3}
+--- !u!64 &1996095741
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400006, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 875806333}
+  m_GameObject: {fileID: 1996095737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: c4b1786e75108cb478460acccd436095, type: 3}
 --- !u!1 &1997881227
 GameObject:
   m_ObjectHideFlags: 0
@@ -4867,6 +5185,7 @@ Transform:
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 505553804}
+  - {fileID: 549544073}
   - {fileID: 1996095738}
   - {fileID: 1487610213}
   - {fileID: 206878430}
