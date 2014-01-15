@@ -22,7 +22,10 @@ public class CameraMenu:MonoBehaviour {
 	private float startTime;
 	private Quaternion rotation;
 
+	public bool stopmoving = false;
+
 	void Start() {
+		stopmoving = false;
 		fade = GetComponent<FadeScript>();
 		GetData();
 	}
@@ -57,6 +60,7 @@ public class CameraMenu:MonoBehaviour {
 	}
 
 	void Update() {
+		if(!stopmoving){
 		if(findnewPath && fade.alphaFadeValue >= 0.95f) {
 			fade.alphaFadeValue = 1;
 			StartCoroutine("Delay");
@@ -70,6 +74,7 @@ public class CameraMenu:MonoBehaviour {
 		if(pathfound) {
 			transform.position = Vector3.Lerp(startPoint, endPoint, (Time.time - startTime) / duration);
 			transform.rotation = Quaternion.Lerp(startRotation,endRotation, Time.time * 0.04f);
+		}
 		}
 	}
 }

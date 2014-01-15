@@ -11,12 +11,61 @@ public class MenuGUI:MonoBehaviour {
 
 	public AudioClip buttonHover;
 	public AudioClip buttonClick;
+	public Camera optionCamera;
+	public FadeScript fade;
+	public CameraMenu flybyCamera;
+	private bool openMainMenu;
+	private bool openOptions;
 
+	public Texture optionBackground;
+	public GUIStyle optionStyle;
+	public GUIStyle optionindexStyle;
+	public GUIStyle optionToggle;
+	public GUIStyle sliderStyle;
+	public GUIStyle thumbStyle;
+
+	public GUIStyle inputStyle;
+
+	public int optionIndex;
+
+	public Vector2[] resolutions;
+	public Vector2 currentresolution;
+	public int selectedresolutions;
+
+	public Light ingameLight;
+
+	private bool givingInput;
+	private KeyCode selectedKeyCode;
+	public int keyCodeNum;
 	void Start () {
+		selectedresolutions = 3;
+		currentresolution = resolutions[selectedresolutions];
 		StartCoroutine("giveOffset");
+		openMainMenu = true;
 	}
 
 	void FixedUpdate() {
+		if(optionIndex == -1){
+			optionIndex = 2;
+		}
+		else if(optionIndex == 3){
+			optionIndex = 0;
+		}
+		if(openOptions && fade.alphaFadeValue == 1){
+			optionIndex = 0;
+			fade.fadingOut = false;
+			this.camera.enabled = false;
+			optionCamera.enabled = true;
+			flybyCamera.stopmoving = true;
+			openMainMenu = false;
+		}
+		if(!openOptions && fade.alphaFadeValue == 1){
+			fade.fadingOut = false;
+			this.camera.enabled = true;
+			optionCamera.enabled = false;
+			flybyCamera.stopmoving = false;
+			openMainMenu = true;
+		}
 		if(tooltip != "" && tooltip != lastGUITooltip) {
 			playSound (2);
 			lastGUITooltip = tooltip;
@@ -59,27 +108,285 @@ public class MenuGUI:MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.depth = -100000;
+		GUI.depth = 100000;
 		float rx = Screen.width / GameManager.nativeWidth;
 		float ry = Screen.height / GameManager.nativeHeight;
 		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
 
-		if(GUI.Button(new Rect(30, 455, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Play", "Play"), buttonStyle)) {
-			playSound(1);
-			Application.LoadLevel("GameMap");
+
+		if(openMainMenu){
+			if(GUI.Button(new Rect(30, 435, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Play", "Play"), buttonStyle)) {
+				playSound(1);
+				Application.LoadLevel("GameMap");
+			}
+
+			if(GUI.Button(new Rect(15, 535, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Options", "Options"), buttonStyle)){
+				playSound(1);
+				fade.fadingOut = true;
+				openOptions = true;
+			}
+
+			if(GUI.Button(new Rect(15, 635, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Credits", "Credits"), buttonStyle)){
+				playSound(1);
+			}
+
+			tooltip = GUI.tooltip;
+
+			if(!Application.isWebPlayer) {
+				if(GUI.Button(new Rect(1100, 635, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Quit", "Quit"), buttonStyle)){
+					Application.Quit();
+				}
+			}
 		}
+		if(!openMainMenu){
+			GUI.DrawTexture(new Rect(400,0,500,900),optionBackground);
+			if(GUI.Button(new Rect(-50, 635, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Menu", "Menu"), buttonStyle)){
+				playSound(1);
+				fade.fadingOut = true;
+				openOptions = false;
+			}
 
-		if(GUI.Button(new Rect(15, 555, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Options", "Options"), buttonStyle))
-			playSound(1);
+			if(GUI.Button(new Rect(400,0,50,720),"",optionindexStyle)){
+				optionIndex -= 1;
 
-		if(GUI.Button(new Rect(15, 655, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Credits", "Credits"), buttonStyle))
-			playSound(1);
+			}
+			if(GUI.Button(new Rect(850,0,50,720),"",optionindexStyle)){
+				optionIndex += 1;
+			}
 
-		tooltip = GUI.tooltip;
+			if(optionIndex == 0){
+				//INPUT 0
+				DrawInputWindow();
 
-		if(!Application.isWebPlayer) {
-			if(GUI.Button(new Rect(795, 655, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Quit", "Quit"), buttonStyle))
-				Application.Quit();
+			}
+			if(optionIndex == 1){
+				DrawGraphicsWindow();
+			}
+			if(optionIndex == 2){
+				//SOUND 2
+				GUI.Label(new Rect(600,25,100,50),"Sound",optionStyle);
+			}
 		}
+	}
+
+	void DrawInputWindow(){
+		if(givingInput){
+				Event e = Event.current;
+				if (e.isKey){
+				Debug.Log("Detected key code: " + e.keyCode);
+				selectedKeyCode = e.keyCode;
+
+				switch(keyCodeNum){
+					case 0:
+					InputHandler.HorizontalLeft = selectedKeyCode;
+					break;
+					case 1:
+					InputHandler.HorizontalRight = selectedKeyCode;
+					break;
+					case 2:
+					InputHandler.Forward = selectedKeyCode;
+					break;
+					case 3:
+					InputHandler.Backwards = selectedKeyCode;
+					break;
+					case 4:
+					InputHandler.Up = selectedKeyCode;
+					break;
+					case 5:
+					InputHandler.Down = selectedKeyCode;
+					break;
+					case 6:
+					InputHandler.MinimapKey = selectedKeyCode;
+					break;
+				}
+				givingInput = false;
+				}
+			}
+		if(givingInput){
+			inputStyle.fontSize = 65;
+			GUI.Label(new Rect(465,220,100,50),"Press any key",inputStyle);
+			inputStyle.fontSize = 20;
+		}
+		if(!givingInput){
+			GUI.Label(new Rect(600,25,100,50),"Input",optionStyle);
+		GUI.BeginGroup(new Rect(460,100,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"Movement - Left  =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.HorizontalLeft.ToString(),optionStyle);
+
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 0;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(460,160,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"Movement - Right  =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.HorizontalRight.ToString(),optionStyle);
+
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 1;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(460,220,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"Movement - Forward  =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Forward.ToString(),optionStyle);
+
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 2;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(460,280,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"Movement - Backwards  =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Backwards.ToString(),optionStyle);
+
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 3;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(460,340,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"Movement - Up  =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Up.ToString(),optionStyle);
+
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 4;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(460,400,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"Movement - Down  =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Down.ToString(),optionStyle);
+
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 5;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(460,460,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"Minimap Key  =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.MinimapKey.ToString(),optionStyle);
+		
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 6;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+		}
+	}
+	void DrawGraphicsWindow(){ 
+		GUI.Label(new Rect(600,25,100,50),"Graphics",optionStyle);
+		GUI.Label(new Rect(530,80,100,50),"Fullscreen",optionStyle);
+		Screen.fullScreen = GUI.Toggle(new Rect(710,95,75,25),Screen.fullScreen,"",optionToggle);
+		
+		GUI.Label(new Rect(600,140,100,50),"Resolution",optionStyle);
+		GUI.Label(new Rect(600,175,100,50),"" + currentresolution.x +":" + currentresolution.y,optionStyle);
+		if(GUI.Button(new Rect(700,230,70,50),"+",optionindexStyle)){
+			if(selectedresolutions == 3){}else{
+				selectedresolutions += 1;
+			}
+			currentresolution = resolutions[selectedresolutions];
+		}
+		if(GUI.Button(new Rect(520,230,70,50),"-",optionindexStyle)){
+			if(selectedresolutions == 0){}else{
+				selectedresolutions -= 1;
+			}
+			currentresolution = resolutions[selectedresolutions];
+		}
+		optionindexStyle.fontSize = 20;
+		if(GUI.Button(new Rect(610,230,70,50),"Apply",optionindexStyle)){
+			Screen.SetResolution(Mathf.FloorToInt(currentresolution.x),Mathf.FloorToInt(currentresolution.y),Screen.fullScreen);
+		}
+		optionindexStyle.fontSize = 40;
+
+		//Anti Aliasing
+		GUI.BeginGroup(new Rect(470,300,120,100),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
+			GUI.Label(new Rect(10,-5,100,50),"Anti-Aliasing",optionStyle);
+			QualitySettings.antiAliasing = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(5, 65, 90, 15), QualitySettings.antiAliasing, 0.0F, 8.0F,sliderStyle,thumbStyle));
+		GUI.EndGroup();
+
+		//Texture Quality
+		GUI.BeginGroup(new Rect(470,410,120,100),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
+			GUI.Label(new Rect(10,-5,100,50),"Vsync",optionStyle);
+			GUI.Label(new Rect(10,10,100,50),"Count",optionStyle);
+			QualitySettings.vSyncCount = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(5, 65, 90, 15), QualitySettings.vSyncCount, 0.0F, 2.0F,sliderStyle,thumbStyle));
+		GUI.EndGroup();
+
+		//Texture Quality
+		GUI.BeginGroup(new Rect(470,520,120,100),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
+			GUI.Label(new Rect(10,-5,100,50),"Texture",optionStyle);
+			GUI.Label(new Rect(10,10,100,50),"Quality",optionStyle);
+			QualitySettings.masterTextureLimit = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(5, 65, 90, 15), QualitySettings.masterTextureLimit, 3.0F, 0.0F,sliderStyle,thumbStyle));
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(700,300,120,100),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
+			GUI.Label(new Rect(10,-5,100,50),"Anisotropic",optionStyle);
+			optionindexStyle.fontSize = 20;
+		if(GUI.Button(new Rect(60,45,50,50),"On",optionindexStyle)){
+				QualitySettings.anisotropicFiltering = AnisotropicFiltering.Enable;
+			}
+		if(GUI.Button(new Rect(5,45,50,50),"Off",optionindexStyle)){
+				QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(700,410,120,100),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
+			GUI.Label(new Rect(10,-5,100,50),"Shadows",optionStyle);
+			optionindexStyle.fontSize = 20;
+		if(GUI.Button(new Rect(60,45,50,50),"On",optionindexStyle)){
+				ingameLight.shadows = LightShadows.Hard;
+			}
+		if(GUI.Button(new Rect(5,45,50,50),"Off",optionindexStyle)){
+				ingameLight.shadows = LightShadows.None;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(700,520,120,100),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
+			GUI.Label(new Rect(10,-5,100,50),"Fog",optionStyle);
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(60,45,50,50),"On",optionindexStyle)){
+				RenderSettings.fog = true;
+			}
+			if(GUI.Button(new Rect(5,45,50,50),"Off",optionindexStyle)){
+				RenderSettings.fog = false;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
+
 	}
 }
