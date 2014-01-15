@@ -454,7 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9188ade74e8b714484bba417a74c71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 2800000, guid: eefc1096b77c35a4688a2e053707f480, type: 3}
   tickDelay: 5
   woodPerTick: 2
   stonePerTick: 2
@@ -3891,6 +3890,70 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 180251063}
   m_Mesh: {fileID: 4300010, guid: b5092124c9a261d45a18a5e0f11b1ae7, type: 3}
+--- !u!1 &184616253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100012, guid: 56e35f93b434bad4889d730d8e57ea5b, type: 2}
+  m_PrefabInternal: {fileID: 1735063440}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 184616254}
+  - 114: {fileID: 184616256}
+  - 23: {fileID: 184616255}
+  m_Layer: 0
+  m_Name: Healthbar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184616254
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400012, guid: 56e35f93b434bad4889d730d8e57ea5b, type: 2}
+  m_PrefabInternal: {fileID: 1735063440}
+  m_GameObject: {fileID: 184616253}
+  m_LocalRotation: {x: .612372518, y: -.353553355, z: -.353553295, w: .612372518}
+  m_LocalPosition: {x: .264434844, y: 1.04284143, z: 3.05806994}
+  m_LocalScale: {x: .142857149, y: .142857105, z: .142857134}
+  m_Children: []
+  m_Father: {fileID: 1458460090}
+--- !u!23 &184616255
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300010, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1735063440}
+  m_GameObject: {fileID: 184616253}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!114 &184616256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 56e35f93b434bad4889d730d8e57ea5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1735063440}
+  m_GameObject: {fileID: 184616253}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f348d96ec5ea0bf44be20800d31d2b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2800000, guid: eefc1096b77c35a4688a2e053707f480, type: 3}
+  bar: {fileID: 2800000, guid: 694bc31c3d4031f4cb7b1fe2616c858a, type: 3}
 --- !u!1 &187021487
 GameObject:
   m_ObjectHideFlags: 0
@@ -21048,6 +21111,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTower: {fileID: 2800000, guid: 8380cf4a8ff49b047b12621218349711, type: 3}
   buttonTowerNoMoney: {fileID: 2800000, guid: 97c737c1bb562744eba3cabe1d1bd6a0, type: 3}
+  buttonTowerIce: {fileID: 2800000, guid: 6e2460ac8b8ce4d4798975b242165374, type: 3}
+  buttonTowerIceNoMoney: {fileID: 2800000, guid: 4589e099c2d1f9f4b851c0c7e5fc0b66,
+    type: 3}
+  buttonTowerFire: {fileID: 2800000, guid: f84b80710f8138040ba112ed10867237, type: 3}
+  buttonTowerFireNoMoney: {fileID: 2800000, guid: f6fea30547ea8b447b8c490ddf4cbcc7,
+    type: 3}
   buttonMine: {fileID: 2800000, guid: 62a3709a6267d1c4ba0d084d1da67264, type: 3}
   buttonMineNoMoney: {fileID: 2800000, guid: 38d6c5749cff1e747b73387848a7a2fa, type: 3}
   buttonLumberMill: {fileID: 2800000, guid: b5b3ecd27d66f8943b75929920e1baa8, type: 3}
@@ -21055,6 +21124,7 @@ MonoBehaviour:
     type: 3}
   buttonBridge: {fileID: 2800000, guid: b98003d44d277b241b50dfea0ee51339, type: 3}
   buttonBridgeNoMoney: {fileID: 2800000, guid: 6a0e0054ab2ac614f977e5e32a2b8af3, type: 3}
+  buttonNotAvailable: {fileID: 2800000, guid: b211719456fe5a64ca608390fef5af36, type: 3}
   backgroundTexture: {fileID: 2800000, guid: 3de0b355b7550ba4385737ef24bc8827, type: 3}
   showDelay: .200000003
   styleText:
@@ -21234,125 +21304,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  styleNormal:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
-  styleNoMoney:
-    m_Name: 
-    m_Normal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Hover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Active:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Focused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnNormal:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnHover:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnActive:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_OnFocused:
-      m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
-  styleNoBuilding:
+  buttonStyle:
     m_Name: 
     m_Normal:
       m_Background: {fileID: 0}
@@ -32218,6 +32170,7 @@ Transform:
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 24997986}
+  - {fileID: 184616254}
   - {fileID: 1635439319}
   - {fileID: 250466626}
   - {fileID: 920722493}
