@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 23: {fileID: 2300000}
   m_Layer: 0
-  m_Name: TowerIce
+  m_Name: TowerFire
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   interactable: 0
   tickDelay: 0
   currentLevel: 1
-  towerType: 2
+  towerType: 3
   shotSound: {fileID: 8300000, guid: 1b2727f0e62e2094eb64cf2631c24674, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BuildingStats:MonoBehaviour {
 	public int levels;
+	public float sellRate;
 	
 	public float[] resourcesPerTick;
 
@@ -10,7 +11,7 @@ public class BuildingStats:MonoBehaviour {
 	public float[] stoneCostPerLevel;
 	public float[] woodCostPerLevel;
 
-	public float[] goldSellPerLevel;
-	public float[] stoneSellPerLevel;
-	public float[] woodSellPerLevel;
+	public int[] rangePerLevel;
+	public int[] damagePerLevel;
+	public float[] speedPerLevel;
 }

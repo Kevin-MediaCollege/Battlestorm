@@ -149,11 +149,9 @@ MonoBehaviour:
   prefabPath: Prefabs/Buildings/Tower/Tower
   stats: {fileID: 0}
   interactable: 0
-  tickDelay: 2
+  tickDelay: 0
   currentLevel: 1
   towerType: 1
-  damage: 2
-  maxRange: 20
   shotSound: {fileID: 8300000, guid: 1b2727f0e62e2094eb64cf2631c24674, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -167,37 +165,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels: 4
+  sellRate: .5
+  useSellRate: 1
   resourcesPerTick: []
   goldCostPerLevel:
-  - 15
-  - 25
-  - 40
-  - 70
-  stoneCostPerLevel:
-  - 10
-  - 20
-  - 30
   - 50
-  woodCostPerLevel:
-  - 30
+  - 75
+  - 150
+  - 300
+  stoneCostPerLevel:
   - 40
+  - 75
+  - 150
+  - 300
+  woodCostPerLevel:
   - 50
   - 100
-  goldSellPerLevel:
-  - 7
-  - 12
-  - 20
-  - 35
-  stoneSellPerLevel:
-  - 5
-  - 10
-  - 15
-  - 25
-  woodSellPerLevel:
-  - 15
-  - 20
-  - 25
-  - 50
+  - 200
+  - 400
+  goldSellPerLevel: []
+  stoneSellPerLevel: []
+  woodSellPerLevel: []
+  rangePerLevel: 14000000140000001e00000028000000
+  damagePerLevel: 0200000004000000080000000a000000
+  speedPerLevel:
+  - 3
+  - 2
+  - .5
+  - .200000003
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

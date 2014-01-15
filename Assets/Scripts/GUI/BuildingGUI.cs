@@ -202,8 +202,8 @@ public class BuildingGUI:MonoBehaviour {
 			styleText.normal.textColor = enoughGold ? Color.green : Color.red;
 			GUI.Label(new Rect(60, 110, 30, 20), building.stats.goldCostPerLevel[building.currentLevel - 1].ToString(), styleText);
 
-			if(GUI.Button(new Rect(28, 195, 80.83f, 26.66f), "", styleUpgrade)) {
-				if(PlayerData.Instance.goldAmount >= building.stats.goldCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.woodAmount >= building.stats.woodCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.stoneAmount >= building.stats.stoneCostPerLevel[building.currentLevel]) {
+			if(PlayerData.Instance.goldAmount >= building.stats.goldCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.woodAmount >= building.stats.woodCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.stoneAmount >= building.stats.stoneCostPerLevel[building.currentLevel - 1]) {
+				if(GUI.Button(new Rect(28, 195, 80.83f, 26.66f), "", styleUpgrade)) {
 					PlayerData.Instance.goldAmount -= building.stats.goldCostPerLevel[building.currentLevel - 1];
 					PlayerData.Instance.stoneAmount -= building.stats.stoneCostPerLevel[building.currentLevel - 1];
 					PlayerData.Instance.woodAmount -= building.stats.woodCostPerLevel[building.currentLevel - 1];
@@ -219,9 +219,9 @@ public class BuildingGUI:MonoBehaviour {
 			Tower tower = building.GetComponent<Tower>();
 			
 			GUI.Label(new Rect(200, 0, 1, 20), tower.towerType.ToString() + " " + building.GetComponent<BuildingType>().type.ToString(), styleText);
-			GUI.Label(new Rect(200, 50, 1, 20), "Damage: " + tower.damage, styleText);
-			GUI.Label(new Rect(200, 75, 1, 20), "Range: " + tower.maxRange, styleText);
-			GUI.Label(new Rect(200, 100, 1, 20), "Speed: " + tower.tickDelay, styleText);
+			GUI.Label(new Rect(200, 50, 1, 20), "Damage: " + tower.stats.damagePerLevel[tower.currentLevel - 1].ToString(), styleText);
+			GUI.Label(new Rect(200, 75, 1, 20), "Range: " + tower.stats.rangePerLevel[tower.currentLevel - 1].ToString(), styleText);
+			GUI.Label(new Rect(200, 100, 1, 20), "Speed: " + tower.stats.speedPerLevel[tower.currentLevel - 1].ToString(), styleText);
 		} else {
 			BuildingStats stats = building.GetComponent<BuildingStats>();
 			
@@ -233,11 +233,11 @@ public class BuildingGUI:MonoBehaviour {
 		
 		styleText.normal.textColor = Color.green;
 		styleText.alignment = TextAnchor.UpperLeft;
-		
-		GUI.Label(new Rect(325, 37, 30, 20), building.stats.woodSellPerLevel[building.currentLevel - 1].ToString(), styleText);
-		GUI.Label(new Rect(325, 77, 30, 20), building.stats.stoneSellPerLevel[building.currentLevel - 1].ToString(), styleText);
-		GUI.Label(new Rect(325, 110, 30, 20), building.stats.goldSellPerLevel[building.currentLevel - 1].ToString(), styleText);
-		
+
+		GUI.Label(new Rect(325, 37, 30, 20), (building.stats.woodCostPerLevel[building.currentLevel - 1] * building.stats.sellRate).ToString(), styleText);
+		GUI.Label(new Rect(325, 77, 30, 20), (building.stats.stoneCostPerLevel[building.currentLevel - 1] * building.stats.sellRate).ToString(), styleText);
+		GUI.Label(new Rect(325, 110, 30, 20), (building.stats.goldCostPerLevel[building.currentLevel - 1] * building.stats.sellRate).ToString(), styleText);
+
 		if(GUI.Button(new Rect(291, 195, 80.83f, 26.66f), "", styleSell))
 			DestroyBuilding();
 
@@ -319,9 +319,10 @@ public class BuildingGUI:MonoBehaviour {
 
 	void DestroyBuilding() {
 		buildingManager = building.transform.parent.GetComponent<BuildingManager>();
-		
-		PlayerData.Instance.stoneAmount += building.stats.stoneSellPerLevel[building.currentLevel - 1];
-		PlayerData.Instance.woodAmount += building.stats.woodSellPerLevel[building.currentLevel - 1];
+
+		PlayerData.Instance.goldAmount += building.stats.goldCostPerLevel[building.currentLevel - 1] * building.stats.sellRate;
+		PlayerData.Instance.stoneAmount += building.stats.stoneCostPerLevel[building.currentLevel - 1] * building.stats.sellRate;
+		PlayerData.Instance.woodAmount += building.stats.woodCostPerLevel[building.currentLevel - 1] * building.stats.sellRate;
 		
 		buildingManager.DestroyBuilding(building);
 		

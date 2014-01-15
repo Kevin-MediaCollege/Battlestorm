@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
+  - 23: {fileID: 2300000}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Mine
@@ -30,6 +31,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!23 &2300000
+Renderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -82,48 +104,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels: 5
+  sellRate: .5
   resourcesPerTick:
-  - 5
+  - 2
+  - 4
   - 7
   - 10
   - 15
-  - 20
   goldCostPerLevel:
-  - 50
-  - 15
-  - 25
   - 40
-  - 70
+  - 60
+  - 120
+  - 240
+  - 480
   stoneCostPerLevel:
-  - 10
-  - 10
-  - 30
-  - 50
-  - 100
-  woodCostPerLevel:
-  - 10
-  - 30
   - 40
+  - 80
+  - 160
+  - 380
+  - 550
+  woodCostPerLevel:
+  - 30
   - 50
   - 100
-  goldSellPerLevel:
-  - 25
-  - 7
-  - 12
-  - 20
-  - 35
-  stoneSellPerLevel:
-  - 5
-  - 5
-  - 15
-  - 25
-  - 50
-  woodSellPerLevel:
-  - 5
-  - 15
-  - 20
-  - 25
-  - 50
+  - 200
+  - 400
+  rangePerLevel: 
+  damagePerLevel: 
+  speedPerLevel: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

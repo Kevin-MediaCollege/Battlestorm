@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class Base:MonoBehaviour {
+	public Texture healthBar;
+
 	public float tickDelay;
 
 	public int woodPerTick;
@@ -9,6 +11,10 @@ public class Base:MonoBehaviour {
 
 	void Start() {
 		StartCoroutine("Tick");
+	}
+
+	void OnGUI() {
+
 	}
 
 	IEnumerator Tick() {

@@ -1446,8 +1446,8 @@ MonoBehaviour:
   canMove: 1
   target: {fileID: 0}
   startHasRun: 0
-  maxHitpoints: 0
-  hitpoints: 0
+  maxHitpoints: 8
+  hitpoints: 8
   slowDownDelay: 3
   burnTime: 5
   burnDamage: 1

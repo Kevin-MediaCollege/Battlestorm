@@ -298,8 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda73aae8e428c24a8781b304bee2e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodAmount: 50
-  stoneAmount: 50
+  woodAmount: 100
+  stoneAmount: 100
   goldAmount: 100
   health: 10
 --- !u!114 &11400004

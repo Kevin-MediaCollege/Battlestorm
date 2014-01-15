@@ -9,9 +9,6 @@ public class Tower:Building {
 	};
 
 	public TowerType towerType;
-
-	public float damage;
-	public float maxRange;
 	
 	private GameObject target;
 	private Transform top;
@@ -44,10 +41,10 @@ public class Tower:Building {
 
 	protected override IEnumerator Tick() {
 		while(true) {
-			yield return new WaitForSeconds(tickDelay);
+			yield return new WaitForSeconds(stats.speedPerLevel[currentLevel - 1]);
 
 			if(target != null) {
-				if(Vector3.Distance(transform.position, target.transform.position) > maxRange)
+				if(Vector3.Distance(transform.position, target.transform.position) > stats.rangePerLevel[currentLevel - 1])
 					SearchForNewTarget();
 				
 				Fire();
@@ -61,7 +58,7 @@ public class Tower:Building {
 		float distance = 0;
 		
 		foreach(GameObject go in targets) {
-			if(Vector3.Distance(go.transform.position, transform.position) <= maxRange) {
+			if(Vector3.Distance(go.transform.position, transform.position) <= stats.rangePerLevel[currentLevel - 1]) {
 				if(closest == null) {
 					closest = go;
 					distance = Vector3.Distance(go.transform.position, transform.position);
@@ -77,13 +74,6 @@ public class Tower:Building {
 		target = closest;
 	}
 
-	public override void SwitchLevel(int newLevel) {
-		base.SwitchLevel(newLevel);
-
-		damage *= 2;
-		tickDelay /= 2;
-	}
-
 	void Fire() {
 		if(target != null) {
 			if(!target.GetComponent<Enemy>().isDead) {
@@ -91,7 +81,7 @@ public class Tower:Building {
 				Projectile proj = projectile.GetComponent<Projectile>();
 
 				proj.target = target.transform;
-				proj.damage = damage;
+				proj.damage = stats.damagePerLevel[currentLevel - 1];
 				proj.targetScript = target.gameObject.GetComponent<Enemy>();
 
 				audio.PlayOneShot (shotSound);

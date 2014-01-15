@@ -1451,14 +1451,14 @@ MonoBehaviour:
   slowdownDistance: .699999988
   turningSpeed: 4
   forwardLook: .800000012
-  speed: 2
+  speed: 3
   closestOnPathCheck: 1
   canSearch: 1
   canMove: 1
   target: {fileID: 0}
   startHasRun: 0
-  maxHitpoints: 0
-  hitpoints: 5
+  maxHitpoints: 10
+  hitpoints: 10
   slowDownDelay: 3
   burnTime: 5
   burnDamage: 1

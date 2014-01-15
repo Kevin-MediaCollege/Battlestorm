@@ -12,7 +12,7 @@ public class Bridge:MonoBehaviour {
 
 	void Start() {
 		if(isMade)
-			Build();
+			BuildFree();
 	}
 	
 	public void Build() {
@@ -36,10 +36,26 @@ public class Bridge:MonoBehaviour {
 		isMade = true;
 		Unlock();
 	}
+
+	public void BuildFree() {
+		for(int i = 0; i < bridgeParts; i++) {
+			Vector3 spawnpos = spawnposition.transform.position + (spawnposition.transform.forward * 0.5f);
+			GameObject part = Instantiate(Resources.Load("Prefabs/Buildings/Bridge/BridgePart"), spawnpos,transform.rotation) as GameObject;
+			
+			part.transform.rotation = spawnposition.transform.rotation;
+			part.transform.position += spawnposition.transform.forward * i;
+			
+			part.name = "BridgePart";
+			part.transform.parent = spawnposition.transform;
+		}
+
+		isMade = true;
+		Unlock();
+	}
 	
 	void Unlock(){
 		for (int i = 0; i < adjacentIslands.Length; i++) {
-			adjacentIslands [i].unlockIsland (true);
+			adjacentIslands[i].unlockIsland(true);
 		}
 	}
 }
