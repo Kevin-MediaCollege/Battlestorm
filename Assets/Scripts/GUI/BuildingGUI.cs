@@ -142,6 +142,7 @@ public class BuildingGUI:MonoBehaviour {
 
 	private void DrawTowerNormalSubButton() {
 		BuildingStats stats = GameObject.Find("TowerNormal").GetComponent<BuildingStats>();
+		DisableRenderer(stats.gameObject);
 		
 		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 			buttonStyle.normal.background = buttonTower;
