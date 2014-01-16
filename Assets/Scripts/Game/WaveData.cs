@@ -37,7 +37,10 @@ public class WaveData:MonoBehaviour {
 		public enum SpawnPosition {
 			Left,
 			Right,
-			Middle
+			Middle,
+			FrontLeft,
+			FrontMiddle,
+			FrontRight
 		};
 
 		public enum EnemyTypes {

@@ -26,7 +26,16 @@ public class EnemyManager:MonoBehaviour {
 			break;
 		case 2:
 			spawnPosition = spawnPositions[2];
-			break;
+		break;
+		case 3:
+			spawnPosition = spawnPositions[3];
+		break;
+		case 4:
+			spawnPosition = spawnPositions[4];
+		break;
+		case 5:
+			spawnPosition = spawnPositions[5];
+		break;
 		}
 
 		enemy = Instantiate(Resources.Load("Prefabs/Enemies/" + name), spawnPosition.position, Quaternion.identity) as GameObject;

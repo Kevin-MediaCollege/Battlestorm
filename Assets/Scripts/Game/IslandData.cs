@@ -17,7 +17,9 @@ public class IslandData:MonoBehaviour {
 	public void unlockIsland(bool b) {
 		isUnlocked = b;
 
-		for(int i = 0; i < plots.Length; i++)
+		for(int i = 0; i < plots.Length; i++){
 			plots[i].isUnlocked = b;
+			plots[i].renderer.enabled = true;
+		}
 	}
 }
