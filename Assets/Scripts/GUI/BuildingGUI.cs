@@ -331,7 +331,7 @@ public class BuildingGUI:MonoBehaviour {
 				}
 			} else {
 				bridgeStyle.normal.background = buttonBridgeNoMoney;
-				GUI.Button(new Rect(0, 25, 75, 75), new GUIContent("", "NotAvailableBridge"), bridgeStyle);
+				GUI.Button(new Rect(0, 25, 75, 75), new GUIContent("", "BridgeNotAvailable"), bridgeStyle);
 			}
 		GUI.EndGroup();
 	}
