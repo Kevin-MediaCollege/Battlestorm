@@ -10,8 +10,10 @@ public class IslandData:MonoBehaviour {
 	public bool canHaveTower;
 
 	void Start() {
+
 		for(int i = 0; i < plots.Length; i++)
 			plots[i].isUnlocked = isUnlocked;
+		Debug.Log(transform.position);
 	}
 	
 	public void unlockIsland(bool b) {
