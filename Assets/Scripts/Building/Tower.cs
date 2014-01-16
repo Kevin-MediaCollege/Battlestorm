@@ -87,17 +87,32 @@ public class Tower:Building {
 		if(target != null) {
 			if(!target.GetComponent<Enemy>().isDead) {
 				if(towerType == TowerType.Normal) {
-					GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
-					Projectile proj = projectile.GetComponent<Projectile>();
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Arrow"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
 
-					proj.target = target.transform;
-					proj.damage = stats.damagePerLevel[currentLevel - 1];
-					proj.targetScript = target.gameObject.GetComponent<Enemy>();
+					projectile.target = target.transform;
+					projectile.damage = stats.damagePerLevel[currentLevel - 1];
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
 
 					audio.PlayOneShot(shotSound);
 				} else if(towerType == TowerType.Ice) {
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Ice"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					
+					projectile.target = target.transform;
+					projectile.damage = stats.damagePerLevel[currentLevel - 1];
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
+					
+					audio.PlayOneShot(shotSound);
+
 					target.GetComponent<Enemy>().Slowdown();
 				} else if(towerType == TowerType.Fire) {
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					
+					projectile.target = target.transform;
+					projectile.damage = stats.damagePerLevel[currentLevel - 1];
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
+					
+					audio.PlayOneShot(shotSound);
+
 					target.GetComponent<Enemy>().Burn();
 				}
 			}
