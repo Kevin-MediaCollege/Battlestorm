@@ -162,6 +162,7 @@ public class BuildingGUI:MonoBehaviour {
 
 	private void DrawTowerIceSubButton() {
 		BuildingStats stats = GameObject.Find("TowerIce").GetComponent<BuildingStats>();
+		DisableRenderer(stats.gameObject);
 		
 		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 			buttonStyle.normal.background = buttonTowerIce;
@@ -182,6 +183,7 @@ public class BuildingGUI:MonoBehaviour {
 
 	private void DrawTowerFireSubButton() {
 		BuildingStats stats = GameObject.Find("TowerFire").GetComponent<BuildingStats>();
+		DisableRenderer(stats.gameObject);
 		
 		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 			buttonStyle.normal.background = buttonTowerFire;
@@ -203,6 +205,7 @@ public class BuildingGUI:MonoBehaviour {
 	private void DrawMineButton(bool canHaveMine) {
 		if(canHaveMine) {
 			BuildingStats stats = GameObject.Find("Mine").GetComponent<BuildingStats>();
+			DisableRenderer(stats.gameObject);
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 				buttonStyle.normal.background = buttonMine;
@@ -229,6 +232,7 @@ public class BuildingGUI:MonoBehaviour {
 	private void DrawLumberMillButton(bool canHaveLumberMill) {
 		if(canHaveLumberMill) {
 			BuildingStats stats = GameObject.Find("LumberMill").GetComponent<BuildingStats>();
+			DisableRenderer(stats.gameObject);
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 				buttonStyle.normal.background = buttonLumberMill;
