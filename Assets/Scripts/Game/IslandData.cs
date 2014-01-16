@@ -19,7 +19,7 @@ public class IslandData:MonoBehaviour {
 
 		for(int i = 0; i < plots.Length; i++){
 			plots[i].isUnlocked = b;
-			plots[i].renderer.enabled = true;
+			plots[i].transform.FindChild("platform").renderer.enabled = true;
 		}
 	}
 }
