@@ -141,7 +141,7 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	private void DrawTowerNormalSubButton() {
-		BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/TowerNormal")) as GameObject).GetComponent<BuildingStats>();
+		BuildingStats stats = GameObject.Find("TowerNormal").GetComponent<BuildingStats>();
 		
 		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 			buttonStyle.normal.background = buttonTower;
@@ -156,14 +156,12 @@ public class BuildingGUI:MonoBehaviour {
 		} else {
 			buttonStyle.normal.background = buttonTowerNoMoney;
 			
-			GUI.Button(new Rect(targetPosition.x - 6.25f, Screen.height + -targetPosition.y - 150, 37.5f, 37.5f), new GUIContent("", "NotAvailable"), buttonStyle);
+			GUI.Button(new Rect(targetPosition.x - 6.25f, Screen.height + -targetPosition.y - 150, 37.5f, 37.5f), new GUIContent("", "TowerNormalNotAvailable"), buttonStyle);
 		}
-		
-		Destroy(stats.gameObject);
 	}
 
 	private void DrawTowerIceSubButton() {
-		BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/TowerIce")) as GameObject).GetComponent<BuildingStats>();
+		BuildingStats stats = GameObject.Find("TowerIce").GetComponent<BuildingStats>();
 		
 		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 			buttonStyle.normal.background = buttonTowerIce;
@@ -178,14 +176,12 @@ public class BuildingGUI:MonoBehaviour {
 		} else {
 			buttonStyle.normal.background = buttonTowerIceNoMoney;
 			
-			GUI.Button(new Rect(targetPosition.x + 37.5f, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "NotAvailable"), buttonStyle);
+			GUI.Button(new Rect(targetPosition.x + 37.5f, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "TowerIceNotAvailable"), buttonStyle);
 		}
-		
-		Destroy(stats.gameObject);
 	}
 
 	private void DrawTowerFireSubButton() {
-		BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/TowerFire")) as GameObject).GetComponent<BuildingStats>();
+		BuildingStats stats = GameObject.Find("TowerFire").GetComponent<BuildingStats>();
 		
 		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 			buttonStyle.normal.background = buttonTowerFire;
@@ -200,16 +196,13 @@ public class BuildingGUI:MonoBehaviour {
 		} else {
 			buttonStyle.normal.background = buttonTowerFireNoMoney;
 			
-			GUI.Button(new Rect(targetPosition.x - 50, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "NotAvailable"), buttonStyle);
+			GUI.Button(new Rect(targetPosition.x - 50, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "TowerFireNotAvailable"), buttonStyle);
 		}
-		
-		Destroy(stats.gameObject);
 	}
 	
 	private void DrawMineButton(bool canHaveMine) {
 		if(canHaveMine) {
-			BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/Mine")) as GameObject).GetComponent<BuildingStats>();
-			stats.gameObject.renderer.enabled = false;
+			BuildingStats stats = GameObject.Find("Mine").GetComponent<BuildingStats>();
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 				buttonStyle.normal.background = buttonMine;
@@ -224,10 +217,8 @@ public class BuildingGUI:MonoBehaviour {
 			} else {
 				buttonStyle.normal.background = buttonMineNoMoney;
 
-				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
+				GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "MineNotAvailable"), buttonStyle);
 			}
-			
-			Destroy(stats.gameObject);
 		} else {
 			buttonStyle.normal.background = buttonNotAvailable;
 
@@ -237,8 +228,7 @@ public class BuildingGUI:MonoBehaviour {
 	
 	private void DrawLumberMillButton(bool canHaveLumberMill) {
 		if(canHaveLumberMill) {
-			BuildingStats stats = (Instantiate(Resources.Load("Prefabs/Buildings/LumberMill")) as GameObject).GetComponent<BuildingStats>();
-			stats.gameObject.renderer.enabled = false;
+			BuildingStats stats = GameObject.Find("LumberMill").GetComponent<BuildingStats>();
 		
 			if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 				buttonStyle.normal.background = buttonLumberMill;
@@ -253,10 +243,8 @@ public class BuildingGUI:MonoBehaviour {
 			} else {
 				buttonStyle.normal.background = buttonLumberMillNoMoney;
 
-				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "NotAvailable"), buttonStyle);
+				GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMillNotAvailable"), buttonStyle);
 			}
-			
-			Destroy(stats.gameObject);
 		} else {
 			buttonStyle.normal.background = buttonNotAvailable;
 
@@ -408,5 +396,12 @@ public class BuildingGUI:MonoBehaviour {
 		buildingManager.DestroyBuilding(building);
 		
 		Deselect();
+	}
+
+	private void DisableRenderer(GameObject go) {
+		Renderer[] children = go.GetComponentsInChildren<Renderer> ();
+		
+		for (int i = 0; i < children.Length; i++)
+			children [i].enabled = false;
 	}
 }

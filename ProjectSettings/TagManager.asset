@@ -4,11 +4,13 @@
 TagManager:
   tags:
   - Plot
-  - Tower
+  - Enemy
   - Mine
   - LumberMill
   - Bridge
-  - Enemy
+  - TowerNormal
+  - TowerIce
+  - TowerFire
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
