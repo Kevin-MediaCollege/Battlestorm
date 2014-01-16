@@ -24,7 +24,13 @@ public class Enemy:PathFollower {
 
 	[HideInInspector]
 	public bool isDead = false;
-
+	
+	public override void Start() {
+		base.Start();
+	
+		maxHitpoints = hitpoints;
+	}
+	
 	void LateUpdate(){
 		if(isDead) {
 			child = GetComponentsInChildren<Renderer>();
@@ -50,7 +56,7 @@ public class Enemy:PathFollower {
 
 	public void Damage(float amt) {
 		hitpoints -= amt;
-		
+		Debug.Log(hitpoints + " " + maxHitpoints);
 		if(hitpoints <= 0) {
 			Kill();
 		}
@@ -69,7 +75,7 @@ public class Enemy:PathFollower {
 		}
 	}
 
-	public void Slowdown() {
+	public void Slowdown() {	
 		if(isOnFire) {
 			isOnFire = false;
 			StopCoroutine("BurnDelay");
@@ -94,7 +100,9 @@ public class Enemy:PathFollower {
 	IEnumerator SlowDownDelay() {
 		speed /= 2;
 
+		Debug.Log ("Frozen");
 		yield return new WaitForSeconds(slowDownDelay);
+		Debug.Log ("Unfrozen");
 		
 		speed *= 2;
 	}
@@ -102,8 +110,9 @@ public class Enemy:PathFollower {
 	IEnumerator BurnDelay() {
 		for(int i = 0; i < burnTime; i++) {
 			yield return new WaitForSeconds(1);
-
-			hitpoints -= burnDamage;
+			
+			Damage(burnDamage);
+			Debug.Log ("Burning: " + hitpoints);
 		}
 	}
 }
