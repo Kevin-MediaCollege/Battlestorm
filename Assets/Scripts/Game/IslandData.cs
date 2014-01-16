@@ -15,11 +15,13 @@ public class IslandData:MonoBehaviour {
 	}
 	
 	public void unlockIsland(bool b) {
-		isUnlocked = b;
+		if(!isUnlocked){
+			isUnlocked = b;
 
-		for(int i = 0; i < plots.Length; i++){
-			plots[i].isUnlocked = b;
-			plots[i].transform.FindChild("platform").renderer.enabled = true;
+			for(int i = 0; i < plots.Length; i++){
+				plots[i].isUnlocked = b;
+				plots[i].transform.FindChild("platform").renderer.enabled = true;
+			}
 		}
 	}
 }
