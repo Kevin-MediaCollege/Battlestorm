@@ -38907,7 +38907,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_Strength: .321999997
     m_Bias: .109999999
@@ -40033,10 +40033,10 @@ Transform:
   - {fileID: 1470925613}
   - {fileID: 857486850}
   - {fileID: 1742701985}
-  - {fileID: 238719731}
   - {fileID: 1195245405}
   - {fileID: 1051679196}
   - {fileID: 1822862895}
+  - {fileID: 238719731}
   m_Father: {fileID: 1933011592}
 --- !u!1 &1502558313
 GameObject:
