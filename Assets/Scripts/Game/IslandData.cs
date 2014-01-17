@@ -13,7 +13,6 @@ public class IslandData:MonoBehaviour {
 
 		for(int i = 0; i < plots.Length; i++)
 			plots[i].isUnlocked = isUnlocked;
-		Debug.Log(transform.position);
 	}
 	
 	public void unlockIsland(bool b) {
