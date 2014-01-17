@@ -4,14 +4,12 @@
     <Files>
       <File FileName="Assets\Scripts\GUI\Tooltip.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Enemy\Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy\Dasher.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy\Normal.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Building\BuildingManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Util\IslandReference.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Building\Bridge.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game\IslandData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DebugSpawn.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LOL\WoahDude.cs" Line="32" Column="36" />
+      <File FileName="Assets\Scripts\LOL\WoahDude.cs" Line="28" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

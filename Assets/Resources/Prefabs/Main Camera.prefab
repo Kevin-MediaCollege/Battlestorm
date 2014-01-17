@@ -116,7 +116,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -298,9 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda73aae8e428c24a8781b304bee2e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodAmount: 100
-  stoneAmount: 100
-  goldAmount: 100
+  woodAmount: 99999
+  stoneAmount: 99999
+  goldAmount: 99999
   health: 10
 --- !u!114 &11400004
 MonoBehaviour:
@@ -333,6 +333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1085,24 +1088,28 @@ MonoBehaviour:
   spawningEnemies: 0
   waveArray:
   - enemies:
-    - spawn: 1
-      name: 1
+    - spawn: 3
+      name: 0
       speed: 3
       health: 3
-    - spawn: 0
+    - spawn: 4
       name: 1
+      speed: 5
+      health: 3
+    - spawn: 5
+      name: 2
       speed: 3
       health: 3
-    - spawn: 2
-      name: 1
+    - spawn: 5
+      name: 0
       speed: 3
       health: 3
-    - spawn: 2
+    - spawn: 5
       name: 1
-      speed: 3
+      speed: 5
       health: 3
-    - spawn: 2
-      name: 1
+    - spawn: 5
+      name: 2
       speed: 3
       health: 3
   - enemies:

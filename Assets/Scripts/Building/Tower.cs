@@ -95,24 +95,24 @@ public class Tower:Building {
 
 					audio.PlayOneShot(shotSound);
 				} else if(towerType == TowerType.Ice) {
-					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Ice"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					/*Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Ice"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
 					
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
 					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
 					
 					audio.PlayOneShot(shotSound);
-
+*/
 					target.GetComponent<Enemy>().Slowdown();
 				} else if(towerType == TowerType.Fire) {
-					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					/*Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
 					
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
 					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
 					
 					audio.PlayOneShot(shotSound);
-
+*/
 					target.GetComponent<Enemy>().Burn();
 				}
 			}

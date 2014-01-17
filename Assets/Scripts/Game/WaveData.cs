@@ -44,8 +44,9 @@ public class WaveData:MonoBehaviour {
 		};
 
 		public enum EnemyTypes {
-			Normal,
-			Dasher
+			Tank,
+			Dasher,
+			TNT
 		};
 
 		public SpawnPosition spawn;
