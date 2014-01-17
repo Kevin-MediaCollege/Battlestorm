@@ -25801,7 +25801,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 2000
-  field of view: 70
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -26103,9 +26103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda73aae8e428c24a8781b304bee2e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodAmount: 100
-  stoneAmount: 100
-  goldAmount: 100
+  woodAmount: 99999
+  stoneAmount: 99999
+  goldAmount: 99999
   health: 10
 --- !u!114 &958339535
 MonoBehaviour:
@@ -26869,7 +26869,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &958339545
 Rigidbody:
@@ -55372,6 +55372,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 1559965924}
   isUnlocked: 0
+--- !u!114 &2123449704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 67bd713a8e6d2ca4093c5581490f79be,
+    type: 2}
+  m_PrefabInternal: {fileID: 145124221}
+  m_GameObject: {fileID: 2123449700}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5352e324cd300764c8a715cd2cdccdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 100002, guid: 9823fb3b3965b5346a9ffcc4c5e0641c, type: 2}
 --- !u!1 &2132752552
 GameObject:
   m_ObjectHideFlags: 0
