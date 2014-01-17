@@ -5,13 +5,13 @@ public class BuildingStats:MonoBehaviour {
 	public int levels;
 	public float sellRate;
 	
-	public float[] resourcesPerTick;
+	public int[] resourcesPerTick;
 
-	public float[] goldCostPerLevel;
-	public float[] stoneCostPerLevel;
-	public float[] woodCostPerLevel;
+	public int[] goldCostPerLevel;
+	public int[] stoneCostPerLevel;
+	public int[] woodCostPerLevel;
 
 	public int[] rangePerLevel;
 	public int[] damagePerLevel;
-	public float[] speedPerLevel;
+	public int[] speedPerLevel;
 }

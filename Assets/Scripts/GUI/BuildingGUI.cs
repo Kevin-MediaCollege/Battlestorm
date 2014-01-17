@@ -124,7 +124,7 @@ public class BuildingGUI:MonoBehaviour {
 		if(canHaveTower) {
 			buttonStyle.normal.background = buttonTower;
 
-			if(GUI.Button(new Rect(targetPosition.x - 25, Screen.height + -targetPosition.y - 100, 75, 75), new GUIContent("", "TowerMenu"), buttonStyle)) {
+			if(GUI.Button(new Rect(targetPosition.x - 29.9f, Screen.height + -targetPosition.y - 100, 84.4f, 84.4f), new GUIContent("", "TowerMenu"), buttonStyle)) {
 				subMenu = !subMenu;
 			}
 
@@ -147,7 +147,7 @@ public class BuildingGUI:MonoBehaviour {
 		if(PlayerData.Instance.goldAmount >= stats.goldCostPerLevel[0] && PlayerData.Instance.stoneAmount >= stats.stoneCostPerLevel[0] && PlayerData.Instance.woodAmount >= stats.woodCostPerLevel[0]) {
 			buttonStyle.normal.background = buttonTower;
 			
-			if(GUI.Button(new Rect(targetPosition.x - 6.25f, Screen.height + -targetPosition.y - 150, 37.5f, 37.5f), new GUIContent("", "TowerNormal"), buttonStyle)) {
+			if(GUI.Button(new Rect(targetPosition.x - 10.94f, Screen.height + -targetPosition.y - 150, 46.9f, 46.9f), new GUIContent("", "TowerNormal"), buttonStyle)) {
 				Create(EBuildingType.TowerNormal);
 				
 				PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
@@ -157,7 +157,7 @@ public class BuildingGUI:MonoBehaviour {
 		} else {
 			buttonStyle.normal.background = buttonTowerNoMoney;
 			
-			GUI.Button(new Rect(targetPosition.x - 6.25f, Screen.height + -targetPosition.y - 150, 37.5f, 37.5f), new GUIContent("", "TowerNormalNotAvailable"), buttonStyle);
+			GUI.Button(new Rect(targetPosition.x - 10.94f, Screen.height + -targetPosition.y - 150, 46.9f, 46.9f), new GUIContent("", "TowerNormalNotAvailable"), buttonStyle);
 		}
 	}
 
@@ -267,13 +267,13 @@ public class BuildingGUI:MonoBehaviour {
 			bool enoughWood = PlayerData.Instance.woodAmount >= building.stats.woodCostPerLevel[building.currentLevel - 1];
 			
 			styleText.normal.textColor = enoughWood ? Color.green : Color.red;
-			GUI.Label(new Rect(60, 37, 30, 20), building.stats.woodCostPerLevel[building.currentLevel - 1].ToString(), styleText);
+			GUI.Label(new Rect(55, 37, 30, 20), building.stats.woodCostPerLevel[building.currentLevel - 1].ToString(), styleText);
 			
 			styleText.normal.textColor = enoughStone ? Color.green : Color.red;
-			GUI.Label(new Rect(60, 77, 30, 20), building.stats.stoneCostPerLevel[building.currentLevel - 1].ToString(), styleText);
+			GUI.Label(new Rect(55, 77, 30, 20), building.stats.stoneCostPerLevel[building.currentLevel - 1].ToString(), styleText);
 			
 			styleText.normal.textColor = enoughGold ? Color.green : Color.red;
-			GUI.Label(new Rect(60, 110, 30, 20), building.stats.goldCostPerLevel[building.currentLevel - 1].ToString(), styleText);
+			GUI.Label(new Rect(55, 110, 30, 20), building.stats.goldCostPerLevel[building.currentLevel - 1].ToString(), styleText);
 
 			if(PlayerData.Instance.goldAmount >= building.stats.goldCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.woodAmount >= building.stats.woodCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.stoneAmount >= building.stats.stoneCostPerLevel[building.currentLevel - 1]) {
 				if(GUI.Button(new Rect(28, 195, 80.83f, 26.66f), "", styleUpgrade)) {
@@ -291,10 +291,16 @@ public class BuildingGUI:MonoBehaviour {
 		if(building.GetComponent<BuildingType>().type.ToString() == "TowerNormal" || building.GetComponent<BuildingType>().type.ToString() == "TowerIce" || building.GetComponent<BuildingType>().type.ToString() == "TowerFire") {
 			Tower tower = building.GetComponent<Tower>();
 			
-			GUI.Label(new Rect(200, 0, 1, 20), tower.towerType.ToString() + " " + building.GetComponent<BuildingType>().type.ToString(), styleText);
+			GUI.Label(new Rect(200, 0, 1, 20), tower.towerType.ToString() + " Tower", styleText);
 			GUI.Label(new Rect(200, 50, 1, 20), "Damage: " + tower.stats.damagePerLevel[tower.currentLevel - 1].ToString(), styleText);
 			GUI.Label(new Rect(200, 75, 1, 20), "Range: " + tower.stats.rangePerLevel[tower.currentLevel - 1].ToString(), styleText);
-			GUI.Label(new Rect(200, 100, 1, 20), "Speed: " + tower.stats.speedPerLevel[tower.currentLevel - 1].ToString(), styleText);
+			GUI.Label(new Rect(200, 100, 1, 20), "Speed: " + (60 / tower.stats.speedPerLevel[tower.currentLevel - 1]).ToString(), styleText);
+
+			if(tower.towerType == Tower.TowerType.Fire) {
+				GUI.Label(new Rect(200, 130, 1, 20), "Fire damage\nover time", styleText);
+			} else if(tower.towerType == Tower.TowerType.Ice) {
+				GUI.Label(new Rect(200, 130, 1, 20), "Freezes\nenemies", styleText);
+			}
 		} else {
 			BuildingStats stats = building.GetComponent<BuildingStats>();
 			
@@ -302,14 +308,14 @@ public class BuildingGUI:MonoBehaviour {
 			GUI.Label(new Rect(200, 50, 1, 20), "Resources: " + stats.resourcesPerTick[building.currentLevel - 1], styleText);
 		}
 		
-		GUI.Label(new Rect(200, 25, 1, 20), "Level: " + building.currentLevel, styleText);
+		GUI.Label(new Rect(200, 25, 1, 20), "Level " + building.currentLevel, styleText);
 		
 		styleText.normal.textColor = Color.green;
 		styleText.alignment = TextAnchor.UpperLeft;
 
-		GUI.Label(new Rect(325, 37, 30, 20), (building.stats.woodCostPerLevel[building.currentLevel - 1] * building.stats.sellRate).ToString(), styleText);
-		GUI.Label(new Rect(325, 77, 30, 20), (building.stats.stoneCostPerLevel[building.currentLevel - 1] * building.stats.sellRate).ToString(), styleText);
-		GUI.Label(new Rect(325, 110, 30, 20), (building.stats.goldCostPerLevel[building.currentLevel - 1] * building.stats.sellRate).ToString(), styleText);
+		GUI.Label(new Rect(320, 37, 30, 20), (Mathf.FloorToInt(building.stats.woodCostPerLevel[building.currentLevel - 1] * building.stats.sellRate)).ToString(), styleText);
+		GUI.Label(new Rect(320, 77, 30, 20), (Mathf.FloorToInt(building.stats.stoneCostPerLevel[building.currentLevel - 1] * building.stats.sellRate)).ToString(), styleText);
+		GUI.Label(new Rect(320, 110, 30, 20), (Mathf.FloorToInt(building.stats.goldCostPerLevel[building.currentLevel - 1] * building.stats.sellRate)).ToString(), styleText);
 
 		if(GUI.Button(new Rect(291, 195, 80.83f, 26.66f), "", styleSell))
 			DestroyBuilding();
@@ -394,9 +400,9 @@ public class BuildingGUI:MonoBehaviour {
 	void DestroyBuilding() {
 		buildingManager = building.transform.parent.GetComponent<BuildingManager>();
 
-		PlayerData.Instance.goldAmount += building.stats.goldCostPerLevel[building.currentLevel - 1] * building.stats.sellRate;
-		PlayerData.Instance.stoneAmount += building.stats.stoneCostPerLevel[building.currentLevel - 1] * building.stats.sellRate;
-		PlayerData.Instance.woodAmount += building.stats.woodCostPerLevel[building.currentLevel - 1] * building.stats.sellRate;
+		PlayerData.Instance.goldAmount += Mathf.FloorToInt(building.stats.goldCostPerLevel[building.currentLevel - 1] * building.stats.sellRate);
+		PlayerData.Instance.stoneAmount += Mathf.FloorToInt(building.stats.stoneCostPerLevel[building.currentLevel - 1] * building.stats.sellRate);
+		PlayerData.Instance.woodAmount += Mathf.FloorToInt(building.stats.woodCostPerLevel[building.currentLevel - 1] * building.stats.sellRate);
 		
 		buildingManager.DestroyBuilding(building);
 		

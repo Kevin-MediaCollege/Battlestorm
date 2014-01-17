@@ -56,7 +56,7 @@ public class Enemy:PathFollower {
 
 	public void Damage(float amt) {
 		hitpoints -= amt;
-		Debug.Log(hitpoints + " " + maxHitpoints);
+
 		if(hitpoints <= 0) {
 			Kill();
 		}
@@ -100,9 +100,7 @@ public class Enemy:PathFollower {
 	IEnumerator SlowDownDelay() {
 		speed /= 2;
 
-		Debug.Log ("Frozen");
 		yield return new WaitForSeconds(slowDownDelay);
-		Debug.Log ("Unfrozen");
 		
 		speed *= 2;
 	}
@@ -112,7 +110,6 @@ public class Enemy:PathFollower {
 			yield return new WaitForSeconds(1);
 			
 			Damage(burnDamage);
-			Debug.Log ("Burning: " + hitpoints);
 		}
 	}
 }
