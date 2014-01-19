@@ -14,11 +14,18 @@ public class CombineChildren : MonoBehaviour {
 	/// However when combining objects with very low triangle counts, it can be faster to use triangles.
 	/// Best is to try out which value is faster in practice.
 	public bool generateTriangleStrips = true;
-	
+	public bool generateFromArray;
+
+	public MeshFilter[] meshArray;
 	/// This option has a far longer preprocessing time at startup but leads to better runtime performance.
 	/// This option has a far longer preprocessing time at startup but leads to better runtime performance.
 	void Start () {
-		Component[] filters  = GetComponentsInChildren(typeof(MeshFilter));
+		Component[] filters;
+		if(generateFromArray){
+			filters = meshArray;
+		}else{
+			filters  = GetComponentsInChildren(typeof(MeshFilter));
+		}
 		Matrix4x4 myTransform = transform.worldToLocalMatrix;
 		Hashtable materialToMesh= new Hashtable();
 

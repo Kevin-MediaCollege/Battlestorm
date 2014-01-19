@@ -9,13 +9,19 @@ public class Bridge:MonoBehaviour {
 	public int bridgeParts;
 
 	public bool isMade;
-
+	public LineRenderer[] ray;
 	void Start() {
 		if(isMade)
 			BuildFree();
 	}
-	
+	public void SetRay(bool state){
+		if(ray.Length != 0){
+			ray[0].enabled = state;
+			ray[1].enabled = state;
+		}
+	}
 	public void Build() {
+		SetRay(false);
 		for(int i = 0; i < bridgeParts; i++) {
 			Vector3 spawnpos = spawnposition.transform.position + (spawnposition.transform.forward * 0.5f);
 			GameObject part = Instantiate(Resources.Load("Prefabs/Buildings/Bridge/BridgePart"), spawnpos,transform.rotation) as GameObject;

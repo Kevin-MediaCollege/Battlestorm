@@ -4,17 +4,26 @@ using System.Collections;
 public class BuildingManager:MonoBehaviour {
 	public GameObject platform;
 
-	[HideInInspector]
+
 	public bool isUnlocked;
 
+	public ParticleSystem[] particle;
 	private GameObject building;
 	private GameObject position;
 
 	void Start() {
+		if(isUnlocked){
+			SetParticle(true);
+		}else{
+			SetParticle(false);
+		}
 		position = transform.FindChild("BuildingPosition").gameObject;
 	}
 
 	public void CreateBuilding(EBuildingType type) {
+		for(int i = 0; i < particle.Length; i++){
+			SetParticle(false);
+		}
 		platform.renderer.enabled = false;
 		platform.GetComponent<BoxCollider>().enabled = false;
 
@@ -24,8 +33,14 @@ public class BuildingManager:MonoBehaviour {
 		if(type == EBuildingType.TowerNormal || type == EBuildingType.TowerIce || type == EBuildingType.TowerFire)
 			building.transform.name = "Tower";
 	}
-
+	public void SetParticle(bool state){
+		for(int i = 0; i < particle.Length; i++){
+		particle[i].renderer.enabled = state;
+		}
+	}
 	public void DestroyBuilding(Building building) {
+		Debug.Log("enable particles");
+		SetParticle(true);
 		platform.renderer.enabled = true;
 		platform.GetComponent<BoxCollider>().enabled = true;
 

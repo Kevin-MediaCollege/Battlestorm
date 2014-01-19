@@ -25,7 +25,9 @@ public class Tower:Building {
 			top = transform.FindChild("Art").transform.FindChild("Pivot");
 			arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
 		}
-
+		if(towerType == TowerType.Fire){
+			arrowPosition = transform.FindChild("Art").transform.FindChild("ArrowPosition").transform.position;
+		}
 		StartCoroutine("Tick");
 	}
 
@@ -105,14 +107,14 @@ public class Tower:Building {
 */
 					target.GetComponent<Enemy>().Slowdown();
 				} else if(towerType == TowerType.Fire) {
-					/*Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
 					
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
 					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
 					
-					audio.PlayOneShot(shotSound);
-*/
+					//audio.PlayOneShot(shotSound);
+
 					target.GetComponent<Enemy>().Burn();
 				}
 			}
