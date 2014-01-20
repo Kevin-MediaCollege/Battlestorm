@@ -6,7 +6,6 @@ using System.Collections;
 
 public class LoadingScreen : MonoBehaviour {
 	private static LoadingScreen instance = null;
-	private bool loading = false;
 	private string levelname;
 	public Texture loadbar;
 	public float loadingwidth;
@@ -40,9 +39,7 @@ public class LoadingScreen : MonoBehaviour {
 	}
 	void Update () {
 		if(Application.isLoadingLevel){
-			loading = true;
 		}else{
-			loading = false;
 			async = null;
 		}
 	}

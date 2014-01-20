@@ -19,6 +19,8 @@ public class Enemy:PathFollower {
 
 	public Shader alphaShader;
 
+	public GUIStyle style;
+
 	private bool isSlowDown;
 	private bool isOnFire;
 
@@ -45,6 +47,14 @@ public class Enemy:PathFollower {
 			if(colorEnd.a <= 0)
 				Destroy(gameObject);
 		}
+	}
+
+	void OnGUI() {
+		Vector3 position = transform.position;
+
+		position.y += 3;
+
+		GUI.Label(new Rect(position.x, Screen.height + -position.y, 20, 20), hitpoints.ToString(), style);
 	}
 
 	public override void OnTargetReached() {
