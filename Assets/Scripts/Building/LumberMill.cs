@@ -21,7 +21,7 @@ public class LumberMill:Building {
 
 			PlayerData.Instance.woodAmount += stats.resourcesPerTick[currentLevel - 1];
 
-			textPopup.text = stats.resourcesPerTick[currentLevel].ToString();
+			textPopup.text = stats.resourcesPerTick[currentLevel - 1].ToString();
 			textPopup.color = new Color(0.6f, 0.2f, 0);
 			textPopup.transform.parent = this.transform;
 		}

@@ -56,7 +56,6 @@ public class InterfaceGUI:MonoBehaviour {
 
 			if(GUI.Button(new Rect(855, 12, 34, 31), "", styleFastForward)) {
 				speedup = !speedup;
-				styleFastForward.hover.background = speedup ? fastForward : fastForwardActive;
 				styleFastForward.normal.background = speedup ? fastForwardActive : fastForward;
 			}
 		   		

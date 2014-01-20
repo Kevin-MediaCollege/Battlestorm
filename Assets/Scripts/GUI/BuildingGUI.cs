@@ -275,8 +275,8 @@ public class BuildingGUI:MonoBehaviour {
 			styleText.normal.textColor = enoughGold ? Color.green : Color.red;
 			GUI.Label(new Rect(55, 110, 30, 20), building.stats.goldCostPerLevel[building.currentLevel - 1].ToString(), styleText);
 
-			if(PlayerData.Instance.goldAmount >= building.stats.goldCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.woodAmount >= building.stats.woodCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.stoneAmount >= building.stats.stoneCostPerLevel[building.currentLevel - 1]) {
-				if(GUI.Button(new Rect(28, 195, 80.83f, 26.66f), "", styleUpgrade)) {
+			if(GUI.Button(new Rect(28, 195, 80.83f, 26.66f), "", styleUpgrade)) {
+				if(PlayerData.Instance.goldAmount >= building.stats.goldCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.woodAmount >= building.stats.woodCostPerLevel[building.currentLevel - 1] && PlayerData.Instance.stoneAmount >= building.stats.stoneCostPerLevel[building.currentLevel - 1]) {
 					PlayerData.Instance.goldAmount -= building.stats.goldCostPerLevel[building.currentLevel - 1];
 					PlayerData.Instance.stoneAmount -= building.stats.stoneCostPerLevel[building.currentLevel - 1];
 					PlayerData.Instance.woodAmount -= building.stats.woodCostPerLevel[building.currentLevel - 1];
