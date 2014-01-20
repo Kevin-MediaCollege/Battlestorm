@@ -58,8 +58,6 @@ public class InterfaceGUI:MonoBehaviour {
 				speedup = !speedup;
 				styleFastForward.hover.background = speedup ? fastForward : fastForwardActive;
 				styleFastForward.normal.background = speedup ? fastForwardActive : fastForward;
-
-				gameObject.GetComponent<FeedbackText>().AddText("Fapfapfap");
 			}
 		   		
 		GUI.EndGroup();
