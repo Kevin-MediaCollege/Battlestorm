@@ -15,7 +15,10 @@ public class WaveManager:MonoBehaviour {
 
 	private bool finalWave;
 	private bool pauseDelayStarted;
+	public bool gonextwave;
 
+	public AudioSource wait;
+	public AudioSource wave;
 	void Start() {
 		waveData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<WaveData>();
 		enemyManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemyManager>();
@@ -24,6 +27,13 @@ public class WaveManager:MonoBehaviour {
 	}
 
 	void Update() {
+		if(gonextwave && waveData.spawningEnemies){
+			Time.timeScale = 1;
+			wait.pitch = 1;
+			wave.pitch = 1;
+			Debug.Log(enemiesToSpawn);
+			gonextwave = false;
+		}
 		if(!pauseDelayStarted && (waveData.currentWave % 5) == 0) {
 			waveData.waveTimer = longWaveDelay;
 			pauseDelayStarted = true;
@@ -39,8 +49,11 @@ public class WaveManager:MonoBehaviour {
 	
 	public void StartNextWaveButton() {
 		if(!waveData.spawningEnemies) {
-			StopCoroutine("SpawnTimer");
-			StartNextWave();
+			gonextwave = true;
+			Debug.Log("set Timescale");
+			Time.timeScale = 5;
+			wait.pitch = 1.4f;
+			wave.pitch = 1.4f;
 		}
 	}
 
@@ -77,7 +90,7 @@ public class WaveManager:MonoBehaviour {
 
 	IEnumerator SpawnEnemies() {
 		while(true) {
-			yield return new WaitForSeconds(1.8f);
+			yield return new WaitForSeconds(waveData.waveArray[waveData.currentWave - 1].spawnDelay);
 			
 			if(enemiesToSpawn >= 0) {
 				currentEnemy++;

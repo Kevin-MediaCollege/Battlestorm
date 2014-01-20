@@ -8,7 +8,7 @@ public class Projectile:MonoBehaviour {
 	public float damage;
 	public Enemy targetScript;
 
-	void Update() {
+	void FixedUpdate() {
 		if(target != null) {
 			transform.LookAt(target.transform.position);
 			transform.Translate(Vector3.forward);

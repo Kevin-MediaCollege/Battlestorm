@@ -1537,9 +1537,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 100046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7b12ec90c292347a6be306890d49ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b6b5afafee3d584987c59a4411efb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frameToWait: 0
+  generateTriangleStrips: 1
+  combineOnStart: 1
+  destroyAfterOptimized: 0
+  castShadow: 1
+  receiveShadow: 1
+  keepLayer: 1
+  addMeshCollider: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

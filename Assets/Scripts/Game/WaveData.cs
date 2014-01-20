@@ -29,6 +29,7 @@ public class WaveData:MonoBehaviour {
 
 	[System.Serializable]
 	public class Row {
+		public float spawnDelay;
 		public EnemyData[] enemies;	
 	};
 

@@ -50,11 +50,11 @@ public class Enemy:PathFollower {
 	}
 
 	void OnGUI() {
-		Vector3 position = transform.position;
+		//Vector3 position = transform.position;
 
-		position.y += 3;
+		//position.y += 3;
 
-		GUI.Label(new Rect(position.x, Screen.height + -position.y, 20, 20), hitpoints.ToString(), style);
+		//GUI.Label(new Rect(position.x, Screen.height + -position.y, 20, 20), hitpoints.ToString(), style);
 	}
 
 	public override void OnTargetReached() {

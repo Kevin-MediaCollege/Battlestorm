@@ -15,12 +15,14 @@ public class InterfaceGUI:MonoBehaviour {
 	public GUIStyle styleNextWave;
 
 	private bool speedup = false;
-
+	public WaveManager waveManager;
 	void FixedUpdate() {
+		if(!waveManager.gonextwave){
 		if(speedup) {
 			Time.timeScale = 2;
 		} else {
 			Time.timeScale = 1;
+		}
 		}
 	}
 
@@ -47,7 +49,6 @@ public class InterfaceGUI:MonoBehaviour {
 				Application.LoadLevel("Menu");
 			
 			
-			WaveManager waveManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<WaveManager>();
 			if(!waveManager.waveData.spawningEnemies) {
 				if(GUI.Button(new Rect (450, texture.height + 5, 117, 23), "", styleNextWave)) {
 					waveManager.StartNextWaveButton();
