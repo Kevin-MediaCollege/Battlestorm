@@ -45,10 +45,8 @@ public class CameraMenu:MonoBehaviour {
 		endPoint = path.pointB.transform.position;
 		startRotation = path.pointA.transform.rotation;
 		endRotation = path.pointB.transform.rotation;
-		Debug.Log(transform.rotation);
 		transform.rotation = path.pointA.transform.rotation;
 		transform.position = path.pointA.transform.position;
-		Debug.Log(transform.rotation);
 		pathfound = true;
 		fade.fadingOut = false;
 		startPoint = transform.position;

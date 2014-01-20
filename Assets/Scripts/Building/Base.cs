@@ -16,7 +16,7 @@ public class Base:MonoBehaviour {
 			yield return new WaitForSeconds(tickDelay - 0.6f);
 			
 			Vector3 position = transform.position;
-			position.y += 2.5f;
+			position.y += 12;
 
 			TextMesh woodPopup = (Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), position, Quaternion.identity) as GameObject).GetComponent<TextMesh>();
 

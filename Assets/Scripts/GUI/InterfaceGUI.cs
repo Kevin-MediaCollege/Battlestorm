@@ -40,7 +40,7 @@ public class InterfaceGUI:MonoBehaviour {
 			if(!WaveData.Instance.spawningEnemies) {
 				GUI.Label(new Rect(630, 15, 0, 0), "Next wave in: " + WaveData.Instance.waveTimer, style);
 			} else {
-				GUI.Label(new Rect(630, 15, 0, 0), "Incomming", style);
+				GUI.Label(new Rect(630, 15, 0, 0), "Incoming", style);
 			}
 
 			if(GUI.Button(new Rect(895, 10, 73, 35), "", styleMenu))

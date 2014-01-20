@@ -14,7 +14,7 @@ public class Mine:Building {
 			yield return new WaitForSeconds(tickDelay);
 			
 			Vector3 position = transform.position;
-			position.y += 2;
+			position.y += 5;
 
 			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), position, Quaternion.identity) as GameObject;
 			TextMesh textPopup = popupText.GetComponent<TextMesh>();

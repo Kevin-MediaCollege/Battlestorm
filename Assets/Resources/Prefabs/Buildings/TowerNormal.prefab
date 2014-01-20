@@ -152,7 +152,10 @@ MonoBehaviour:
   tickDelay: 0
   currentLevel: 1
   towerType: 1
+  target: {fileID: 0}
+  top: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 1b2727f0e62e2094eb64cf2631c24674, type: 3}
+  arrowPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,9 +173,21 @@ MonoBehaviour:
   goldCostPerLevel: 320000004b000000960000002c010000
   stoneCostPerLevel: 280000004b000000960000002c010000
   woodCostPerLevel: 3200000064000000c800000090010000
-  rangePerLevel: 14000000140000001e00000028000000
-  damagePerLevel: 02000000040000000600000008000000
-  speedPerLevel: 03000000020000000100000000000000
+  rangePerLevel:
+  - 20
+  - 20
+  - 30
+  - 40
+  damagePerLevel:
+  - 2
+  - 4
+  - 6
+  - 8
+  speedPerLevel:
+  - 3
+  - 2
+  - 1
+  - .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
