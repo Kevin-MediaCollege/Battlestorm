@@ -10,11 +10,11 @@ public class Tower:Building {
 
 	public TowerType towerType;
 	
-	private GameObject target;
-	private Transform top;
+	public GameObject target;
+	public Transform top;
 
 	public AudioClip shotSound;
-	private Vector3 arrowPosition;
+	public Vector3 arrowPosition;
 
 	new void Start() {
 		base.Start();
@@ -37,6 +37,17 @@ public class Tower:Building {
 	}
 
 	void FixedUpdate(){
+		if(towerType == TowerType.Normal) {
+			if(top == null){
+				//top = transform.FindChild("Art").transform.FindChild("Pivot");
+			}
+			if(arrowPosition == null){
+				//arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
+			}
+		}
+		if(towerType == TowerType.Fire){
+
+		}
 		if(target == null || target.GetComponent<Enemy>().isDead)
 			SearchForNewTarget();
 

@@ -9,7 +9,7 @@ Different materials will cause multiple meshes to be created, thus it is useful 
 
 [AddComponentMenu("Mesh/Combine Children")]
 public class CombineChildren : MonoBehaviour {
-	
+	/*
 	/// Usually rendering with triangle strips is faster.
 	/// However when combining objects with very low triangle counts, it can be faster to use triangles.
 	/// Best is to try out which value is faster in practice.
@@ -95,4 +95,5 @@ public class CombineChildren : MonoBehaviour {
 			}
 		}   
 	}
+	*/
 }

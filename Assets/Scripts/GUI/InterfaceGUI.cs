@@ -44,7 +44,7 @@ public class InterfaceGUI:MonoBehaviour {
 			}
 
 			if(GUI.Button(new Rect(895, 10, 73, 35), "", styleMenu))
-				Application.LoadLevel(0);
+				Application.LoadLevel("Menu");
 			
 			
 			WaveManager waveManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<WaveManager>();

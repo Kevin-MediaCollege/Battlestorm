@@ -36,19 +36,22 @@ public class CameraMenu:MonoBehaviour {
 		if(pathnum == 4)
 			pathnum = 0;
 
-		startPoint = transform.position;
-		endPoint = transform.position;
 		currentPath = paths[pathnum];
-		PathData path = paths[pathnum].GetComponent<PathData>();
+		PathData path = currentPath.GetComponent<PathData>();
+		transform.rotation = path.pointA.transform.rotation;
 		duration = path.duration;
 		startTime = Time.time;
 		startPoint = path.pointA.transform.position;
 		endPoint = path.pointB.transform.position;
 		startRotation = path.pointA.transform.rotation;
 		endRotation = path.pointB.transform.rotation;
+		Debug.Log(transform.rotation);
+		transform.rotation = path.pointA.transform.rotation;
+		transform.position = path.pointA.transform.position;
+		Debug.Log(transform.rotation);
 		pathfound = true;
 		fade.fadingOut = false;
-
+		startPoint = transform.position;
 		StopCoroutine("Delay");
 	}
 
@@ -73,7 +76,7 @@ public class CameraMenu:MonoBehaviour {
 
 		if(pathfound) {
 			transform.position = Vector3.Lerp(startPoint, endPoint, (Time.time - startTime) / duration);
-			transform.rotation = Quaternion.Lerp(startRotation,endRotation, Time.time * 0.04f);
+				transform.rotation = Quaternion.Lerp(startRotation,endRotation, (Time.time - startTime) / duration);
 		}
 		}
 	}

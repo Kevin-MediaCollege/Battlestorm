@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -46,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.8536921, y: 21.7602577, z: 18.5389996}
+  m_LocalPosition: {x: -9.35657501, y: 4.99870062, z: 9.87329388}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 400002}
@@ -57,8 +58,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: -.27059868, y: .65327996, z: .270597488, w: .653283}
-  m_LocalPosition: {x: -.135599136, y: 0, z: 3.25373268}
+  m_LocalRotation: {x: .653280079, y: .27059859, z: .65328294, w: -.270597577}
+  m_LocalPosition: {x: -.135574341, y: 9.53674316e-07, z: -2.5286274}
   m_LocalScale: {x: 5.81571198, y: 4.84735441, z: 4.84735441}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -149,8 +150,8 @@ AudioSource:
   Mute: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 11.3589516
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -220,6 +221,19 @@ MonoBehaviour:
   hitSound: {fileID: 0}
   damage: 0
   targetScript: {fileID: 0}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff943b4e08364f4da8105db05cca62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusic: 0
+  isSound: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

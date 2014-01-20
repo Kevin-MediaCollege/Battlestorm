@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class MeshCombineUtility {
-	
+	/*
 	public struct MeshInstance
 	{
 		public Mesh      mesh;
@@ -183,4 +183,5 @@ public class MeshCombineUtility {
 
 		offset += vertexcount;
 	}
+	*/
 }

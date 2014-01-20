@@ -12,10 +12,12 @@ public class MenuGUI:MonoBehaviour {
 	public AudioClip buttonHover;
 	public AudioClip buttonClick;
 	public Camera optionCamera;
+	public Camera creditsCamera;
 	public FadeScript fade;
 	public CameraMenu flybyCamera;
 	private bool openMainMenu;
 	private bool openOptions;
+	private bool openCredits;
 
 	public Texture optionBackground;
 	public GUIStyle optionStyle;
@@ -37,6 +39,8 @@ public class MenuGUI:MonoBehaviour {
 	private bool givingInput;
 	private KeyCode selectedKeyCode;
 	public int keyCodeNum;
+
+	public AudioSource music;
 	void Start () {
 		selectedresolutions = 3;
 		currentresolution = resolutions[selectedresolutions];
@@ -45,10 +49,13 @@ public class MenuGUI:MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		if(music.volume != VolumeManager.MusicVolume){
+			music.volume = VolumeManager.MusicVolume;
+		}
 		if(optionIndex == -1){
 			optionIndex = 2;
 		}
-		else if(optionIndex == 3){
+		else if(optionIndex == 4){
 			optionIndex = 0;
 		}
 		if(openOptions && fade.alphaFadeValue == 1){
@@ -59,7 +66,14 @@ public class MenuGUI:MonoBehaviour {
 			flybyCamera.stopmoving = true;
 			openMainMenu = false;
 		}
-		if(!openOptions && fade.alphaFadeValue == 1){
+		if(openCredits && fade.alphaFadeValue == 1){
+			flybyCamera.stopmoving = true;
+			this.camera.enabled = false;
+			creditsCamera.enabled = true;
+			fade.fadingOut = false;
+			openMainMenu = false;
+		}
+		if(!openOptions && !openCredits && fade.alphaFadeValue == 1){
 			fade.fadingOut = false;
 			this.camera.enabled = true;
 			optionCamera.enabled = false;
@@ -75,7 +89,12 @@ public class MenuGUI:MonoBehaviour {
 			lastGUITooltip = "NoTooltip";
 		}
 	}
-
+	void enableMainCamera(){
+		optionCamera.enabled = false;
+		creditsCamera.enabled = false;
+		flybyCamera.stopmoving = false;
+		this.camera.enabled = true;
+	}
 	IEnumerator giveOffset(){
 		while (true) {
 			yield return new WaitForSeconds (0.1f);
@@ -106,7 +125,13 @@ public class MenuGUI:MonoBehaviour {
 			}
 		}
 	}
-
+	IEnumerator delay(){
+		yield return new WaitForSeconds(0.45f);
+		openMainMenu = true;
+		openCredits = false;
+		openOptions = false;
+		enableMainCamera();
+	}
 	void OnGUI() {
 		GUI.depth = 100000;
 		float rx = Screen.width / GameManager.nativeWidth;
@@ -118,6 +143,7 @@ public class MenuGUI:MonoBehaviour {
 			if(GUI.Button(new Rect(30, 435, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Play", "Play"), buttonStyle)) {
 				playSound(1);
 				Application.LoadLevel("BackupGameMap");
+
 			}
 
 			if(GUI.Button(new Rect(15, 535, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Options", "Options"), buttonStyle)){
@@ -128,6 +154,8 @@ public class MenuGUI:MonoBehaviour {
 
 			if(GUI.Button(new Rect(15, 635, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Credits", "Credits"), buttonStyle)){
 				playSound(1);
+				fade.fadingOut = true;
+				openCredits = true;
 			}
 
 			tooltip = GUI.tooltip;
@@ -138,12 +166,19 @@ public class MenuGUI:MonoBehaviour {
 				}
 			}
 		}
-		if(!openMainMenu){
+		if(!openMainMenu && !openOptions){
+			if(GUI.Button(new Rect(550,600,200,100),"Back",optionindexStyle)){
+				playSound(1);
+				fade.fadingOut = true;
+				StartCoroutine("delay");
+			}
+		}
+		if(!openMainMenu && !openCredits){
 			GUI.DrawTexture(new Rect(400,0,500,900),optionBackground);
 			if(GUI.Button(new Rect(-50, 635, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Menu", "Menu"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
-				openOptions = false;
+				StartCoroutine("delay");
 			}
 
 			if(GUI.Button(new Rect(400,0,50,720),"",optionindexStyle)){
@@ -156,19 +191,42 @@ public class MenuGUI:MonoBehaviour {
 
 			if(optionIndex == 0){
 				//INPUT 0
-				DrawInputWindow();
-
+				DrawMainOptionsWindow();
 			}
 			if(optionIndex == 1){
-				DrawGraphicsWindow();
+				//Audio 1
+				DrawInputWindow();
 			}
 			if(optionIndex == 2){
+				//Graphics 2
+				DrawGraphicsWindow();
+			}
+			if(optionIndex == 3){
 				//SOUND 2
-				GUI.Label(new Rect(600,25,100,50),"Sound",optionStyle);
+				DrawAudioWindow();
 			}
 		}
 	}
+	void DrawAudioWindow(){
+		optionStyle.fontSize = 40;
+		GUI.Label(new Rect(600,25,100,50),"Audio",optionStyle);
+		optionStyle.fontSize = 20;
+		GUI.Label(new Rect(600,150,100,50),"Music",optionStyle);
+		VolumeManager.MusicVolume = GUI.HorizontalSlider(new Rect(550, 195, 200, 15), VolumeManager.MusicVolume, 0.0F, 1.0F,sliderStyle,thumbStyle);
 
+		GUI.Label(new Rect(600,230,100,50),"Sound Effects",optionStyle);
+		VolumeManager.SoundVolume = GUI.HorizontalSlider(new Rect(550, 275, 200, 15), VolumeManager.SoundVolume, 0.0F, 1.0F,sliderStyle,thumbStyle);
+
+	}
+	void DrawMainOptionsWindow(){
+		optionStyle.fontSize = 40;
+		GUI.Label(new Rect(600,25,100,50),"Options",optionStyle);
+		optionStyle.fontSize = 20;
+		optionStyle.fontSize = 29;
+		GUI.Label(new Rect(600,150,100,50),"Click on the sides of the menu",optionStyle);
+		GUI.Label(new Rect(600,200,100,50),"to go through the options",optionStyle);
+		optionStyle.fontSize = 20;
+	}
 	void DrawInputWindow(){
 		if(givingInput){
 				Event e = Event.current;
@@ -208,7 +266,9 @@ public class MenuGUI:MonoBehaviour {
 			inputStyle.fontSize = 20;
 		}
 		if(!givingInput){
+			optionStyle.fontSize = 40;
 			GUI.Label(new Rect(600,25,100,50),"Input",optionStyle);
+			optionStyle.fontSize = 20;
 		GUI.BeginGroup(new Rect(460,100,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Movement - Left  =",inputStyle);

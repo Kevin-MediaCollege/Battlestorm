@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: TowerFire
   m_TagString: TowerFire
@@ -166,33 +167,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels: 5
   sellRate: .5
-  resourcesPerTick: []
-  goldCostPerLevel:
-  - 150
-  - 300
-  - 600
-  - 1200
-  - 2400
-  stoneCostPerLevel:
-  - 250
-  - 500
-  - 1000
-  - 2000
-  - 4000
-  woodCostPerLevel:
-  - 150
-  - 300
-  - 600
-  - 1200
-  - 2400
+  resourcesPerTick: 
+  goldCostPerLevel: 960000002c01000058020000b004000060090000
+  stoneCostPerLevel: fa000000f4010000e8030000d0070000a00f0000
+  woodCostPerLevel: 960000002c01000058020000b004000060090000
   rangePerLevel: 14000000140000001e0000001e00000028000000
   damagePerLevel: 020000000400000006000000080000000a000000
-  speedPerLevel:
-  - 4
-  - 4
-  - 3
-  - 3
-  - 2
+  speedPerLevel: 0400000004000000030000000300000002000000
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff943b4e08364f4da8105db05cca62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusic: 0
+  isSound: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
