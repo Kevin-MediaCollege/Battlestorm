@@ -71,7 +71,7 @@ public class Tooltip:MonoBehaviour {
 			break;
 		case "NotAvailableIsland":
 			this.type = type;
-			text = TooltipTexts.Instance.build_not_available;
+			text = TooltipTexts.Instance.build_not_available_island;
 			break;
 		}
 
