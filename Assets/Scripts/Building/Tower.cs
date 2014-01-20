@@ -38,27 +38,19 @@ public class Tower:Building {
 
 	void FixedUpdate(){
 		if(towerType == TowerType.Normal) {
-			if(top == null){
-				//top = transform.FindChild("Art").transform.FindChild("Pivot");
-			}
-			if(arrowPosition == null){
-				//arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
-			}
-		}
-		if(towerType == TowerType.Fire){
+			if(target == null || target.GetComponent<Enemy>().isDead)
+				SearchForNewTarget();
 
-		}
-		if(target == null || target.GetComponent<Enemy>().isDead)
-			SearchForNewTarget();
+			if(target != null && top != null) {
+				Vector3 lookPos = target.transform.position - top.transform.position;
 
-		if(target != null && top != null){
-			Vector3 lookPos = target.transform.position - top.transform.position;
-		Quaternion rotation = Quaternion.LookRotation(lookPos);
-			rotation.x = 0;
-			rotation.z = 0;
-		top.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 50);
+				Quaternion rotation = Quaternion.LookRotation(lookPos);
+				rotation.x = 0;
+				rotation.z = 0;
+
+				top.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 50);
+			}
 		}
-			//top.transform.LookAt(target.transform.position);
 	}
 
 	protected override IEnumerator Tick() {
@@ -112,10 +104,8 @@ public class Tower:Building {
 					
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
-					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
-					
-					audio.PlayOneShot(shotSound);
-*/
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();*/
+
 					target.GetComponent<Enemy>().Slowdown();
 				} else if(towerType == TowerType.Fire) {
 					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
@@ -123,8 +113,6 @@ public class Tower:Building {
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
 					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
-					
-					//audio.PlayOneShot(shotSound);
 
 					target.GetComponent<Enemy>().Burn();
 				}
@@ -134,6 +122,7 @@ public class Tower:Building {
 
 	IEnumerator getPivot(){
 		yield return new WaitForSeconds(0.05f);
+
 		top = transform.FindChild("Art").transform.FindChild("Pivot");
 		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
 	}
