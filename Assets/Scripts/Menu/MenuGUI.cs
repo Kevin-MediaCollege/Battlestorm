@@ -142,8 +142,7 @@ public class MenuGUI:MonoBehaviour {
 		if(openMainMenu){
 			if(GUI.Button(new Rect(30, 435, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Play", "Play"), buttonStyle)) {
 				playSound(1);
-				Application.LoadLevel("BackupGameMap");
-
+				LoadingScreen.Instance.loadLoadingScreen("GameMap");
 			}
 
 			if(GUI.Button(new Rect(15, 535, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Options", "Options"), buttonStyle)){
