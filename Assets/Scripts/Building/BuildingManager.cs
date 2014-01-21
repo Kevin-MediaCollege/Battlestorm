@@ -10,7 +10,7 @@ public class BuildingManager:MonoBehaviour {
 	public ParticleSystem[] particle;
 	private GameObject building;
 	private GameObject position;
-
+	public GameObject instantiateparticle;
 	void Start() {
 		if(isUnlocked){
 			SetParticle(true);
@@ -24,12 +24,18 @@ public class BuildingManager:MonoBehaviour {
 		for(int i = 0; i < particle.Length; i++){
 			SetParticle(false);
 		}
+		Instantiate(instantiateparticle,transform.position,instantiateparticle.transform.rotation);
+		StartCoroutine(waitforParticle(type));
+	}
+	IEnumerator waitforParticle(EBuildingType type){
+		yield return new WaitForSeconds(3f);
+		Instantiate(Resources.Load("Prefabs/SoundPrefabs/BuildingCreateSound"), position.transform.position, position.transform.rotation);
 		platform.renderer.enabled = false;
 		platform.GetComponent<BoxCollider>().enabled = false;
-
+		
 		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), position.transform.position, position.transform.rotation) as GameObject;
 		building.transform.parent = this.transform;
-
+		
 		if(type == EBuildingType.TowerNormal || type == EBuildingType.TowerIce || type == EBuildingType.TowerFire)
 			building.transform.name = "Tower";
 	}

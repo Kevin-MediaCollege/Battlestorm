@@ -291,6 +291,7 @@ MonoBehaviour:
   - {fileID: 19800002}
   - {fileID: 19800008}
   - {fileID: 19800000}
+  instantiateparticle: {fileID: 100002, guid: 374cd9db592950f4bb38560bf8c0831e, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
