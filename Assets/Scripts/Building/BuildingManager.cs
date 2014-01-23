@@ -4,7 +4,6 @@ using System.Collections;
 public class BuildingManager:MonoBehaviour {
 	public GameObject platform;
 
-
 	public bool isUnlocked;
 
 	public ParticleSystem[] particle;
@@ -24,11 +23,16 @@ public class BuildingManager:MonoBehaviour {
 		for(int i = 0; i < particle.Length; i++){
 			SetParticle(false);
 		}
-		Instantiate(instantiateparticle,transform.position,instantiateparticle.transform.rotation);
+
+		Instantiate(instantiateparticle, transform.position, instantiateparticle.transform.rotation);
 		StartCoroutine(waitforParticle(type));
 	}
+
 	IEnumerator waitforParticle(EBuildingType type){
+		platform.collider.enabled = false;
+
 		yield return new WaitForSeconds(3f);
+
 		Instantiate(Resources.Load("Prefabs/SoundPrefabs/BuildingCreateSound"), position.transform.position, position.transform.rotation);
 		platform.renderer.enabled = false;
 		platform.GetComponent<BoxCollider>().enabled = false;
@@ -39,13 +43,14 @@ public class BuildingManager:MonoBehaviour {
 		if(type == EBuildingType.TowerNormal || type == EBuildingType.TowerIce || type == EBuildingType.TowerFire)
 			building.transform.name = "Tower";
 	}
+
 	public void SetParticle(bool state){
 		for(int i = 0; i < particle.Length; i++){
-		particle[i].renderer.enabled = state;
+			particle[i].renderer.enabled = state;
 		}
 	}
+
 	public void DestroyBuilding(Building building) {
-		Debug.Log("enable particles");
 		SetParticle(true);
 		platform.renderer.enabled = true;
 		platform.GetComponent<BoxCollider>().enabled = true;

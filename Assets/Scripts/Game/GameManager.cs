@@ -8,6 +8,8 @@ public class GameManager:MonoBehaviour {
 	private MusicFlow musicFlow;
 
 	void Start() {
+		Screen.lockCursor = false;
+
 		musicFlow = GetComponent<MusicFlow>();
 	}
 	

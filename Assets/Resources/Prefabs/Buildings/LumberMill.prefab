@@ -8,10 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 65: {fileID: 6500000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   m_Layer: 0
   m_Name: LumberMill
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82.0337524, y: 23.8194962, z: 24.1718445}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,25 +78,13 @@ MonoBehaviour:
   levels: 5
   sellRate: .5
   resourcesPerTick: 0200000004000000070000000a0000000f000000
-  goldCostPerLevel: 0f000000190000001e000000280000000f270000
-  stoneCostPerLevel: 32000000c8000000f4010000e80300000f270000
-  woodCostPerLevel: 4b0000002c01000058020000b00400009f860100
+  goldCostPerLevel: 280000000f000000190000001e00000028000000
+  stoneCostPerLevel: 1e00000032000000c8000000f4010000e8030000
+  woodCostPerLevel: 280000004b0000002c01000058020000b0040000
   rangePerLevel: []
   damagePerLevel: []
   speedPerLevel: []
 --- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b58bbff1ea43c48b08e7cbe7949f94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 2
---- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -112,6 +100,18 @@ MonoBehaviour:
   interactable: 0
   tickDelay: 3
   currentLevel: 1
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b58bbff1ea43c48b08e7cbe7949f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

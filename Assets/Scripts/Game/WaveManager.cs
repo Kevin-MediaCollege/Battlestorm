@@ -164,13 +164,12 @@ public class WaveManager:MonoBehaviour {
 						break;
 					}
 				}
-				if(checkspawn){
+				if(checkspawn)
 					backrowUnlocked = true;
-				}
-				Debug.Log(spawn);
-				if(checkspawn){
+
+				if(checkspawn) {
 					enemyManager.SpawnEnemy(eData.name.ToString(), eData.health, eData.speed, (spawn + 1));
-				}else{
+				} else {
 					enemyManager.SpawnEnemy(eData.name.ToString(), eData.health, eData.speed, spawn);
 				}
 			} else {
