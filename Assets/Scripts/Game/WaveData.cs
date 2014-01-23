@@ -30,6 +30,7 @@ public class WaveData:MonoBehaviour {
 	[System.Serializable]
 	public class Row {
 		public float spawnDelay;
+		public bool hasWarning;
 		public EnemyData[] enemies;	
 	};
 
@@ -39,9 +40,6 @@ public class WaveData:MonoBehaviour {
 			Left,
 			Right,
 			Middle,
-			FrontLeft,
-			FrontMiddle,
-			FrontRight
 		};
 
 		public enum EnemyTypes {

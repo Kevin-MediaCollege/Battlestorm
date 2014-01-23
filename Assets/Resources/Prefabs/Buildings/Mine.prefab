@@ -105,32 +105,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels: 5
   sellRate: .5
-  resourcesPerTick:
-  - 2
-  - 4
-  - 7
-  - 10
-  - 15
-  goldCostPerLevel:
-  - 40
-  - 60
-  - 120
-  - 240
-  - 480
-  stoneCostPerLevel:
-  - 40
-  - 80
-  - 160
-  - 380
-  - 550
-  woodCostPerLevel:
-  - 30
-  - 50
-  - 100
-  - 200
-  - 400
-  rangePerLevel: 
-  damagePerLevel: 
+  resourcesPerTick: 0200000004000000070000000a0000000f000000
+  goldCostPerLevel: 0f000000190000001e000000280000009f860100
+  stoneCostPerLevel: 4b0000002c01000058020000b0040000581b0000
+  woodCostPerLevel: 32000000c8000000f4010000e80300000f270000
+  rangePerLevel: []
+  damagePerLevel: []
   speedPerLevel: []
 --- !u!1001 &100100000
 Prefab:

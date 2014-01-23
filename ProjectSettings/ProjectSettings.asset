@@ -114,7 +114,7 @@ PlayerSettings:
       m_Size: 128
   m_BuildTargetBatching:
   - m_BuildTarget: Standalone
-    m_StaticBatching: 1
+    m_StaticBatching: 0
     m_DynamicBatching: 0
   webPlayerTemplate: APPLICATION:No Context Menu
   m_TemplateCustomTags: {}

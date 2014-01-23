@@ -26,6 +26,7 @@ public class Enemy:PathFollower {
 
 	[HideInInspector]
 	public bool isDead = false;
+	public EnemyManager eManager;
 	
 	public override void Start() {
 		base.Start();
@@ -46,6 +47,7 @@ public class Enemy:PathFollower {
 			
 			if(colorEnd.a <= 0)
 				Destroy(gameObject);
+				eManager.enemyList.Remove(gameObject);
 		}
 	}
 

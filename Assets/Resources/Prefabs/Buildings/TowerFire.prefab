@@ -171,7 +171,7 @@ MonoBehaviour:
   levels: 5
   sellRate: .5
   resourcesPerTick: 
-  goldCostPerLevel: 960000002c01000058020000b004000060090000
+  goldCostPerLevel: 1e000000280000003c0000004b00000096000000
   stoneCostPerLevel: fa000000f4010000e8030000d0070000a00f0000
   woodCostPerLevel: 960000002c01000058020000b004000060090000
   rangePerLevel:

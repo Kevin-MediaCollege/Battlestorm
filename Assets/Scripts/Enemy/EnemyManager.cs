@@ -11,7 +11,7 @@ public class EnemyManager:MonoBehaviour {
 	private Transform parent;
 
 	private GameObject enemy;
-
+	public List<GameObject> enemyList = new List<GameObject>();
 	void Start() {
 		parent = GameObject.Find("Enemies").GetComponent<Transform>();
 	}
@@ -43,7 +43,8 @@ public class EnemyManager:MonoBehaviour {
 
 		en.hitpoints = health;
 		en.speed = speed;
-
+		enemyList.Add(enemy);
+		en.eManager = this;
 		enemy.GetComponent<PathFollower>().target = end;
 		enemy.transform.parent = parent;
 	}

@@ -290,7 +290,7 @@ BoxCollider:
   m_GameObject: {fileID: 100044}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: .309634566, y: .125028089, z: .257289618}
   m_Center: {x: -.0256627519, y: -.00238620047, z: -.0156353489}
@@ -409,7 +409,7 @@ MonoBehaviour:
   slowDownDelay: 5
   burnTime: 3
   burnDamage: 1
-  goldReward: 7
+  goldReward: 10
   canStun: 0
   colorStart: {r: 0, g: 0, b: 0, a: 0}
   colorEnd: {r: 0, g: 0, b: 0, a: 0}
@@ -475,6 +475,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   isDead: 0
+  eManager: {fileID: 0}
   rushSpeed: 8
 --- !u!1001 &100100000
 Prefab:
