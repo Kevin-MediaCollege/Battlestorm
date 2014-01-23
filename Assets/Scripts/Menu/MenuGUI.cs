@@ -42,6 +42,7 @@ public class MenuGUI:MonoBehaviour {
 
 	public AudioSource music;
 	void Start () {
+		Time.timeScale = 1.0f;
 		selectedresolutions = 3;
 		currentresolution = resolutions[selectedresolutions];
 		StartCoroutine("giveOffset");
@@ -140,12 +141,12 @@ public class MenuGUI:MonoBehaviour {
 
 
 		if(openMainMenu){
-			if(GUI.Button(new Rect(30, 435, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Play", "Play"), buttonStyle)) {
+			if(GUI.Button(new Rect(5, 435, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Play", "Play"), buttonStyle)) {
 				playSound(1);
 				LoadingScreen.Instance.loadLoadingScreen("GameMap");
 			}
 
-			if(GUI.Button(new Rect(15, 535, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Options", "Options"), buttonStyle)){
+			if(GUI.Button(new Rect(20, 535, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Options", "Options"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				openOptions = true;
@@ -160,7 +161,7 @@ public class MenuGUI:MonoBehaviour {
 			tooltip = GUI.tooltip;
 
 			if(!Application.isWebPlayer) {
-				if(GUI.Button(new Rect(1100, 635, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Quit", "Quit"), buttonStyle)){
+				if(GUI.Button(new Rect(1050, 635, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Quit", "Quit"), buttonStyle)){
 					Application.Quit();
 				}
 			}
@@ -235,25 +236,25 @@ public class MenuGUI:MonoBehaviour {
 
 				switch(keyCodeNum){
 					case 0:
-					InputHandler.HorizontalLeft = selectedKeyCode;
+					InputHandler.left = selectedKeyCode;
 					break;
 					case 1:
-					InputHandler.HorizontalRight = selectedKeyCode;
+					InputHandler.right = selectedKeyCode;
 					break;
 					case 2:
-					InputHandler.Forward = selectedKeyCode;
+					InputHandler.forward = selectedKeyCode;
 					break;
 					case 3:
-					InputHandler.Backwards = selectedKeyCode;
+					InputHandler.back = selectedKeyCode;
 					break;
 					case 4:
-					InputHandler.Up = selectedKeyCode;
+					InputHandler.up = selectedKeyCode;
 					break;
 					case 5:
-					InputHandler.Down = selectedKeyCode;
+					InputHandler.down = selectedKeyCode;
 					break;
 					case 6:
-					InputHandler.MinimapKey = selectedKeyCode;
+					InputHandler.minimap = selectedKeyCode;
 					break;
 				}
 				givingInput = false;
@@ -271,7 +272,7 @@ public class MenuGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(460,100,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Movement - Left  =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.HorizontalLeft.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.left.ToString(),optionStyle);
 
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
@@ -284,7 +285,7 @@ public class MenuGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(460,160,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Movement - Right  =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.HorizontalRight.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.right.ToString(),optionStyle);
 
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
@@ -297,7 +298,7 @@ public class MenuGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(460,220,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Movement - Forward  =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Forward.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.forward.ToString(),optionStyle);
 
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
@@ -310,7 +311,7 @@ public class MenuGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(460,280,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Movement - Backwards  =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Backwards.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.back.ToString(),optionStyle);
 
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
@@ -323,7 +324,7 @@ public class MenuGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(460,340,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Movement - Up  =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Up.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.up.ToString(),optionStyle);
 
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
@@ -336,7 +337,7 @@ public class MenuGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(460,400,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Movement - Down  =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.Down.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.down.ToString(),optionStyle);
 
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
@@ -349,7 +350,7 @@ public class MenuGUI:MonoBehaviour {
 		GUI.BeginGroup(new Rect(460,460,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"Minimap Key  =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.MinimapKey.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.minimap.ToString(),optionStyle);
 		
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
