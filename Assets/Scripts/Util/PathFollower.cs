@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Pathfinding;
 using Pathfinding.RVO;
 
-/** Customized version of the example A* path following */
 [RequireComponent(typeof(Seeker))]
 [AddComponentMenu("Pathfinding/AI/AIPath (generic)")]
 public class PathFollower:MonoBehaviour {

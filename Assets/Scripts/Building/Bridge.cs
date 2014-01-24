@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class Bridge:MonoBehaviour {
@@ -53,7 +53,7 @@ public class Bridge:MonoBehaviour {
 			GameObject part = Instantiate(Resources.Load("Prefabs/Buildings/Bridge/BridgePart"), spawnpos,transform.rotation) as GameObject;
 			part.transform.rotation = spawnposition.transform.rotation;
 			part.transform.position += spawnposition.transform.forward * i;
-			part.GetComponentInChildren<QuickDestroy>().killDirect = true;
+			part.GetComponentInChildren<QuickDestroy>().killdirect = true;
 			part.name = "BridgePart";
 			part.transform.parent = spawnposition.transform;
 		}

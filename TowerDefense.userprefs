@@ -2,37 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu\MenuGUI.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\CameraMovement.cs" Line="188" Column="2" />
-      <File FileName="Assets\Scripts\Menu\SplashIntro.cs" Line="64" Column="25" />
-      <File FileName="Assets\Scripts\Game\WaveManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\WaveData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy\EnemyManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy\Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Building\BridgeManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Tooltip.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\TooltipTexts.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Building\Building.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Building\Mine.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Building\LumberMill.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Building\Tower.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Minimap.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\BaseHealthBar.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InputHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\BuildManagerGUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Util\IslandReference.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Util\QuickDestroy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Shaders\Glass.shader" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Util\ResourceText.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Util\PathFollower.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\FOVSetter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Music\MusicFlow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\CameraMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\CloudRotation.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\FadeScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\MenuGUI.cs" Line="84" Column="17" />
-      <File FileName="Assets\Scripts\LOL\WoahDude.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu\MenuGUI.cs" Line="96" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

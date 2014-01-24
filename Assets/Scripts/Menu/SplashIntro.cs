@@ -61,13 +61,13 @@ public class SplashIntro : MonoBehaviour {
 		float ry = Screen.height / GameManager.nativeHeight;
 		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
 		GUI.DrawTexture(new Rect(700,150,300,mediacollegeheight),mediacollege);
-		GUI.Label(new Rect(675,660,100,500),"MediaCollege Amsterdam",nameStyle);
-		GUI.Label(new Rect(25,100,100,500),"Jasper Boerstra",nameStyle);
-		GUI.Label(new Rect(25,200,100,500),"Kevin Breurken",nameStyle);
-		GUI.Label(new Rect(25,300,100,500),"Pieter Hoogerdijk",nameStyle);
-		GUI.Label(new Rect(25,400,100,500),"Kevin Krol",nameStyle);
-		GUI.Label(new Rect(25,500,100,500),"Charlie Mercelina",nameStyle);
-		GUI.Label(new Rect(25,600,100,500),"Thomas Schrama",nameStyle);
+		GUI.Label(new Rect(700,650,100,500),"MediaCollege Amsterdam",nameStyle);
+		GUI.Label(new Rect(100,30,100,500),"Kevin Breurken",nameStyle);
+		GUI.Label(new Rect(100,130,100,500),"Thomas Schrama",nameStyle);
+		GUI.Label(new Rect(100,260,100,500),"Jasper Boerstra",nameStyle);
+		GUI.Label(new Rect(100,390,100,500),"Kevin Krol",nameStyle);
+		GUI.Label(new Rect(100,520,100,500),"Pieter Hoogerdijk",nameStyle);
+		GUI.Label(new Rect(100,650,100,500),"Charlie Mercelina",nameStyle);
 
 		if(showlogo){
 			Debug.Log(logocolor);

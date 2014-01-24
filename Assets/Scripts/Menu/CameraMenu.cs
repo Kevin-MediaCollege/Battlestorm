@@ -13,11 +13,11 @@ public class CameraMenu:MonoBehaviour {
 	public GameObject currentPath;
 	public GameObject[] paths;
 
-	private int pathNum = 0;
+	private int pathnum = 0;
 	private FadeScript fade;
 
 	private bool findnewPath;
-	private bool pathFound;
+	private bool pathfound;
 
 	private float startTime;
 	private Quaternion rotation;
@@ -31,57 +31,51 @@ public class CameraMenu:MonoBehaviour {
 	}
 
 	void GetData() {
-		pathNum++;
+		pathnum++;
 
-		if(pathNum == 4)
-			pathNum = 0;
+		if(pathnum == 4)
+			pathnum = 0;
 
-		currentPath = paths[pathNum];
+		currentPath = paths[pathnum];
 		PathData path = currentPath.GetComponent<PathData>();
 		transform.rotation = path.pointA.transform.rotation;
-
 		duration = path.duration;
 		startTime = Time.time;
-
 		startPoint = path.pointA.transform.position;
 		endPoint = path.pointB.transform.position;
 		startRotation = path.pointA.transform.rotation;
 		endRotation = path.pointB.transform.rotation;
 		transform.rotation = path.pointA.transform.rotation;
 		transform.position = path.pointA.transform.position;
-
-		pathFound = true;
+		pathfound = true;
 		fade.fadingOut = false;
 		startPoint = transform.position;
-
 		StopCoroutine("Delay");
 	}
 
 	IEnumerator Delay() {
-		pathFound = false;
-
+		pathfound = false;
 		yield return new WaitForSeconds(0.4f);
-
 		GetData();
 		findnewPath = false;
 	}
 
 	void Update() {
-		if(!stopMoving) {
-			if(findnewPath && fade.alphaFadeValue >= 0.95f) {
-				fade.alphaFadeValue = 1;
-				StartCoroutine("Delay");
-			}
+		if(!stopMoving){
+		if(findnewPath && fade.alphaFadeValue >= 0.95f) {
+			fade.alphaFadeValue = 1;
+			StartCoroutine("Delay");
+		}
 
-			if((Time.time - startTime) >= (duration - 1.0f)) {
-				fade.fadingOut = true;
-				findnewPath = true;
-			}
-			
-			if(pathFound) {
-				transform.position = Vector3.Lerp(startPoint, endPoint, (Time.time - startTime) / duration);
+		if((Time.time - startTime) >= (duration - 1.0f)) {
+			fade.fadingOut = true;
+			findnewPath = true;
+		}
+
+		if(pathfound) {
+			transform.position = Vector3.Lerp(startPoint, endPoint, (Time.time - startTime) / duration);
 				transform.rotation = Quaternion.Lerp(startRotation,endRotation, (Time.time - startTime) / duration);
-			}
+		}
 		}
 	}
 }

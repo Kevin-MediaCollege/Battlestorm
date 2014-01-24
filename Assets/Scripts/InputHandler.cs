@@ -2,30 +2,15 @@
 using System.Collections;
 
 public class InputHandler:MonoBehaviour {
-	/** Left key */
-	public static KeyCode left = KeyCode.A;
-
-	/** Right key */
-	public static KeyCode right = KeyCode.D;
-
-	/** Forward key */
-	public static KeyCode forward = KeyCode.W;
-
-	/** Backward key */
-	public static KeyCode back = KeyCode.S;
-
-	/** Up key */
-	public static KeyCode up = KeyCode.E;
-
-	/** Down key */
-	public static KeyCode down = KeyCode.Q;
-
-	/** Minimap key */
-	public static KeyCode minimap = KeyCode.Tab;
-
-	/** Building Manager key */
-	public static KeyCode buildingManager = KeyCode.Space;
-
-	/** Player set FOV */
-	public static float FOV = 70;
+	public static KeyCode left = KeyCode.A; // 0
+	public static KeyCode right = KeyCode.D; // 1
+	public static KeyCode forward = KeyCode.W; // 2
+	public static KeyCode back = KeyCode.S; // 3
+	public static KeyCode up = KeyCode.E; // 4
+	public static KeyCode down = KeyCode.Q; // 5
+	
+	public static KeyCode minimap = KeyCode.Tab; // 6
+	public static KeyCode buildingManager = KeyCode.Space; // 7
+	
+	public static float FOV = 70; // 8
 }
