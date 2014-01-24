@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/** This script is mainly used to destroy particles and sounds */
 public class QuickDestroy:MonoBehaviour {
 	public bool onTime;
-	public bool killdirect;
-	public float killtime;
+	public bool killDirect;
+
+	public float killTime;
+
 	void Start() {
 		this.transform.parent = GameObject.FindGameObjectWithTag("ParticleObject").transform;
 	}
 
 	void Update() {
-		if(killdirect){
+		if(killDirect)
 			Destroy(gameObject);
-		}
-		if(onTime){
-			Destroy(gameObject,killtime);
-		}else{
-		if(particleSystem.isStopped)
-			Destroy(gameObject);
+
+		if(onTime) {
+			Destroy(gameObject, killTime);
+		} else {
+			if(particleSystem.isStopped)
+				Destroy(gameObject);
 		}
 	}
 }

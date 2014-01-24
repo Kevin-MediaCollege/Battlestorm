@@ -1,26 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 public class FadeScript:MonoBehaviour {
-	private Texture2D fadeTexture;
 	public Texture2D blackTexture;
 	public Texture2D whiteTexture;
+
 	public bool fadingOut = false;
+
 	public float alphaFadeValue = 0;
 	public float fadeSpeed = 1;
+
+	private Texture2D fadeTexture;
 	
 
 	void Start() {
 		fadeTexture = blackTexture;
+
 		StartCoroutine("delay");
+
 		if(fadeTexture == null) {
 			fadeTexture = new Texture2D(1, 0);
 			fadeTexture.SetPixel(1, 1, new Color (0, 0, 0, 1));
 		}
 	}
+
 	IEnumerator delay(){
 		yield return new WaitForSeconds(1);
 		fadeTexture = whiteTexture;
 	}
+
 	void OnGUI () {
 		GUI.depth = -2;
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/** Singleton for player data */
 public class PlayerData:MonoBehaviour {
 	private static PlayerData instance = null;
 	

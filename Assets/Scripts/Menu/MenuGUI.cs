@@ -1,46 +1,51 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MenuGUI:MonoBehaviour {
 	public GUIStyle buttonStyle;
 	public float minorOffset;
-	private bool offsetbool;
-
-	private string lastGUITooltip;
-	private string tooltip;
 
 	public AudioClip buttonHover;
 	public AudioClip buttonClick;
+
 	public Camera optionCamera;
 	public Camera creditsCamera;
-	public FadeScript fade;
-	public CameraMenu flybyCamera;
-	private bool openMainMenu;
-	private bool openOptions;
-	private bool openCredits;
 
+	public FadeScript fade;
+
+	public CameraMenu flybyCamera;
+	
 	public Texture optionBackground;
+
 	public GUIStyle optionStyle;
 	public GUIStyle optionindexStyle;
 	public GUIStyle optionToggle;
 	public GUIStyle sliderStyle;
 	public GUIStyle thumbStyle;
-
 	public GUIStyle inputStyle;
-
-	public int optionIndex;
 
 	public Vector2[] resolutions;
 	public Vector2 currentresolution;
-	public int selectedresolutions;
-
+	
 	public Light ingameLight;
 
-	private bool givingInput;
-	private KeyCode selectedKeyCode;
-	public int keyCodeNum;
-
 	public AudioSource music;
+
+	public int optionIndex;
+	public int keyCodeNum;
+	public int selectedresolutions;
+
+	private KeyCode selectedKeyCode;
+
+	private bool offsetBool;
+	private bool givingInput;
+	private bool openMainMenu;
+	private bool openOptions;
+	private bool openCredits;
+	
+	private string lastGUITooltip;
+	private string tooltip;
+
 	void Start () {
 		Time.timeScale = 1.0f;
 		selectedresolutions = 3;
@@ -61,11 +66,11 @@ public class MenuGUI:MonoBehaviour {
 			fade.fadingOut = false;
 			this.camera.enabled = false;
 			optionCamera.enabled = true;
-			flybyCamera.stopmoving = true;
+			flybyCamera.stopMoving = true;
 			openMainMenu = false;
 		}
 		if(openCredits && fade.alphaFadeValue == 1){
-			flybyCamera.stopmoving = true;
+			flybyCamera.stopMoving = true;
 			this.camera.enabled = false;
 			creditsCamera.enabled = true;
 			fade.fadingOut = false;
@@ -75,7 +80,7 @@ public class MenuGUI:MonoBehaviour {
 			fade.fadingOut = false;
 			this.camera.enabled = true;
 			optionCamera.enabled = false;
-			flybyCamera.stopmoving = false;
+			flybyCamera.stopMoving = false;
 			openMainMenu = true;
 		}
 		if(tooltip != "" && tooltip != lastGUITooltip) {
@@ -90,24 +95,24 @@ public class MenuGUI:MonoBehaviour {
 	void enableMainCamera(){
 		optionCamera.enabled = false;
 		creditsCamera.enabled = false;
-		flybyCamera.stopmoving = false;
+		flybyCamera.stopMoving = false;
 		this.camera.enabled = true;
 	}
 	IEnumerator giveOffset(){
 		while (true) {
 			yield return new WaitForSeconds (0.1f);
 
-			if(offsetbool) {
+			if(offsetBool) {
 				minorOffset += 0.5f;
 			} else {
 				minorOffset -= 0.5f;
 			}
 
 			if (minorOffset == 5)
-				offsetbool = false;
+				offsetBool = false;
 
 			if (minorOffset == -5)
-				offsetbool = true;
+				offsetBool = true;
 		}
 	}
 

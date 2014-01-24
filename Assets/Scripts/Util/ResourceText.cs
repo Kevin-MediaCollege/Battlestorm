@@ -8,6 +8,7 @@ public class ResourceText:MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		// Keep looking at the player
 		transform.LookAt(Camera.main.transform);
 		transform.Translate(new Vector3(0, 0.02f, 0));
 	}
