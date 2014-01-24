@@ -46,6 +46,11 @@ public class WaveManager:MonoBehaviour {
 		}else{
 			musicFlow.Wave();
 		}
+		if(backrowUnlocked){
+			for(int i = 0; i < backrow.Length; i++){
+				firstrow[i].enableEmission = false;
+			}
+		}
 		if(waveData.spawningEnemies){
 			if(backrowUnlocked){
 				for(int i = 0; i < backrow.Length; i++){
