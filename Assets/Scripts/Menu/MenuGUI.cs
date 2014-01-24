@@ -180,7 +180,7 @@ public class MenuGUI:MonoBehaviour {
 			GUI.DrawTexture(new Rect(400,0,500,900),optionBackground);
 			buttonStyle.normal.background = buttonBackNormal;
 			buttonStyle.hover.background = buttonBackOn;
-			if(GUI.Button(new Rect(15, 600, 246, 102), new GUIContent("", "Menu"), buttonStyle)){
+			if(GUI.Button(new Rect(30, 650, 256, 49), new GUIContent("", "Menu"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				StartCoroutine("delay");
