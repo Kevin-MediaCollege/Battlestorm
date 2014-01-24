@@ -2731,12 +2731,12 @@ AnimationClip:
         value: {x: .0985107422, y: 6.27714729, z: -.0316925049}
         inSlope: {x: 0, y: .166501686, z: 0}
         outSlope: {x: 0, y: .166501686, z: 0}
-        tangentMode: 516279256
+        tangentMode: 2039359552
       - time: 4
         value: {x: .0985107422, y: 7.12537003, z: -.0316925049}
         inSlope: {x: 0, y: .0456252545, z: 0}
         outSlope: {x: 0, y: .0456252545, z: 0}
-        tangentMode: 139
+        tangentMode: 75
       - time: 6
         value: {x: .0985107422, y: 6.45252037, z: -.0316925049}
         inSlope: {x: 0, y: -.180126101, z: 0}
@@ -2751,7 +2751,7 @@ AnimationClip:
         value: {x: .0985107422, y: 6.46806908, z: -.0316925049}
         inSlope: {x: 0, y: .0426067412, z: 0}
         outSlope: {x: 0, y: .0426067412, z: 0}
-        tangentMode: 515794480
+        tangentMode: 4
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: BigCrystal
