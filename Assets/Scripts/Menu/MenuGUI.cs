@@ -137,14 +137,14 @@ public class MenuGUI:MonoBehaviour {
 		if(openMainMenu){
 			buttonStyle.normal.background = buttonPlayNormal;
 			buttonStyle.hover.background = buttonPlayOn;
-			if(GUI.Button(new Rect(15, 370, 246, 102), new GUIContent("", "Play"), buttonStyle)) {
+			if(GUI.Button(new Rect(15, 370, 256, 49), new GUIContent("", "Play"), buttonStyle)) {
 				playSound(1);
 				LoadingScreen.Instance.loadLoadingScreen("GameMap");
 			}
 
 			buttonStyle.normal.background = buttonOptionsNormal;
 			buttonStyle.hover.background = buttonOptionsOn;
-			if(GUI.Button(new Rect(15, 485, 246, 102), new GUIContent("", "Options"), buttonStyle)){
+			if(GUI.Button(new Rect(15, 485, 256, 49), new GUIContent("", "Options"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				openOptions = true;
@@ -152,7 +152,7 @@ public class MenuGUI:MonoBehaviour {
 
 			buttonStyle.normal.background = buttonCreditsNormal;
 			buttonStyle.hover.background = buttonCreditsOn;
-			if(GUI.Button(new Rect(15, 600, 246, 102), new GUIContent("", "Credits"), buttonStyle)){
+			if(GUI.Button(new Rect(15, 600, 256, 49), new GUIContent("", "Credits"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				openCredits = true;
@@ -163,7 +163,7 @@ public class MenuGUI:MonoBehaviour {
 			if(!Application.isWebPlayer) {
 				buttonStyle.normal.background = buttonQuitNormal;
 				buttonStyle.hover.background = ButtonQuitOn;
-				if(GUI.Button(new Rect(1015, 600, 246, 102), new GUIContent("", "Quit"), buttonStyle)){
+				if(GUI.Button(new Rect(1015, 600, 256, 49), new GUIContent("", "Quit"), buttonStyle)){
 					Application.Quit();
 				}
 			}
