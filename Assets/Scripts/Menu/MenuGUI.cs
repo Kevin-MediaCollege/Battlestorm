@@ -2,8 +2,18 @@ using UnityEngine;
 using System.Collections;
 
 public class MenuGUI:MonoBehaviour {
+	public Texture2D buttonPlayNormal;
+	public Texture2D buttonPlayOn;
+	public Texture2D buttonOptionsNormal;
+	public Texture2D buttonOptionsOn;
+	public Texture2D buttonCreditsNormal;
+	public Texture2D buttonCreditsOn;
+	public Texture2D buttonQuitNormal;
+	public Texture2D ButtonQuitOn;
+	public Texture2D buttonBackNormal;
+	public Texture2D buttonBackOn;
+
 	public GUIStyle buttonStyle;
-	public float minorOffset;
 
 	public AudioClip buttonHover;
 	public AudioClip buttonClick;
@@ -50,7 +60,6 @@ public class MenuGUI:MonoBehaviour {
 		Time.timeScale = 1.0f;
 		selectedresolutions = 3;
 		currentresolution = resolutions[selectedresolutions];
-		StartCoroutine("giveOffset");
 		openMainMenu = true;
 	}
 
@@ -98,23 +107,6 @@ public class MenuGUI:MonoBehaviour {
 		flybyCamera.stopMoving = false;
 		this.camera.enabled = true;
 	}
-	IEnumerator giveOffset(){
-		while (true) {
-			yield return new WaitForSeconds (0.1f);
-
-			if(offsetBool) {
-				minorOffset += 0.5f;
-			} else {
-				minorOffset -= 0.5f;
-			}
-
-			if (minorOffset == 5)
-				offsetBool = false;
-
-			if (minorOffset == -5)
-				offsetBool = true;
-		}
-	}
 
 	void playSound(int sound) {
 		if (!audio.isPlaying) {
@@ -143,18 +135,24 @@ public class MenuGUI:MonoBehaviour {
 
 
 		if(openMainMenu){
-			if(GUI.Button(new Rect(5, 435, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Play", "Play"), buttonStyle)) {
+			buttonStyle.normal.background = buttonPlayNormal;
+			buttonStyle.hover.background = buttonPlayOn;
+			if(GUI.Button(new Rect(15, 370, 246, 102), new GUIContent("", "Play"), buttonStyle)) {
 				playSound(1);
 				LoadingScreen.Instance.loadLoadingScreen("GameMap");
 			}
 
-			if(GUI.Button(new Rect(20, 535, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Options", "Options"), buttonStyle)){
+			buttonStyle.normal.background = buttonOptionsNormal;
+			buttonStyle.hover.background = buttonOptionsOn;
+			if(GUI.Button(new Rect(15, 485, 246, 102), new GUIContent("", "Options"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				openOptions = true;
 			}
 
-			if(GUI.Button(new Rect(15, 635, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Credits", "Credits"), buttonStyle)){
+			buttonStyle.normal.background = buttonCreditsNormal;
+			buttonStyle.hover.background = buttonCreditsOn;
+			if(GUI.Button(new Rect(15, 600, 246, 102), new GUIContent("", "Credits"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				openCredits = true;
@@ -163,7 +161,9 @@ public class MenuGUI:MonoBehaviour {
 			tooltip = GUI.tooltip;
 
 			if(!Application.isWebPlayer) {
-				if(GUI.Button(new Rect(1050, 630, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Quit", "Quit"), buttonStyle)){
+				buttonStyle.normal.background = buttonQuitNormal;
+				buttonStyle.hover.background = ButtonQuitOn;
+				if(GUI.Button(new Rect(1015, 600, 246, 102), new GUIContent("", "Quit"), buttonStyle)){
 					Application.Quit();
 				}
 			}
@@ -177,7 +177,9 @@ public class MenuGUI:MonoBehaviour {
 		}
 		if(!openMainMenu && !openCredits){
 			GUI.DrawTexture(new Rect(400,0,500,900),optionBackground);
-			if(GUI.Button(new Rect(-50, 635, 300 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Menu", "Menu"), buttonStyle)){
+			buttonStyle.normal.background = buttonBackNormal;
+			buttonStyle.hover.background = buttonBackOn;
+			if(GUI.Button(new Rect(15, 600, 246, 102), new GUIContent("", "Menu"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				StartCoroutine("delay");
@@ -365,10 +367,10 @@ public class MenuGUI:MonoBehaviour {
 			optionindexStyle.fontSize = 40;
 		GUI.EndGroup();
 
-		GUI.BeginGroup(new Rect(460,460,400,50),"",optionStyle);
+		GUI.BeginGroup(new Rect(460,520,400,50),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
 			GUI.Label(new Rect(5,0,100,50),"BuildingManager =",inputStyle);
-			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.minimap.ToString(),optionStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.buildingManager.ToString(),optionStyle);
 			
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){

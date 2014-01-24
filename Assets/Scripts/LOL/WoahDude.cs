@@ -15,39 +15,41 @@ public class WoahDude : MonoBehaviour {
 
 	public Color ambient;
 	public Color lightcol;
-	// Use this for initialization
+
 	void Start () {
 		lightcol = disco.color;
 		ambient = RenderSettings.ambientLight;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		if(Input.GetKey(KeyCode.F2) && hasstarted){
-			StopCoroutine("WoahDisco");
-			cam.fieldOfView = 70;
-			hasstarted = false;
-			two.Stop();
-			one.Stop();
-			disco.intensity = 0.45f;
-			RenderSettings.ambientLight = ambient;
-			disco.color = lightcol;
-			one.clip = waitmusic;
-			two.clip = wavemusic;
-			two.Play();
-			one.Play();
+		if(Application.isEditor) {
+			if(Input.GetKey(KeyCode.F2) && hasstarted){
+				StopCoroutine("WoahDisco");
+				cam.fieldOfView = 70;
+				hasstarted = false;
+				two.Stop();
+				one.Stop();
+				disco.intensity = 0.45f;
+				RenderSettings.ambientLight = ambient;
+				disco.color = lightcol;
+				one.clip = waitmusic;
+				two.clip = wavemusic;
+				two.Play();
+				one.Play();
+			}
+			if(Input.GetKey(KeyCode.F1) && !hasstarted){
+				hasstarted = true;
+				two.Stop();
+				one.Stop();
+				StartCoroutine("WoahDisco");
+				disco.intensity = 8;
+				one.clip = badger;
+				two.clip = badger;
+				two.Play();
+				one.Play();
+			}
 		}
-		if(Input.GetKey(KeyCode.F1) && !hasstarted){
-			hasstarted = true;
-			two.Stop();
-			one.Stop();
-			StartCoroutine("WoahDisco");
-			disco.intensity = 8;
-			one.clip = badger;
-			two.clip = badger;
-			two.Play();
-			one.Play();
-		}
+
 		if(hasstarted){
 			if(cam.fieldOfView < 70){
 				zoom = true;
