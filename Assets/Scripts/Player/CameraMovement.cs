@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraMovement:MonoBehaviour {
 	public float sensitivity = 2.0f;
 	public float speed = 1.0f;
+	public float acceleration = 0.025f;
 
 	public int minX;
 	public int maxX;
@@ -16,6 +17,10 @@ public class CameraMovement:MonoBehaviour {
 	
 	private float rotationX = 0.0f;
 	private float rotationY = 0.0f;
+
+	private float speedX = 0.0f;
+	private float speedY = 0.0f;
+	private float speedZ = 0.0f;
 
 	private bool canRotate;
 
@@ -34,9 +39,51 @@ public class CameraMovement:MonoBehaviour {
 		transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
 		transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
 
-		rigidbody.velocity += transform.forward * speed * Input.GetAxis("Vertical");
-		rigidbody.velocity += transform.right * speed * Input.GetAxis("Horizontal");
-		rigidbody.velocity += transform.up * (speed / 2) * Input.GetAxis("Move Vertical");
+		if(Input.GetKey(InputHandler.forward)) {
+			if(speedZ < 1.0f)
+				speedZ += acceleration;
+		} else if(Input.GetKey(InputHandler.back)) {
+			if(speedZ > -1.0f)
+				speedZ -= acceleration;
+		} else {
+			if(speedZ > 0) {
+				speedZ -= acceleration;
+			} else if(speedZ < 0) {
+				speedZ += acceleration;
+			}
+		}
+
+		if(Input.GetKey(InputHandler.right)) {
+			if(speedX < 1.0f)
+				speedX += acceleration;
+		} else if(Input.GetKey(InputHandler.left)) {
+			if(speedX > -1.0f)
+				speedX -= acceleration;
+		} else {
+			if(speedX > 0) {
+				speedX -= acceleration;
+			} else if(speedX < 0) {
+				speedX += acceleration;
+			}
+		}
+
+		if(Input.GetKey(InputHandler.up)) {
+			if(speedY < 1.0f)
+				speedY += acceleration;
+		} else if(Input.GetKey(InputHandler.down)) {
+			if(speedY > -1.0f)
+				speedY -= acceleration;
+		} else {
+			if(speedY > 0) {
+				speedY -= acceleration;
+			} else if(speedY < 0) {
+				speedY += acceleration;
+			}
+		}
+
+		rigidbody.velocity += transform.right * speed * speedX;
+		rigidbody.velocity += transform.up * (speed / 2) * speedY;
+		rigidbody.velocity += transform.forward * speed * speedZ;
 
 		Vector3 newPosition = transform.position;
 		Vector3 newVelocity = rigidbody.velocity;

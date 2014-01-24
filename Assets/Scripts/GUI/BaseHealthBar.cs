@@ -7,6 +7,7 @@ public class BaseHealthBar:MonoBehaviour {
 	public Renderer visiblecheck;
 	private Vector3 position;
 	public PlayerData playerHealth;
+
 	void FixedUpdate() {
 		position = Camera.main.WorldToScreenPoint(transform.position);
 	
