@@ -170,7 +170,7 @@ public class MenuGUI:MonoBehaviour {
 			}
 		}
 		if(!openMainMenu && !openOptions){
-			if(GUI.Button(new Rect(550,600,200,100),"Back",optionindexStyle)){
+			if(GUI.Button(new Rect(550,650,256,49),"Back",optionindexStyle)){
 				playSound(1);
 				fade.fadingOut = true;
 				StartCoroutine("delay");
