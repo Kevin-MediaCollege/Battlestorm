@@ -50,9 +50,6 @@ public class MenuGUI:MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if(music.volume != VolumeManager.MusicVolume){
-			music.volume = VolumeManager.MusicVolume;
-		}
 		if(optionIndex == -1){
 			optionIndex = 2;
 		}
@@ -161,7 +158,7 @@ public class MenuGUI:MonoBehaviour {
 			tooltip = GUI.tooltip;
 
 			if(!Application.isWebPlayer) {
-				if(GUI.Button(new Rect(1050, 635, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Quit", "Quit"), buttonStyle)){
+				if(GUI.Button(new Rect(1050, 630, 190 + (minorOffset / 2), 90 + minorOffset), new GUIContent("Quit", "Quit"), buttonStyle)){
 					Application.Quit();
 				}
 			}
@@ -236,25 +233,28 @@ public class MenuGUI:MonoBehaviour {
 
 				switch(keyCodeNum){
 					case 0:
-					InputHandler.left = selectedKeyCode;
+						InputHandler.left = selectedKeyCode;
 					break;
 					case 1:
-					InputHandler.right = selectedKeyCode;
+						InputHandler.right = selectedKeyCode;
 					break;
 					case 2:
-					InputHandler.forward = selectedKeyCode;
+						InputHandler.forward = selectedKeyCode;
 					break;
 					case 3:
-					InputHandler.back = selectedKeyCode;
+						InputHandler.back = selectedKeyCode;
 					break;
 					case 4:
-					InputHandler.up = selectedKeyCode;
+						InputHandler.up = selectedKeyCode;
 					break;
 					case 5:
-					InputHandler.down = selectedKeyCode;
+						InputHandler.down = selectedKeyCode;
 					break;
 					case 6:
-					InputHandler.minimap = selectedKeyCode;
+						InputHandler.minimap = selectedKeyCode;
+					break;
+					case 7:
+						InputHandler.buildingManager = selectedKeyCode;
 					break;
 				}
 				givingInput = false;
@@ -359,6 +359,19 @@ public class MenuGUI:MonoBehaviour {
 			}
 			optionindexStyle.fontSize = 40;
 		GUI.EndGroup();
+
+		GUI.BeginGroup(new Rect(460,460,400,50),"",optionStyle);
+			GUI.DrawTexture(new Rect(0,0,300,50),optionBackground);
+			GUI.Label(new Rect(5,0,100,50),"BuildingManager =",inputStyle);
+			GUI.Label(new Rect(200,0,100,50),"" + InputHandler.minimap.ToString(),optionStyle);
+			
+			optionindexStyle.fontSize = 20;
+			if(GUI.Button(new Rect(320,0,50,50),"Set",optionindexStyle)){
+				givingInput = true;
+				keyCodeNum = 7;
+			}
+			optionindexStyle.fontSize = 40;
+		GUI.EndGroup();
 		}
 	}
 	void DrawGraphicsWindow(){ 
@@ -396,14 +409,6 @@ public class MenuGUI:MonoBehaviour {
 		//Texture Quality
 		GUI.BeginGroup(new Rect(470,410,120,100),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
-			GUI.Label(new Rect(10,-5,100,50),"Vsync",optionStyle);
-			GUI.Label(new Rect(10,10,100,50),"Count",optionStyle);
-			QualitySettings.vSyncCount = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(5, 65, 90, 15), QualitySettings.vSyncCount, 0.0F, 2.0F,sliderStyle,thumbStyle));
-		GUI.EndGroup();
-
-		//Texture Quality
-		GUI.BeginGroup(new Rect(470,520,120,100),"",optionStyle);
-			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
 			GUI.Label(new Rect(10,-5,100,50),"Texture",optionStyle);
 			GUI.Label(new Rect(10,10,100,50),"Quality",optionStyle);
 			QualitySettings.masterTextureLimit = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(5, 65, 90, 15), QualitySettings.masterTextureLimit, 3.0F, 0.0F,sliderStyle,thumbStyle));
@@ -424,19 +429,6 @@ public class MenuGUI:MonoBehaviour {
 
 		GUI.BeginGroup(new Rect(700,410,120,100),"",optionStyle);
 			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
-			GUI.Label(new Rect(10,-5,100,50),"Shadows",optionStyle);
-			optionindexStyle.fontSize = 20;
-		if(GUI.Button(new Rect(60,45,50,50),"On",optionindexStyle)){
-				ingameLight.shadows = LightShadows.Hard;
-			}
-		if(GUI.Button(new Rect(5,45,50,50),"Off",optionindexStyle)){
-				ingameLight.shadows = LightShadows.None;
-			}
-			optionindexStyle.fontSize = 40;
-		GUI.EndGroup();
-
-		GUI.BeginGroup(new Rect(700,520,120,100),"",optionStyle);
-			GUI.DrawTexture(new Rect(0,0,120,100),optionBackground);
 			GUI.Label(new Rect(10,-5,100,50),"Fog",optionStyle);
 			optionindexStyle.fontSize = 20;
 			if(GUI.Button(new Rect(60,45,50,50),"On",optionindexStyle)){
@@ -448,5 +440,9 @@ public class MenuGUI:MonoBehaviour {
 			optionindexStyle.fontSize = 40;
 		GUI.EndGroup();
 
+		GUI.DrawTexture(new Rect(500,550,280,110),optionBackground);
+		GUI.Label(new Rect(590,555,100,50),"Field of View",optionStyle);
+		GUI.Label(new Rect(590,575,100,50),"" + InputHandler.FOV,optionStyle);
+		InputHandler.FOV = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(530, 620, 200, 15), InputHandler.FOV, 30, 140,sliderStyle,thumbStyle));
 	}
 }

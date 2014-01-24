@@ -64,13 +64,14 @@ public class CameraMovement:MonoBehaviour {
 			newPosition.z = maxZ;
 			newVelocity.z = 0;
 		}
-
+		if(!InterfaceGUI.lockmovement){
 		transform.position = newPosition;
 		rigidbody.velocity = newVelocity * 70 / Time.timeScale;
 		
 		if(Input.GetMouseButtonDown(1)) {
 			Screen.lockCursor = !Screen.lockCursor;
 			canRotate = !canRotate;
+		}
 		}
 	}
 }

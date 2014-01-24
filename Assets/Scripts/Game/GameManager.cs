@@ -14,11 +14,6 @@ public class GameManager:MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		if(GameObject.FindGameObjectWithTag("Enemy")) {
-			musicFlow.Wave();
-		} else {
-			musicFlow.Wait();
-		}
 	}
 
 	public static void WinGame() {

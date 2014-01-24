@@ -21,8 +21,8 @@ public class Enemy:PathFollower {
 
 	public GUIStyle style;
 
-	private bool isSlowDown;
-	private bool isOnFire;
+	public bool isSlowDown;
+	public bool isOnFire;
 
 	[HideInInspector]
 	public bool isDead = false;

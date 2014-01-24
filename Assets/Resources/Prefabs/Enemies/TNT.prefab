@@ -230,6 +230,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400026}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: vijand_baloon
   m_TagString: Untagged
@@ -460,8 +461,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0796294734, y: -.085265927, z: -.0049980171}
-  m_LocalScale: {x: .275000006, y: .275000006, z: .275000006}
+  m_LocalPosition: {x: .0789650008, y: -.0607195869, z: 0}
+  m_LocalScale: {x: .24000001, y: .24000001, z: .24000001}
   m_Children:
   - {fileID: 400024}
   - {fileID: 400022}
@@ -496,7 +497,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 183.728592, y: 109.760963, z: 50.6689682}
+  m_LocalPosition: {x: 66.5336075, y: 9.73525715, z: 75.287384}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 400044}
@@ -1185,8 +1186,35 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  isSlowDown: 0
+  isOnFire: 0
   isDead: 0
   eManager: {fileID: 0}
+  textures:
+  - {fileID: 2800000, guid: abe01833529bd3f4f8b763f16a7e4551, type: 3}
+  - {fileID: 2800000, guid: eb86f67c4603ac147a66b7c70c30ae96, type: 3}
+  - {fileID: 2800000, guid: 8b452901b805beb42809389757e178c5, type: 3}
+  notnormal: 0
+  enemyRenders: {fileID: 100026}
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b6b5afafee3d584987c59a4411efb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameToWait: 0
+  generateTriangleStrips: 1
+  combineOnStart: 1
+  destroyAfterOptimized: 0
+  castShadow: 1
+  receiveShadow: 1
+  keepLayer: 1
+  addMeshCollider: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

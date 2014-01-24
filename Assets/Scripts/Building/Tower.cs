@@ -14,7 +14,7 @@ public class Tower:Building {
 	public Transform top;
 
 	public AudioClip shotSound;
-	public Vector3 arrowPosition;
+	public GameObject arrowPosition;
 
 	new void Start() {
 		base.Start();
@@ -23,21 +23,19 @@ public class Tower:Building {
 
 		if(towerType == TowerType.Normal) {
 			top = transform.FindChild("Art").transform.FindChild("Pivot");
-			arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
+			arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").gameObject;
 		}
 		if(towerType == TowerType.Fire){
-			arrowPosition = transform.FindChild("Art").transform.FindChild("ArrowPosition").transform.position;
+			arrowPosition = transform.FindChild("Art").transform.FindChild("ArrowPosition").gameObject;
 		}
 		StartCoroutine("Tick");
 	}
 
-	void Update() {
-		if(target != null)
-			Debug.DrawLine(transform.position, target.transform.position);
-	}
-
 	void FixedUpdate(){
 		if(towerType == TowerType.Normal) {
+			if(top == null || arrowPosition == null){
+				StartCoroutine("getPivot");
+			}
 			if(target == null || target.GetComponent<Enemy>().isDead)
 				SearchForNewTarget();
 
@@ -50,6 +48,14 @@ public class Tower:Building {
 
 				top.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 50);
 			}
+		}
+		if(towerType == TowerType.Fire) {
+			if(target == null || target.GetComponent<Enemy>().isDead)
+				SearchForNewTarget();
+		}
+		if(towerType == TowerType.Ice) {
+			if(target == null || target.GetComponent<Enemy>().isDead)
+				SearchForNewTarget();
 		}
 	}
 
@@ -92,7 +98,7 @@ public class Tower:Building {
 		if(target != null) {
 			if(!target.GetComponent<Enemy>().isDead) {
 				if(towerType == TowerType.Normal) {
-					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Arrow"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Arrow"), arrowPosition.transform.position, top.transform.rotation) as GameObject).GetComponent<Projectile>();
 
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
@@ -100,15 +106,15 @@ public class Tower:Building {
 
 					audio.PlayOneShot(shotSound);
 				} else if(towerType == TowerType.Ice) {
-					/*Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Ice"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Ice"), transform.position + new Vector3(0,6,0), Quaternion.identity) as GameObject).GetComponent<Projectile>();
 					
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
-					projectile.targetScript = target.gameObject.GetComponent<Enemy>();*/
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
 
 					target.GetComponent<Enemy>().Slowdown();
 				} else if(towerType == TowerType.Fire) {
-					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), arrowPosition, Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), transform.position + new Vector3(0,6,0), Quaternion.identity) as GameObject).GetComponent<Projectile>();
 					
 					projectile.target = target.transform;
 					projectile.damage = stats.damagePerLevel[currentLevel - 1];
@@ -122,8 +128,11 @@ public class Tower:Building {
 
 	IEnumerator getPivot(){
 		yield return new WaitForSeconds(0.05f);
-
+		if(top == null){
 		top = transform.FindChild("Art").transform.FindChild("Pivot");
-		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
+		}
+		if(arrowPosition == null){
+		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").gameObject;
+		}
 	}
 }

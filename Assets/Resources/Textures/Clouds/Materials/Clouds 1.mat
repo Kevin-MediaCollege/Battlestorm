@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Clouds 1
-  m_Shader: {fileID: 4800000, guid: dfdaf3fbbe7ea014da1e4262ae57ae83, type: 3}
+  m_Shader: {fileID: 4800000, guid: 5d45c8184c704a243b66b1e412572b14, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -23,6 +23,13 @@ Material:
       data:
         first:
           name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DecalTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -48,15 +55,44 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RampTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
-          name: _InvFade
-        second: 3
+          name: _Cutoff
+        second: .5
+      data:
+        first:
+          name: PixelSnap
+        second: 0
       data:
         first:
           name: _Shininess
         second: .0300000031
+      data:
+        first:
+          name: _InvFade
+        second: 3
       data:
         first:
           name: _Offset
@@ -65,19 +101,19 @@ Material:
         first:
           name: _EmissionLM
         second: 0
+      data:
+        first:
+          name: _RimPower
+        second: 2.5
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .54411763, g: .963235319, b: .996551752, a: 1}
-      data:
-        first:
-          name: _TintColor
-        second: {r: .5, g: .507352948, b: .5, a: .501960814}
-      data:
-        first:
-          name: _EmisColor
-        second: {r: .843137264, g: .843137264, b: .843137264, a: 0}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SpecColor
@@ -88,12 +124,24 @@ Material:
         second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
+          name: _TintColor
+        second: {r: .5, g: .507352948, b: .5, a: .360784322}
+      data:
+        first:
+          name: _EmisColor
+        second: {r: .843137264, g: .843137264, b: .843137264, a: 0}
+      data:
+        first:
           name: _ReflectColor
         second: {r: 1, g: 1, b: 1, a: .5}
       data:
         first:
           name: _NotVisibleColor
         second: {r: 0, g: 1, b: 0, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: .970000029, g: .879999995, b: 1, a: .75}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6

@@ -20,9 +20,27 @@ Material:
           m_Texture: {fileID: 2800000, guid: 2356c117f30b7764e9502f91ab0374a3, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats: {}
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .625, g: .625, b: .625, a: 1}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: .242647052, g: .242647052, b: .242647052, a: .894117653}

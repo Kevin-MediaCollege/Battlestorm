@@ -42,9 +42,9 @@ public class WaveManager:MonoBehaviour {
 	}
 	void Update() {
 		if(enemyManager.enemyList.Count == 0){
-			musicFlow.Wave();
-		}else{
 			musicFlow.Wait();
+		}else{
+			musicFlow.Wave();
 		}
 		if(waveData.spawningEnemies){
 			if(backrowUnlocked){

@@ -10,7 +10,12 @@ public class BuildingManager:MonoBehaviour {
 	private GameObject building;
 	private GameObject position;
 	public GameObject instantiateparticle;
+
+	public BuildManagerGUI BMGUI;
+
+	public EBuildingType currentType;
 	void Start() {
+		BMGUI = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BuildManagerGUI>();
 		if(isUnlocked){
 			SetParticle(true);
 		}else{
@@ -30,8 +35,8 @@ public class BuildingManager:MonoBehaviour {
 
 	IEnumerator waitforParticle(EBuildingType type){
 		platform.collider.enabled = false;
-
-		yield return new WaitForSeconds(3f);
+		currentType = type;
+		yield return new WaitForSeconds(2.5f);
 
 		Instantiate(Resources.Load("Prefabs/SoundPrefabs/BuildingCreateSound"), position.transform.position, position.transform.rotation);
 		platform.renderer.enabled = false;
@@ -51,6 +56,23 @@ public class BuildingManager:MonoBehaviour {
 	}
 
 	public void DestroyBuilding(Building building) {
+		switch(currentType){
+		case EBuildingType.TowerNormal:
+			BMGUI.removeCount(1);
+			break;
+		case EBuildingType.LumberMill:
+			BMGUI.removeCount(2);
+			break;
+		case EBuildingType.Mine:
+			BMGUI.removeCount(3);
+			break;
+		case EBuildingType.TowerFire:
+			BMGUI.removeCount(4);
+			break;
+		case EBuildingType.TowerIce:
+			BMGUI.removeCount(5);
+			break;
+		}
 		SetParticle(true);
 		platform.renderer.enabled = true;
 		platform.GetComponent<BoxCollider>().enabled = true;

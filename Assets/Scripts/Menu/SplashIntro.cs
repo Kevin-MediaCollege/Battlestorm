@@ -29,7 +29,7 @@ public class SplashIntro : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		fadeinLogo = false;
 		yield return new WaitForSeconds(3.5f);
-		Application.LoadLevel("Menu");
+		Application.LoadLevel("GameMenu");
 	}
 	// Update is called once per frame
 	void FixedUpdate () {

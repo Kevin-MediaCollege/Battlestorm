@@ -464,7 +464,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 177.059341, y: 101.860992, z: 51.3940887}
+  m_LocalPosition: {x: -27.861908, y: 15.1321754, z: 66.3019485}
   m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
   m_Children:
   - {fileID: 400046}
@@ -1528,8 +1528,16 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  isSlowDown: 0
+  isOnFire: 0
   isDead: 0
   eManager: {fileID: 0}
+  textures:
+  - {fileID: 2800000, guid: c00d16f611b8a5847b90d1f5a529b333, type: 3}
+  - {fileID: 2800000, guid: 66fbb5695b77e6140ac683debdbec50d, type: 3}
+  - {fileID: 2800000, guid: df1b9ccd660c48646aec927e45b66b3e, type: 3}
+  notnormal: 0
+  enemyRenders: {fileID: 100046}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1

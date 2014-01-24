@@ -143,8 +143,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -.0192076955, y: -.4427163, z: .00297854492, w: .896451056}
-  m_LocalPosition: {x: 29.2091389, y: -23.78438, z: -59.605835}
+  m_LocalRotation: {x: .00180351979, y: -.750630856, z: .00146774796, w: .660717726}
+  m_LocalPosition: {x: 33.9510727, y: 19.5139847, z: -36.1904182}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children:
   - {fileID: 400012}
@@ -292,6 +292,8 @@ MonoBehaviour:
   - {fileID: 19800008}
   - {fileID: 19800000}
   instantiateparticle: {fileID: 100002, guid: 374cd9db592950f4bb38560bf8c0831e, type: 2}
+  BMGUI: {fileID: 0}
+  currentType: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3658,7 +3660,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4282993074
+        rgba: 4286913028
       minMaxState: 0
     startSize:
       scalar: 4
