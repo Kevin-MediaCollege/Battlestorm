@@ -5,7 +5,6 @@ public class BuildingManager:MonoBehaviour {
 	public GameObject platform;
 
 	public bool isUnlocked;
-
 	public ParticleSystem[] particle;
 	private GameObject building;
 	private GameObject position;
@@ -54,7 +53,9 @@ public class BuildingManager:MonoBehaviour {
 			particle[i].renderer.enabled = state;
 		}
 	}
-
+	public void CreatePoofParticle(){
+		Instantiate(Resources.Load("Particles/PlotPoof"), transform.position,Quaternion.identity);
+	}
 	public void DestroyBuilding(Building building) {
 		switch(currentType){
 		case EBuildingType.TowerNormal:
@@ -76,7 +77,7 @@ public class BuildingManager:MonoBehaviour {
 		SetParticle(true);
 		platform.renderer.enabled = true;
 		platform.GetComponent<BoxCollider>().enabled = true;
-
+		CreatePoofParticle();
 		Destroy(building.gameObject);
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyTank:Enemy {
 	public Texture[] textures;
 	public bool notnormal;
-	public GameObject enemyRenders;
+	public GameObject[] enemyRenders;
 	void FixedUpdate(){
 		if(isOnFire || isSlowDown){
 			notnormal = true;
@@ -14,12 +14,16 @@ public class EnemyTank:Enemy {
 			}else if(isSlowDown){
 				appliedTexture = textures[2];
 			}
-			enemyRenders.renderer.material.mainTexture = appliedTexture;
+			for (int i = 0; i < enemyRenders.Length; i++){
+				enemyRenders[i].renderer.material.mainTexture = appliedTexture;
+			}
 		}else if (!notnormal){
 			Texture appliedTexture;
 			appliedTexture = textures[0];
-			renderer.material.mainTexture = appliedTexture;
-			enemyRenders.renderer.material.mainTexture = appliedTexture;
+			//renderer.material.mainTexture = appliedTexture;
+			for (int i = 0; i < enemyRenders.Length; i++){
+				enemyRenders[i].renderer.material.mainTexture = appliedTexture;
+			}
 		}
 	}
 }
