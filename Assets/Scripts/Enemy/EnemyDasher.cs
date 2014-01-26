@@ -9,8 +9,10 @@ public class EnemyDasher:Enemy {
 	public GameObject enemyRenders;
 	void FixedUpdate() {
 		if(hitpoints <  maxHitpoints){
-			speed = rushSpeed * 2;
-			Debug.Log("Rushing");
+			if(!isSlowDown) {
+				speed = rushSpeed * 2;
+				Debug.Log("Rushing");
+			}
 		}
 		if(isOnFire || isSlowDown){
 			notnormal = true;
