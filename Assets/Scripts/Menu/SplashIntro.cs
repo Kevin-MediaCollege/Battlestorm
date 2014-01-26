@@ -20,10 +20,10 @@ public class SplashIntro : MonoBehaviour {
 		StartCoroutine("SplashEvent");
 	}
 	IEnumerator SplashEvent(){
-		fadein = true;
-		yield return new WaitForSeconds(3);
-		fadein = false;
-		yield return new WaitForSeconds(4);
+		//fadein = true;
+		//yield return new WaitForSeconds(3);
+		//fadein = false;
+		//yield return new WaitForSeconds(4);
 		fadeinLogo = true;
 		showlogo = true;
 		yield return new WaitForSeconds(3);
@@ -33,7 +33,7 @@ public class SplashIntro : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(fadein){
+		/*if(fadein){
 			namecolor.a += 0.01f;
 			if(mediacollegeheight < 300){
 				mediacollegeheight += 5;
@@ -43,7 +43,7 @@ public class SplashIntro : MonoBehaviour {
 			if(mediacollegeheight > 0){
 				mediacollegeheight -= 2;
 			}
-		}
+		}*/
 		if(fadeinLogo){
 			logocolor.a += 0.01f;
 		}else{
@@ -60,7 +60,8 @@ public class SplashIntro : MonoBehaviour {
 		float rx = Screen.width / GameManager.nativeWidth;
 		float ry = Screen.height / GameManager.nativeHeight;
 		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
-		GUI.DrawTexture(new Rect(700,150,300,mediacollegeheight),mediacollege);
+		
+		/*GUI.DrawTexture(new Rect(700,150,300,mediacollegeheight),mediacollege);
 		GUI.Label(new Rect(700,650,100,500),"MediaCollege Amsterdam",nameStyle);
 		GUI.Label(new Rect(100,30,100,500),"Kevin Breurken",nameStyle);
 		GUI.Label(new Rect(100,130,100,500),"Thomas Schrama",nameStyle);
@@ -68,7 +69,7 @@ public class SplashIntro : MonoBehaviour {
 		GUI.Label(new Rect(100,390,100,500),"Kevin Krol",nameStyle);
 		GUI.Label(new Rect(100,520,100,500),"Pieter Hoogerdijk",nameStyle);
 		GUI.Label(new Rect(100,650,100,500),"Charlie Mercelina",nameStyle);
-
+		*/
 		if(showlogo){
 			Debug.Log(logocolor);
 			GUI.color = logocolor;
