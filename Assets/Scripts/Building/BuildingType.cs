@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Building Types of Buildings.
+/// </summary>
 public enum EBuildingType {
 	None = -1,
 	Empty = 0,
@@ -13,5 +16,8 @@ public enum EBuildingType {
 }
 
 public class BuildingType:MonoBehaviour {
+	// Reference to the Buildings Type.
+
 	public EBuildingType type;
+
 }

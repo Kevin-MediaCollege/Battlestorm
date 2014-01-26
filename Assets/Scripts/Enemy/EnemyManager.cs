@@ -3,20 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemyManager:MonoBehaviour {
-	public Transform[] spawnPositions;
 
-	public Transform end;
+	public Transform[] spawnPositions; // Spawnpositions of the Enemies.
 
-	private Transform spawnPosition;
-	private Transform parent;
+	public Transform end; // End location of Enemies.
 
-	private GameObject enemy;
-	public List<GameObject> enemyList = new List<GameObject>();
+	private Transform spawnPosition; // Current SpawnPosition of Enemy.
+
+	private Transform parent; // The Parent of the Enemy. Used for Clean Heirachy.
+
+	private GameObject enemy; // Referenc to Enemy.
+
+	public List<GameObject> enemyList = new List<GameObject>(); // List of Enemies Spawned.
+
 	void Start() {
+		//Reference to Enemies object for Clean Heirachy.
 		parent = GameObject.Find("Enemies").GetComponent<Transform>();
 	}
 
 	public void SpawnEnemy(string name, float health, float speed, int spawn) {
+		//Spawns the Enemy.
+
 		switch(spawn){
 		case 0:
 			spawnPosition = spawnPositions[0];
@@ -39,13 +46,16 @@ public class EnemyManager:MonoBehaviour {
 		}
 
 		enemy = Instantiate(Resources.Load("Prefabs/Enemies/" + name), spawnPosition.position, Quaternion.identity) as GameObject;
-		Enemy en = enemy.GetComponent<Enemy>();
 
+		Enemy en = enemy.GetComponent<Enemy>();
 		en.hitpoints = health;
 		en.speed = speed;
-		enemyList.Add(enemy);
 		en.eManager = this;
+
 		enemy.GetComponent<PathFollower>().target = end;
 		enemy.transform.parent = parent;
+
+		enemyList.Add(enemy);
 	}
+
 }
