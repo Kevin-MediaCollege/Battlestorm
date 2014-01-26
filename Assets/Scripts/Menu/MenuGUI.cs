@@ -65,9 +65,8 @@ public class MenuGUI:MonoBehaviour {
 
 	void FixedUpdate() {
 		if(optionIndex == -1){
-			optionIndex = 2;
-		}
-		else if(optionIndex == 4){
+			optionIndex = 3;
+		} else if(optionIndex == 4){
 			optionIndex = 0;
 		}
 		if(openOptions && fade.alphaFadeValue == 1){
@@ -197,16 +196,13 @@ public class MenuGUI:MonoBehaviour {
 			if(optionIndex == 0){
 				//INPUT 0
 				DrawMainOptionsWindow();
-			}
-			if(optionIndex == 1){
+			} else if(optionIndex == 1){
 				//Audio 1
 				DrawInputWindow();
-			}
-			if(optionIndex == 2){
+			} else if(optionIndex == 2){
 				//Graphics 2
 				DrawGraphicsWindow();
-			}
-			if(optionIndex == 3){
+			} else if(optionIndex == 3){
 				//SOUND 2
 				DrawAudioWindow();
 			}
