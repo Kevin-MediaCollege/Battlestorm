@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MinimapObject : MonoBehaviour {
-	public GameObject pointtarget;
-	// Use this for initialization
-	void Start () {
-	
+public class MinimapObject:MonoBehaviour {
+	private GameObject playerPosition;
+
+	void Start() {
+		playerPosition = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		Vector3 position = new Vector3(pointtarget.transform.position.x,50,pointtarget.transform.position.z);
-		this.transform.position = position;
+	void Update() {
+		Vector3 position = playerPosition.transform.position;
 
+		position.y = 50;
+		transform.position = position;
 	}
 }

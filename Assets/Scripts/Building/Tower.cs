@@ -1,83 +1,70 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower:Building {	
-	public enum StoneCost {
-		Level1 = 0,
-		Level2 = 250,
-		Level3 = 600,
-		Level4 = 1200,
-		Level5 = 3000
-	};
-	
-	public enum StoneSell {
-		Level1 = 0,
-		Level2 = 10,
-		Level3 = 10,
-		Level4 = 210,
-		Level5 = 500
-	};
-	
-	private enum WoodCost {
-		Level1 = 0,
-		Level2 = 150,
-		Level3 = 300,
-		Level4 = 500,
-		Level5 = 3000
-	};
-	
-	public enum WoodSell {
-		Level1 = 0,
-		Level2 = 10,
-		Level3 = 10,
-		Level4 = 210,
-		Level5 = 500
+public class Tower:Building {
+	public enum TowerType {
+		Normal = 1,
+		Ice = 2,
+		Fire = 3
 	};
 
-	public float damage;
-	public float maxRange;
-
-	private GameObject target;
+	public TowerType towerType;
+	
+	public GameObject target;
 	public Transform top;
 
 	public AudioClip shotSound;
-	private Vector3 arrowPosition;
-	void Start() {
-		currentLevel = Upgrade.Level1;
+	public GameObject arrowPosition;
 
-		stoneCost = (int)StoneCost.Level2;
-		stoneSell = (int)StoneSell.Level1;
-		
-		woodCost = (int)WoodCost.Level2;
-		woodSell = (int)WoodSell.Level1;
+	new void Start() {
+		base.Start();
 
 		UpdateArt();
-		top = transform.FindChild("Art").transform.FindChild("Pivot");
-		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").transform.position;
+
+		if(towerType == TowerType.Normal) {
+			top = transform.FindChild("Art").transform.FindChild("Pivot");
+			arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").gameObject;
+		}
+		if(towerType == TowerType.Fire){
+			arrowPosition = transform.FindChild("Art").transform.FindChild("ArrowPosition").gameObject;
+		}
 		StartCoroutine("Tick");
 	}
 
-	void Update() {
-		if(target != null)
-			Debug.DrawLine(transform.position, target.transform.position);
-	}
-
 	void FixedUpdate(){
-		if(target == null || target.GetComponent<Enemy>().isdead)
-			SearchForNewTarget();
+		if(towerType == TowerType.Normal) {
+			if(top == null || arrowPosition == null){
+				StartCoroutine("getPivot");
+			}
+			if(target == null || target.GetComponent<Enemy>().isDead)
+				SearchForNewTarget();
 
-		if(target != null)
-			top.transform.LookAt(target.transform.position);
+			if(target != null && top != null) {
+				Vector3 lookPos = target.transform.position - top.transform.position;
+
+				Quaternion rotation = Quaternion.LookRotation(lookPos);
+				rotation.x = 0;
+				rotation.z = 0;
+
+				top.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 50);
+			}
+		}
+		if(towerType == TowerType.Fire) {
+			if(target == null || target.GetComponent<Enemy>().isDead)
+				SearchForNewTarget();
+		}
+		if(towerType == TowerType.Ice) {
+			if(target == null || target.GetComponent<Enemy>().isDead)
+				SearchForNewTarget();
+		}
 	}
 
 	protected override IEnumerator Tick() {
 		while(true) {
-			yield return new WaitForSeconds(tickDelay);
-			
+			yield return new WaitForSeconds(stats.speedPerLevel[currentLevel - 1]);
 
-			
 			if(target != null) {
-				if(Vector3.Distance(transform.position, target.transform.position) > maxRange)
+				if(Vector3.Distance(transform.position, target.transform.position) > stats.rangePerLevel[currentLevel - 1])
 					SearchForNewTarget();
 				
 				Fire();
@@ -91,7 +78,7 @@ public class Tower:Building {
 		float distance = 0;
 		
 		foreach(GameObject go in targets) {
-			if(Vector3.Distance(go.transform.position, transform.position) <= maxRange) {
+			if(Vector3.Distance(go.transform.position, transform.position) <= stats.rangePerLevel[currentLevel - 1]) {
 				if(closest == null) {
 					closest = go;
 					distance = Vector3.Distance(go.transform.position, transform.position);
@@ -108,28 +95,44 @@ public class Tower:Building {
 	}
 
 	void Fire() {
-		if(target != null || !target.GetComponent<Enemy>().isdead){
-		GameObject projectile = Instantiate(Resources.Load("Prefabs/Projectile/Projectile"), arrowPosition, Quaternion.identity) as GameObject;
-			Projectile proj = projectile.GetComponent<Projectile>();
-			proj.target = target.transform;
-			proj.damage = damage;
-			proj.targetScript = target.gameObject.GetComponent<Enemy>();
-			audio.PlayOneShot(shotSound);
+		if(target != null) {
+			if(!target.GetComponent<Enemy>().isDead) {
+				if(towerType == TowerType.Normal) {
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Arrow"), arrowPosition.transform.position, top.transform.rotation) as GameObject).GetComponent<Projectile>();
+
+					projectile.target = target.transform;
+					projectile.damage = stats.damagePerLevel[currentLevel - 1];
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
+
+					audio.PlayOneShot(shotSound);
+				} else if(towerType == TowerType.Ice) {
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Ice"), transform.position + new Vector3(0,6,0), Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					
+					projectile.target = target.transform;
+					projectile.damage = stats.damagePerLevel[currentLevel - 1];
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
+
+					target.GetComponent<Enemy>().Slowdown();
+				} else if(towerType == TowerType.Fire) {
+					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Fire"), transform.position + new Vector3(0,6,0), Quaternion.identity) as GameObject).GetComponent<Projectile>();
+					
+					projectile.target = target.transform;
+					projectile.damage = stats.damagePerLevel[currentLevel - 1];
+					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
+
+					target.GetComponent<Enemy>().Burn();
+				}
+			}
 		}
 	}
-	
-	public override void SwitchLevel(Upgrade newLevel) {
-		if(newLevel > maxLevel)
-			return;
-		
-		currentLevel = newLevel;
-		
-		stoneCost++;
-		stoneSell++;
-		
-		woodCost++;
-		woodSell++;
-		
-		UpdateArt();
+
+	IEnumerator getPivot(){
+		yield return new WaitForSeconds(0.05f);
+		if(top == null){
+		top = transform.FindChild("Art").transform.FindChild("Pivot");
+		}
+		if(arrowPosition == null){
+		arrowPosition = transform.FindChild("Art").transform.FindChild("Pivot").transform.FindChild("ArrowPosition").gameObject;
+		}
 	}
 }

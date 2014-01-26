@@ -1,31 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 public class EnemyManager:MonoBehaviour {
-	public Transform parent;
-	public Transform start;
+	public Transform[] spawnPositions;
+
 	public Transform end;
-	
-	public float spawnDelay;
-	
+
+	private Transform spawnPosition;
+	private Transform parent;
+
 	private GameObject enemy;
-	
-	public GameObject[] enemies;
-	public List<GameObject> enemyList;
+	public List<GameObject> enemyList = new List<GameObject>();
 	void Start() {
-		enemyList = new List<GameObject>();
+		parent = GameObject.Find("Enemies").GetComponent<Transform>();
 	}
-	void FixedUpdate(){
-		for(int i = 0; i < enemyList.Count; i++){
-			if(enemyList[i].gameObject == null){
-				enemyList.RemoveAt(i);
-			}
+
+	public void SpawnEnemy(string name, float health, float speed, int spawn) {
+		switch(spawn){
+		case 0:
+			spawnPosition = spawnPositions[0];
+			break;
+		case 1:
+			spawnPosition = spawnPositions[1];
+			break;
+		case 2:
+			spawnPosition = spawnPositions[2];
+		break;
+		case 3:
+			spawnPosition = spawnPositions[3];
+		break;
+		case 4:
+			spawnPosition = spawnPositions[4];
+		break;
+		case 5:
+			spawnPosition = spawnPositions[5];
+		break;
 		}
-	}
-	public void spawnEnemy() {
-		enemy = Instantiate(Resources.Load("Prefabs/Entity/Enemy"), start.position, Quaternion.identity) as GameObject;
+
+		enemy = Instantiate(Resources.Load("Prefabs/Enemies/" + name), spawnPosition.position, Quaternion.identity) as GameObject;
+		Enemy en = enemy.GetComponent<Enemy>();
+
+		en.hitpoints = health;
+		en.speed = speed;
+		enemyList.Add(enemy);
+		en.eManager = this;
 		enemy.GetComponent<PathFollower>().target = end;
 		enemy.transform.parent = parent;
-		enemyList.Add(enemy.transform.gameObject);
 	}
 }
