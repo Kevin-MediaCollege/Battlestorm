@@ -18,7 +18,6 @@ public class EnemyDasher:Enemy {
 				speed = rushSpeed * 2;
 				Debug.Log("Rushing");
 			}
-			speed = rushSpeed * 2;
 		}
 
 		if(isOnFire || isSlowDown){
