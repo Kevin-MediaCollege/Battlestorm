@@ -12,6 +12,6 @@ public class GameManager:MonoBehaviour {
 	}
 
 	public static void WinGame() {
-		Debug.Log("You win!");
+		Application.LoadLevel("EndGame");
 	}
 }
