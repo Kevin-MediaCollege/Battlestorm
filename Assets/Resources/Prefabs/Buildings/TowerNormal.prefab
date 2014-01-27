@@ -171,8 +171,8 @@ MonoBehaviour:
   sellRate: .5
   resourcesPerTick: 
   goldCostPerLevel: 320000000f0000001900000028000000
-  stoneCostPerLevel: 280000008200000090010000bc020000
-  woodCostPerLevel: 32000000960000005e01000058020000
+  stoneCostPerLevel: 28000000820000009001000078050000
+  woodCostPerLevel: 32000000960000005e01000078050000
   rangePerLevel:
   - 20
   - 20
@@ -182,12 +182,12 @@ MonoBehaviour:
   - 2
   - 4
   - 8
-  - 16
+  - 6
   speedPerLevel:
   - 1.5
   - 1.20000005
   - .899999976
-  - 1
+  - .400000006
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

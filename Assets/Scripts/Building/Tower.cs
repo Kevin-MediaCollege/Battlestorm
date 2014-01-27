@@ -123,13 +123,14 @@ public class Tower:Building {
 
 				if(towerType == TowerType.Normal) {
 
-					Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Arrow"), arrowPosition.transform.position, top.transform.rotation) as GameObject).GetComponent<Projectile>();
-
-					projectile.target = target.transform;
-					projectile.damage = stats.damagePerLevel[currentLevel - 1];
-					projectile.targetScript = target.gameObject.GetComponent<Enemy>();
-
-					audio.PlayOneShot(shotSound);
+					if(arrowPosition != null){
+						Projectile projectile = (Instantiate(Resources.Load("Prefabs/Projectile/Arrow"), arrowPosition.transform.position, top.transform.rotation) as GameObject).GetComponent<Projectile>();
+						projectile.target = target.transform;
+						projectile.damage = stats.damagePerLevel[currentLevel - 1];
+						projectile.targetScript = target.gameObject.GetComponent<Enemy>();
+						
+						audio.PlayOneShot(shotSound);
+					}
 
 				} else if(towerType == TowerType.Ice) {
 

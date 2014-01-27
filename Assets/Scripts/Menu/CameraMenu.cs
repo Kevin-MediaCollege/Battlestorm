@@ -2,27 +2,34 @@
 using System.Collections;
 
 public class CameraMenu:MonoBehaviour {
-	public Vector3 startPoint;
-	public Vector3 endPoint;
+
+	public Vector3 startPoint; // Starting Point of Camera.
+
+	public Vector3 endPoint; // End Point of Camera.
 	
-	public Quaternion startRotation;
-	public Quaternion endRotation;
+	public Quaternion startRotation; // Start Rotation of Camera.
 
-	public float duration = 5.0f;
+	public Quaternion endRotation; // End Rotation of Camera.
 
-	public GameObject currentPath;
-	public GameObject[] paths;
+	public float duration = 5.0f; // Duration of CameraMovement.
 
-	private int pathnum = 0;
-	private FadeScript fade;
+	public GameObject currentPath; // Current Path being done.
 
-	private bool findnewPath;
-	private bool pathfound;
+	public GameObject[] paths; // List of Paths.
 
-	private float startTime;
-	private Quaternion rotation;
+	private int pathnum = 0; // Number of current Path.
 
-	public bool stopMoving = false;
+	private FadeScript fade; // Fade animation.
+
+	private bool findnewPath; // Check if a new path needs to be found.
+
+	private bool pathfound; // Check if a path has been found.
+
+	private float startTime; // Starting time.
+
+	private Quaternion rotation; // Rotation.
+
+	public bool stopMoving = false; // Check to stop moving the Camera.
 
 	void Start() {
 		stopMoving = false;
@@ -31,6 +38,8 @@ public class CameraMenu:MonoBehaviour {
 	}
 
 	void GetData() {
+		//Get Data from a Path.
+
 		pathnum++;
 
 		if(pathnum == 4)
@@ -62,20 +71,23 @@ public class CameraMenu:MonoBehaviour {
 
 	void Update() {
 		if(!stopMoving){
-		if(findnewPath && fade.alphaFadeValue >= 0.95f) {
-			fade.alphaFadeValue = 1;
-			StartCoroutine("Delay");
-		}
+			if(findnewPath && fade.alphaFadeValue >= 0.95f) {
+				fade.alphaFadeValue = 1;
+				StartCoroutine("Delay");
+			}
 
-		if((Time.time - startTime) >= (duration - 1.0f)) {
-			fade.fadingOut = true;
-			findnewPath = true;
-		}
+			if((Time.time - startTime) >= (duration - 1.0f)) {
+				fade.fadingOut = true;
+				findnewPath = true;
+			}
 
-		if(pathfound) {
-			transform.position = Vector3.Lerp(startPoint, endPoint, (Time.time - startTime) / duration);
+			if(pathfound) {
+				transform.position = Vector3.Lerp(startPoint, endPoint, (Time.time - startTime) / duration);
 				transform.rotation = Quaternion.Lerp(startRotation,endRotation, (Time.time - startTime) / duration);
+			}
+
 		}
-		}
+
 	}
+
 }

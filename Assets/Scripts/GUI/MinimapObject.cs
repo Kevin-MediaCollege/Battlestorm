@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class MinimapObject:MonoBehaviour {
-	private GameObject playerPosition;
+	//the minimap Point of the player.
+
+	private GameObject playerPosition; // Position of the Player.
 
 	void Start() {
 		playerPosition = GameObject.FindGameObjectWithTag("MainCamera");
@@ -14,4 +16,5 @@ public class MinimapObject:MonoBehaviour {
 		position.y = 50;
 		transform.position = position;
 	}
+
 }
