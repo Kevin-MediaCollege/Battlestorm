@@ -2,21 +2,26 @@
 using System.Collections;
 
 public class Tooltip:MonoBehaviour {
-	public Texture goldTexture;
-	public Texture stoneTexture;
-	public Texture woodTexture;
 
-	public GUIStyle tooltipStyle;
-	public GUIStyle tooltipTextStyle;
+	public Texture goldTexture; // Gold Texture in Tooltip Window.
 
-	private Vector2 mousePos;
+	public Texture stoneTexture; // Stone Texture in Tooltip Window.
+
+	public Texture woodTexture; // Wood Texture in Tooltip Window.
+
+	public GUIStyle tooltipStyle; // Style for the Tooltip Window.
+
+	public GUIStyle tooltipTextStyle; // Style for the Tooltip Text.
+
+	private Vector2 mousePos; // Mouse position.
 	
-	private BuildingStats stats;
+	private BuildingStats stats; // Stats for building Tooltip.
 
-	private string type;
-	private string text;
+	private string type; // Type displayed in Tooltip.
 
-	private bool drawGUI;
+	private string text; // Text in tooltip.
+
+	private bool drawGUI; // if the tooltip should be drawn.
 
 	void Update() {
 		mousePos = new Vector2(Input.mousePosition.x,(Screen.height - Input.mousePosition.y));
@@ -148,4 +153,5 @@ public class Tooltip:MonoBehaviour {
 	private void SetStats() {
 		if(stats == null) stats = GameObject.Find(type).GetComponent<BuildingStats>();
 	}
+
 }

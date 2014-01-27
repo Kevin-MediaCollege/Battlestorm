@@ -155,7 +155,7 @@ MonoBehaviour:
   target: {fileID: 0}
   top: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 1b2727f0e62e2094eb64cf2631c24674, type: 3}
-  arrowPosition: {x: 0, y: 0, z: 0}
+  arrowPosition: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,9 +170,9 @@ MonoBehaviour:
   levels: 4
   sellRate: .5
   resourcesPerTick: 
-  goldCostPerLevel: 320000004b000000960000002c010000
-  stoneCostPerLevel: 2800000090010000b004000088130000
-  woodCostPerLevel: 32000000900100007805000088130000
+  goldCostPerLevel: 320000000f0000001900000028000000
+  stoneCostPerLevel: 28000000820000009001000078050000
+  woodCostPerLevel: 32000000960000005e01000078050000
   rangePerLevel:
   - 20
   - 20
@@ -182,12 +182,12 @@ MonoBehaviour:
   - 2
   - 4
   - 8
-  - 16
+  - 6
   speedPerLevel:
   - 1.5
   - 1.20000005
   - .899999976
-  - 1
+  - .400000006
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

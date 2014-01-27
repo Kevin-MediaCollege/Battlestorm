@@ -4,9 +4,11 @@ using System.Collections;
 public class WaveData:MonoBehaviour {
 	private static WaveData instance = null;
 
-	public int currentWave = 0;
-	public int waveTimer = 0;
-	public bool spawningEnemies = false;
+	public int currentWave = 0; // Current wave your playing
+
+	public int waveTimer = 0; // the wave Timer.
+
+	public bool spawningEnemies = false; // Check whether enemies are spawning.
 	
 	public static WaveData Instance {
 		get {
@@ -48,11 +50,14 @@ public class WaveData:MonoBehaviour {
 			TNT
 		};
 
-		public SpawnPosition spawn;
-		public EnemyTypes name;
+		public SpawnPosition spawn; // Spawn position of the enemy.
 
-		public float speed;
-		public float health;
+		public EnemyTypes name; //Type of enemy.
+
+		public float speed; // Enemy Speed.
+
+		public float health; // Enemy health.
+
 	};
 
 	public Row[] waveArray = new Row[3];

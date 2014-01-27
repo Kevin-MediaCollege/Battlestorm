@@ -2,28 +2,21 @@
 using System.Collections;
 
 public class SplashIntro : MonoBehaviour {
-	public GUIStyle nameStyle;
-	public GUIStyle logoStyle;
-	public Color logocolor;
-	public Color namecolor;
-	public Texture logoTexture;
-	public Texture mediacollege;
-	public bool fadein;
-	public bool fadeinLogo;
-	public bool showlogo;
-	public int mediacollegeheight;
-	// Use this for initialization
+
+	public Color logocolor; //Logo Starting Color.
+
+	public Texture logoTexture; // Texture of the Logo.
+
+	public bool fadeinLogo; // Check whether to fade in the Logo
+
+	public bool showlogo; // Show Game Logo.
+
 	void Start () {
 		logocolor = new Color(1,1,1,0);
-		namecolor = new Color(1,1,1,0);
-		nameStyle.normal.textColor = namecolor;
 		StartCoroutine("SplashEvent");
 	}
+
 	IEnumerator SplashEvent(){
-		fadein = true;
-		yield return new WaitForSeconds(3);
-		fadein = false;
-		yield return new WaitForSeconds(4);
 		fadeinLogo = true;
 		showlogo = true;
 		yield return new WaitForSeconds(3);
@@ -31,19 +24,9 @@ public class SplashIntro : MonoBehaviour {
 		yield return new WaitForSeconds(3.5f);
 		Application.LoadLevel("GameMenu");
 	}
-	// Update is called once per frame
+
 	void FixedUpdate () {
-		if(fadein){
-			namecolor.a += 0.01f;
-			if(mediacollegeheight < 300){
-				mediacollegeheight += 5;
-			}
-		}else{
-			namecolor.a -= 0.01f;
-			if(mediacollegeheight > 0){
-				mediacollegeheight -= 2;
-			}
-		}
+
 		if(fadeinLogo){
 			logocolor.a += 0.01f;
 		}else{
@@ -51,8 +34,6 @@ public class SplashIntro : MonoBehaviour {
 			logocolor.a -= 0.01f;
 			}
 		}
-		logoStyle.normal.textColor = logocolor;
-		nameStyle.normal.textColor = namecolor;
 
 	}
 
@@ -60,20 +41,13 @@ public class SplashIntro : MonoBehaviour {
 		float rx = Screen.width / GameManager.nativeWidth;
 		float ry = Screen.height / GameManager.nativeHeight;
 		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
-		GUI.DrawTexture(new Rect(700,150,300,mediacollegeheight),mediacollege);
-		GUI.Label(new Rect(700,650,100,500),"MediaCollege Amsterdam",nameStyle);
-		GUI.Label(new Rect(100,30,100,500),"Kevin Breurken",nameStyle);
-		GUI.Label(new Rect(100,130,100,500),"Thomas Schrama",nameStyle);
-		GUI.Label(new Rect(100,260,100,500),"Jasper Boerstra",nameStyle);
-		GUI.Label(new Rect(100,390,100,500),"Kevin Krol",nameStyle);
-		GUI.Label(new Rect(100,520,100,500),"Pieter Hoogerdijk",nameStyle);
-		GUI.Label(new Rect(100,650,100,500),"Charlie Mercelina",nameStyle);
 
 		if(showlogo){
 			Debug.Log(logocolor);
 			GUI.color = logocolor;
 			GUI.DrawTexture(new Rect(350,50,600,600),logoTexture);
 		}
-		//GUI.color = new Color(1,1,1,1);
+
 	}
+
 }

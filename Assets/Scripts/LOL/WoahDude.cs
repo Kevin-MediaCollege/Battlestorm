@@ -2,21 +2,33 @@
 using System.Collections;
 
 public class WoahDude : MonoBehaviour {
-	public Camera cam;
-	public Light disco;
-	public bool zoom;
-	public bool hasstarted = false;
-	public AudioSource one;
-	public AudioSource two;
 
-	public AudioClip badger;
-	public AudioClip wavemusic;
-	public AudioClip waitmusic;
+	public Camera cam; // Reference to the Camera.
 
-	public Color ambient;
-	public Color lightcol;
+	public Light disco; // Reference to the Light.
+
+	public bool zoom; // Check whether camera is zoomed in.
+
+	public bool hasstarted = false; // Check if its been started.
+
+	public AudioSource one; // Reference to audioSource.
+
+	public AudioSource two; // Reference to audioSource.
+
+	public AudioClip badger; // Badger AudioClip.
+
+	public AudioClip wavemusic; // Reference to Wavemusic.
+
+	public AudioClip waitmusic; // Reference to Waitmusic.
+
+	public Color ambient; // Ambient Lighting ingame.
+
+	public Color lightcol; // Color of the light.
+
+	public float lightIntensity; // Intensity of the light.
 
 	void Start () {
+		lightIntensity = disco.intensity;
 		lightcol = disco.color;
 		ambient = RenderSettings.ambientLight;
 	}
