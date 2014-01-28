@@ -12,6 +12,10 @@ public class MenuGUI:MonoBehaviour {
 	public Texture2D ButtonQuitOn;
 	public Texture2D buttonBackNormal;
 	public Texture2D buttonBackOn;
+	public Texture2D buttonDownloadNormal;
+	public Texture2D buttonDownloadOn;
+
+	public string standaloneUrl;
 
 	public GUIStyle buttonStyle;
 
@@ -136,6 +140,7 @@ public class MenuGUI:MonoBehaviour {
 		if(openMainMenu){
 			buttonStyle.normal.background = buttonPlayNormal;
 			buttonStyle.hover.background = buttonPlayOn;
+			buttonStyle.active.background = buttonPlayOn;
 			if(GUI.Button(new Rect(30, 650, 256, 49), new GUIContent("", "Play"), buttonStyle)) {
 				playSound(1);
 				LoadingScreen.Instance.loadLoadingScreen("GameMap");
@@ -143,6 +148,7 @@ public class MenuGUI:MonoBehaviour {
 
 			buttonStyle.normal.background = buttonOptionsNormal;
 			buttonStyle.hover.background = buttonOptionsOn;
+			buttonStyle.active.background = buttonOptionsOn;
 			if(GUI.Button(new Rect(316, 650, 256, 49), new GUIContent("", "Options"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
@@ -151,6 +157,7 @@ public class MenuGUI:MonoBehaviour {
 
 			buttonStyle.normal.background = buttonCreditsNormal;
 			buttonStyle.hover.background = buttonCreditsOn;
+			buttonStyle.active.background = buttonCreditsOn;
 			if(GUI.Button(new Rect(719, 650, 256, 49), new GUIContent("", "Credits"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
@@ -162,9 +169,20 @@ public class MenuGUI:MonoBehaviour {
 			if(!Application.isWebPlayer) {
 				buttonStyle.normal.background = buttonQuitNormal;
 				buttonStyle.hover.background = ButtonQuitOn;
+				buttonStyle.active.background = ButtonQuitOn;
+
 				if(GUI.Button(new Rect(1005, 650, 256, 49), new GUIContent("", "Quit"), buttonStyle)){
 					playSound(1);
 					Application.Quit();
+				}
+			} else {
+				buttonStyle.normal.background = buttonDownloadNormal;
+				buttonStyle.hover.background = buttonDownloadOn;
+				buttonStyle.active.background = buttonDownloadOn;
+
+				if(GUI.Button(new Rect(1005, 650, 256, 49), new GUIContent("", "DownloadSA"), buttonStyle)) {
+					playSound(1);
+					Application.ExternalEval("window.open('" + standaloneUrl + "','Download Battle Storm Standalone')");
 				}
 			}
 		}
@@ -179,6 +197,7 @@ public class MenuGUI:MonoBehaviour {
 			GUI.DrawTexture(new Rect(400,0,500,900),optionBackground);
 			buttonStyle.normal.background = buttonBackNormal;
 			buttonStyle.hover.background = buttonBackOn;
+			buttonStyle.active.background = buttonBackOn;
 			if(GUI.Button(new Rect(30, 650, 256, 49), new GUIContent("", "Menu"), buttonStyle)){
 				playSound(1);
 				fade.fadingOut = true;
@@ -376,6 +395,8 @@ public class MenuGUI:MonoBehaviour {
 			}
 			optionindexStyle.fontSize = 40;
 		GUI.EndGroup();
+
+		GUI.Label(new Rect(485, 590, 50, 50), "Custom input is not implemented yet.", inputStyle);
 		}
 	}
 	void DrawGraphicsWindow(){ 
