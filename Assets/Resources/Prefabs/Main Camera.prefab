@@ -344,12 +344,7 @@ MonoBehaviour:
   sensitivity: 2
   speed: .25
   acceleration: .0250000004
-  minX: -50
-  maxX: 180
-  minY: -60
-  maxY: 60
-  minZ: -75
-  maxZ: 170
+  stopSpeed: .0500000007
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1354,541 +1349,541 @@ MonoBehaviour:
       speed: 3
       health: 6
   - spawnDelay: 4
+    hasWarning: 0
+    enemies:
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 8
+  - spawnDelay: 4
     hasWarning: 1
     enemies:
     - spawn: 2
       name: 0
       speed: 3
-      health: 12
+      health: 20
     - spawn: 2
       name: 0
       speed: 3
-      health: 12
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 12
+      health: 20
     - spawn: 1
       name: 2
       speed: 3
-      health: 12
+      health: 20
+    - spawn: 1
+      name: 2
+      speed: 3
+      health: 20
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 20
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 20
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 20
     - spawn: 0
       name: 2
       speed: 3
-      health: 12
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 12
-    - spawn: 1
-      name: 0
-      speed: 3
-      health: 12
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 12
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 12
+      health: 20
     - spawn: 0
       name: 0
       speed: 3
-      health: 12
+      health: 20
     - spawn: 2
       name: 0
       speed: 3
-      health: 12
+      health: 20
     - spawn: 2
       name: 0
       speed: 3
-      health: 12
+      health: 20
     - spawn: 2
       name: 0
       speed: 3
-      health: 12
+      health: 20
     - spawn: 2
       name: 0
       speed: 3
-      health: 12
+      health: 20
     - spawn: 2
       name: 0
       speed: 3
-      health: 12
+      health: 20
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 20
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 20
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 20
   - spawnDelay: 4
     hasWarning: 0
     enemies:
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 1
-      name: 2
-      speed: 3
-      health: 15
-    - spawn: 1
-      name: 2
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 0
-      name: 2
-      speed: 3
-      health: 15
-    - spawn: 0
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-    - spawn: 2
-      name: 0
-      speed: 3
-      health: 15
-  - spawnDelay: 4
-    hasWarning: 0
-    enemies:
     - spawn: 1
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 1
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 2
       speed: 3
-      health: 15
+      health: 22
     - spawn: 0
       name: 2
       speed: 3
-      health: 15
+      health: 22
     - spawn: 1
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 0
       name: 2
       speed: 3
-      health: 15
+      health: 22
     - spawn: 0
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 0
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 1
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
     - spawn: 2
       name: 0
       speed: 3
-      health: 15
+      health: 22
   - spawnDelay: 3
     hasWarning: 1
     enemies:
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 2
       speed: 4
-      health: 15
+      health: 32
     - spawn: 1
       name: 2
       speed: 4
-      health: 15
+      health: 32
     - spawn: 1
       name: 2
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 0
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 0
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
     - spawn: 2
       name: 0
       speed: 4
-      health: 15
+      health: 32
   - spawnDelay: 3
     hasWarning: 0
     enemies:
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 0
       name: 2
       speed: 4
-      health: 18
+      health: 33
     - spawn: 1
       name: 2
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 33
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 33
   - spawnDelay: 3
     hasWarning: 0
     enemies:
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 1
       name: 2
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 0
       name: 2
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 34
     - spawn: 1
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 34
     - spawn: 0
       name: 2
       speed: 4
-      health: 18
+      health: 34
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 34
   - spawnDelay: 3
     hasWarning: 0
     enemies:
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 36
     - spawn: 1
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 0
       name: 2
       speed: 4
-      health: 18
+      health: 36
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 36
     - spawn: 1
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 1
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 1
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 36
     - spawn: 0
       name: 2
       speed: 4
-      health: 18
+      health: 36
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 36
   - spawnDelay: 3
     hasWarning: 1
     enemies:
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 1
       name: 0
       speed: 4
@@ -1896,181 +1891,842 @@ MonoBehaviour:
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 2
       speed: 4
-      health: 18
+      health: 40
     - spawn: 1
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 0
       name: 0
       speed: 4
-      health: 18
+      health: 40
     - spawn: 0
       name: 2
       speed: 4
-      health: 18
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 18
+      health: 40
   - spawnDelay: 3
     hasWarning: 0
     enemies:
     - spawn: 2
       name: 1
       speed: 4
-      health: 17
+      health: 40
     - spawn: 2
       name: 1
       speed: 4
-      health: 17
+      health: 40
     - spawn: 1
       name: 1
       speed: 4
-      health: 17
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 0
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 0
       name: 2
       speed: 4
-      health: 22
+      health: 40
     - spawn: 1
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 1
       name: 0
       speed: 4
-      health: 22
+      health: 40
     - spawn: 1
       name: 0
       speed: 4
-      health: 22
+      health: 40
   - spawnDelay: 3
     hasWarning: 0
     enemies:
     - spawn: 0
       name: 1
       speed: 4
-      health: 20
+      health: 60
     - spawn: 2
       name: 0
       speed: 4
-      health: 20
+      health: 60
     - spawn: 1
       name: 1
       speed: 4
-      health: 20
+      health: 60
     - spawn: 2
       name: 2
       speed: 4
-      health: 22
+      health: 60
     - spawn: 0
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 0
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 1
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 1
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 2
       name: 2
       speed: 4
-      health: 22
+      health: 60
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 2
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 1
       name: 2
       speed: 4
-      health: 22
+      health: 60
     - spawn: 0
       name: 2
       speed: 4
-      health: 22
+      health: 60
     - spawn: 1
       name: 0
       speed: 4
-      health: 22
+      health: 60
     - spawn: 1
       name: 2
       speed: 4
-      health: 22
+      health: 60
     - spawn: 1
       name: 0
       speed: 4
-      health: 22
+      health: 60
+  - spawnDelay: 3
+    hasWarning: 1
+    enemies:
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 1
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 1
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+  - spawnDelay: 3
+    hasWarning: 1
+    enemies:
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 1
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 1
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+  - spawnDelay: 3
+    hasWarning: 1
+    enemies:
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 1
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 1
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 0
+      name: 1
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 80
+  - spawnDelay: 3
+    hasWarning: 1
+    enemies:
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 1
+      name: 2
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 1
+      name: 2
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 1
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+  - spawnDelay: 3
+    hasWarning: 1
+    enemies:
+    - spawn: 0
+      name: 1
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 1
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 2
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 1
+      name: 2
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 110
+    - spawn: 0
+      name: 1
+      speed: 4
+      health: 110
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 110
+  - spawnDelay: 3
+    hasWarning: 1
+    enemies:
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 1
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 0
+      name: 0
+      speed: 4
+      health: 120
+    - spawn: 2
+      name: 0
+      speed: 4
+      health: 120
+  - spawnDelay: 3
+    hasWarning: 1
+    enemies:
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 1
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 1
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 1
+      name: 1
+      speed: 3
+      health: 140
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 1
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 2
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 2
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 1
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 0
+      name: 2
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 0
+      name: 0
+      speed: 3
+      health: 140
+    - spawn: 2
+      name: 0
+      speed: 3
+      health: 140
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2111,6 +2767,7 @@ MonoBehaviour:
   waitmusic: {fileID: 8300000, guid: 81e782c3ff438f7449318d1b561fa8f4, type: 3}
   ambient: {r: 0, g: 0, b: 0, a: 0}
   lightcol: {r: 0, g: 0, b: 0, a: 0}
+  lightIntensity: 0
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
