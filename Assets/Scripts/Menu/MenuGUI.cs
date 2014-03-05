@@ -141,7 +141,19 @@ public class MenuGUI:MonoBehaviour {
 		
 		if(openMainMenu){
 			GUI.DrawTexture(new Rect(500, 50, 296, 240), logo);
-			GUI.DrawTexture(new Rect(930, 15, 334, 181), jasonLogo);
+			
+			GUIStyle jasonStyle = new GUIStyle();
+			jasonStyle.fontSize = 24;
+			
+			jasonStyle.normal.textColor = Color.black;
+			GUI.Label(new Rect(10, 130, 100, 24), new GUIContent("facebook.com/"), jasonStyle);
+			GUI.Label(new Rect(10, 155, 100, 24), new GUIContent("twitter.com/"), jasonStyle);
+			
+			jasonStyle.normal.textColor = new Color(1.0f, 0.6f, 0);
+			GUI.Label(new Rect(165, 130, 100, 24), new GUIContent("JasonTheGame"), jasonStyle);
+			GUI.Label(new Rect(132, 155, 100, 24), new GUIContent("Jason_TheGame"), jasonStyle);
+			
+			GUI.DrawTexture(new Rect(10, 10, jasonLogo.width / 8, jasonLogo.height / 8), jasonLogo);
 
 			buttonStyle.normal.background = buttonPlayNormal;
 			buttonStyle.hover.background = buttonPlayOn;

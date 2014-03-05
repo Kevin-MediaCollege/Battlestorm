@@ -66,7 +66,7 @@ public class Enemy:PathFollower {
 		Destroy(gameObject);
 		
 		if(PlayerData.Instance.health-- <= 1){
-			Application.LoadLevel(Application.loadedLevel);
+			GameManager.EndGame();
 		}
 
 	}

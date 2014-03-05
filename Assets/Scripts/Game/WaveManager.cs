@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class WaveManager:MonoBehaviour {
@@ -119,7 +119,7 @@ public class WaveManager:MonoBehaviour {
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
 			if(enemies.Length == 0){
-				GameManager.WinGame();
+				GameManager.EndGame();
 			}
 		}
 

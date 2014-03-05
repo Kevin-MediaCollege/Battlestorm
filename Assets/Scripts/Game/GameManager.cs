@@ -11,7 +11,7 @@ public class GameManager:MonoBehaviour {
 		Screen.lockCursor = false;
 	}
 
-	public static void WinGame() {
-		Application.LoadLevel("EndGame");
+	public static void EndGame() {
+		Application.LoadLevel("GameMenu");
 	}
 }
