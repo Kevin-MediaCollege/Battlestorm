@@ -33,13 +33,13 @@ public class EnemyTNT:Enemy {
 				appliedTexture = textures[2];
 			}
 			
-			enemyRenders.renderer.material.mainTexture = appliedTexture;
+			enemyRenders.GetComponent<Renderer>().material.mainTexture = appliedTexture;
 			
 		}else if (!notnormal){
 			Texture appliedTexture;
 			appliedTexture = textures[0];
-			renderer.material.mainTexture = appliedTexture;
-			enemyRenders.renderer.material.mainTexture = appliedTexture;
+			GetComponent<Renderer>().material.mainTexture = appliedTexture;
+			enemyRenders.GetComponent<Renderer>().material.mainTexture = appliedTexture;
 			
 		}
 		

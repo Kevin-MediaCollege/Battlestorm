@@ -29,7 +29,7 @@ public class IslandData:MonoBehaviour {
 
 		plots[i].SetParticle(true);
 		plots[i].isUnlocked = b;
-		plots[i].transform.FindChild("platform").renderer.enabled = true;
+		plots[i].transform.FindChild("platform").GetComponent<Renderer>().enabled = true;
 		plots[i].CreatePoofParticle();
 
 	}

@@ -11,11 +11,11 @@ public class VolumeSetter : MonoBehaviour {
 		//Sets the volume.
 
 		if(isSound){
-			audio.volume = VolumeManager.SoundVolume;
+			GetComponent<AudioSource>().volume = VolumeManager.SoundVolume;
 		}
 
 		if(isMusic){
-			audio.volume = VolumeManager.MusicVolume;
+			GetComponent<AudioSource>().volume = VolumeManager.MusicVolume;
 		}
 
 	}

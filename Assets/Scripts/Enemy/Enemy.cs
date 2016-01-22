@@ -88,9 +88,9 @@ public class Enemy:PathFollower {
 		if(!isDead){
 			Instantiate(Resources.Load("Particles/EnemyExplosion"), transform.position, transform.rotation);
 			PlayerData.Instance.goldAmount += goldReward;
-			rigidbody.isKinematic = false;
-			rigidbody.useGravity = true;
-			rigidbody.AddForce(Vector3.down * 2);
+			GetComponent<Rigidbody>().isKinematic = false;
+			GetComponent<Rigidbody>().useGravity = true;
+			GetComponent<Rigidbody>().AddForce(Vector3.down * 2);
 			gameObject.tag = "Untagged";
 			isDead = true;
 			OnDisable();

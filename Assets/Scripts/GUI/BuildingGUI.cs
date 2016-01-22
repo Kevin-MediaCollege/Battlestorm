@@ -49,7 +49,7 @@ public class BuildingGUI:MonoBehaviour {
 	}
 
 	void Update() {
-		if(target != null && !target.renderer.isVisible) {
+		if(target != null && !target.GetComponent<Renderer>().isVisible) {
 			draw = false;
 		} else {
 			draw = true;

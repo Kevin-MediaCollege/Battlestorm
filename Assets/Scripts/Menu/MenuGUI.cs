@@ -72,21 +72,21 @@ public class MenuGUI:MonoBehaviour {
 		if(openOptions && fade.alphaFadeValue == 1){
 			optionIndex = 0;
 			fade.fadingOut = false;
-			this.camera.enabled = false;
+			this.GetComponent<Camera>().enabled = false;
 			optionCamera.enabled = true;
 			flybyCamera.stopMoving = true;
 			openMainMenu = false;
 		}
 		if(openCredits && fade.alphaFadeValue == 1){
 			flybyCamera.stopMoving = true;
-			this.camera.enabled = false;
+			this.GetComponent<Camera>().enabled = false;
 			creditsCamera.enabled = true;
 			fade.fadingOut = false;
 			openMainMenu = false;
 		}
 		if(!openOptions && !openCredits && fade.alphaFadeValue == 1){
 			fade.fadingOut = false;
-			this.camera.enabled = true;
+			this.GetComponent<Camera>().enabled = true;
 			optionCamera.enabled = false;
 			flybyCamera.stopMoving = false;
 			openMainMenu = true;
@@ -104,17 +104,17 @@ public class MenuGUI:MonoBehaviour {
 		optionCamera.enabled = false;
 		creditsCamera.enabled = false;
 		flybyCamera.stopMoving = false;
-		this.camera.enabled = true;
+		this.GetComponent<Camera>().enabled = true;
 	}
 
 	void playSound(int sound) {
-		if (!audio.isPlaying) {
+		if (!GetComponent<AudioSource>().isPlaying) {
 			switch (sound) {
 			case 1:
-				audio.PlayOneShot(buttonClick);
+				GetComponent<AudioSource>().PlayOneShot(buttonClick);
 				break;
 			case 2:
-				audio.PlayOneShot(buttonHover);
+				GetComponent<AudioSource>().PlayOneShot(buttonHover);
 				break;
 			}
 		}

@@ -43,7 +43,6 @@ public class SplashIntro : MonoBehaviour {
 		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
 
 		if(showlogo){
-			Debug.Log(logocolor);
 			GUI.color = logocolor;
 			GUI.DrawTexture(new Rect(350,50,600,600),logoTexture);
 		}

@@ -48,7 +48,7 @@ public class CombineChildrenExtended : MonoBehaviour {
 		
 		for (int i=0;i<filters.Length;i++) {
 			MeshFilter filter = (MeshFilter)filters[i];
-			Renderer curRenderer  = filters[i].renderer;
+			Renderer curRenderer  = filters[i].GetComponent<Renderer>();
 			MeshCombineUtility.MeshInstance instance = new MeshCombineUtility.MeshInstance ();
 			instance.mesh = filter.sharedMesh;
 			if (curRenderer != null && curRenderer.enabled && instance.mesh != null) {
@@ -86,16 +86,16 @@ public class CombineChildrenExtended : MonoBehaviour {
 				if (GetComponent(typeof(MeshFilter)) == null)
 					gameObject.AddComponent(typeof(MeshFilter));
 				if (!GetComponent("MeshRenderer"))
-					gameObject.AddComponent("MeshRenderer");
+					gameObject.AddComponent<MeshRenderer>();
 	
 				MeshFilter filter = (MeshFilter)GetComponent(typeof(MeshFilter));
                 if (Application.isPlaying) filter.mesh = MeshCombineUtility.Combine(instances);
                 else filter.sharedMesh = MeshCombineUtility.Combine(instances);
-				renderer.material = (Material)de.Key;
-				renderer.enabled = true;
+				GetComponent<Renderer>().material = (Material)de.Key;
+				GetComponent<Renderer>().enabled = true;
                 if (addMeshCollider) gameObject.AddComponent<MeshCollider>();
-                renderer.castShadows = castShadow;
-                renderer.receiveShadows = receiveShadow;
+                GetComponent<Renderer>().castShadows = castShadow;
+                GetComponent<Renderer>().receiveShadows = receiveShadow;
 			}
 			// We have multiple materials to take care of, build one mesh / gameobject for each material
 			// and parent it to this object
@@ -108,13 +108,13 @@ public class CombineChildrenExtended : MonoBehaviour {
 				go.transform.localRotation = Quaternion.identity;
 				go.transform.localPosition = Vector3.zero;
 				go.AddComponent(typeof(MeshFilter));
-				go.AddComponent("MeshRenderer");
-				go.renderer.material = (Material)de.Key;
+				go.AddComponent<MeshRenderer>();
+				go.GetComponent<Renderer>().material = (Material)de.Key;
 				MeshFilter filter = (MeshFilter)go.GetComponent(typeof(MeshFilter));
 				if(Application.isPlaying)filter.mesh = MeshCombineUtility.Combine(instances);
                 else filter.sharedMesh = MeshCombineUtility.Combine(instances);
-                go.renderer.castShadows = castShadow;
-                go.renderer.receiveShadows = receiveShadow;
+                go.GetComponent<Renderer>().castShadows = castShadow;
+                go.GetComponent<Renderer>().receiveShadows = receiveShadow;
                 if (addMeshCollider) go.AddComponent<MeshCollider>();
             }
 		}	

@@ -16,9 +16,9 @@ public class Projectile:MonoBehaviour {
 		if(target != null) {
 			transform.LookAt(target.transform.position);
 			transform.Translate(Vector3.forward);
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 		} else {
-			renderer.enabled = false;
+			GetComponent<Renderer>().enabled = false;
 			Destroy(gameObject);
 		}
 
@@ -34,7 +34,7 @@ public class Projectile:MonoBehaviour {
 	}
 
 	void OnDestroy() {
-		audio.PlayOneShot(hitSound);
+		GetComponent<AudioSource>().PlayOneShot(hitSound);
 	}
 
 }

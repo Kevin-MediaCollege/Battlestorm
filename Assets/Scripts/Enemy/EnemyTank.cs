@@ -23,16 +23,16 @@ public class EnemyTank:Enemy {
 			}
 			
 			for(int i = 0; i < enemyRenders.Length; i++){
-				enemyRenders[i].renderer.material.mainTexture = appliedTexture;
+				enemyRenders[i].GetComponent<Renderer>().material.mainTexture = appliedTexture;
 			}
 			
 		}else if (!notnormal){
 			Texture appliedTexture;
 			appliedTexture = textures[0];
-			renderer.material.mainTexture = appliedTexture;
+			GetComponent<Renderer>().material.mainTexture = appliedTexture;
 
 			for(int i = 0; i < enemyRenders.Length; i++){
-			enemyRenders[i].renderer.material.mainTexture = appliedTexture;
+			enemyRenders[i].GetComponent<Renderer>().material.mainTexture = appliedTexture;
 			}
 
 		}

@@ -16,7 +16,7 @@ public class QuickDestroy:MonoBehaviour {
 		if(onTime){
 			Destroy(gameObject,killtime);
 		}else{
-		if(particleSystem.isStopped)
+		if(GetComponent<ParticleSystem>().isStopped)
 			Destroy(gameObject);
 		}
 	}

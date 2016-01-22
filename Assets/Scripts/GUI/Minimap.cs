@@ -14,7 +14,7 @@ public class Minimap:MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		gameObject.camera.pixelRect = new Rect (0, 0, Screen.width / mapSize.x, Screen.height / mapSize.y);
+		gameObject.GetComponent<Camera>().pixelRect = new Rect (0, 0, Screen.width / mapSize.x, Screen.height / mapSize.y);
 
 		if(Input.GetKey(InputHandler.minimap)) {
 			openMap = true;

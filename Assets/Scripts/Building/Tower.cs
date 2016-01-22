@@ -129,7 +129,7 @@ public class Tower:Building {
 						projectile.damage = stats.damagePerLevel[currentLevel - 1];
 						projectile.targetScript = target.gameObject.GetComponent<Enemy>();
 						
-						audio.PlayOneShot(shotSound);
+						GetComponent<AudioSource>().PlayOneShot(shotSound);
 					}
 
 				} else if(towerType == TowerType.Ice) {

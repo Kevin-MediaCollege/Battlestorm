@@ -51,14 +51,14 @@ public class BuildingManager:MonoBehaviour {
 	IEnumerator WaitForParticle(EBuildingType type){
 		//Waiting time for particle Animation.
 
-		platform.collider.enabled = false;
+		platform.GetComponent<Collider>().enabled = false;
 		currentType = type;
 		yield return new WaitForSeconds(2.5f);
 
 		//Creates The Building
 
 		Instantiate(Resources.Load("Prefabs/SoundPrefabs/BuildingCreateSound"), position.transform.position, position.transform.rotation);
-		platform.renderer.enabled = false;
+		platform.GetComponent<Renderer>().enabled = false;
 		platform.GetComponent<BoxCollider>().enabled = false;
 		
 		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), position.transform.position, position.transform.rotation) as GameObject;
@@ -74,7 +74,7 @@ public class BuildingManager:MonoBehaviour {
 		//Sets state of the building Particles.
 
 		for(int i = 0; i < particle.Length; i++){
-			particle[i].renderer.enabled = state;
+			particle[i].GetComponent<Renderer>().enabled = state;
 		}
 
 	}
@@ -105,7 +105,7 @@ public class BuildingManager:MonoBehaviour {
 		}
 
 		SetParticle(true);
-		platform.renderer.enabled = true;
+		platform.GetComponent<Renderer>().enabled = true;
 		platform.GetComponent<BoxCollider>().enabled = true;
 		CreatePoofParticle();
 		Destroy(building.gameObject);

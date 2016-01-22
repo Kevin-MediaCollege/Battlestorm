@@ -31,6 +31,8 @@ using Pathfinding;
  * or you have missed to pool some path somewhere in your code.
  * 
  * \see pooling
+ * 
+ * \todo Add field showing how many graph updates are being done right now
  */
 public class AstarDebugger : MonoBehaviour {
 	
@@ -83,7 +85,6 @@ public class AstarDebugger : MonoBehaviour {
 	private GUIStyle style;
 	
 	private Camera cam;
-	private LineRenderer lineRend;
 	
 	float graphWidth = 100;
 	float graphHeight = 100;
@@ -94,13 +95,11 @@ public class AstarDebugger : MonoBehaviour {
 		useGUILayout = false;
 		
 		fpsDrops = new float[fpsDropCounterSize];
-		
-		if (camera != null) {
-			cam = camera;
-		} else {
+
+		cam = GetComponent<Camera>();
+		if (cam == null) {
 			cam = Camera.main;
 		}
-		
 		
 		graph = new GraphPoint[graphBufferSize];
 		

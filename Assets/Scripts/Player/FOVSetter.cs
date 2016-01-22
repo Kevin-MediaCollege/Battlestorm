@@ -6,8 +6,8 @@ public class FOVSetter : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		if(camera.fieldOfView != InputHandler.FOV){
-			camera.fieldOfView = InputHandler.FOV;
+		if(GetComponent<Camera>().fieldOfView != InputHandler.FOV){
+			GetComponent<Camera>().fieldOfView = InputHandler.FOV;
 		}
 
 	}
