@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Clouds 1
-  m_Shader: {fileID: 4800000, guid: 5d45c8184c704a243b66b1e412572b14, type: 3}
-  m_ShaderKeywords: []
-  m_CustomRenderQueue: -1
+  m_Shader: {fileID: 4800000, guid: 1cfa4753040ac2d43988f9204630f18d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -29,6 +31,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _SpecularTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _DecalTex
         second:
           m_Texture: {fileID: 0}
@@ -36,14 +45,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Cutout
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Cube
+          name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -64,14 +66,14 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _SpecularTex
+          name: _Cube
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ParallaxMap
+          name: _Cutout
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -83,20 +85,20 @@ Material:
         second: .5
       data:
         first:
-          name: PixelSnap
-        second: 0
-      data:
-        first:
           name: _Shininess
         second: .0300000031
       data:
         first:
-          name: _InvFade
-        second: 3
+          name: PixelSnap
+        second: 0
       data:
         first:
-          name: _Offset
-        second: 1
+          name: _Parallax
+        second: .0199999996
+      data:
+        first:
+          name: _InvFade
+        second: 3
       data:
         first:
           name: _EmissionLM
@@ -107,8 +109,8 @@ Material:
         second: 2.5
       data:
         first:
-          name: _Parallax
-        second: .0199999996
+          name: _Offset
+        second: 1
     m_Colors:
       data:
         first:
@@ -124,24 +126,24 @@ Material:
         second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
-          name: _TintColor
-        second: {r: .5, g: .507352948, b: .5, a: .360784322}
-      data:
-        first:
-          name: _EmisColor
-        second: {r: .843137264, g: .843137264, b: .843137264, a: 0}
-      data:
-        first:
-          name: _ReflectColor
-        second: {r: 1, g: 1, b: 1, a: .5}
-      data:
-        first:
           name: _NotVisibleColor
         second: {r: 0, g: 1, b: 0, a: 1}
       data:
         first:
           name: _RimColor
         second: {r: .970000029, g: .879999995, b: 1, a: .75}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: 1, g: 1, b: 1, a: .5}
+      data:
+        first:
+          name: _TintColor
+        second: {r: .5, g: .507352948, b: .5, a: .360784322}
+      data:
+        first:
+          name: _EmisColor
+        second: {r: .843137264, g: .843137264, b: .843137264, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
