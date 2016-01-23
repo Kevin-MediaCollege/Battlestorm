@@ -57,7 +57,7 @@ public class CameraMenu:MonoBehaviour {
 		transform.rotation = path.pointA.transform.rotation;
 		transform.position = path.pointA.transform.position;
 		pathfound = true;
-		fade.fadingOut = false;
+		fade.fading = false;
 		startPoint = transform.position;
 		StopCoroutine("Delay");
 	}
@@ -77,7 +77,7 @@ public class CameraMenu:MonoBehaviour {
 			}
 
 			if((Time.time - startTime) >= (duration - 1.0f)) {
-				fade.fadingOut = true;
+				fade.fading = true;
 				findnewPath = true;
 			}
 

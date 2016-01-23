@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: slow_tower 1
-  m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: []
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -29,16 +31,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Illum
+          name: _DetailNormalMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Cube
+          name: _SpecularTex
         second:
-          m_Texture: {fileID: 8900000, guid: 65a7d442f1932344384c29c6fecc89c6, type: 2}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -57,6 +59,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -64,7 +73,42 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _SpecularTex
+          name: _Cube
+        second:
+          m_Texture: {fileID: 8900000, guid: 65a7d442f1932344384c29c6fecc89c6, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -83,12 +127,20 @@ Material:
         second: 1
       data:
         first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
           name: _Cutoff
         second: 0
       data:
         first:
           name: _Shininess
-        second: 3.00000072
+        second: 3.0000007
       data:
         first:
           name: _EmissionLM
@@ -96,11 +148,43 @@ Material:
       data:
         first:
           name: _Parallax
-        second: .0199999996
+        second: 0.02
+      data:
+        first:
+          name: _ZWrite
+        second: 1
+      data:
+        first:
+          name: _Glossiness
+        second: 0
+      data:
+        first:
+          name: _BumpScale
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
+        second: 0
+      data:
+        first:
+          name: _Mode
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
       data:
         first:
           name: _Outline
-        second: .00600000005
+        second: 0.006
       data:
         first:
           name: _SizeX
@@ -148,8 +232,12 @@ Material:
     m_Colors:
       data:
         first:
+          name: _EmissionColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
           name: _Color
-        second: {r: 1, g: .352941155, b: .352941155, a: 1}
+        second: {r: 1, g: 0.35294116, b: 0.35294116, a: 1}
       data:
         first:
           name: _SpecColor
@@ -157,12 +245,12 @@ Material:
       data:
         first:
           name: _ReflectColor
-        second: {r: .691176474, g: 0, b: 0, a: .501960814}
+        second: {r: 0.6911765, g: 0, b: 0, a: 0.5019608}
       data:
         first:
           name: _OutlineColor
-        second: {r: .360294104, g: 0, b: 0, a: 1}
+        second: {r: 0.3602941, g: 0, b: 0, a: 1}
       data:
         first:
           name: _RimColor
-        second: {r: 0, g: 1, b: .432759047, a: .749019623}
+        second: {r: 0, g: 1, b: 0.43275905, a: 0.7490196}

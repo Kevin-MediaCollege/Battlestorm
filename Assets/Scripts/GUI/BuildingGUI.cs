@@ -42,7 +42,6 @@ public class BuildingGUI:MonoBehaviour {
 	private bool draw;
 	private bool subMenu;
 
-	public BuildManagerGUI BMGUI;
 	void Start() {
 		tooltipManager = GetComponent<Tooltip>();
 		Deselect();
@@ -150,7 +149,6 @@ public class BuildingGUI:MonoBehaviour {
 			
 			if(GUI.Button(new Rect(targetPosition.x - 10.94f, Screen.height + -targetPosition.y - 150, 46.9f, 46.9f), new GUIContent("", "TowerNormal"), buttonStyle)) {
 				Create(EBuildingType.TowerNormal);
-				BMGUI.addCount(1);
 				PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
 				PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
 				PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
@@ -171,7 +169,6 @@ public class BuildingGUI:MonoBehaviour {
 			
 			if(GUI.Button(new Rect(targetPosition.x + 37.5f, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "TowerIce"), buttonStyle)) {
 				Create(EBuildingType.TowerIce);
-				BMGUI.addCount(5);
 				PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
 				PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
 				PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
@@ -192,7 +189,6 @@ public class BuildingGUI:MonoBehaviour {
 			
 			if(GUI.Button(new Rect(targetPosition.x - 50, Screen.height + -targetPosition.y - 137.5f, 37.5f, 37.5f), new GUIContent("", "TowerFire"), buttonStyle)) {
 				Create(EBuildingType.TowerFire);
-				BMGUI.addCount(4);
 				PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
 				PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
 				PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
@@ -214,7 +210,6 @@ public class BuildingGUI:MonoBehaviour {
 
 				if(GUI.Button(new Rect(targetPosition.x + 50, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "Mine"), buttonStyle)) {
 					Create(EBuildingType.Mine);
-					BMGUI.addCount(3);
 					PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
 					PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
 					PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];
@@ -241,7 +236,6 @@ public class BuildingGUI:MonoBehaviour {
 
 				if(GUI.Button(new Rect(targetPosition.x - 100, Screen.height + -targetPosition.y + 25, 75, 75), new GUIContent("", "LumberMill"), buttonStyle)) {
 					Create(EBuildingType.LumberMill);
-					BMGUI.addCount(2);
 					PlayerData.Instance.goldAmount -= stats.goldCostPerLevel[0];
 					PlayerData.Instance.stoneAmount -= stats.stoneCostPerLevel[0];
 					PlayerData.Instance.woodAmount -= stats.woodCostPerLevel[0];

@@ -20,6 +20,6 @@ public class InputHandler:MonoBehaviour {
 
 	public static KeyCode buildingManager = KeyCode.Space; // 7
 	
-	public static float FOV = 70; // 8
+	public static float FOV = 90; // 8
 
 }

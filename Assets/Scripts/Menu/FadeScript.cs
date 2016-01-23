@@ -2,13 +2,16 @@
 using System.Collections;
 public class FadeScript:MonoBehaviour {
 
-	private Texture2D fadeTexture; // Current FadeTexture.
+    public delegate void FadeEvent ();
+    public event FadeEvent OnFadeComplete;
+
+    private Texture2D fadeTexture; // Current FadeTexture.
 
 	public Texture2D blackTexture; // Black FadeTexture.
 
 	public Texture2D whiteTexture; // White FadeTexture.
 
-	public bool fadingOut = false; // Sets FadeState.
+	public bool fading = false; // Sets FadeState.
 
 	public float alphaFadeValue = 0; // Value of the Alpha.
 
@@ -29,17 +32,27 @@ public class FadeScript:MonoBehaviour {
 		fadeTexture = whiteTexture;
 	}
 
+    public void StartFade () {
+        fading = true;
+    }
+
 	void OnGUI () {
 		GUI.depth = -2;
 
-		if(fadingOut) {
+		if(fading) {
 			fadeSpeed = 0.8f;
 		} else {
 			fadeSpeed = 1.5f;
 		}
-
+        if (alphaFadeValue == 1) {
+            if (OnFadeComplete != null) {
+                OnFadeComplete();
+             
+            }
+            fading = false;
+        }
 		GUI.depth = 1;
-		alphaFadeValue = Mathf.Clamp01 (alphaFadeValue + ((Time.deltaTime / fadeSpeed) * (fadingOut ? 1 : -1)));
+		alphaFadeValue = Mathf.Clamp01 (alphaFadeValue + ((Time.deltaTime / fadeSpeed) * (fading ? 1 : -1)));
 
 		if(alphaFadeValue != 0) {
 			GUI.color = new Color (1, 1, 1, alphaFadeValue);

@@ -9,6 +9,7 @@ public class PlayerData:MonoBehaviour {
 	public int goldAmount; // Amount of gold you currently have.
 	
 	public int health; // Health of your Base.
+    public int startingHealth;
 
 	public static PlayerData Instance {
 		get {

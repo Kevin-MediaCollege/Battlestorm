@@ -16,13 +16,9 @@ public class BuildingManager:MonoBehaviour {
 
 	public GameObject instantiateparticle; // Visual Effect created upon making a Building.
 
-	public BuildManagerGUI BMGUI; //Reference to the BuildManagerGUI.
-
 	public EBuildingType currentType; // Which type the current Building is.
 
 	void Start() {
-		// Getting Reference of BuildManagerGUI.
-		BMGUI = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BuildManagerGUI>();
 
 		// Deactivates particle if it isnt unlocked.
 		if(isUnlocked){
@@ -85,24 +81,6 @@ public class BuildingManager:MonoBehaviour {
 
 	public void DestroyBuilding(Building building) {
 		//Removes the Building.
-
-		switch(currentType){
-			case EBuildingType.TowerNormal:
-				BMGUI.removeCount(1);
-			break;
-			case EBuildingType.LumberMill:
-				BMGUI.removeCount(2);
-			break;
-			case EBuildingType.Mine:
-				BMGUI.removeCount(3);
-			break;
-			case EBuildingType.TowerFire:
-				BMGUI.removeCount(4);
-			break;
-			case EBuildingType.TowerIce:
-				BMGUI.removeCount(5);
-			break;
-		}
 
 		SetParticle(true);
 		platform.GetComponent<Renderer>().enabled = true;
