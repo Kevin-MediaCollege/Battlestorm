@@ -1,18 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Holoville.HOTween;
+using DG.Tweening;
 
 public class ResourceText : MonoBehaviour {
 
-	void Awake() {
+    private TextMesh mesh;
 
-		transform.localEulerAngles = new Vector3(0, 0, 0);
+    void Awake () {
 
-	}
-    
-    public void TweenResourceText () {
+        mesh = GetComponent<TextMesh>();
+        gameObject.SetActive(false);
+        //gameObject.hideFlags = HideFlags.HideInHierarchy;
 
-        HOTween.To(transform, 4, "localposition", new Vector3(0, 5, 0));
+    }
+
+    public void TweenResourceText (int _value) {
+
+        mesh.text = "" + _value;
+        gameObject.SetActive(true);
+        transform.localPosition = new Vector3(0, 0, 0);
+        transform.DOLocalMoveY(5, 1, false).OnComplete(OnTweenCompleted).OnUpdate(OnTweenUpdate);
+        
+    }
+
+    private void OnTweenCompleted () {
+
+        gameObject.SetActive(false);
+
+    }
+
+    private void OnTweenUpdate () {
+
+        transform.LookAt(Camera.main.transform);
 
     }
 }

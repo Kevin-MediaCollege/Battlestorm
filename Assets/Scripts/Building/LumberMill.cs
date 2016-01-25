@@ -3,7 +3,9 @@ using System.Collections;
 
 public class LumberMill:Building {
 
-	new void Start() {
+    private ResourceText woodResourcePopup;
+
+    new void Start() {
 		base.Start();
 
 		UpdateArt();
@@ -11,7 +13,18 @@ public class LumberMill:Building {
 
 	}
 	
-	protected override IEnumerator Tick() {
+    void Awake () {
+        //Create the resource Object
+        GameObject woodObject = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
+      
+        woodResourcePopup = woodObject.GetComponent<ResourceText>();
+        woodResourcePopup.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+        
+        woodResourcePopup.transform.parent = transform;
+
+    }
+
+    protected override IEnumerator Tick() {
 		//Gives the player Resources and Instantiates a Resource Popup.
 
 		while(true) {
@@ -20,15 +33,7 @@ public class LumberMill:Building {
 
 			PlayerData.Instance.woodAmount += stats.resourcesPerTick[currentLevel - 1];
 
-			Vector3 position = transform.position;
-			position.y += 5;
-			
-			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), position, Quaternion.identity) as GameObject;
-
-			TextMesh textPopup = popupText.GetComponent<TextMesh>();
-			textPopup.text = stats.resourcesPerTick[currentLevel - 1].ToString();
-			textPopup.color = new Color(0.6f, 0.2f, 0);
-			textPopup.transform.parent = this.transform;
+            woodResourcePopup.TweenResourceText(stats.resourcesPerTick[currentLevel - 1]);
 
 		}
 

@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-
 using System.Collections;
 
-
-
 public class LoadingScreen : MonoBehaviour {
+
 	private static LoadingScreen instance = null;
+
 	private string levelname;
 	public Texture loadbar;
 	public float loadingwidth;
@@ -17,8 +16,6 @@ public class LoadingScreen : MonoBehaviour {
 	void Awake () {
 		DontDestroyOnLoad(gameObject);
 	}
-
-
 
 	public static LoadingScreen Instance {
 		get {
@@ -34,19 +31,24 @@ public class LoadingScreen : MonoBehaviour {
 			return instance;
 		}
 	}
+
 	void OnApplicationQuit() {
 		instance = null;
 	}
+
 	void Update () {
 		if(Application.isLoadingLevel){
 		}else{
 			async = null;
 		}
 	}
+
 	public void loadLoadingScreen(string level){
-	//	levelname = level;
+
 		StartCoroutine(LoadALevel(level));
+
 	}
+
 	private IEnumerator LoadALevel(string levelName) {
 		async = Application.LoadLevelAsync(levelName);
 		yield return async;
@@ -58,8 +60,8 @@ public class LoadingScreen : MonoBehaviour {
 		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
 		if (async != null) {
 			GUI.DrawTexture(new Rect(0, 0, 1285,750), loadingTexture);
-			GUI.DrawTexture(new Rect(390, 575, 500 * async.progress, 40), loadbar);
-			GUI.DrawTexture(new Rect(390, 575, 500, 40), loadingOverlay);
+			GUI.DrawTexture(new Rect(390, 675, 500 * async.progress, 40), loadbar);
+			GUI.DrawTexture(new Rect(390, 675, 500, 40), loadingOverlay);
 		}
 	}
 }

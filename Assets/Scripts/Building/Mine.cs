@@ -3,35 +3,40 @@ using System.Collections;
 
 public class Mine:Building {
 
-	new void Start () {
+    private ResourceText stoneResourcePopup;
+
+    new void Start () {
 		base.Start();
 
 		UpdateArt();
 		StartCoroutine("Tick");
 
 	}
-	
-	protected override IEnumerator Tick() {
-		//Gives the player Resources and Instantiates a Resource Popup.
 
-		while(true) {
+    void Awake () {
+        //Create the resource Object
+        GameObject stoneObject = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject;
 
-			yield return new WaitForSeconds(tickDelay);
+        stoneResourcePopup = stoneObject.GetComponent<ResourceText>();
+        stoneResourcePopup.transform.position = transform.position + new Vector3(0, 0.5f, 0);
 
-			PlayerData.Instance.stoneAmount += stats.resourcesPerTick[currentLevel - 1];
+        stoneResourcePopup.transform.parent = transform;
 
-			Vector3 position = transform.position;
-			position.y += 5;
+    }
 
-			GameObject popupText = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), position, Quaternion.identity) as GameObject;
+    protected override IEnumerator Tick () {
+        //Gives the player Resources and Instantiates a Resource Popup.
 
-			TextMesh textPopup = popupText.GetComponent<TextMesh>();
-			textPopup.text = stats.resourcesPerTick[currentLevel - 1].ToString();
-			textPopup.color = Color.gray;
-			textPopup.transform.parent = this.transform;
+        while (true) {
 
-		}
+            yield return new WaitForSeconds(tickDelay);
 
-	}
+            PlayerData.Instance.woodAmount += stats.resourcesPerTick[currentLevel - 1];
+
+            stoneResourcePopup.TweenResourceText(stats.resourcesPerTick[currentLevel - 1]);
+
+        }
+
+    }
 
 }

@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Your Main Capitol. The building you're protecting from enemies.
+///  Gives a fixed amount of resources per tick.
+/// </summary>
 public class Base:MonoBehaviour {
-	/// Your Main Capitol. The building you're protecting from enemies.
-	/// Give's a fixed amount of resources per tick.
 
 	public float tickDelay; //Time between Tick
 
@@ -11,15 +13,24 @@ public class Base:MonoBehaviour {
 
 	public int stonePerTick; // Amount of stone per Tick.
 
-    private GameObject woodResourcePopup;
-    private GameObject stoneResourcePopup;
+    private ResourceText woodResourcePopup;
+    private ResourceText stoneResourcePopup;
+
+    public Transform resourceSpawnPosition;
 
     void Awake () {
-        //Create the Objects
-        woodResourcePopup = (Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject);
-        stoneResourcePopup = (Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject);
-        stoneResourcePopup.SetActive(false);
-        stoneResourcePopup.SetActive(false);
+        //Create the resource Objects
+        GameObject woodObject = Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject;
+        GameObject stoneObject = Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject;
+
+        woodResourcePopup = woodObject.GetComponent<ResourceText>();
+        woodResourcePopup.transform.position = resourceSpawnPosition.position;
+        woodResourcePopup.transform.parent = resourceSpawnPosition;
+
+        stoneResourcePopup = stoneObject.GetComponent<ResourceText>();
+        stoneResourcePopup.transform.position = resourceSpawnPosition.position;
+        stoneResourcePopup.transform.parent = resourceSpawnPosition;
+
     }
 
 	void Start() {
@@ -38,22 +49,11 @@ public class Base:MonoBehaviour {
 			PlayerData.Instance.woodAmount += woodPerTick;
 			PlayerData.Instance.stoneAmount += stonePerTick;
 
-			Vector3 position = transform.position;
-			position.y += 12;
-
-			TextMesh woodPopup = (Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), position, Quaternion.identity) as GameObject).GetComponent<TextMesh>();
-
-			woodPopup.text = woodPerTick.ToString();
-			woodPopup.color = new Color(0.6f, 0.2f, 0);
-			woodPopup.transform.parent = this.transform;
+            woodResourcePopup.TweenResourceText(woodPerTick);
 
 			yield return new WaitForSeconds(0.6f);
 
-			TextMesh stonePopup = (Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), position, Quaternion.identity) as GameObject).GetComponent<TextMesh>();
-
-			stonePopup.text = stonePerTick.ToString();
-			stonePopup.color = Color.gray;
-			stonePopup.transform.parent = this.transform;
+            stoneResourcePopup.TweenResourceText(stonePerTick);
 
 		}
 

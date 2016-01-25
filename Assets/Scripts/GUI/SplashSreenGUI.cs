@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Holoville.HOTween;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 /// <summary>
 /// The SplashScreen that is shown when starting the application.
@@ -27,38 +27,10 @@ public class SplashSreenGUI : MonoBehaviour {
 
         #if UNITY_WEBGL
         webGLGroup.alpha = 1;
-        webGLFadeToggle = true;
-        #else
-        HOTween.To(mainGroup, 3, "alpha", 1);
         #endif
 
+        mainGroup.DOFade(1, 5);
         StartCoroutine(WaitToFadeOut());
-
-    }
-
-    void Update () {
-
-        #if UNITY_WEBGL
-
-        if (webGLFadeToggle) {
-
-            if(mainGroup.alpha < 1) {
-
-                mainGroup.alpha += 0.015f;
-
-            }
-
-        } else {
-
-            if (mainGroup.alpha > 0) {
-
-                mainGroup.alpha -= 0.015f;
-
-            }
-
-        }
-
-        #endif
 
     }
 
@@ -70,11 +42,7 @@ public class SplashSreenGUI : MonoBehaviour {
 
         yield return new WaitForSeconds(6);
 
-        #if UNITY_WEBGL
-        webGLFadeToggle = false;
-        #else
-        HOTween.To(mainGroup, 2, "alpha", 0);
-        #endif
+        mainGroup.DOFade(0, 2);
 
         yield return new WaitForSeconds(3);
 
