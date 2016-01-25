@@ -11,9 +11,23 @@ public class Base:MonoBehaviour {
 
 	public int stonePerTick; // Amount of stone per Tick.
 
+    private GameObject woodResourcePopup;
+    private GameObject stoneResourcePopup;
+
+    void Awake () {
+        //Create the Objects
+        woodResourcePopup = (Instantiate(Resources.Load("Prefabs/Text/WoodResourceText"), transform.position, Quaternion.identity) as GameObject);
+        stoneResourcePopup = (Instantiate(Resources.Load("Prefabs/Text/StoneResourceText"), transform.position, Quaternion.identity) as GameObject);
+        stoneResourcePopup.SetActive(false);
+        stoneResourcePopup.SetActive(false);
+    }
+
 	void Start() {
+
 		StartCoroutine("Tick");
+
 	}
+
 	IEnumerator Tick() {
 		//Adds Resource Points and Creates the Resource popup Text.
 

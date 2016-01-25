@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Holoville.HOTween;
 
-public class ResourceText:MonoBehaviour {
-	void Start() {
+public class ResourceText : MonoBehaviour {
+
+	void Awake() {
+
 		transform.localEulerAngles = new Vector3(0, 0, 0);
-		Destroy(gameObject, 1.5f);
-	}
 
-	void FixedUpdate() {
-		transform.LookAt(Camera.main.transform);
-		transform.Translate(new Vector3(0, 0.02f, 0));
 	}
+    
+    public void TweenResourceText () {
+
+        HOTween.To(transform, 4, "localposition", new Vector3(0, 5, 0));
+
+    }
 }

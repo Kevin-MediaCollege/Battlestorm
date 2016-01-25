@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MenuGUI : MonoBehaviour {
 
+    #region Variables
+
     public MainMenuGUI MainMenu;
     public OptionsGUI OptionsMenu;
     public CreditsGUI CreditsMenu;
@@ -13,7 +15,13 @@ public class MenuGUI : MonoBehaviour {
     private string nextStateName;
     public AudioSource clicksource;
 
+    #endregion
+
+
+    #region Unity Functions
+
     void Start () {
+
         MainMenu.OnStateSwitch += OnStateSwitch;
         OptionsMenu.OnStateSwitch += OnStateSwitch;
         CreditsMenu.OnStateSwitch += OnStateSwitch;
@@ -22,24 +30,32 @@ public class MenuGUI : MonoBehaviour {
         CreditsMenu.onCLick += OnClick;
         MainMenu.Enter();
         currentMenuState = MainMenu;
+
     }
+
+    #endregion
+
+    #region Events
 
     private void OnStateSwitch (string _state) {
         nextStateName = _state;
 
         fadeEffect.StartFade();
-        fadeEffect.OnFadeComplete += FadeEffect_OnFadeComplete;
+        fadeEffect.OnFadeComplete += OnFadeComplete;
     }
 
     private void OnClick () {
+
         clicksource.Play();
+
     }
 
-    private void FadeEffect_OnFadeComplete () {
+    private void OnFadeComplete () {
+
         currentMenuState.Exit();
         currentMenuState.SetCamera(false);
-        fadeEffect.OnFadeComplete -= FadeEffect_OnFadeComplete;
-    
+        fadeEffect.OnFadeComplete -= OnFadeComplete;
+
         switch (nextStateName) {
 
             case "Main":
@@ -64,42 +80,6 @@ public class MenuGUI : MonoBehaviour {
 
     }
 
-}
+    #endregion
 
-
-public class BaseMenuState : MonoBehaviour {
-
-    public delegate void StateSwitch (string _state);
-    public event StateSwitch OnStateSwitch;
-
-    public delegate void ClickEvent ();
-    public event ClickEvent onCLick;
-
-    public Camera stateCamera;
-
-    void Awake () {
-        
-        this.gameObject.SetActive(false);
-    }
-
-    public virtual void Exit () {
-        this.gameObject.SetActive(false);
-    }
-
-    public virtual void Enter () {
-        this.gameObject.SetActive(true);
-    }
-
-    public virtual void SetCamera(bool _state) {
-        stateCamera.enabled = _state;
-    }
-
-    public void SwitchState (string _state) {
-        OnStateSwitch(_state);
-    }
-
-    public void Click () {
-        onCLick();
-    }
-    
 }
