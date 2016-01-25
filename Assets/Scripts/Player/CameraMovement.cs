@@ -16,6 +16,7 @@ public class CameraMovement:MonoBehaviour {
 	private bool controllerpressed;
 	
 	void Update() {
+
 		if(canRotate) {
 			rotationX += Input.GetAxis("Mouse X") * sensitivity;
 			rotationY += Input.GetAxis("Mouse Y") * sensitivity;
@@ -27,13 +28,14 @@ public class CameraMovement:MonoBehaviour {
 
 		transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
 		transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
-		transform.position += transform.forward * speed * Input.GetAxis("Vertical");
-		transform.position += transform.right * speed * Input.GetAxis("Horizontal");
-		transform.position += transform.up * (speed / 4) * Input.GetAxis("Move Vertical");
-		
+
+        transform.Translate(new Vector3(speed * Input.GetAxis("Horizontal"), (speed / 4) * Input.GetAxis("Move Vertical"), speed * Input.GetAxis("Vertical")));
+
 		if(Input.GetMouseButtonDown(1)) {
+
 			Screen.lockCursor = !Screen.lockCursor;
 			canRotate = !canRotate;
+
 		}
 
 	}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class MusicFlow:MonoBehaviour {
 	//Changes the Music when enemies are comming.
@@ -19,22 +20,24 @@ public class MusicFlow:MonoBehaviour {
 	}
 
 	public void Wait() {
-		//Flows the Music to WaitMusic.
-		if(waitSource.volume < VolumeManager.MusicVolume){
-		waitSource.volume += 0.006f;
-		}
 
-		waveSource.volume -= 0.006f;
+        waitSource.DOFade(VolumeManager.MusicVolume, 5);
+        waveSource.DOFade(0, 5);
 
-	}
+    }
 
 	public void Wave() {
-		if(waitSource.volume < VolumeManager.MusicVolume){
-		waveSource.volume += 0.006f;
-		}
 
-		waitSource.volume -= 0.006f;
+        waveSource.DOFade(VolumeManager.MusicVolume, 5);
+        waitSource.DOFade(0, 5);
 
-	}
+    }
+
+    public void SetPitch (float _value) {
+
+        waveSource.DOPitch(_value, 2);
+        waitSource.DOPitch(_value, 2);
+
+    }
 
 }

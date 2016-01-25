@@ -3,9 +3,13 @@ using System.Collections;
 
 public class WaveManager:MonoBehaviour {
 
-	public int waveDelay; // Delay between waves.
+    public delegate void WaveEvent ();
+    public event WaveEvent OnWaveStarted;
+    public event WaveEvent OnEnemiesSpawned;
 
-	public int longWaveDelay; // Delay before first wave.
+    public int waveDelay; // Delay between waves.
+
+	public int startDelay; // Delay before first wave.
 
 	[HideInInspector]
 	public WaveData waveData; // Reference to WaveData.
@@ -22,14 +26,6 @@ public class WaveManager:MonoBehaviour {
 
 	public bool gonextwave; // check if next wave will be started.
 
-	public AudioSource wait; // WaitMusic.
-
-	public AudioSource wave; // WaveMusic.
-
-	public Texture warningTexture; // Texture for warning popup.
-
-	public Color warningcolor = new Color(1,1,1,0); // color for warningTexture.
-
 	public IslandData[] checkIsland; // Reference to island being checked for moving spawnposition.
 
 	public bool backrowUnlocked; // if the backrow of spawners has been unlocked.
@@ -40,87 +36,43 @@ public class WaveManager:MonoBehaviour {
 
 	public MusicFlow musicFlow; // Reference to Musicflow.
 
+   
 	void Start() {
 		//Get reference to Objects.
 		waveData = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<WaveData>();
 		enemyManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemyManager>();
 
-		StartCoroutine("SpawnTimer");
+        EnablePortals(false, false);
+        EnablePortals(true, false);
+
+        StartCoroutine("SpawnTimer");
 	}
 
-	void OnGUI(){
-		//Scale GUI for Warning Texture.
-		float rx = Screen.width / GameManager.nativeWidth;
-		float ry = Screen.height / GameManager.nativeHeight;
-		GUI.matrix = Matrix4x4.TRS (new Vector3(0, 0, 0), Quaternion.identity, new Vector3 (rx, ry, 1)); 
-
-		GUI.color = warningcolor;
-		GUI.DrawTexture(new Rect(435,640,warningTexture.width,warningTexture.height),warningTexture);
-	}
 
 	void Update() {
 
-		if(enemyManager.enemyList.Count == 0){
-			musicFlow.Wait();
-		}else{
-			musicFlow.Wave();
-		}
-
-		if(backrowUnlocked){
-			for(int i = 0; i < backrow.Length; i++){
-				firstrow[i].enableEmission = false;
-			}
-		}
-
-		if(waveData.spawningEnemies){
-			if(backrowUnlocked){
-				for(int i = 0; i < backrow.Length; i++){
-					backrow[i].enableEmission = true;
-				}
-			}
-			else{
-				for(int i = 0; i < firstrow.Length; i++){
-					firstrow[i].enableEmission = true;
-				}
-			}
-		}else{
-			for(int i = 0; i < backrow.Length; i++){
-				backrow[i].enableEmission = false;
-			}
-			for(int i = 0; i < backrow.Length; i++){
-				firstrow[i].enableEmission = false;
-			}
-		}
-
-		if(enemyManager.enemyList.Count == 0 && waveData.waveArray[waveData.currentWave].hasWarning && !waveData.spawningEnemies){
-			if(warningcolor.a < 1){
-				warningcolor.a += 0.05f;
-			}
-		}else{
-			if(warningcolor.a > 0){
-				warningcolor.a -= 0.05f;
-			}
-		}
-
 		if(gonextwave && waveData.spawningEnemies){
 			Time.timeScale = 1;
-			wait.pitch = 1;
-			wave.pitch = 1;
-			Debug.Log(enemiesToSpawn);
+            musicFlow.SetPitch(1);
 			gonextwave = false;
 		}
 
 		if(!pauseDelayStarted && (waveData.currentWave % 5) == 0) {
-			waveData.waveTimer = longWaveDelay;
+			waveData.waveTimer = startDelay;
 			pauseDelayStarted = true;
 		}
 
+        //TODO: is dirty
 		if(finalWave) {
+
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
 			if(enemies.Length == 0){
+
 				GameManager.WinGame();
+
 			}
+
 		}
 
 	}
@@ -129,8 +81,7 @@ public class WaveManager:MonoBehaviour {
 		if(!waveData.spawningEnemies) {
 			gonextwave = true;
 			Time.timeScale = 5;
-			wait.pitch = 1.4f;
-			wave.pitch = 1.4f;
+            musicFlow.SetPitch(1.4f);
 		}
 	}
 
@@ -148,6 +99,24 @@ public class WaveManager:MonoBehaviour {
 		
 		StartCoroutine("SpawnEnemies");
 	}
+
+    private void EnablePortals(bool _firstRow,bool _state) {
+
+        if (_firstRow) {
+
+            for (int i = 0; i < firstrow.Length; i++) {
+                firstrow[i].enableEmission = _state;
+            }
+
+        } else {
+
+            for (int i = 0; i < backrow.Length; i++) {
+                backrow[i].enableEmission = _state;
+            }
+
+        }
+
+    }
 
 	IEnumerator SpawnTimer() {
 		waveData.waveTimer = waveDelay;
@@ -169,7 +138,24 @@ public class WaveManager:MonoBehaviour {
 	}
 
 	IEnumerator SpawnEnemies() {
-		while(true) {
+        OnWaveStarted();
+
+        //Set the portals
+        if (backrowUnlocked) {
+
+            EnablePortals(true, false);
+            EnablePortals(false, true);
+
+        } else {
+
+            EnablePortals(false, false);
+            EnablePortals(true, true);
+
+        }
+
+        musicFlow.Wave();
+
+        while (true) {
 			yield return new WaitForSeconds(waveData.waveArray[waveData.currentWave - 1].spawnDelay);
 			
 			if(enemiesToSpawn >= 0) {
@@ -178,6 +164,7 @@ public class WaveManager:MonoBehaviour {
 
 				WaveData.EnemyData eData = waveData.waveArray[waveData.currentWave - 1].enemies[currentEnemy - 1];
 				bool checkspawn = false;
+
 				int spawn = (int)eData.spawn;
 				switch(spawn){
 					case 0:
@@ -190,6 +177,7 @@ public class WaveManager:MonoBehaviour {
 					spawn = 4;
 					break;
 				}
+
 				for(int i = 0; i < checkIsland.Length; i++){
 					if(checkIsland[i].isUnlocked){
 						checkspawn = true;
@@ -197,22 +185,27 @@ public class WaveManager:MonoBehaviour {
 						break;
 					}
 				}
-				if(checkspawn)
-					backrowUnlocked = true;
 
 				if(checkspawn) {
-					enemyManager.SpawnEnemy(eData.name.ToString(), eData.health, eData.speed, (spawn + 1));
+                    backrowUnlocked = true;
+                    enemyManager.SpawnEnemy(eData.name.ToString(), eData.health, eData.speed, (spawn + 1));
 				} else {
 					enemyManager.SpawnEnemy(eData.name.ToString(), eData.health, eData.speed, spawn);
 				}
 			} else {
 				waveData.spawningEnemies = false;
+                OnEnemiesSpawned();
 				StartCoroutine("SpawnTimer");
 				break;
 			}
 
 		}
 
-	}
+        EnablePortals(false, false);
+        EnablePortals(true, false);
+        Debug.Log("d");
+        musicFlow.Wait();
+
+    }
 
 }

@@ -34,4 +34,8 @@ public class ColorCorrectionTransition : MonoBehaviour {
 
     }
 
+    public float GetValue () {
+        return colorCorrection.saturation;
+    }
+
 }
