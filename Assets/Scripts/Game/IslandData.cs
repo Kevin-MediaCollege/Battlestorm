@@ -15,6 +15,8 @@ public class IslandData:MonoBehaviour {
 
 	public bool canHaveTower; // If you can build a Tower on this Island.
 
+    public EBuildingType[] allowedBuildings;
+
 	void Start() {
 
 		for(int i = 0; i < plots.Length; i++){

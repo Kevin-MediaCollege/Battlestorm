@@ -203,7 +203,6 @@ public class WaveManager:MonoBehaviour {
 
         EnablePortals(false, false);
         EnablePortals(true, false);
-        Debug.Log("d");
         musicFlow.Wait();
 
     }
