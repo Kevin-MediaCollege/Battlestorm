@@ -47,7 +47,7 @@ public class BuildingManager:MonoBehaviour {
 	IEnumerator WaitForParticle(EBuildingType type){
 		//Waiting time for particle Animation.
 
-		platform.GetComponent<Collider>().enabled = false;
+		platform.transform.parent.GetComponent<Collider>().enabled = false;
 		currentType = type;
 		yield return new WaitForSeconds(2.5f);
 
@@ -55,7 +55,6 @@ public class BuildingManager:MonoBehaviour {
 
 		Instantiate(Resources.Load("Prefabs/SoundPrefabs/BuildingCreateSound"), position.transform.position, position.transform.rotation);
 		platform.GetComponent<Renderer>().enabled = false;
-		platform.GetComponent<BoxCollider>().enabled = false;
 		
 		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), position.transform.position, position.transform.rotation) as GameObject;
 		building.transform.parent = this.transform;

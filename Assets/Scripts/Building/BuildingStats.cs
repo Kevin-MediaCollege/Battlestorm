@@ -3,6 +3,13 @@ using System.Collections;
 
 public class BuildingStats:MonoBehaviour {
 
+    public BuildingStats(int _goldCost, int _woodCost, int _stoneCost) {
+
+        goldCostPerLevel = new int[] {_goldCost};
+        woodCostPerLevel = new int[] { _woodCost};
+        stoneCostPerLevel = new int[] { _stoneCost };
+    }
+
 	public int levels; // amount of levels the building has.
 	public float sellRate; // percentage of selling the building.
 	

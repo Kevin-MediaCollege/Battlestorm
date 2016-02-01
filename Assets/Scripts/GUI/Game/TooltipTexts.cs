@@ -6,19 +6,19 @@ public class TooltipTexts:MonoBehaviour {
 
 	private static TooltipTexts instance = null;
 
-	public string build_tower_default = "You can build\ntowers from this menu";
+	public string build_tower_default = "";
 
-	public string build_tower_normal = "Build a normal\ntower";
+	public string build_tower_normal = "Deals damage to enemies.";
 
-	public string build_tower_ice = "Build an ice tower";
+	public string build_tower_ice = "Slows enemies down.";
 
-	public string build_tower_fire = "Build a fire tower";
+	public string build_tower_fire = "Damages enemies over time.";
 
-	public string build_mine = "Build a mine";
+	public string build_mine = "Gathers stone resources.";
 
-	public string build_lumbermill = "Build a lumber mill";
+	public string build_lumbermill = "Gathers wood resources.";
 
-	public string build_bridge = "Build a bridge";
+	public string build_bridge = "Unlocks a new island.";
 
 	public string build_not_available = "Insufficient resources";
 

@@ -23,6 +23,8 @@ public class BuildingDataManager : MonoBehaviour  {
             return stats[3];
             case EBuildingType.TowerFire:
             return stats[4];
+            case EBuildingType.Bridge:
+            return stats[5];
 
         }
         return null;

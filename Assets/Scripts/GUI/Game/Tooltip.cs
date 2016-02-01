@@ -1,157 +1,109 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class Tooltip:MonoBehaviour {
+namespace BattlestormUI {
 
-	public Texture goldTexture; // Gold Texture in Tooltip Window.
+    public class Tooltip : MonoBehaviour {
 
-	public Texture stoneTexture; // Stone Texture in Tooltip Window.
+        public Text woodUI;
+        public Text stoneUI;
+        public Text goldUI;
+        public Text textfield;
 
-	public Texture woodTexture; // Wood Texture in Tooltip Window.
+        private string text;
+        private BuildingStats stats;
 
-	public GUIStyle tooltipStyle; // Style for the Tooltip Window.
 
-	public GUIStyle tooltipTextStyle; // Style for the Tooltip Text.
+        void Awake () {
 
-	private Vector2 mousePos; // Mouse position.
-	
-	private BuildingStats stats; // Stats for building Tooltip.
+            ClearTexts();
 
-	private string type; // Type displayed in Tooltip.
+        }
 
-	private string text; // Text in tooltip.
+        public void FillContentByType (string _type) {
 
-	private bool drawGUI; // if the tooltip should be drawn.
+            EBuildingType parsed_enum = (EBuildingType)System.Enum.Parse(typeof(EBuildingType), _type);
+            ClearTexts();
+            stats = null;
+            stats = BuildingDataManager.Instance.GetDataByType(parsed_enum);
 
-	void Update() {
-		mousePos = new Vector2(Input.mousePosition.x,(Screen.height - Input.mousePosition.y));
-	}
+            switch (parsed_enum) {
 
-	public void drawTooltip(string type, bool state) {		
-		switch(type) {
-		case "TowerMenu":
-			this.type = type;
-			text = TooltipTexts.Instance.build_tower_default;
-			break;
-		case "TowerNormal":
-		case "TowerNormalNotAvailable":
-			unloadGUI();
+                case EBuildingType.None:
+                text = TooltipTexts.Instance.build_not_available;
+                break;
 
-			this.type = "TowerNormal";
-			text = TooltipTexts.Instance.build_tower_normal;
-			SetStats();
-			break;
-		case "TowerIce":
-		case "TowerIceNotAvailable":
-			unloadGUI();
+                case EBuildingType.TowerNormal:
+                text = TooltipTexts.Instance.build_tower_normal;
+                break;
 
-			this.type = "TowerIce";
-			text = TooltipTexts.Instance.build_tower_ice;
-			SetStats();
-			break;
-		case "TowerFire":
-		case "TowerFireNotAvailable":
-			unloadGUI();
+                case EBuildingType.LumberMill:
+                text = TooltipTexts.Instance.build_lumbermill;
+                break;
 
-			this.type = "TowerFire";
-			text = TooltipTexts.Instance.build_tower_fire;
-			SetStats();
-			break;
-		case "Mine":
-		case "MineNotAvailable":
-			this.type = "Mine";
-			text = TooltipTexts.Instance.build_mine;
-			SetStats();
-			break;
-		case "LumberMill":
-		case "LumberMillNotAvailable":
-			this.type = "LumberMill";
-		 	text = TooltipTexts.Instance.build_lumbermill;
-			SetStats();
-			break;
-		case "Bridge":
-		case "BridgeNotAvailable":
-			this.type = "Bridge";
-			text = TooltipTexts.Instance.build_bridge;
-			break;
-		case "NotAvailableIsland":
-			this.type = type;
-			text = TooltipTexts.Instance.build_not_available_island;
-			break;
-		}
+                case EBuildingType.Mine:
+                text = TooltipTexts.Instance.build_mine;
+                break;
 
-		drawGUI = state;
-	}
+                case EBuildingType.Bridge:
+                text = TooltipTexts.Instance.build_bridge;
+                break;
 
-	public void unloadGUI() {
-		type = "";
-		text = "";
-		
-		drawGUI = false;
-		stats = null;
-	}
+                case EBuildingType.TowerIce:
+                text = TooltipTexts.Instance.build_tower_ice;
+                break;
 
-	void OnGUI() {
-		if(drawGUI) {
-			GUI.depth = -1000;
-			GUI.Label(new Rect(mousePos.x + 8, mousePos.y - 75, 200, 100), text, tooltipStyle);
+                case EBuildingType.TowerFire:
+                text = TooltipTexts.Instance.build_tower_fire;
+                break;
 
-			switch(type) {
-			case "TowerNormal":
-			case "TowerIce":
-			case "TowerFire":
-				TooltipTower();
-				break;
-			case "Mine":
-				TooltipMine();
-				break;
-			case "LumberMill":
-				TooltipLumberMill();
-				break;
-			case "Bridge":
-				TooltipBridge();
-				break;
-			case "NotAvailableBridge":
-				DrawPricing(BridgeManager.Instance.GoldCost().ToString(), BridgeManager.Instance.StoneCost().ToString(), BridgeManager.Instance.WoodCost().ToString());
-				break;
-			}
-		}
-	}
+            }
 
-	private void DrawPricing(string goldCost, string stoneCost, string woodCost) {
-		tooltipTextStyle.normal.textColor = (PlayerData.Instance.goldAmount >= System.Int32.Parse(goldCost)) ? Color.green : Color.red; 
-		GUI.DrawTexture(new Rect(mousePos.x + 111, mousePos.y - 32, 24, 24), goldTexture); 
-		GUI.Label(new Rect(mousePos.x + 130, mousePos.y - 32, 200, 100), goldCost, tooltipTextStyle);
+            if (stats != null) {
 
-		tooltipTextStyle.normal.textColor = (PlayerData.Instance.stoneAmount >= System.Int32.Parse(stoneCost)) ? Color.green : Color.red; 
-		GUI.DrawTexture(new Rect(mousePos.x + 16, mousePos.y - 8, 24, 24), stoneTexture); 
-		GUI.Label(new Rect(mousePos.x + 35, mousePos.y - 8, 200, 100), stoneCost, tooltipTextStyle);
+                UpdateTooltip();
 
-		tooltipTextStyle.normal.textColor = (PlayerData.Instance.woodAmount >= System.Int32.Parse(woodCost)) ? Color.green : Color.red; 
-		GUI.DrawTexture(new Rect(mousePos.x + 111, mousePos.y - 8, 24, 24), woodTexture); 
-		GUI.Label(new Rect(mousePos.x + 130, mousePos.y - 8, 200, 100), woodCost, tooltipTextStyle);
+            }
 
-		tooltipStyle.normal.textColor = Color.yellow;
-	}
+        }
 
-	private void TooltipTower() {
-		DrawPricing(stats.goldCostPerLevel[0].ToString(), stats.stoneCostPerLevel[0].ToString(), stats.woodCostPerLevel[0].ToString());
-	}
+        private void ClearTexts () {
+            woodUI.text = "";
+            stoneUI.text = "";
+            goldUI.text = "";
+            textfield.text = "";
+        }
 
-	private void TooltipMine() {
-		DrawPricing(stats.goldCostPerLevel[0].ToString(), stats.stoneCostPerLevel[0].ToString(), stats.woodCostPerLevel[0].ToString());
-	}
+        private void UpdateTooltip () {
+            textfield.text = text;
 
-	private void TooltipLumberMill() {
-		DrawPricing(stats.goldCostPerLevel[0].ToString(), stats.stoneCostPerLevel[0].ToString(), stats.woodCostPerLevel[0].ToString());
-	}
+            PlayerData data = PlayerData.Instance;
 
-	private void TooltipBridge() {
-		DrawPricing(BridgeManager.Instance.GoldCost().ToString(), BridgeManager.Instance.StoneCost().ToString(), BridgeManager.Instance.WoodCost().ToString());
-	}
+            goldUI.text = stats.goldCostPerLevel[0].ToString();
+            stoneUI.text = stats.stoneCostPerLevel[0].ToString();
+            woodUI.text = stats.woodCostPerLevel[0].ToString();
 
-	private void SetStats() {
-		if(stats == null) stats = GameObject.Find(type).GetComponent<BuildingStats>();
-	}
+            if (data.goldAmount >= stats.goldCostPerLevel[0]) {
+                goldUI.color = Color.green;
+            } else {
+                goldUI.color = Color.red;
+            }
+
+            if (data.stoneAmount >= stats.stoneCostPerLevel[0]) {
+                stoneUI.color = Color.green;
+            } else {
+                stoneUI.color = Color.red;
+            }
+
+            if (data.woodAmount >= stats.woodCostPerLevel[0]) {
+                woodUI.color = Color.green;
+            } else {
+                woodUI.color = Color.red;
+            }
+
+        }
+
+    }
 
 }

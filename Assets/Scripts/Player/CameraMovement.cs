@@ -22,12 +22,10 @@ public class CameraMovement:MonoBehaviour {
 			rotationY += Input.GetAxis("Mouse Y") * sensitivity;
 			rotationY = Mathf.Clamp(rotationY, -90, 90);
 			
-			transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
-			transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
 		}
 
-		transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
-		transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
+		transform.rotation = Quaternion.AngleAxis(rotationX, Vector3.up);
+		transform.rotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
 
         transform.Translate(new Vector3(speed * Input.GetAxis("Horizontal"), (speed / 4) * Input.GetAxis("Move Vertical"), speed * Input.GetAxis("Vertical")));
 
