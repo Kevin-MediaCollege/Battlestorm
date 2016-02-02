@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class TooltipTexts:MonoBehaviour {
-	//Text Being used in the Tooltips.
 
 	private static TooltipTexts instance = null;
 
@@ -23,6 +22,38 @@ public class TooltipTexts:MonoBehaviour {
 	public string build_not_available = "Insufficient resources";
 
 	public string build_not_available_island = "This building\ncan't be placed here";
+
+    public string GetTextByBuildingType(EBuildingType _type) {
+
+        switch (_type) {
+
+            case EBuildingType.None:
+            return build_not_available;
+
+            case EBuildingType.TowerNormal:
+            return build_tower_normal;
+
+            case EBuildingType.LumberMill:
+            return build_lumbermill;
+
+            case EBuildingType.Mine:
+            return build_mine;
+
+            case EBuildingType.Bridge:
+            return build_bridge;
+
+            case EBuildingType.TowerIce:
+            return build_tower_ice;
+
+            case EBuildingType.TowerFire:
+            return build_tower_fire;
+
+        }
+
+        Debug.LogWarning("ERROR: NO TEXT FOUND");
+        return "ERROR: NO TEXT FOUND";
+       
+    }
 
 	public static TooltipTexts Instance {
 		get {

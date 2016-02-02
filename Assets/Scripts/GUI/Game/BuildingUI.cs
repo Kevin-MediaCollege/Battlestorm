@@ -26,6 +26,7 @@ namespace BattlestormUI {
         public CanvasGroup bridgeUICanvasGroup;
 
         public UpgradeUI upgradeUI;
+
         //-------------------------------------->
 
 
@@ -46,14 +47,17 @@ namespace BattlestormUI {
             mineButton.onClick.AddListener(() => Build(EBuildingType.Mine));
             bridgeButton.onClick.AddListener(() => Build(EBuildingType.Bridge));
             tooltip = tooltipPanel.GetComponent<Tooltip>();
+            upgradeUI.OnUpgradeBought += UpgradeUI_OnAction;
+            upgradeUI.OnUpgradeSold += UpgradeUI_OnAction;
 
             Deselect();
 
         }
 
+        private void UpgradeUI_OnAction () {
+            Deselect();
+        }
 
-
-        // Update is called once per frame
         void Update () {
 
             if (target != null) {

@@ -55,11 +55,13 @@ public class BuildingManager:MonoBehaviour {
 
 		Instantiate(Resources.Load("Prefabs/SoundPrefabs/BuildingCreateSound"), position.transform.position, position.transform.rotation);
 		platform.GetComponent<Renderer>().enabled = false;
-		
-		building = Instantiate(Resources.Load("Prefabs/Buildings/" + type), position.transform.position, position.transform.rotation) as GameObject;
+
+        Object buildingToSpawn = Resources.Load("Prefabs/Buildings/" + type);
+        building = Instantiate(buildingToSpawn, position.transform.position, position.transform.rotation) as GameObject;
 		building.transform.parent = this.transform;
-		
-		if(type == EBuildingType.TowerNormal || type == EBuildingType.TowerIce || type == EBuildingType.TowerFire){
+        building.transform.name = buildingToSpawn.name;
+
+        if (type == EBuildingType.TowerNormal || type == EBuildingType.TowerIce || type == EBuildingType.TowerFire){
 			building.transform.name = "Tower";
 		}
 
@@ -83,7 +85,7 @@ public class BuildingManager:MonoBehaviour {
 
 		SetParticle(true);
 		platform.GetComponent<Renderer>().enabled = true;
-		platform.GetComponent<BoxCollider>().enabled = true;
+		GetComponent<BoxCollider>().enabled = true;
 		CreatePoofParticle();
 		Destroy(building.gameObject);
 
